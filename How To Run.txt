@@ -1,0 +1,4 @@
+Open Terminal and run: CD to downloads location.
+Next run: python patch_app.py raid-route_3.html
+Then Run: python proxy.py
+Go to: http://localhost:8000/raid-route_3.html
