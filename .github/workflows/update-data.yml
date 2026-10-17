@@ -15,7 +15,7 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -26,14 +26,20 @@ jobs:
           npm init -y >/dev/null
           npm install playwright@1.48.2
           npx playwright install --with-deps chromium
-      - name: Fetch quest data
+      # Game data from api.tarkov.dev. It is allowed to fail (the API is often down); the wiki step below still runs.
+      - name: Fetch quest data (tarkov.dev)
+        continue-on-error: true
         run: node scripts/update-data.mjs
+      # Quests the wiki has and the game data does not (Arena, Event, Seasonal, Removed and newer quests), tagged by type.
+      - name: Build wiki quests
+        continue-on-error: true
+        run: node scripts/build-wiki-quests.mjs
       - name: Commit if changed
         run: |
-          if [ -n "$(git status --porcelain data/quests.json)" ]; then
+          if [ -n "$(git status --porcelain data)" ]; then
             git config user.name  "quest-data-bot"
             git config user.email "quest-data-bot@users.noreply.github.com"
-            git add data/quests.json
+            git add data
             git commit -m "Update quest data"
             git push
           else
