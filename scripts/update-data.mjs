@@ -6,6 +6,7 @@ import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
 const OUT = 'data/quests.json';
+const UPSTREAM = process.env.TARKOV_UPSTREAM || '';   // test hook only
 const TRIES = 8, WAIT_MS = 90_000;
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
@@ -13,9 +14,25 @@ const browser = await chromium.launch();
 let tasks = null, lastErr = '';
 for (let i = 1; i <= TRIES && !tasks; i++) {
   const page = await browser.newPage();
+  /* The page runs from a local file, so the browser would block its calls to api.tarkov.dev (CORS).
+     Make those calls from here instead and hand the answer back with a permissive CORS header. */
+  await page.route(/^https:\/\/api\.tarkov\.dev\//, async route => {
+    try {
+      const url = UPSTREAM ? route.request().url().replace('https://api.tarkov.dev', UPSTREAM) : route.request().url();
+      const res = await route.fetch({ url, timeout: 60_000 });
+      if (!res.ok()) console.log(`  api.tarkov.dev answered HTTP ${res.status()}: ${(await res.text()).slice(0, 200)}`);
+      await route.fulfill({ response: res, headers: { ...res.headers(), 'access-control-allow-origin': '*' } });
+    } catch (e) {
+      console.log('  could not reach api.tarkov.dev: ' + String(e.message || e).split('\n')[0]);
+      await route.abort();
+    }
+  });
+  /* keep the page's own start-up check from running its API calls at the same time as ours */
+  await page.addInitScript(() => { try { localStorage.setItem('rr_live_meta_v1', JSON.stringify({ t: Date.now(), tryT: Date.now(), n: 0 })); } catch {} });
   try {
     await page.goto(pathToFileURL(resolve('index.html')).href, { waitUntil: 'load' });
     await page.waitForFunction(() => window.RR_LIVE && typeof RR_LIVE.pull === 'function', null, { timeout: 60_000 });
+    await page.waitForFunction(() => typeof S !== 'undefined' && S.tasks && S.tasks.length > 0, null, { timeout: 60_000 });
     tasks = await page.evaluate(() => RR_LIVE.pull());
   } catch (e) {
     lastErr = String(e.message || e).split('\n')[0];
