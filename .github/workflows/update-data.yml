@@ -1,0 +1,41 @@
+name: Update quest data
+
+on:
+  schedule:
+    - cron: '17 */6 * * *'     # every 6 hours
+  workflow_dispatch: {}         # and a "Run workflow" button on the Actions tab
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-data
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install Playwright
+        run: |
+          npm init -y >/dev/null
+          npm install playwright@1.48.2
+          npx playwright install --with-deps chromium
+      - name: Fetch quest data
+        run: node scripts/update-data.mjs
+      - name: Commit if changed
+        run: |
+          if [ -n "$(git status --porcelain data/quests.json)" ]; then
+            git config user.name  "quest-data-bot"
+            git config user.email "quest-data-bot@users.noreply.github.com"
+            git add data/quests.json
+            git commit -m "Update quest data"
+            git push
+          else
+            echo "Nothing to commit."
+          fi
