@@ -64,18 +64,46 @@ for (const cat of ['Category:Quests', 'Category:Tasks', 'Category:Quest']) {
 if (!titles.length) { console.error('Could not read a quest list from the wiki.'); process.exit(1); }
 console.log(`Using ${used}: ${titles.length} wiki pages.\n`);
 
-const siteSet = new Set(site.map(norm)), wikiSet = new Set(titles.map(norm));
-const missing = titles.filter(t => !siteSet.has(norm(t))).sort();
-const extra = site.filter(n => !wikiSet.has(norm(n))).sort();
-console.log(`=== On the wiki but NOT on your site (${missing.length}) ===`);
-missing.forEach(t => console.log('  ' + t));
+/* names: ignore the site's [PVP ZONE] tag and the wiki's "(quest)" page disambiguation */
+const clean = n => norm(String(n).replace(/\s*\[PVP ZONE\]/i, '').replace(/\s*\((quest|prestige \d+)\)\s*$/i, ''));
+const siteSet = new Set(site.map(clean)), wikiSet = new Set(titles.map(clean));
+const missing = titles.filter(t => !siteSet.has(clean(t)) && t !== 'Quests').sort();
+const extra = site.filter(n => !wikiSet.has(clean(n))).sort();
+
+/* ---- read each missing page's source, in batches ---- */
+async function sources(list) {
+  const out = new Map();
+  for (let i = 0; i < list.length; i += 40) {
+    const batch = list.slice(i, i + 40);
+    try {
+      const j = await api({ action: 'query', prop: 'revisions', rvprop: 'content', rvslots: 'main', formatversion: '2', titles: batch.join('|') });
+      (j.query?.pages || []).forEach(p => out.set(p.title, p.revisions?.[0]?.slots?.main?.content || ''));
+    } catch (e) { console.log(`batch ${i} failed: ${e.message}`); }
+  }
+  return out;
+}
+const field = (wt, name) => {
+  const m = new RegExp('\\|\\s*' + name + '\\s*=([^\\n]*)', 'i').exec(wt);
+  return m ? m[1].replace(/\[\[([^\]|]*\|)?([^\]]*)\]\]/g, '$2').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim() : '';
+};
+const reqOf = wt => { const m = /==\s*Requirements\s*==([\s\S]*?)(?:\n==[^=]|$)/i.exec(wt); return m ? m[1].replace(/\[\[([^\]|]*\|)?([^\]]*)\]\]/g, '$2').replace(/\s+/g, ' ').trim() : ''; };
+const kindOf = (wt, req) => /season/i.test(req) ? 'Seasonal' : /arena|gladiator/i.test(req + field(wt, 'given by')) ? 'Arena' : /\bPvE\b/.test(req) ? 'PvE' : /^#redirect/i.test(wt.trim()) ? 'Redirect' : 'Regular?';
+
+const src = await sources(missing);
+const groups = {};
+missing.forEach(t => {
+  const wt = src.get(t) || '', req = reqOf(wt), k = kindOf(wt, req);
+  (groups[k] ||= []).push({ t, wt, giver: field(wt, 'given by'), loc: field(wt, 'location'), req: req.slice(0, 110) });
+});
+console.log(`=== On the wiki but NOT on your site: ${missing.length}, sorted by what the wiki says about them ===`);
+Object.entries(groups).forEach(([k, v]) => console.log(`  ${k}: ${v.length}`));
+for (const k of ['Regular?', 'PvE', 'Arena', 'Seasonal', 'Redirect']) {
+  if (!groups[k]) continue;
+  console.log(`\n--- ${k} (${groups[k].length}) : title | given by | location | requirements ---`);
+  groups[k].forEach(g => console.log(`${g.t} | ${g.giver} | ${g.loc} | ${g.req}`));
+}
 console.log(`\n=== On your site but not found on the wiki by name (${extra.length}) ===`);
 extra.forEach(t => console.log('  ' + t));
 
-/* ---- show how one quest page is written, so quest details can be read from it ---- */
-const sample = missing[0] || 'Hidden Route';
-try {
-  const j = await api({ action: 'parse', page: sample, prop: 'wikitext' });
-  console.log(`\n=== Sample wiki page source: ${sample} (first 1800 characters) ===`);
-  console.log(String(j.parse?.wikitext?.['*'] || '').slice(0, 1800));
-} catch (e) { console.log('\nSample page failed: ' + e.message); }
+const sample = groups['Regular?']?.[0];
+if (sample) { console.log(`\n=== Sample page source: ${sample.t} (first 3500 characters) ===`); console.log(sample.wt.slice(0, 3500)); }
