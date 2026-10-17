@@ -87,23 +87,41 @@ const field = (wt, name) => {
   return m ? m[1].replace(/\[\[([^\]|]*\|)?([^\]]*)\]\]/g, '$2').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim() : '';
 };
 const reqOf = wt => { const m = /==\s*Requirements\s*==([\s\S]*?)(?:\n==[^=]|$)/i.exec(wt); return m ? m[1].replace(/\[\[([^\]|]*\|)?([^\]]*)\]\]/g, '$2').replace(/\s+/g, ' ').trim() : ''; };
-const kindOf = (wt, req) => /season/i.test(req) ? 'Seasonal' : /arena|gladiator/i.test(req + field(wt, 'given by')) ? 'Arena' : /\bPvE\b/.test(req) ? 'PvE' : /^#redirect/i.test(wt.trim()) ? 'Redirect' : 'Regular?';
+/* everything the wiki uses to label a quest: templates above the infobox ({{Event content}}...) and [[Category:...]] tags */
+const tagsOf = wt => {
+  const tags = new Set();
+  const head = wt.split(/\{\{\s*Infobox quest/i)[0];
+  for (const m of head.matchAll(/\{\{\s*([^|}\n]+?)\s*(?:\|[^}]*)?\}\}/g)) tags.add('T:' + m[1].trim());
+  for (const m of wt.matchAll(/\[\[\s*Category\s*:\s*([^\]|]+)/gi)) if (m[1].trim().toLowerCase() !== 'quests') tags.add('C:' + m[1].trim());
+  return [...tags];
+};
+const kindOf = (wt, req, tags, loc) => {
+  const all = tags.join(' ') + ' ' + req;
+  if (/^#redirect/i.test(wt.trim())) return 'Redirect';
+  if (/arena/i.test(all) || /^arena$/i.test(loc)) return 'Arena';
+  if (/season/i.test(all)) return 'Seasonal';
+  if (/event/i.test(all)) return 'Event';
+  if (/remov|unobtain|legacy|cut |obsolete|retire|former/i.test(all)) return 'Removed';
+  if (/\bpve\b/i.test(all)) return 'PvE';
+  return 'Regular?';
+};
 
 const src = await sources(missing);
-const groups = {};
+const groups = {}, tagCount = {};
 missing.forEach(t => {
-  const wt = src.get(t) || '', req = reqOf(wt), k = kindOf(wt, req);
-  (groups[k] ||= []).push({ t, wt, giver: field(wt, 'given by'), loc: field(wt, 'location'), req: req.slice(0, 110) });
+  const wt = src.get(t) || '', req = reqOf(wt), tags = tagsOf(wt), loc = field(wt, 'location'), k = kindOf(wt, req, tags, loc);
+  tags.forEach(x => tagCount[x] = (tagCount[x] || 0) + 1);
+  (groups[k] ||= []).push({ t, wt, tags, giver: field(wt, 'given by'), loc, req: req.slice(0, 90) });
 });
-console.log(`=== On the wiki but NOT on your site: ${missing.length}, sorted by what the wiki says about them ===`);
+console.log(`=== On the wiki but NOT on your site: ${missing.length} ===`);
 Object.entries(groups).forEach(([k, v]) => console.log(`  ${k}: ${v.length}`));
-for (const k of ['Regular?', 'PvE', 'Arena', 'Seasonal', 'Redirect']) {
+console.log('\n=== Wiki labels found on those pages (label: how many) ===');
+Object.entries(tagCount).sort((a, b) => b[1] - a[1]).forEach(([k, n]) => console.log(`  ${k}: ${n}`));
+for (const k of ['Regular?', 'PvE', 'Removed', 'Event', 'Seasonal', 'Redirect']) {
   if (!groups[k]) continue;
-  console.log(`\n--- ${k} (${groups[k].length}) : title | given by | location | requirements ---`);
-  groups[k].forEach(g => console.log(`${g.t} | ${g.giver} | ${g.loc} | ${g.req}`));
+  console.log(`\n--- ${k} (${groups[k].length}) : title | given by | location | labels | requirements ---`);
+  groups[k].forEach(g => console.log(`${g.t} | ${g.giver} | ${g.loc} | ${g.tags.join(', ')} | ${g.req}`));
 }
+console.log(`\n(Arena quests: ${(groups.Arena || []).length}, not listed.)`);
 console.log(`\n=== On your site but not found on the wiki by name (${extra.length}) ===`);
 extra.forEach(t => console.log('  ' + t));
-
-const sample = groups['Regular?']?.[0];
-if (sample) { console.log(`\n=== Sample page source: ${sample.t} (first 3500 characters) ===`); console.log(sample.wt.slice(0, 3500)); }
