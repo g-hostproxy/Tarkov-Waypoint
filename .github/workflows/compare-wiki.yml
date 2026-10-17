@@ -1,0 +1,16 @@
+name: Compare quests with wiki
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Compare
+        run: node scripts/compare-wiki.mjs
