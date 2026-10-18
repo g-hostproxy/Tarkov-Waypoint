@@ -2,15 +2,15 @@
    Lives at  functions/tracker.js  in the repo root and answers  https://<your-site>.pages.dev/tracker
    The player's token is forwarded once and is never stored or logged here. Read-only: GET only. */
 
-const HOSTS = ['https://tarkovtracker.io', 'https://tarkovtracker.org'];
+const URLS = ['https://api.tarkovtracker.org/progress', 'https://api.tarkovtracker.org/api/v2/progress'];
 
 export async function onRequest({ request }) {
   if (request.method !== 'GET') return new Response('Method not allowed', { status: 405, headers: { allow: 'GET' } });
   const auth = request.headers.get('authorization') || '';
   if (!/^Bearer [\w.~+\/=-]{8,200}$/.test(auth)) return new Response(JSON.stringify({ error: 'Missing token' }), { status: 401, headers: { 'content-type': 'application/json' } });
-  for (const base of HOSTS) {
+  for (const url of URLS) {
     let r;
-    try { r = await fetch(base + '/api/v2/progress', { headers: { authorization: auth, accept: 'application/json', 'user-agent': 'RaidRoute/1.0 (progress sync)' } }); }
+    try { r = await fetch(url, { headers: { authorization: auth, accept: 'application/json', 'user-agent': 'RaidRoute/1.0 (progress sync)' } }); }
     catch (e) { continue; }
     if (r.status === 401 || r.status === 403 || r.ok) {
       return new Response(r.body, { status: r.status, headers: { 'content-type': r.headers.get('content-type') || 'application/json', 'cache-control': 'no-store' } });
