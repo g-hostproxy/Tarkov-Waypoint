@@ -38,6 +38,10 @@ jobs:
       - name: Build extract photos
         continue-on-error: true
         run: node scripts/build-extract-photos.mjs
+      # The wiki's gallery photos for each map (landmarks), for the "Find my spawn" picker. Refreshes weekly.
+      - name: Build landmark photos
+        continue-on-error: true
+        run: node scripts/build-landmark-photos.mjs
       - name: Commit if changed
         run: |
           if [ -n "$(git status --porcelain data)" ]; then
