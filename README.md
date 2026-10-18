@@ -2,7 +2,7 @@
 
 An interactive map and routing utility designed for *Escape from Tarkov*. Built to take the guesswork out of raid preparation by seamlessly linking active quests, required keys, and custom paths into a single routing system.
 
-🔗 [Access the Live App Here!](https://g-hostproxy.github.io/Tarkov-Waypoint/)
+🔗 [Access the Live App Here!](https://tarkov-waypoint.pages.dev/)
 
 ![Tarkov-Waypoint App View](Images/AppView.png)
 
