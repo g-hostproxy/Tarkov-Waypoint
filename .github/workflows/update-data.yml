@@ -2,7 +2,7 @@ name: Update quest data
 
 on:
   schedule:
-    - cron: '17 */6 * * *'     # every 6 hours
+    - cron: '17 * * * *'        # every hour
   workflow_dispatch: {}         # and a "Run workflow" button on the Actions tab
 
 permissions:
@@ -26,7 +26,7 @@ jobs:
           npm init -y >/dev/null
           npm install playwright@1.48.2
           npx playwright install --with-deps chromium
-      # Game data from api.tarkov.dev. It is allowed to fail (the API is often down); the wiki step below still runs.
+      # Quest data from tarkov.dev's data files (json.tarkov.dev), falling back to api.tarkov.dev. Allowed to fail; the wiki step below still runs.
       - name: Fetch quest data (tarkov.dev)
         continue-on-error: true
         run: node scripts/update-data.mjs
