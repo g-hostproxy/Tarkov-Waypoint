@@ -1,0 +1,1529 @@
+{
+ "v": 1,
+ "updated": "2026-10-18T21:51:03.352Z",
+ "source": "https://escapefromtarkov.fandom.com/wiki/",
+ "pages": {
+  "customs": "Customs",
+  "woods": "Woods",
+  "shoreline": "Shoreline",
+  "interchange": "Interchange",
+  "reserve": "Reserve",
+  "lighthouse": "Lighthouse",
+  "streets-of-tarkov": "Streets_of_Tarkov",
+  "factory": "Factory",
+  "the-lab": "The_Lab",
+  "ground-zero": "Ground_Zero"
+ },
+ "maps": {
+  "customs": {
+   "photos": [
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/67/Customs_Showcase_1.png/revision/latest/scale-to-width-down/120?cb=20250316152159"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/ba/Customs_Showcase_2.png/revision/latest/scale-to-width-down/120?cb=20250316152404"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/fa/Customs_Showcase_3.png/revision/latest/scale-to-width-down/120?cb=20250316152507"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/01/Customs_Showcase_4.png/revision/latest/scale-to-width-down/120?cb=20250316152620"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/42/Customs_Showcase_5.png/revision/latest/scale-to-width-down/120?cb=20250316152658"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/af/Customs_Showcase_6.png/revision/latest/scale-to-width-down/120?cb=20250316152811"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/57/Customs_Showcase_7.png/revision/latest/scale-to-width-down/120?cb=20250316152922"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/72/Customs_Showcase_8.png/revision/latest/scale-to-width-down/120?cb=20250316153019"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/d7/Customs_Showcase_9.png/revision/latest/scale-to-width-down/120?cb=20250316153103"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/cf/Customs_Showcase_10.png/revision/latest/scale-to-width-down/120?cb=20250316153154"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/15/Customs_Showcase_11.png/revision/latest/scale-to-width-down/120?cb=20250316153340"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/e7/Customs_Showcase_12.png/revision/latest/scale-to-width-down/120?cb=20250316153431"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/cb/Customs_Showcase_13.png/revision/latest/scale-to-width-down/120?cb=20250316153530"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/4a/Customs_Showcase_14.png/revision/latest/scale-to-width-down/120?cb=20250316153606"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/70/Customs_Showcase_15.png/revision/latest/scale-to-width-down/120?cb=20250316153644"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/84/Customs_Showcase_16.png/revision/latest/scale-to-width-down/120?cb=20250316153726"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/35/Customs_Showcase_17.png/revision/latest/scale-to-width-down/120?cb=20250316153847"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/89/Customs_Showcase_18.png/revision/latest/scale-to-width-down/120?cb=20250316153933"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/f4/Customs_Showcase_19.png/revision/latest/scale-to-width-down/120?cb=20250316154035"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/b1/Customs_Showcase_20.png/revision/latest/scale-to-width-down/120?cb=20250316154128"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/a8/Customs_Showcase_21.png/revision/latest/scale-to-width-down/120?cb=20250316154244"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/a1/Customs_Showcase_22.png/revision/latest/scale-to-width-down/120?cb=20250316154327"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/06/Customs_Showcase_23.png/revision/latest/scale-to-width-down/120?cb=20250316154421"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/71/Customs_Showcase_24.png/revision/latest/scale-to-width-down/120?cb=20250316154530"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/18/Customs_Showcase_25.png/revision/latest/scale-to-width-down/120?cb=20250316154610"
+    }
+   ],
+   "sections": [
+    "Contents",
+    "Description [ ]",
+    "Notes [ ]",
+    "Features [ ]",
+    "Usable Keys [ ]",
+    "Bosses [ ]",
+    "Extractions [ ]",
+    "Transits [ ]",
+    "Maps [ ]",
+    "Interactive Map [ ]",
+    "3D Map [ ]",
+    "Isometric Map Dorms [ ]",
+    "Ingame Map - North bottom [ ]",
+    "Gallery [ ]",
+    "Trivia [ ]"
+   ]
+  },
+  "woods": {
+   "photos": [
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/46/Woods_Showcase_1.png/revision/latest/scale-to-width-down/120?cb=20230730012947"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/00/Woods_Showcase_2.png/revision/latest/scale-to-width-down/120?cb=20230730012949"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/a9/Woods_Showcase_3.png/revision/latest/scale-to-width-down/120?cb=20230730012953"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/88/Woods_Showcase_4.png/revision/latest/scale-to-width-down/120?cb=20250406095917"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/2c/Woods_Showcase_5.png/revision/latest/scale-to-width-down/120?cb=20230730013000"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/35/Woods_Showcase_6.png/revision/latest/scale-to-width-down/120?cb=20230730013003"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/21/Woods_Showcase_7.png/revision/latest/scale-to-width-down/120?cb=20230730013005"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/35/Woods_Showcase_8.png/revision/latest/scale-to-width-down/120?cb=20230730013007"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/b3/Woods_Showcase_9.png/revision/latest/scale-to-width-down/120?cb=20230730013011"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/37/Woods_Showcase_10.png/revision/latest/scale-to-width-down/120?cb=20230730013019"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/a4/Woods_Showcase_11.png/revision/latest/scale-to-width-down/120?cb=20250406095728"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/25/Woods_Showcase_12.png/revision/latest/scale-to-width-down/120?cb=20261011195139"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/a2/Woods_Showcase_13.png/revision/latest/scale-to-width-down/120?cb=20230730013027"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/f3/Woods_Showcase_14.png/revision/latest/scale-to-width-down/120?cb=20230730013029"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/c7/Woods_Showcase_15.png/revision/latest/scale-to-width-down/120?cb=20230730013031"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/00/Woods_Showcase_16.png/revision/latest/scale-to-width-down/120?cb=20230730013033"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/a6/Woods_Showcase_17.png/revision/latest/scale-to-width-down/120?cb=20230730013035"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/ed/Woods_Showcase_18.png/revision/latest/scale-to-width-down/120?cb=20230730013037"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/59/Woods_Showcase_19.png/revision/latest/scale-to-width-down/120?cb=20230730013039"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/28/Woods_Showcase_20.png/revision/latest/scale-to-width-down/120?cb=20230730013041"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/8a/Woods_Showcase_21.png/revision/latest/scale-to-width-down/120?cb=20230730013043"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/c0/Woods_Showcase_22.png/revision/latest/scale-to-width-down/120?cb=20230730013045"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/cc/Woods_Showcase_23.png/revision/latest/scale-to-width-down/120?cb=20230730013048"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/61/Woods_Showcase_24.png/revision/latest/scale-to-width-down/120?cb=20250406100045"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/f2/Woods_Showcase_25.png/revision/latest/scale-to-width-down/120?cb=20230730013052"
+    }
+   ],
+   "sections": [
+    "Contents",
+    "Description [ ]",
+    "Notes [ ]",
+    "Features [ ]",
+    "Usable Keys [ ]",
+    "Bosses [ ]",
+    "Extractions [ ]",
+    "Transits [ ]",
+    "Maps [ ]",
+    "Interactive Map [ ]",
+    "3D Map [ ]",
+    "2D Map [ ]",
+    "Ingame Map [ ]",
+    "Gallery [ ]",
+    "Trivia [ ]"
+   ]
+  },
+  "shoreline": {
+   "photos": [
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/dc/Shoreline_Showcase_1.png/revision/latest/scale-to-width-down/120?cb=20230730014748"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/dd/Shoreline_Showcase_2.png/revision/latest/scale-to-width-down/120?cb=20230730014750"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/6c/Shoreline_Showcase_3.png/revision/latest/scale-to-width-down/120?cb=20230730014752"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/d0/Shoreline_Showcase_4.png/revision/latest/scale-to-width-down/120?cb=20230730014754"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/7c/Shoreline_Showcase_5.png/revision/latest/scale-to-width-down/120?cb=20230730014756"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/bc/Shoreline_Showcase_6.png/revision/latest/scale-to-width-down/120?cb=20230730014758"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/73/Shoreline_Showcase_7.png/revision/latest/scale-to-width-down/120?cb=20230730014800"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/5e/Shoreline_Showcase_8.png/revision/latest/scale-to-width-down/120?cb=20230730014802"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/df/Shoreline_Showcase_9.png/revision/latest/scale-to-width-down/120?cb=20230730014804"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/14/Shoreline_Showcase_10.png/revision/latest/scale-to-width-down/120?cb=20230730014806"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/db/Shoreline_Showcase_11.png/revision/latest/scale-to-width-down/120?cb=20230730014808"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/dd/Shoreline_Showcase_12.png/revision/latest/scale-to-width-down/120?cb=20230730014810"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/45/Shoreline_Showcase_13.png/revision/latest/scale-to-width-down/120?cb=20230730014812"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/a1/Shoreline_Showcase_14.png/revision/latest/scale-to-width-down/120?cb=20230730014814"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/4a/Shoreline_Showcase_15.png/revision/latest/scale-to-width-down/120?cb=20230730014816"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/6c/Shoreline_Showcase_16.png/revision/latest/scale-to-width-down/120?cb=20250316132504"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/94/Shoreline_Showcase_17.png/revision/latest/scale-to-width-down/120?cb=20230730014819"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/6a/Shoreline_Showcase_18.png/revision/latest/scale-to-width-down/120?cb=20230730014821"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/44/Shoreline_Showcase_19.png/revision/latest/scale-to-width-down/120?cb=20250316132205"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/0a/Shoreline_Showcase_20.png/revision/latest/scale-to-width-down/120?cb=20230730014825"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/21/Shoreline_Showcase_21.png/revision/latest/scale-to-width-down/120?cb=20230730014827"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/c1/Shoreline_Showcase_22.png/revision/latest/scale-to-width-down/120?cb=20230730014829"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/53/Shoreline_Showcase_23.png/revision/latest/scale-to-width-down/120?cb=20230730014831"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/44/Shoreline_Showcase_24.png/revision/latest/scale-to-width-down/120?cb=20230730014833"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/18/Shoreline_Showcase_25.png/revision/latest/scale-to-width-down/120?cb=20250316131902"
+    },
+    {
+     "caption": "Strelna sanatorium",
+     "section": "Trivia [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/bf/Sanatorium_Strelna_11512904.jpg/revision/latest?cb=20190209074928"
+    }
+   ],
+   "sections": [
+    "Contents",
+    "Description [ ]",
+    "Notes [ ]",
+    "Features [ ]",
+    "Port Terminal [ ]",
+    "Usable Keys [ ]",
+    "Bosses [ ]",
+    "Extractions [ ]",
+    "Transits [ ]",
+    "Maps [ ]",
+    "Interactive Map [ ]",
+    "3D Map [ ]",
+    "2D Map [ ]",
+    "2D Map Health Resort [ ]",
+    "Ingame Map - North bottom [ ]",
+    "Ingame Map Health Resort - North bottom [ ]",
+    "Gallery [ ]",
+    "Trivia [ ]"
+   ]
+  },
+  "interchange": {
+   "photos": [
+    {
+     "caption": "Power station marked on map",
+     "section": "Features [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/8f/PowerStationMap.png/revision/latest/scale-to-width-down/265?cb=20220409231159"
+    },
+    {
+     "caption": "The power station",
+     "section": "Features [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/d9/InterchangePowerStation.png/revision/latest/scale-to-width-down/450?cb=20240606034854"
+    },
+    {
+     "caption": "The power switch inside the station",
+     "section": "Features [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/c5/Power_switch.png/revision/latest/scale-to-width-down/450?cb=20240606035451"
+    },
+    {
+     "caption": "A green light shows when the switch is turned on",
+     "section": "Features [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/58/PowerStationSwitchOn.png/revision/latest/scale-to-width-down/450?cb=20240606035334"
+    },
+    {
+     "caption": "Alarm switches marked on map",
+     "section": "Features [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/ec/Interchange_alarm_map.png/revision/latest/scale-to-width-down/294?cb=20220612222400"
+    },
+    {
+     "caption": "Alarm switch in the security room on the first floor: Turns off all alarms in the mall",
+     "section": "Features [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/aa/Inter_alarm_terminal_2.png/revision/latest/scale-to-width-down/450?cb=20220410003120"
+    },
+    {
+     "caption": "Alarm switch at the information desk on the second floor: Turns off all alarms in the mall except for the KIBA Arms store",
+     "section": "Features [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/83/Inter_alarm_terminal.png/revision/latest/scale-to-width-down/450?cb=20220410002628"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/7d/Interchange_Showcase_1.png/revision/latest/scale-to-width-down/120?cb=20230730021446"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/50/Interchange_Showcase_2.png/revision/latest/scale-to-width-down/120?cb=20230730021448"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/d5/Interchange_Showcase_3.png/revision/latest/scale-to-width-down/120?cb=20230730021450"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/5e/Interchange_Showcase_4.png/revision/latest/scale-to-width-down/120?cb=20230730021452"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/31/Interchange_Showcase_5.png/revision/latest/scale-to-width-down/120?cb=20230730021453"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/52/Interchange_Showcase_6.png/revision/latest/scale-to-width-down/120?cb=20230730021455"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/51/Interchange_Showcase_7.png/revision/latest/scale-to-width-down/120?cb=20230730021457"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/4d/Interchange_Showcase_8.png/revision/latest/scale-to-width-down/120?cb=20230730021459"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/6e/Interchange_Showcase_9.png/revision/latest/scale-to-width-down/120?cb=20230730021501"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/b7/Interchange_Showcase_10.png/revision/latest/scale-to-width-down/120?cb=20230730021503"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/a8/Interchange_Showcase_11.png/revision/latest/scale-to-width-down/120?cb=20230730021505"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/f2/Interchange_Showcase_12.png/revision/latest/scale-to-width-down/120?cb=20230730021507"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/84/Interchange_Showcase_13.png/revision/latest/scale-to-width-down/120?cb=20230730021509"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/87/Interchange_Showcase_14.png/revision/latest/scale-to-width-down/120?cb=20230730021510"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/cf/Interchange_Showcase_15.png/revision/latest/scale-to-width-down/120?cb=20230730021512"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/50/Interchange_Showcase_16.png/revision/latest/scale-to-width-down/120?cb=20230730021514"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/35/Interchange_Showcase_17.png/revision/latest/scale-to-width-down/120?cb=20230730021515"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/0e/Interchange_Showcase_18.png/revision/latest/scale-to-width-down/120?cb=20230730021517"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/08/Interchange_Showcase_19.png/revision/latest/scale-to-width-down/120?cb=20230730021519"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/df/Interchange_Showcase_20.png/revision/latest/scale-to-width-down/120?cb=20230730021521"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/76/Interchange_Showcase_21.png/revision/latest/scale-to-width-down/120?cb=20230730021523"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/68/Interchange_Showcase_22.png/revision/latest/scale-to-width-down/120?cb=20230730021525"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/a0/Interchange_Showcase_23.png/revision/latest/scale-to-width-down/120?cb=20230730021527"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/ef/Interchange_Showcase_24.png/revision/latest/scale-to-width-down/120?cb=20230730021530"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/61/Interchange_Showcase_25.png/revision/latest/scale-to-width-down/120?cb=20230730021532"
+    },
+    {
+     "caption": "MEGA Parnassus Mall",
+     "section": "Trivia [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/3d/Intechange_MEGA-Dybenko_Mall.jpeg/revision/latest/scale-to-width-down/450?cb=20221210131140"
+    }
+   ],
+   "sections": [
+    "Contents",
+    "Description [ ]",
+    "Features [ ]",
+    "Usable Keys [ ]",
+    "Boss [ ]",
+    "Extractions [ ]",
+    "Transits [ ]",
+    "Maps [ ]",
+    "Interactive Map [ ]",
+    "2D/3D Map [ ]",
+    "Ingame Map - North bottom [ ]",
+    "Gallery [ ]",
+    "Trivia [ ]"
+   ]
+  },
+  "reserve": {
+   "photos": [
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/02/Reserve_Showcase_1.png/revision/latest/scale-to-width-down/120?cb=20230730025742"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/ec/Reserve_Showcase_2.png/revision/latest/scale-to-width-down/120?cb=20230730044703"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/dd/Reserve_Showcase_3.png/revision/latest/scale-to-width-down/120?cb=20230730025746"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/1a/Reserve_Showcase_4.png/revision/latest/scale-to-width-down/120?cb=20230730025748"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/aa/Reserve_Showcase_5.png/revision/latest/scale-to-width-down/120?cb=20230730025751"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/d2/Reserve_Showcase_6.png/revision/latest/scale-to-width-down/120?cb=20230730025753"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/a9/Reserve_Showcase_7.png/revision/latest/scale-to-width-down/120?cb=20230730025754"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/09/Reserve_Showcase_8.png/revision/latest/scale-to-width-down/120?cb=20230730025756"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/f5/Reserve_Showcase_9.png/revision/latest/scale-to-width-down/120?cb=20230730025758"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/69/Reserve_Showcase_10.png/revision/latest/scale-to-width-down/120?cb=20230730025801"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/c2/Reserve_Showcase_11.png/revision/latest/scale-to-width-down/120?cb=20230730025803"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/66/Reserve_Showcase_12.png/revision/latest/scale-to-width-down/120?cb=20230730025805"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/9f/Reserve_Showcase_13.png/revision/latest/scale-to-width-down/120?cb=20230730025806"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/81/Reserve_Showcase_14.png/revision/latest/scale-to-width-down/120?cb=20230730025808"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/f1/Reserve_Showcase_15.png/revision/latest/scale-to-width-down/120?cb=20230730025810"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/16/Reserve_Showcase_16.png/revision/latest/scale-to-width-down/120?cb=20230730025812"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/be/Reserve_Showcase_17.png/revision/latest/scale-to-width-down/120?cb=20230730025814"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/72/Reserve_Showcase_18.png/revision/latest/scale-to-width-down/120?cb=20230730025815"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/74/Reserve_Showcase_19.png/revision/latest/scale-to-width-down/120?cb=20230730025817"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/0a/Reserve_Showcase_20.png/revision/latest/scale-to-width-down/120?cb=20230730025819"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/8b/Reserve_Showcase_21.png/revision/latest/scale-to-width-down/120?cb=20230730025821"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/5a/Reserve_Showcase_22.png/revision/latest/scale-to-width-down/120?cb=20230730025823"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/c1/Reserve_Showcase_23.png/revision/latest/scale-to-width-down/120?cb=20230730025825"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/86/Reserve_Showcase_24.png/revision/latest/scale-to-width-down/120?cb=20230730025827"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/5a/Reserve_Showcase_25.png/revision/latest/scale-to-width-down/120?cb=20230730025829"
+    }
+   ],
+   "sections": [
+    "Contents",
+    "Description [ ]",
+    "Notes [ ]",
+    "Features [ ]",
+    "Usable Keys [ ]",
+    "Boss [ ]",
+    "Extractions [ ]",
+    "Transits [ ]",
+    "Maps [ ]",
+    "Interactive Map [ ]",
+    "3D Map [ ]",
+    "2D Map [ ]",
+    "2D Map Underground [ ]",
+    "Ingame Map Translated - North bottom [ ]",
+    "Gallery [ ]",
+    "Trivia [ ]"
+   ]
+  },
+  "lighthouse": {
+   "photos": [
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/2e/Lighthouse_Showcase_1.png/revision/latest/scale-to-width-down/120?cb=20230730032105"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/7b/Lighthouse_Showcase_2.png/revision/latest/scale-to-width-down/120?cb=20230730032106"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/f4/Lighthouse_Showcase_3.png/revision/latest/scale-to-width-down/120?cb=20230730032108"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/b2/Lighthouse_Showcase_4.png/revision/latest/scale-to-width-down/120?cb=20230730032110"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/63/Lighthouse_Showcase_5.png/revision/latest/scale-to-width-down/120?cb=20230730032112"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/5c/Lighthouse_Showcase_6.png/revision/latest/scale-to-width-down/120?cb=20230730032114"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/eb/Lighthouse_Showcase_7.png/revision/latest/scale-to-width-down/120?cb=20230730032116"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/a7/Lighthouse_Showcase_8.png/revision/latest/scale-to-width-down/120?cb=20230730032118"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/03/Lighthouse_Showcase_9.png/revision/latest/scale-to-width-down/120?cb=20230730032120"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/0e/Lighthouse_Showcase_10.png/revision/latest/scale-to-width-down/120?cb=20230730032122"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/6d/Lighthouse_Showcase_11.png/revision/latest/scale-to-width-down/120?cb=20230730032124"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/98/Lighthouse_Showcase_12.png/revision/latest/scale-to-width-down/120?cb=20230730032125"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/ac/Lighthouse_Showcase_13.png/revision/latest/scale-to-width-down/120?cb=20230730032127"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/97/Lighthouse_Showcase_14.png/revision/latest/scale-to-width-down/120?cb=20230730032129"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/81/Lighthouse_Showcase_15.png/revision/latest/scale-to-width-down/120?cb=20230730032131"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/58/Lighthouse_Showcase_16.png/revision/latest/scale-to-width-down/120?cb=20230730032133"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/7d/Lighthouse_Showcase_17.png/revision/latest/scale-to-width-down/120?cb=20230730032135"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/52/Lighthouse_Showcase_18.png/revision/latest/scale-to-width-down/120?cb=20230730032137"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/1b/Lighthouse_Showcase_19.png/revision/latest/scale-to-width-down/120?cb=20230730032139"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/0d/Lighthouse_Showcase_20.png/revision/latest/scale-to-width-down/120?cb=20230730032141"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/0e/Lighthouse_Showcase_21.png/revision/latest/scale-to-width-down/120?cb=20230730032143"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/22/Lighthouse_Showcase_22.png/revision/latest/scale-to-width-down/120?cb=20230730032145"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/4e/Lighthouse_Showcase_23.png/revision/latest/scale-to-width-down/120?cb=20230730032146"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/e9/Lighthouse_Showcase_24.png/revision/latest/scale-to-width-down/120?cb=20230730032148"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/38/Lighthouse_Showcase_25.png/revision/latest/scale-to-width-down/120?cb=20230730032150"
+    },
+    {
+     "caption": "Aniva lighthouse",
+     "section": "Trivia [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/65/AnivaLighthouse.jpg/revision/latest/scale-to-width-down/487?cb=20221030173510"
+    }
+   ],
+   "sections": [
+    "Contents",
+    "Description [ ]",
+    "Notes [ ]",
+    "Features [ ]",
+    "Lighthouse [ ]",
+    "Usable Keys [ ]",
+    "Bosses [ ]",
+    "Extractions [ ]",
+    "Transits [ ]",
+    "Maps [ ]",
+    "Interactive Map [ ]",
+    "3D Map [ ]",
+    "2D Map [ ]",
+    "Gallery [ ]",
+    "Trivia [ ]"
+   ]
+  },
+  "streets-of-tarkov": {
+   "photos": [
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/c1/Streets_of_Tarkov_Showcase_1.png/revision/latest/scale-to-width-down/120?cb=20230903143522"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/c3/Streets_of_Tarkov_Showcase_2.png/revision/latest/scale-to-width-down/120?cb=20230730042239"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/13/Streets_of_Tarkov_Showcase_3.png/revision/latest/scale-to-width-down/120?cb=20230730042241"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/d8/Streets_of_Tarkov_Showcase_4.png/revision/latest/scale-to-width-down/120?cb=20230730042243"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/5d/Streets_of_Tarkov_Showcase_5.png/revision/latest/scale-to-width-down/120?cb=20230730042245"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/7e/Streets_of_Tarkov_Showcase_6.png/revision/latest/scale-to-width-down/120?cb=20230730042504"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/82/Streets_of_Tarkov_Showcase_7.png/revision/latest/scale-to-width-down/120?cb=20250810211147"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/da/Streets_of_Tarkov_Showcase_8.png/revision/latest/scale-to-width-down/120?cb=20230730042510"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/6a/Streets_of_Tarkov_Showcase_9.png/revision/latest/scale-to-width-down/120?cb=20230730042514"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/c4/Streets_of_Tarkov_Showcase_10.png/revision/latest/scale-to-width-down/120?cb=20230730042519"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/eb/Streets_of_Tarkov_Showcase_11.png/revision/latest/scale-to-width-down/120?cb=20230903143314"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/59/Streets_of_Tarkov_Showcase_12.png/revision/latest/scale-to-width-down/120?cb=20230903143431"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/7e/Streets_of_Tarkov_Showcase_13.png/revision/latest/scale-to-width-down/120?cb=20230730042528"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/07/Streets_of_Tarkov_Showcase_14.png/revision/latest/scale-to-width-down/120?cb=20230730042533"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/b1/Streets_of_Tarkov_Showcase_15.png/revision/latest/scale-to-width-down/120?cb=20230730042536"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/98/Streets_of_Tarkov_Showcase_16.png/revision/latest/scale-to-width-down/120?cb=20230730042542"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/a1/Streets_of_Tarkov_Showcase_17.png/revision/latest/scale-to-width-down/120?cb=20240121122828"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/b1/Streets_of_Tarkov_Showcase_18.png/revision/latest/scale-to-width-down/120?cb=20230730042547"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/ce/Streets_of_Tarkov_Showcase_19.png/revision/latest/scale-to-width-down/120?cb=20230730042550"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/9a/Streets_of_Tarkov_Showcase_20.png/revision/latest/scale-to-width-down/120?cb=20230730042554"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/ed/Streets_of_Tarkov_Showcase_21.png/revision/latest/scale-to-width-down/120?cb=20230730042556"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/42/Streets_of_Tarkov_Showcase_22.png/revision/latest/scale-to-width-down/120?cb=20230730042558"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/75/Streets_of_Tarkov_Showcase_23.png/revision/latest/scale-to-width-down/120?cb=20230730042601"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/63/Streets_of_Tarkov_Showcase_24.png/revision/latest/scale-to-width-down/120?cb=20230730042603"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/79/Streets_of_Tarkov_Showcase_25.png/revision/latest/scale-to-width-down/120?cb=20230730042605"
+    }
+   ],
+   "sections": [
+    "Contents",
+    "Description [ ]",
+    "Notes [ ]",
+    "Features [ ]",
+    "Usable Keys [ ]",
+    "Bosses [ ]",
+    "Extractions [ ]",
+    "Transits [ ]",
+    "Maps [ ]",
+    "Interactive Map [ ]",
+    "3D Map [ ]",
+    "2D Map [ ]",
+    "2D Map [ ]",
+    "Gallery [ ]"
+   ]
+  },
+  "factory": {
+   "photos": [
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/f1/Factory_Showcase_1.png/revision/latest/scale-to-width-down/120?cb=20240825122753"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/8b/Factory_Showcase_2.png/revision/latest/scale-to-width-down/120?cb=20240825122758"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/2d/Factory_Showcase_3.png/revision/latest/scale-to-width-down/120?cb=20240825122757"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/b9/Factory_Showcase_4.png/revision/latest/scale-to-width-down/120?cb=20240825122809"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/05/Factory_Showcase_5.png/revision/latest/scale-to-width-down/120?cb=20240825122809"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/73/Factory_Showcase_6.png/revision/latest/scale-to-width-down/120?cb=20240825122815"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/5b/Factory_Showcase_7.png/revision/latest/scale-to-width-down/120?cb=20240825122820"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/77/Factory_Showcase_8.png/revision/latest/scale-to-width-down/120?cb=20240825122826"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/6b/Factory_Showcase_9.png/revision/latest/scale-to-width-down/120?cb=20240825122831"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/31/Factory_Showcase_10.png/revision/latest/scale-to-width-down/120?cb=20240825122837"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/ec/Factory_Showcase_11.png/revision/latest/scale-to-width-down/120?cb=20240825122843"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/28/Factory_Showcase_12.png/revision/latest/scale-to-width-down/120?cb=20240825122847"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/d1/Factory_Showcase_13.png/revision/latest/scale-to-width-down/120?cb=20240825122852"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/ea/Factory_Showcase_14.png/revision/latest/scale-to-width-down/120?cb=20240825122859"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/17/Factory_Showcase_15.png/revision/latest/scale-to-width-down/120?cb=20240825122910"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/57/Factory_Showcase_16.png/revision/latest/scale-to-width-down/120?cb=20240825122909"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/66/Factory_Showcase_17.png/revision/latest/scale-to-width-down/120?cb=20240825122917"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/4b/Factory_Showcase_18.png/revision/latest/scale-to-width-down/120?cb=20240825122923"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/98/Factory_Showcase_19.png/revision/latest/scale-to-width-down/120?cb=20240825122928"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/a7/Factory_Showcase_20.png/revision/latest/scale-to-width-down/120?cb=20240825122933"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/8e/Factory_Showcase_21.png/revision/latest/scale-to-width-down/120?cb=20240825122939"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/14/Factory_Showcase_22.png/revision/latest/scale-to-width-down/120?cb=20240825122944"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/c5/Factory_Showcase_23.png/revision/latest/scale-to-width-down/120?cb=20240825122950"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/e3/Factory_Showcase_24.png/revision/latest/scale-to-width-down/120?cb=20240825122956"
+    }
+   ],
+   "sections": [
+    "Contents",
+    "Description [ ]",
+    "Notes [ ]",
+    "Usable Keys [ ]",
+    "Bosses [ ]",
+    "Extractions [ ]",
+    "Transits [ ]",
+    "Maps [ ]",
+    "Interactive Map [ ]",
+    "2D Map [ ]",
+    "Ingame Map [ ]",
+    "Gallery [ ]",
+    "Trivia [ ]"
+   ]
+  },
+  "the-lab": {
+   "photos": [
+    {
+     "caption": "Keyboard to deactivate the announcement",
+     "section": "Announcer [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/b2/Lab_Alarm_Keyboard.png/revision/latest/scale-to-width-down/450?cb=20221209231538"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/5e/The_Lab_Showcase_1.png/revision/latest/scale-to-width-down/120?cb=20230730023546"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/b9/The_Lab_Showcase_2.png/revision/latest/scale-to-width-down/120?cb=20230730023548"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/ee/The_Lab_Showcase_3.png/revision/latest/scale-to-width-down/120?cb=20230730023549"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/a8/The_Lab_Showcase_4.png/revision/latest/scale-to-width-down/120?cb=20230730023551"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/38/The_Lab_Showcase_5.png/revision/latest/scale-to-width-down/120?cb=20230730023553"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/64/The_Lab_Showcase_6.png/revision/latest/scale-to-width-down/120?cb=20230730023555"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/f2/The_Lab_Showcase_7.png/revision/latest/scale-to-width-down/120?cb=20230730023556"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/8b/The_Lab_Showcase_8.png/revision/latest/scale-to-width-down/120?cb=20230730023558"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/82/The_Lab_Showcase_9.png/revision/latest/scale-to-width-down/120?cb=20230730023559"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/8c/The_Lab_Showcase_10.png/revision/latest/scale-to-width-down/120?cb=20230730023601"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/d5/The_Lab_Showcase_11.png/revision/latest/scale-to-width-down/120?cb=20230730023603"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/7c/The_Lab_Showcase_12.png/revision/latest/scale-to-width-down/120?cb=20230730023604"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/2b/The_Lab_Showcase_13.png/revision/latest/scale-to-width-down/120?cb=20230730023606"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/0c/The_Lab_Showcase_14.png/revision/latest/scale-to-width-down/120?cb=20230730023608"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/d2/The_Lab_Showcase_15.png/revision/latest/scale-to-width-down/120?cb=20230730023609"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/18/The_Lab_Showcase_16.png/revision/latest/scale-to-width-down/120?cb=20230730023611"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/1f/The_Lab_Showcase_17.png/revision/latest/scale-to-width-down/120?cb=20230730023613"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/5e/The_Lab_Showcase_18.png/revision/latest/scale-to-width-down/120?cb=20230730023614"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/cc/The_Lab_Showcase_19.png/revision/latest/scale-to-width-down/120?cb=20230730023616"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/c8/The_Lab_Showcase_20.png/revision/latest/scale-to-width-down/120?cb=20230730023618"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/fe/The_Lab_Showcase_21.png/revision/latest/scale-to-width-down/120?cb=20230730023620"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/8d/The_Lab_Showcase_22.png/revision/latest/scale-to-width-down/120?cb=20230730023622"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/26/The_Lab_Showcase_23.png/revision/latest/scale-to-width-down/120?cb=20230730023623"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/44/The_Lab_Showcase_24.png/revision/latest/scale-to-width-down/120?cb=20230730023625"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/48/The_Lab_Showcase_25.png/revision/latest/scale-to-width-down/120?cb=20250404205848"
+    }
+   ],
+   "sections": [
+    "Contents",
+    "Description [ ]",
+    "Notes [ ]",
+    "Features [ ]",
+    "Insurance [ ]",
+    "Illumination [ ]",
+    "Announcer [ ]",
+    "Usable Keys [ ]",
+    "Bosses [ ]",
+    "Extractions [ ]",
+    "Transits [ ]",
+    "Maps [ ]",
+    "Interactive Map [ ]",
+    "Ingame Map [ ]",
+    "Gallery [ ]"
+   ]
+  },
+  "ground-zero": {
+   "photos": [
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/bc/Ground_Zero_Showcase_1.png/revision/latest/scale-to-width-down/120?cb=20240121131611"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/e5/Ground_Zero_Showcase_2.png/revision/latest/scale-to-width-down/120?cb=20240121131613"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/5f/Ground_Zero_Showcase_3.png/revision/latest/scale-to-width-down/120?cb=20240121131614"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/b5/Ground_Zero_Showcase_4.png/revision/latest/scale-to-width-down/120?cb=20240121131615"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/e7/Ground_Zero_Showcase_5.png/revision/latest/scale-to-width-down/120?cb=20240121131617"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/10/Ground_Zero_Showcase_6.png/revision/latest/scale-to-width-down/120?cb=20240121131619"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/d5/Ground_Zero_Showcase_7.png/revision/latest/scale-to-width-down/120?cb=20240121131621"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/cd/Ground_Zero_Showcase_8.png/revision/latest/scale-to-width-down/120?cb=20240121131623"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/7e/Ground_Zero_Showcase_9.png/revision/latest/scale-to-width-down/120?cb=20240121131625"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/ba/Ground_Zero_Showcase_10.png/revision/latest/scale-to-width-down/120?cb=20240121131627"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/4e/Ground_Zero_Showcase_11.png/revision/latest/scale-to-width-down/120?cb=20240121131628"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/89/Ground_Zero_Showcase_12.png/revision/latest/scale-to-width-down/120?cb=20240121131630"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/9f/Ground_Zero_Showcase_13.png/revision/latest/scale-to-width-down/120?cb=20240121131632"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/55/Ground_Zero_Showcase_14.png/revision/latest/scale-to-width-down/120?cb=20240121131634"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/44/Ground_Zero_Showcase_15.png/revision/latest/scale-to-width-down/120?cb=20240121131636"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/0b/Ground_Zero_Showcase_16.png/revision/latest/scale-to-width-down/120?cb=20240121131639"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/b2/Ground_Zero_Showcase_17.png/revision/latest/scale-to-width-down/120?cb=20240121131642"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/02/Ground_Zero_Showcase_18.png/revision/latest/scale-to-width-down/120?cb=20240121131645"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/70/Ground_Zero_Showcase_19.png/revision/latest/scale-to-width-down/120?cb=20240121131648"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/df/Ground_Zero_Showcase_20.png/revision/latest/scale-to-width-down/120?cb=20240121131651"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/c6/Ground_Zero_Showcase_21.png/revision/latest/scale-to-width-down/120?cb=20240121131654"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/ec/Ground_Zero_Showcase_22.png/revision/latest/scale-to-width-down/120?cb=20240121131657"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/03/Ground_Zero_Showcase_23.png/revision/latest/scale-to-width-down/120?cb=20240121131700"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/9d/Ground_Zero_Showcase_24.png/revision/latest/scale-to-width-down/120?cb=20240121131702"
+    },
+    {
+     "caption": "",
+     "section": "Gallery [ ]",
+     "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/e5/Ground_Zero_Showcase_25.png/revision/latest/scale-to-width-down/120?cb=20240121131704"
+    }
+   ],
+   "sections": [
+    "Contents",
+    "Description [ ]",
+    "Notes [ ]",
+    "Features [ ]",
+    "Usable Keys [ ]",
+    "Bosses [ ]",
+    "Extractions [ ]",
+    "Transits [ ]",
+    "Maps [ ]",
+    "Interactive Map [ ]",
+    "3D Map [ ]",
+    "2D Map [ ]",
+    "Ingame Map [ ]",
+    "Ingame Underground Map - North left [ ]",
+    "Gallery [ ]",
+    "Trivia [ ]"
+   ]
+  }
+ }
+}
