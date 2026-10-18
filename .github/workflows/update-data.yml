@@ -34,6 +34,10 @@ jobs:
       - name: Build wiki quests
         continue-on-error: true
         run: node scripts/build-wiki-quests.mjs
+      # The wiki's photo of each extraction, shown when you click an extract pin. Refreshes weekly.
+      - name: Build extract photos
+        continue-on-error: true
+        run: node scripts/build-extract-photos.mjs
       - name: Commit if changed
         run: |
           if [ -n "$(git status --porcelain data)" ]; then
