@@ -1,0 +1,1470 @@
+{
+ "updated": "2026-10-18T20:18:01.889Z",
+ "source": "https://escapefromtarkov.fandom.com/wiki/",
+ "pages": {
+  "customs": "Customs",
+  "woods": "Woods",
+  "shoreline": "Shoreline",
+  "interchange": "Interchange",
+  "reserve": "Reserve",
+  "lighthouse": "Lighthouse",
+  "streets-of-tarkov": "Streets_of_Tarkov",
+  "factory": "Factory",
+  "the-lab": "The_Lab",
+  "ground-zero": "Ground_Zero"
+ },
+ "maps": {
+  "customs": {
+   "companydirectorsroomkey": {
+    "name": "Company director's room key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/3c/Company_director%27s_room_key_icon.png/revision/latest?cb=20241229192824"
+   },
+   "dormguarddeskkey": {
+    "name": "Dorm guard desk key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/e4/GDesk-Key-Icon.png/revision/latest?cb=20220707184928"
+   },
+   "dormoverseerkey": {
+    "name": "Dorm overseer key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/e6/Dorm_overseer_key_icon.png/revision/latest?cb=20251224164252"
+   },
+   "dormroom103key": {
+    "name": "Dorm room 103 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/7e/Dorm_103_icon.png/revision/latest?cb=20220707191143"
+   },
+   "dormroom104key": {
+    "name": "Dorm room 104 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/8c/Key-104-Icon.png/revision/latest?cb=20220707185031"
+   },
+   "dormroom105key": {
+    "name": "Dorm room 105 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/56/Key-105-Icon.png/revision/latest?cb=20220707185153"
+   },
+   "dormroom108key": {
+    "name": "Dorm room 108 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/d7/Key-108-Icon.png/revision/latest?cb=20220707191214"
+   },
+   "dormroom110key": {
+    "name": "Dorm room 110 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/01/Key-110-Icon.png/revision/latest?cb=20220707185259"
+   },
+   "dormroom114key": {
+    "name": "Dorm room 114 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/4b/Key-114-Icon.png/revision/latest?cb=20220707185329"
+   },
+   "dormroom118key": {
+    "name": "Dorm room 118 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/b0/Dorm_118_icon.png/revision/latest?cb=20220707191305"
+   },
+   "dormroom203key": {
+    "name": "Dorm room 203 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/cb/Key-203-Icon.png/revision/latest?cb=20220707191332"
+   },
+   "dormroom204key": {
+    "name": "Dorm room 204 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/fe/Key-204-Icon.png/revision/latest?cb=20220707191403"
+   },
+   "dormroom206key": {
+    "name": "Dorm room 206 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/5e/Key-206-Icon.png/revision/latest?cb=20220707185425"
+   },
+   "dormroom214key": {
+    "name": "Dorm room 214 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/36/Key-214-Icon.png/revision/latest?cb=20220707191429"
+   },
+   "dormroom218key": {
+    "name": "Dorm room 218 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/40/Key-218-Icon.png/revision/latest?cb=20220707191453"
+   },
+   "dormroom220key": {
+    "name": "Dorm room 220 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/9a/Key-220-Icon.png/revision/latest?cb=20220707191525"
+   },
+   "dormroom303key": {
+    "name": "Dorm room 303 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/52/Key-303-Icon.png/revision/latest?cb=20220707191552"
+   },
+   "dormroom306key": {
+    "name": "Dorm room 306 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/18/Key-306.png/revision/latest?cb=20220707191632"
+   },
+   "dormroom308key": {
+    "name": "Dorm room 308 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/fe/Key-308-Icon.png/revision/latest?cb=20220707191710"
+   },
+   "dormroom314markedkey": {
+    "name": "Dorm room 314 marked key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/b1/Marked-key-Icon.png/revision/latest?cb=20251119222813"
+   },
+   "dormroom315key": {
+    "name": "Dorm room 315 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/6e/Key-315-Icon.png/revision/latest?cb=20220707191733"
+   },
+   "foldingcarkey": {
+    "name": "Folding car key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/28/Car-key-Icon.png/revision/latest?cb=20230115110230"
+   },
+   "gasstationofficekey": {
+    "name": "Gas station office key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/34/Cabinet_key_Gas_Station_Icon.png/revision/latest?cb=20220707194641"
+   },
+   "gasstationstorageroomkey": {
+    "name": "Gas station storage room key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/60/Storage-Key-Icon.png/revision/latest?cb=20220707194607"
+   },
+   "machinerykey": {
+    "name": "Machinery key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/d8/Machinery-key-Icon.png/revision/latest?cb=20230115110443"
+   },
+   "militarycheckpointkey": {
+    "name": "Military checkpoint key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/95/Checkpoint_Key_icon.png/revision/latest?cb=20220707194011"
+   },
+   "portablebunkhousekey": {
+    "name": "Portable bunkhouse key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/00/Cabinet-key-Icon.png/revision/latest?cb=20220707194325"
+   },
+   "portablecabinkey": {
+    "name": "Portable cabin key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/c1/Portable-cabin-key-Icon.png/revision/latest?cb=20220707194219"
+   },
+   "reshalasbunkhousekey": {
+    "name": "Reshala's bunkhouse key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/04/Reshala%27s_bunkhouse_key_icon.png/revision/latest?cb=20251127224509"
+   },
+   "securitypostkey": {
+    "name": "Security post key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/ad/Security_post_key_icon.png/revision/latest?cb=20261006180152"
+   },
+   "tarconedirectorsofficekey": {
+    "name": "Tarcone Director's office key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/f9/Customs-office-key-Icon.png/revision/latest?cb=20220707194147"
+   },
+   "trailerparkportablecabinkey": {
+    "name": "Trailer park portable cabin key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/c1/Portable-cabin-key-Icon.png/revision/latest?cb=20220707194219"
+   },
+   "unknownkey": {
+    "name": "Unknown key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/f9/Unknown-key-Icon.png/revision/latest?cb=20230115110626"
+   },
+   "usecstashkey": {
+    "name": "USEC stash key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/a3/USECstashoncustomskeyicon.png/revision/latest?cb=20220707194441"
+   },
+   "zb1013key": {
+    "name": "ZB-1013 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/fc/ZB-1013_key_icon.png/revision/latest?cb=20261006180244"
+   },
+   "administrationgate": {
+    "name": "Administration Gate",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/82/Administration_Gate.png/revision/latest/scale-to-width-down/240?cb=20250316134027"
+   },
+   "boilerroombasementcoop": {
+    "name": "Boiler Room Basement (Co-op)",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/a6/Boiler_room_basement.png/revision/latest/scale-to-width-down/240?cb=20241227203927"
+   },
+   "crossroads": {
+    "name": "Crossroads",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/df/Crossroads.png/revision/latest/scale-to-width-down/240?cb=20250316134309"
+   },
+   "dormsvex": {
+    "name": "Dorms V-Ex",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/e1/Dorms_V-Ex.png/revision/latest/scale-to-width-down/240?cb=20250316135411"
+   },
+   "gatenearmedblock": {
+    "name": "Gate Near Medblock",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/e8/Gate_Near_Medblock.png/revision/latest/scale-to-width-down/240?cb=20261007000036"
+   },
+   "oldgasstation": {
+    "name": "Old Gas Station",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/61/Old_Gas_Station_Extraction.png/revision/latest/scale-to-width-down/240?cb=20250316141004"
+   },
+   "railroadpassageflare": {
+    "name": "Railroad Passage (Flare)",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/48/Railroad_Passage.png/revision/latest/scale-to-width-down/240?cb=20250316141948"
+   },
+   "railroadtoport": {
+    "name": "Railroad to Port",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/f5/Railroad_to_Port.png/revision/latest/scale-to-width-down/240?cb=20250316142505"
+   },
+   "railroadtoreserve": {
+    "name": "Railroad to Reserve",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/07/Railroad_To_Military_Base.png/revision/latest/scale-to-width-down/240?cb=20250316142148"
+   },
+   "railroadtotarkov": {
+    "name": "Railroad to Tarkov",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/d7/Railroad_To_Tarkov.png/revision/latest/scale-to-width-down/240?cb=20250316142822"
+   },
+   "reservecheckpoint": {
+    "name": "Reserve Checkpoint",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/d1/Scavs_checkpoint.png/revision/latest/scale-to-width-down/240?cb=20261008072458"
+   },
+   "smugglersboat": {
+    "name": "Smugglers' Boat",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/86/Smuggler%27s_Boat.png/revision/latest/scale-to-width-down/240?cb=20250908201720"
+   },
+   "smugglersbunkerzb1012": {
+    "name": "Smugglers' Bunker (ZB-1012)",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/20/ZB-1012.png/revision/latest/scale-to-width-down/240?cb=20250316143902"
+   },
+   "trailerpark": {
+    "name": "Trailer Park",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/31/Trailer_Park.png/revision/latest/scale-to-width-down/240?cb=20250316144526"
+   },
+   "zb1011": {
+    "name": "ZB-1011",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/5e/ZB-1011.png/revision/latest/scale-to-width-down/240?cb=20250316145610"
+   },
+   "zb1013": {
+    "name": "ZB-1013",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/0c/ZB013_Grate.png/revision/latest/scale-to-width-down/240?cb=20250316150132"
+   },
+   "transittofactory": {
+    "name": "Transit to Factory",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/8b/CustomsTransitToFactory.png/revision/latest/scale-to-width-down/240?cb=20250316150605"
+   },
+   "transittointerchange": {
+    "name": "Transit to Interchange",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/27/CustomsTransitToInterchange.png/revision/latest/scale-to-width-down/240?cb=20250316150744"
+   },
+   "transittoreserve": {
+    "name": "Transit to Reserve",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/fe/CustomsTransitToReserve.png/revision/latest/scale-to-width-down/240?cb=20250316151200"
+   },
+   "transittoshoreline": {
+    "name": "Transit to Shoreline",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/91/CustomsTransitToShoreline.png/revision/latest/scale-to-width-down/240?cb=20250316151507"
+   }
+  },
+  "woods": {
+   "oldhouseroomkey": {
+    "name": "Old house room key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/52/Old_house_room_key_icon.png/revision/latest?cb=20250115225132"
+   },
+   "oldhousetoiletkey": {
+    "name": "Old house toilet key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/1e/Old_house_toilet_key_icon.png/revision/latest?cb=20251224214740"
+   },
+   "shatunshideoutkey": {
+    "name": "Shatun's hideout key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/c1/Shatun_Icon.png/revision/latest?cb=20240607165204"
+   },
+   "shturmansstashkey": {
+    "name": "Shturman's stash key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/3e/Shturman_Key_Icon.png/revision/latest?cb=20211220201709"
+   },
+   "zb014key": {
+    "name": "ZB-014 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/5c/ZB-014-key-Icon.png/revision/latest?cb=20230113180237"
+   },
+   "boat": {
+    "name": "Boat",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/cf/The_Boat.png/revision/latest/scale-to-width-down/240?cb=20250406094320"
+   },
+   "bridgevex": {
+    "name": "Bridge V-Ex",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/d1/Wood_Bridge_extraction.png/revision/latest/scale-to-width-down/240?cb=20250406095126"
+   },
+   "deadmansplace": {
+    "name": "Dead Man's Place",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/a9/Dead_Mans_Place.png/revision/latest/scale-to-width-down/240?cb=20230301213502"
+   },
+   "easternrocks": {
+    "name": "Eastern Rocks",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/54/West_Border.png/revision/latest/scale-to-width-down/240?cb=20230301213729"
+   },
+   "friendshipbridgecoop": {
+    "name": "Friendship Bridge (Co-Op)",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/ed/Scav_bridge.png/revision/latest/scale-to-width-down/240?cb=20250406102521"
+   },
+   "mountainstash": {
+    "name": "Mountain Stash",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/8a/Mountain_Stash.png/revision/latest/scale-to-width-down/240?cb=20250406094938"
+   },
+   "northernunroadblock": {
+    "name": "Northern UN Roadblock",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/1e/Northern_UN_roadblock.png/revision/latest/scale-to-width-down/240?cb=20250406095305"
+   },
+   "oldrailwaydepot": {
+    "name": "Old Railway Depot",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/6a/Old_Station.png/revision/latest/scale-to-width-down/240?cb=20230301214701"
+   },
+   "outskirts": {
+    "name": "Outskirts",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/a4/Outskirts.png/revision/latest/scale-to-width-down/240?cb=20230301213259"
+   },
+   "powerlinepassageflare": {
+    "name": "Power Line Passage (Flare)",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/92/Power_Line_Passage.png/revision/latest/scale-to-width-down/240?cb=20250326003519"
+   },
+   "railwaybridgetotarkov": {
+    "name": "Railway Bridge to Tarkov",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/79/Railway_Bridge_to_Tarkov.png/revision/latest/scale-to-width-down/240?cb=20250324235307"
+   },
+   "ruafgate": {
+    "name": "RUAF Gate",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/bb/RUAF_Gate.png/revision/latest/scale-to-width-down/240?cb=20230402210156"
+   },
+   "ruafroadblock": {
+    "name": "RUAF Roadblock",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/05/RUAF_Roadblock.png/revision/latest/scale-to-width-down/240?cb=20240315230318"
+   },
+   "scavbunker": {
+    "name": "Scav Bunker",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/60/Scav_bunker.png/revision/latest/scale-to-width-down/240?cb=20230402211017"
+   },
+   "scavhouse": {
+    "name": "Scav House",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/08/Scav_House.png/revision/latest/scale-to-width-down/240?cb=20250406094526"
+   },
+   "unroadblock": {
+    "name": "UN Roadblock",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/1e/UN_Road.png/revision/latest/scale-to-width-down/240?cb=20240406201827"
+   },
+   "zb014": {
+    "name": "ZB-014",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/85/ZB-014.png/revision/latest/scale-to-width-down/240?cb=20221213141018"
+   },
+   "zb016": {
+    "name": "ZB-016",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/79/ZB-016.png/revision/latest/scale-to-width-down/240?cb=20221213141031"
+   },
+   "transittocustoms": {
+    "name": "Transit to Customs",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/8a/WoodsTransitToCustoms.png/revision/latest/scale-to-width-down/240?cb=20250325000057"
+   },
+   "transittofactory": {
+    "name": "Transit to Factory",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/9b/Factory_gate_extract.png/revision/latest/scale-to-width-down/240?cb=20250406201256"
+   },
+   "transittolighthouse": {
+    "name": "Transit to Lighthouse",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/c1/WoodsTransitToLighthouse.png/revision/latest/scale-to-width-down/240?cb=20250323135011"
+   },
+   "transittoreserve": {
+    "name": "Transit to Reserve",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/47/WoodsTransitToReserve2.png/revision/latest/scale-to-width-down/240?cb=20241103130858"
+   }
+  },
+  "shoreline": {
+   "cottagebackdoorkey": {
+    "name": "Cottage back door key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/7d/Cottage_Shoreline_key.png/revision/latest?cb=20230115110847"
+   },
+   "cottagesafekey": {
+    "name": "Cottage safe key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/06/Cottagesafe.png/revision/latest?cb=20230115111157"
+   },
+   "gasstationsafekey": {
+    "name": "Gas station safe key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/94/Shoreline_gassafe.png/revision/latest?cb=20230115111240"
+   },
+   "healthresorteastwingofficeroom107key": {
+    "name": "Health Resort east wing office room 107 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/11/East_107_Resort-Icon.png/revision/latest?cb=20220707220214"
+   },
+   "healthresorteastwingofficeroom108key": {
+    "name": "Health Resort east wing office room 108 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/76/San108KeyIcon.png/revision/latest?cb=20220707220252"
+   },
+   "healthresorteastwingroom205key": {
+    "name": "Health Resort east wing room 205 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/89/San205East.png/revision/latest?cb=20220707220351"
+   },
+   "healthresorteastwingroom206key": {
+    "name": "Health Resort east wing room 206 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/77/San.206.png/revision/latest?cb=20220707220418"
+   },
+   "healthresorteastwingroom209key": {
+    "name": "Health Resort east wing room 209 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/a6/San.209.png/revision/latest?cb=20220707220451"
+   },
+   "healthresorteastwingroom213key": {
+    "name": "Health Resort east wing room 213 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/fd/San213.png/revision/latest?cb=20220707220511"
+   },
+   "healthresorteastwingroom216key": {
+    "name": "Health Resort east wing room 216 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/1c/San216east.png/revision/latest?cb=20220707220532"
+   },
+   "healthresorteastwingroom222key": {
+    "name": "Health Resort east wing room 222 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/4a/San222East.png/revision/latest?cb=20220707220553"
+   },
+   "healthresorteastwingroom226key": {
+    "name": "Health Resort east wing room 226 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/7f/San226icon.png/revision/latest?cb=20220707220616"
+   },
+   "healthresorteastwingroom306key": {
+    "name": "Health Resort east wing room 306 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/75/San306East.png/revision/latest?cb=20220707220637"
+   },
+   "healthresorteastwingroom308key": {
+    "name": "Health Resort east wing room 308 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/b9/308_East_Icon.png/revision/latest?cb=20220707220657"
+   },
+   "healthresorteastwingroom310key": {
+    "name": "Health Resort east wing room 310 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/29/San.310.png/revision/latest?cb=20220707220744"
+   },
+   "healthresorteastwingroom313key": {
+    "name": "Health Resort east wing room 313 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/c6/San313icon.png/revision/latest?cb=20220707220805"
+   },
+   "healthresorteastwingroom314key": {
+    "name": "Health Resort east wing room 314 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/b3/East_314_Resort-Icon.png/revision/latest?cb=20220707220826"
+   },
+   "healthresorteastwingroom316key": {
+    "name": "Health Resort east wing room 316 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/ed/316_East_Icon.png/revision/latest?cb=20220707220845"
+   },
+   "healthresorteastwingroom322key": {
+    "name": "Health Resort east wing room 322 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/18/San322icon.png/revision/latest?cb=20220707220906"
+   },
+   "healthresorteastwingroom328key": {
+    "name": "Health Resort east wing room 328 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/4f/328_East_Icon.png/revision/latest?cb=20220707220948"
+   },
+   "healthresortmanagementofficesafekey": {
+    "name": "Health Resort management office safe key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/06/Cottagesafe.png/revision/latest?cb=20230115111157"
+   },
+   "healthresortmanagementwarehousesafekey": {
+    "name": "Health Resort management warehouse safe key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/06/Cottagesafe.png/revision/latest?cb=20230115111157"
+   },
+   "healthresortofficekeywithabluetape": {
+    "name": "Health Resort office key with a blue tape",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/de/Key_With_Tape_icon.png/revision/latest?cb=20220707220319"
+   },
+   "healthresortuniversalutilityroomkey": {
+    "name": "Health Resort universal utility room key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/b7/StoreroomKey.png/revision/latest?cb=20230115110720"
+   },
+   "healthresortwestwingofficeroom104key": {
+    "name": "Health Resort west wing office room 104 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/e3/San104.png/revision/latest?cb=20220707213355"
+   },
+   "healthresortwestwingofficeroom112key": {
+    "name": "Health Resort west wing office room 112 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/a1/San112icon.png/revision/latest?cb=20220707213419"
+   },
+   "healthresortwestwingroom203key": {
+    "name": "Health Resort west wing room 203 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/d2/San203icon.png/revision/latest?cb=20220707214647"
+   },
+   "healthresortwestwingroom205key": {
+    "name": "Health Resort west wing room 205 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/23/San.205.png/revision/latest?cb=20220707214743"
+   },
+   "healthresortwestwingroom207key": {
+    "name": "Health Resort west wing room 207 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/ce/San207icon.png/revision/latest?cb=20220707214811"
+   },
+   "healthresortwestwingroom216key": {
+    "name": "Health Resort west wing room 216 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/17/West_216_Resort-Icon.png/revision/latest?cb=20220707214848"
+   },
+   "healthresortwestwingroom218key": {
+    "name": "Health Resort west wing room 218 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/2b/San.218.png/revision/latest?cb=20220707214910"
+   },
+   "healthresortwestwingroom219key": {
+    "name": "Health Resort west wing room 219 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/d8/San.219.png/revision/latest?cb=20220707214939"
+   },
+   "healthresortwestwingroom220key": {
+    "name": "Health Resort west wing room 220 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/3b/West_220_Resort-Icon.png/revision/latest?cb=20220707214959"
+   },
+   "healthresortwestwingroom221key": {
+    "name": "Health Resort west wing room 221 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/c8/San.221.png/revision/latest?cb=20220707215020"
+   },
+   "healthresortwestwingroom222key": {
+    "name": "Health Resort west wing room 222 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/f6/East_222_Resort-Icon.png/revision/latest?cb=20220707215107"
+   },
+   "healthresortwestwingroom301key": {
+    "name": "Health Resort west wing room 301 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/87/West_301_Resort-Icon.png/revision/latest?cb=20220707215128"
+   },
+   "healthresortwestwingroom303key": {
+    "name": "Health Resort west wing room 303 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/97/San303Key.png/revision/latest?cb=20220707215151"
+   },
+   "healthresortwestwingroom306key": {
+    "name": "Health Resort west wing room 306 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/71/WestWing306KeyIcon.png/revision/latest?cb=20220707215218"
+   },
+   "healthresortwestwingroom309key": {
+    "name": "Health Resort west wing room 309 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/59/San309icon.png/revision/latest?cb=20220707215256"
+   },
+   "healthresortwestwingroom321safekey": {
+    "name": "Health Resort west wing room 321 safe key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/91/Safe_321_key.png/revision/latest?cb=20230115110947"
+   },
+   "healthresortwestwingroom323key": {
+    "name": "Health Resort west wing room 323 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/d4/San323icon.png/revision/latest?cb=20220707215320"
+   },
+   "healthresortwestwingroom325key": {
+    "name": "Health Resort west wing room 325 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/d1/San325.png/revision/latest?cb=20220707215345"
+   },
+   "hepstationstorageroomkey": {
+    "name": "HEP station storage room key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/a0/HEPSKeyIcon.png/revision/latest?cb=20230115112015"
+   },
+   "knossosllcfacilitykey": {
+    "name": "Knossos LLC facility key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/12/Knossos_LLC_Key_icon.png/revision/latest?cb=20250328164808"
+   },
+   "smwcarkey": {
+    "name": "SMW car key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/2b/SMW_shoreline_key.png/revision/latest?cb=20230115110801"
+   },
+   "voronshideoutkey": {
+    "name": "Voron's hideout key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/96/Voron_Icon.png/revision/latest?cb=20240607165214"
+   },
+   "weatherstationsafekey": {
+    "name": "Weather station safe key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/06/Cottagesafe.png/revision/latest?cb=20230115111157"
+   },
+   "adminbasement": {
+    "name": "Admin Basement",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/6b/Adm_Basement.png/revision/latest/scale-to-width-down/240?cb=20230321204934"
+   },
+   "climberstrail": {
+    "name": "Climber's Trail",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/dd/Shoreline_Climber%27s_Trail_Extraction.png/revision/latest/scale-to-width-down/240?cb=20231228213419"
+   },
+   "eastwinggymentrance": {
+    "name": "East Wing Gym Entrance",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/6b/Rwing_Gym_Entrance.png/revision/latest/scale-to-width-down/240?cb=20230321204530"
+   },
+   "lighthouse": {
+    "name": "Lighthouse",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/be/Lighthouse.png/revision/latest/scale-to-width-down/240?cb=20230321203427"
+   },
+   "mountainbunker": {
+    "name": "Mountain Bunker",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/99/South_Fence_Passage.png/revision/latest/scale-to-width-down/240?cb=20231228213655"
+   },
+   "pathtolighthouse": {
+    "name": "Path to Lighthouse",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/d3/Path_to_Lighthouse.png/revision/latest/scale-to-width-down/240?cb=20230321200834"
+   },
+   "pierboat": {
+    "name": "Pier Boat",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/6d/Pier_Boat.png/revision/latest/scale-to-width-down/240?cb=20231228225719"
+   },
+   "railwaybridge": {
+    "name": "Railway Bridge",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/83/Road_at_Railbridge.png/revision/latest/scale-to-width-down/240?cb=20230321202450"
+   },
+   "roadtocustoms": {
+    "name": "Road to Customs",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/67/Road_To_Customs.png/revision/latest/scale-to-width-down/240?cb=20240222223456"
+   },
+   "roadtonorthvex": {
+    "name": "Road to North V-Ex",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/6d/Shoreline_Road_to_North_V-Ex_Extraction.png/revision/latest/scale-to-width-down/240?cb=20231228212441"
+   },
+   "ruinedroad": {
+    "name": "Ruined Road",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/e1/Ruined_Road.png/revision/latest/scale-to-width-down/240?cb=20240222232014"
+   },
+   "smugglerspathcoop": {
+    "name": "Smugglers' Path (Co-op)",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/2d/Smuggler%27s_Path_Extraction.png/revision/latest/scale-to-width-down/240?cb=20231228213153"
+   },
+   "tunnel": {
+    "name": "Tunnel",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/d0/Tunnel.png/revision/latest/scale-to-width-down/240?cb=20240222231645"
+   },
+   "transittoicebreaker": {
+    "name": "Transit to Icebreaker",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/e1/ShorelineTransitToIcebreaker.png/revision/latest/scale-to-width-down/240?cb=20260604184627"
+   },
+   "transittolabyrinth": {
+    "name": "Transit to Labyrinth",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/58/The_Labyrinth_Transit.png/revision/latest/scale-to-width-down/240?cb=20251012163024"
+   },
+   "transittolighthouse": {
+    "name": "Transit to Lighthouse",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/d3/Path_to_Lighthouse.png/revision/latest/scale-to-width-down/240?cb=20230321200834"
+   },
+   "transittoterminal": {
+    "name": "Transit to Terminal",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/40/ShorelineTransitToTerminal.png/revision/latest/scale-to-width-down/240?cb=20251202112726"
+   }
+  },
+  "interchange": {
+   "emercommedicalunitkey": {
+    "name": "EMERCOM medical unit key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/3d/EMERCOM_Key_icon.png/revision/latest?cb=20220707181616"
+   },
+   "goshancashregisterkey": {
+    "name": "Goshan cash register key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/3c/Goshan_key.png/revision/latest?cb=20220707182122"
+   },
+   "grumpyshideoutkey": {
+    "name": "Grumpy's hideout key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/1a/Grumpy_Icon.png/revision/latest?cb=20240607165209"
+   },
+   "ideacashregisterkey": {
+    "name": "IDEA cash register key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/de/IDEARegisterKey.png/revision/latest?cb=20220707182055"
+   },
+   "kibaarmsinnergratedoorkey": {
+    "name": "Kiba Arms inner grate door key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/5a/KibaKey2Icon.png/revision/latest?cb=20220707182542"
+   },
+   "kibaarmsouterdoorkey": {
+    "name": "Kiba Arms outer door key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/ec/KibaKeyIcon.png/revision/latest?cb=20220707183539"
+   },
+   "necruspharmpharmacykey": {
+    "name": "NecrusPharm pharmacy key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/15/PharmacyKeyIcon.png/revision/latest?cb=20220707183456"
+   },
+   "object11srkeycard": {
+    "name": "Object #11SR keycard",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/2c/11sr_icon.png/revision/latest?cb=20240821000822"
+   },
+   "object21wskeycard": {
+    "name": "Object #21WS keycard",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/d3/21ws_icon.png/revision/latest?cb=20240821000726"
+   },
+   "oliadministrationofficekey": {
+    "name": "OLI administration office key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/a3/OLIAdminOffice.png/revision/latest?cb=20220707183131"
+   },
+   "olicashregisterkey": {
+    "name": "OLI cash register key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/0c/OLI_cash_register.png/revision/latest?cb=20220707182010"
+   },
+   "olilogisticsdepartmentofficekey": {
+    "name": "OLI logistics department office key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/f1/LogOfficeKey.png/revision/latest?cb=20220707183218"
+   },
+   "olioutletutilityroomkey": {
+    "name": "OLI outlet utility room key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/9a/OLIUtiKey.png/revision/latest?cb=20220707183331"
+   },
+   "powersubstationutilitycabinkey": {
+    "name": "Power substation utility cabin key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/3a/Power_utility_Key_icon.png/revision/latest?cb=20220707183407"
+   },
+   "station144kordarshavinkpassrestored": {
+    "name": "Station 14-4 KORD Arshavin K. pass (Restored)",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/e1/Station_14-4_KORD_Arshavin_K._pass_%28Restored%29_icon.png/revision/latest?cb=20260214234240"
+   },
+   "ultramedicalstoragekey": {
+    "name": "ULTRA medical storage key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/c9/Medst_icon.png/revision/latest?cb=20220707183746"
+   },
+   "emercomcheckpoint": {
+    "name": "Emercom Checkpoint",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/9d/InterchangeSouthEastExit.png/revision/latest/scale-to-width-down/240?cb=20230417005736"
+   },
+   "pathtoriverflare": {
+    "name": "Path to River (Flare)",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/d7/Path_to_River.png/revision/latest/scale-to-width-down/240?cb=20251116000510"
+   },
+   "powerstationvex": {
+    "name": "Power Station V-Ex",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/17/InterchangePowerPlantExit.png/revision/latest/scale-to-width-down/240?cb=20251116171026"
+   },
+   "railwayexfil": {
+    "name": "Railway Exfil",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/7d/InterchangeNorthWestExit.png/revision/latest/scale-to-width-down/240?cb=20251116171927"
+   },
+   "saferoomexfil": {
+    "name": "Saferoom Exfil",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/58/IC-Saferoom_EXFIL.png/revision/latest/scale-to-width-down/240?cb=20230417011505"
+   },
+   "scavcampcoop": {
+    "name": "Scav Camp (Co-Op)",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/e4/IC-Scav_Camp.png/revision/latest/scale-to-width-down/240?cb=20251115235501"
+   },
+   "smugglerstunnel": {
+    "name": "Smugglers' Tunnel",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/d1/Smugglers%27_Tunnel.png/revision/latest/scale-to-width-down/240?cb=20251201205733"
+   },
+   "transittocustoms": {
+    "name": "Transit to Customs",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/33/InterchangeTransitToCustoms.png/revision/latest/scale-to-width-down/240?cb=20251116002139"
+   },
+   "transittostreetsoftarkov": {
+    "name": "Transit to Streets of Tarkov",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/8c/InterchangeTransitToStreetsOfTarkov.png/revision/latest/scale-to-width-down/240?cb=20251116001552"
+   }
+  },
+  "reserve": {
+   "rbakkey": {
+    "name": "RB-AK key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/73/Rb-ak_item.png/revision/latest?cb=20230113231055"
+   },
+   "rbamkey": {
+    "name": "RB-AM key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/7c/RB-AM_Key.png/revision/latest?cb=20230113231017"
+   },
+   "rbaokey": {
+    "name": "RB-AO key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/ac/RB-AO_key_icon.png/revision/latest?cb=20230113181141"
+   },
+   "rbbkmarkedkey": {
+    "name": "RB-BK marked key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/c9/RB-BK_Icon.png/revision/latest?cb=20251119222912"
+   },
+   "rbgnkey": {
+    "name": "RB-GN key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/bc/RB-GN_key_icon.png/revision/latest?cb=20230113231001"
+   },
+   "rbkorlkey": {
+    "name": "RB-KORL key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/55/RB-KORL_key_icon.png/revision/latest?cb=20230113230818"
+   },
+   "rbkprlkey": {
+    "name": "RB-KPRL key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/69/RB-KPRL_key_icon.png/revision/latest?cb=20220707204941"
+   },
+   "rbksmkey": {
+    "name": "RB-KSM key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/28/RB-KSM_Icon.PNG/revision/latest?cb=20230115112141"
+   },
+   "rbmp11key": {
+    "name": "RB-MP11 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/49/RB-MP11.png/revision/latest?cb=20230113230753"
+   },
+   "rbmp12key": {
+    "name": "RB-MP12 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/62/RB-MP12.png/revision/latest?cb=20230113230857"
+   },
+   "rbmp13key": {
+    "name": "RB-MP13 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/b0/RB-MP13.png/revision/latest?cb=20230113230836"
+   },
+   "rbmp21key": {
+    "name": "RB-MP21 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/27/RB-MP21.png/revision/latest?cb=20230115111724"
+   },
+   "rbmp22key": {
+    "name": "RB-MP22 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/1d/RB-MP22.png/revision/latest?cb=20230115111805"
+   },
+   "rbobkey": {
+    "name": "RB-OB key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/30/RB-OB_key_icon.png/revision/latest?cb=20230115111515"
+   },
+   "rbopkey": {
+    "name": "RB-OP key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/a9/RB-OP_key_icon.png/revision/latest?cb=20230113230707"
+   },
+   "rborb1key": {
+    "name": "RB-ORB1 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/f2/RB-ORB1_key_icon.png/revision/latest?cb=20230113230651"
+   },
+   "rborb2key": {
+    "name": "RB-ORB2 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/97/RB-ORB2_key_icon.png/revision/latest?cb=20230113232138"
+   },
+   "rborb3key": {
+    "name": "RB-ORB3 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/58/RB-ORB3_key_icon.png/revision/latest?cb=20230113230634"
+   },
+   "rbpkpmmarkedkey": {
+    "name": "RB-PKPM marked key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/31/RB-PKPM_key_icon.png/revision/latest?cb=20251119222948"
+   },
+   "rbpkptskey": {
+    "name": "RB-PKPTS key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/75/RB-PKPTS_key_icon.png/revision/latest?cb=20251128003054"
+   },
+   "rbpsp1key": {
+    "name": "RB-PSP1 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/2a/RB-PSP1_key_icon.png/revision/latest?cb=20220707210825"
+   },
+   "rbpsp2key": {
+    "name": "RB-PSP2 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/8f/RB-PSP2_key_icon.png/revision/latest?cb=20220707210902"
+   },
+   "rbpsv1key": {
+    "name": "RB-PSV1 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/92/RB-PS81.png/revision/latest?cb=20230113230919"
+   },
+   "rbpsv2key": {
+    "name": "RB-PSV2 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/93/RB-PS82_key_icon.png/revision/latest?cb=20230113230728"
+   },
+   "rbrhkey": {
+    "name": "RB-RH key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/78/RB-RH_key_icon.png/revision/latest?cb=20230113231040"
+   },
+   "rbrlsakey": {
+    "name": "RB-RLSA key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/ba/RB-RLSSA_key_icon.png/revision/latest?cb=20220707211040"
+   },
+   "rbrskey": {
+    "name": "RB-RS key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/82/RB-RS_key_icon.png/revision/latest?cb=20230115112244"
+   },
+   "rbsmpkey": {
+    "name": "RB-SMP key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/a5/RB-SMP_key_icon.png/revision/latest?cb=20230115112102"
+   },
+   "rbstkey": {
+    "name": "RB-ST key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/15/RB-ST_key_icon.png/revision/latest?cb=20220707211227"
+   },
+   "rbtbkey": {
+    "name": "RB-TB key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/c0/RB-TB_key_icon.png/revision/latest?cb=20230115111607"
+   },
+   "rbvomarkedkey": {
+    "name": "RB-VO marked key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/75/RB-VO_key_icon.png/revision/latest?cb=20251119222926"
+   },
+   "armoredtrain": {
+    "name": "Armored Train",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/1e/Armored_train_3.png/revision/latest/scale-to-width-down/240?cb=20240729151231"
+   },
+   "bunkerhermeticdoor": {
+    "name": "Bunker Hermetic Door",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/b6/Bunker_hermetic_door.png/revision/latest/scale-to-width-down/240?cb=20230327113304"
+   },
+   "checkpointfence": {
+    "name": "Checkpoint Fence",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/59/CP_Fence.png/revision/latest/scale-to-width-down/240?cb=20191028234913"
+   },
+   "cliffdescent": {
+    "name": "Cliff Descent",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/f8/Cliff_descent_%28fence_behind_weather_dome%29.png/revision/latest/scale-to-width-down/240?cb=20191028234939"
+   },
+   "d2": {
+    "name": "D-2",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/79/D2_Extract.png/revision/latest/scale-to-width-down/240?cb=20260607201034"
+   },
+   "depothermeticdoor": {
+    "name": "Depot Hermetic Door",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/98/Depot_hermetic_door.png/revision/latest/scale-to-width-down/240?cb=20230301210758"
+   },
+   "exittowoods": {
+    "name": "Exit to Woods",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/5e/Exit_to_Woods.png/revision/latest/scale-to-width-down/240?cb=20240927084332"
+   },
+   "heatingpipe": {
+    "name": "Heating Pipe",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/27/Heating_Pipe.png/revision/latest/scale-to-width-down/240?cb=20260702231358"
+   },
+   "holeinthewallbythemountains": {
+    "name": "Hole in the Wall by the Mountains",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/1f/Hole_in_fence_by_the_mountains_%28Northwest_Corner_of_map%29.png/revision/latest/scale-to-width-down/240?cb=20191028234759"
+   },
+   "scavlandscoop": {
+    "name": "Scav Lands (Co-Op)",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/73/Scav_lands.png/revision/latest/scale-to-width-down/240?cb=20260702230453"
+   },
+   "sewermanhole": {
+    "name": "Sewer Manhole",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/19/Sewer_manhole.png/revision/latest/scale-to-width-down/240?cb=20260702231951"
+   },
+   "transittocustoms": {
+    "name": "Transit to Customs",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/2d/ReserveTransitToCustoms.png/revision/latest/scale-to-width-down/240?cb=20240927084612"
+   },
+   "transittolighthouse": {
+    "name": "Transit to Lighthouse",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/8a/ReserveTransitToLighthouse.png/revision/latest/scale-to-width-down/240?cb=20240825003614"
+   },
+   "transittowoods": {
+    "name": "Transit to Woods",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/50/ReserveTransitToWoods.png/revision/latest/scale-to-width-down/240?cb=20250323134420"
+   }
+  },
+  "lighthouse": {
+   "conferenceroomkey": {
+    "name": "Conference room key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/3b/Conference_room_key_icon.png/revision/latest?cb=20230115112644"
+   },
+   "conveniencestorestorageroomkey": {
+    "name": "Convenience store storage room key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/db/Conv_key.png/revision/latest?cb=20220707200835"
+   },
+   "hillsidehousekey": {
+    "name": "Hillside house key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/27/Hillside.png/revision/latest?cb=20220707200958"
+   },
+   "leonshideoutkey": {
+    "name": "Leon's hideout key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/97/Leon_Icon.png/revision/latest?cb=20240616020850"
+   },
+   "lighthouseislandstashkey": {
+    "name": "Lighthouse island stash key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/c9/Lighthouse_island_stash_key_icon.png/revision/latest?cb=20260908174759"
+   },
+   "merincartrunkkey": {
+    "name": "Merin car trunk key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/57/Merinsmall.png/revision/latest?cb=20230115112459"
+   },
+   "operatingroomkey": {
+    "name": "Operating room key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/52/Operating_Room_Key_icon.png/revision/latest?cb=20230115112727"
+   },
+   "policetruckcabinkey": {
+    "name": "Police truck cabin key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/ce/Policetruck.png/revision/latest?cb=20220707201150"
+   },
+   "radarstationcommandantroomkey": {
+    "name": "Radar station commandant room key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/62/RadarComKeyIcon.png/revision/latest?cb=20230115112602"
+   },
+   "rogueusecbarrackkey": {
+    "name": "Rogue USEC barrack key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/1f/Rogue_USEC_Barrack_key_icon.png/revision/latest?cb=20220702215249"
+   },
+   "rogueusecstashkey": {
+    "name": "Rogue USEC stash key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/42/Rogue_USEC_Stash_Key_Thumb.png/revision/latest?cb=20230115112417"
+   },
+   "rogueusecworkshopkey": {
+    "name": "Rogue USEC workshop key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/a3/Rogue_USEC_Workshop_Key_Thumb.png/revision/latest?cb=20220707202054"
+   },
+   "substationmarkedkey": {
+    "name": "Substation marked key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/c2/Substation_marked_key_icon.png/revision/latest?cb=20260908172451"
+   },
+   "useccottagefirstsafekey": {
+    "name": "USEC cottage first safe key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/61/Usec1_key.png/revision/latest?cb=20220707202128"
+   },
+   "useccottageroomkey": {
+    "name": "USEC cottage room key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/fb/USEC_Cottage_key.png/revision/latest?cb=20240515151754"
+   },
+   "useccottagesecondsafekey": {
+    "name": "USEC cottage second safe key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/b5/Usec2_key.png/revision/latest?cb=20220707202153"
+   },
+   "watertreatmentplantstorageroomkey": {
+    "name": "Water treatment plant storage room key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/1d/WTP_Store_Icon.png/revision/latest?cb=20230115112844"
+   },
+   "armoredtrain": {
+    "name": "Armored Train",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/21/Lighthouse_-_Armored_train.png/revision/latest/scale-to-width-down/240?cb=20240729152208"
+   },
+   "hideoutunderthelandingstage": {
+    "name": "Hideout Under the Landing Stage",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/9e/Hideout_under_the_landing_stage.png/revision/latest/scale-to-width-down/240?cb=20230402190938"
+   },
+   "industrialzonegates": {
+    "name": "Industrial Zone Gates",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/5e/Industrial_zone_gates.png/revision/latest/scale-to-width-down/240?cb=20220102203137"
+   },
+   "mountainpass": {
+    "name": "Mountain Pass",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/e8/Lighthouse_-_Mountain_pass.png/revision/latest/scale-to-width-down/240?cb=20260908185749"
+   },
+   "northerncheckpoint": {
+    "name": "Northern Checkpoint",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/d7/Lighthouse_-_Northern_checkpoint.png/revision/latest/scale-to-width-down/240?cb=20240927091403"
+   },
+   "passagebythelake": {
+    "name": "Passage by the Lake",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/5f/Passage_by_the_Lake.png/revision/latest/scale-to-width-down/240?cb=20260915224210"
+   },
+   "pathtoshoreline": {
+    "name": "Path to Shoreline",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/d4/Lighthouse_-_Path_to_Shoreline.png/revision/latest/scale-to-width-down/240?cb=20230301205227"
+   },
+   "roadtomilitarybasevex": {
+    "name": "Road to Military Base V-Ex",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/0a/Lighthousecar.png/revision/latest/scale-to-width-down/240?cb=20240927090457"
+   },
+   "scavhideoutatthegrotto": {
+    "name": "Scav Hideout at the Grotto",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/3d/Scav_hideout_at_the_grotto.png/revision/latest/scale-to-width-down/240?cb=20230402194302"
+   },
+   "sidetunnelcoop": {
+    "name": "Side Tunnel (Co-Op)",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/37/LighthouseSideTunnelExtract.png/revision/latest/scale-to-width-down/240?cb=20230402191156"
+   },
+   "southernroad": {
+    "name": "Southern Road",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/b4/Lighthouse_-_southern_road.png/revision/latest/scale-to-width-down/240?cb=20230402191541"
+   },
+   "southernroadlandslide": {
+    "name": "Southern Road Landslide",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/8f/Scav_Coastal_South.png/revision/latest/scale-to-width-down/240?cb=20230402200049"
+   },
+   "transittoicebreaker": {
+    "name": "Transit to Icebreaker",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/30/LighthouseTransitToIcebreaker.png/revision/latest/scale-to-width-down/240?cb=20260908130729"
+   },
+   "transittoreserve": {
+    "name": "Transit to Reserve",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/75/LighthouseTransitToReserve.png/revision/latest/scale-to-width-down/240?cb=20240927090139"
+   },
+   "transittoshoreline": {
+    "name": "Transit to Shoreline",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/48/LighthouseTransitToShoreline2.png/revision/latest/scale-to-width-down/240?cb=20240919193101"
+   },
+   "transittowoods": {
+    "name": "Transit to Woods",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/41/LighthouseTransitToWoods.png/revision/latest/scale-to-width-down/240?cb=20240927091057"
+   }
+  },
+  "streets-of-tarkov": {
+   "abandonedfactorymarkedkey": {
+    "name": "Abandoned factory marked key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/18/Abandoned_factory_marked_key_icon.png/revision/latest?cb=20221229224934"
+   },
+   "archiveroomkey": {
+    "name": "Archive room key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/44/Archive_room_key_icon.png/revision/latest?cb=20221229224751"
+   },
+   "aspectcompanyofficekey": {
+    "name": "Aspect company office key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/51/Aspect_company_office_key_icon.png/revision/latest?cb=20230814013227"
+   },
+   "backuphideoutkey": {
+    "name": "Backup hideout key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/46/Backup_hideout_key_icon.png/revision/latest?cb=20221229225546"
+   },
+   "belugarestaurantdirectorkey": {
+    "name": "Beluga restaurant director key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/35/Beluga_icon.png/revision/latest?cb=20230814013005"
+   },
+   "cardealershipclosedsectionkey": {
+    "name": "Car dealership closed section key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/c4/Car_dealership_closed_section_key_icon.png/revision/latest?cb=20230815020011"
+   },
+   "cardealershipdirectorsofficeroomkey": {
+    "name": "Car dealership director's office room key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/aa/Car_dealership_director%27s_office_room_key_icon.png/revision/latest?cb=20221229224540"
+   },
+   "cardinalapartmentkey": {
+    "name": "Cardinal apartment key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/eb/Cardinal_apartment_key_icon.png/revision/latest?cb=20251123011347"
+   },
+   "cargocontainermeshdoorkey": {
+    "name": "Cargo container mesh door key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/21/Cargo_container_mesh_door_key_icon.png/revision/latest?cb=20230115113040"
+   },
+   "chekannaya15apartmentkey": {
+    "name": "Chekannaya 15 apartment key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/13/Chekannaya_15_apartment_key_icon.png/revision/latest?cb=20251119222754"
+   },
+   "concordiaapartment8homecinemakey": {
+    "name": "Concordia apartment 8 home cinema key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/3e/Concordia_8_key_icon.png/revision/latest?cb=20230814012953"
+   },
+   "concordiaapartment8roomkey": {
+    "name": "Concordia apartment 8 room key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/47/Concordia_apartment_8_key_icon.png/revision/latest?cb=20250513133213"
+   },
+   "concordiaapartment34roomkey": {
+    "name": "Concordia apartment 34 room key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/cd/Concordia_apartment_34_key_icon.png/revision/latest?cb=20250513133403"
+   },
+   "concordiaapartment63roomkey": {
+    "name": "Concordia apartment 63 room key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/0f/Concordia_apartment_63_room_key_icon.png/revision/latest?cb=20250513133425"
+   },
+   "concordiaapartment64key": {
+    "name": "Concordia apartment 64 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/7f/Concordia_apartment_64_key_icon.png/revision/latest?cb=20250513133338"
+   },
+   "concordiaapartment64officeroomkey": {
+    "name": "Concordia apartment 64 office room key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/b7/Concordia_apartment_64_office_room_key_icon.png/revision/latest?cb=20250513133305"
+   },
+   "concordiasecurityroomkey": {
+    "name": "Concordia security room key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/45/Concordia_security_room_key_icon.png/revision/latest?cb=20250513133621"
+   },
+   "constructionsitebunkhousekey": {
+    "name": "Construction site bunkhouse key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/c8/Construction_site_bunkhouse_key_icon.png/revision/latest?cb=20221229225000"
+   },
+   "cultvictimsapartmentkey": {
+    "name": "Cult victim's apartment key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/a0/Cult_victim%27s_apartment_key_icon.png/revision/latest?cb=20251128235856"
+   },
+   "elektronikskey": {
+    "name": "Elektronik's key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/ce/Elektronik%27s_key_icon.png/revision/latest?cb=20251223154555"
+   },
+   "financialinstitutionofficekey": {
+    "name": "Financial institution office key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/97/Financial_institution_office_key_icon.png/revision/latest?cb=20221229224447"
+   },
+   "financialinstitutionsmallofficekey": {
+    "name": "Financial institution small office key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/56/Financial_institution_small_office_key_icon.png/revision/latest?cb=20221229224518"
+   },
+   "irongatekey": {
+    "name": "Iron gate key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/60/Iron_gate_key_icon.png/revision/latest?cb=20221229224812"
+   },
+   "negotiationroomkey": {
+    "name": "\"Negotiation\" room key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/32/NegotiationIcon.png/revision/latest?cb=20240101030039"
+   },
+   "mvdacademyentrancehallguardroomkey": {
+    "name": "MVD academy entrance hall guard room key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/81/MVDAcademyEntranceHallKeyIcon.png/revision/latest?cb=20240101025653"
+   },
+   "mysteriousroommarkedkey": {
+    "name": "Mysterious room marked key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/d5/Mysterious_marked_key_icon.png/revision/latest?cb=20230814013045"
+   },
+   "peteachersofficekey": {
+    "name": "PE teacher's office key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/c4/PE_teacher%27s_office_key_icon.png/revision/latest?cb=20230814013212"
+   },
+   "pinewoodhotelroom206key": {
+    "name": "Pinewood hotel room 206 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/84/Hotel_room_206_key_icon.png/revision/latest?cb=20221229225140"
+   },
+   "pinewoodhotelroom215key": {
+    "name": "Pinewood hotel room 215 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/76/Hotel_room_215_key_icon.png/revision/latest?cb=20221229225230"
+   },
+   "primorsky4648skybridgekey": {
+    "name": "Primorsky 46-48 skybridge key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/9e/Primorsky_46_underpass_key_icon.png/revision/latest?cb=20230105100231"
+   },
+   "primorsky48apartmentkey": {
+    "name": "Primorsky 48 apartment key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/7b/Primorsky_48_apartment_key_icon.png/revision/latest?cb=20221229225500"
+   },
+   "realestateagencyofficeroomkey": {
+    "name": "Real estate agency office room key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/be/RealEstateAgencyOfficeRoomIcon.png/revision/latest?cb=20240101025710"
+   },
+   "relaxationroomkey": {
+    "name": "Relaxation room key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/d5/RelatationRoomKeyIcon.png/revision/latest?cb=20240115142530"
+   },
+   "reprogrammedkeycardforapsapartmentlockgreen": {
+    "name": "Reprogrammed keycard for A.P.'s apartment lock (Green)",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/22/Reprogrammed_keycard_for_A.P.%27s_apartment_lock_%28Green%29_icon.png/revision/latest?cb=20251130192313"
+   },
+   "ruspostcarkey": {
+    "name": "Rus Post car key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/95/Rus_Post_car_key_icon.png/revision/latest?cb=20251128002832"
+   },
+   "rustedbloodykey": {
+    "name": "Rusted bloody key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/15/RustedIcon.png/revision/latest?cb=20230925151849"
+   },
+   "stairlandingkey": {
+    "name": "Stair landing key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/7e/Stair_landing_key_icon.png/revision/latest?cb=20221229224836"
+   },
+   "storemanagerskey": {
+    "name": "Store manager's key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/cb/Store_manager%27s_key_icon.png/revision/latest?cb=20221229224637"
+   },
+   "supplydepartmentdirectorsofficekey": {
+    "name": "Supply department director's office key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/9f/Supply_department_director%27s_office_key_icon.png/revision/latest?cb=20250513133237"
+   },
+   "tarbankcashregisterdepartmentkey": {
+    "name": "Tarbank cash register department key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/7f/Tarbank_cash_register_key_icon.png/revision/latest?cb=20230814205157"
+   },
+   "terragroupcorporateapartmentkey": {
+    "name": "TerraGroup corporate apartment key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/4a/TerraGroup_corporate_apartment_key_icon.png/revision/latest?cb=20251123010522"
+   },
+   "terragroupmeetingroomkey": {
+    "name": "TerraGroup meeting room key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/64/TerraGroup_meeting_room_key_icon.png/revision/latest?cb=20230814013149"
+   },
+   "terragroupsecurityarmorykey": {
+    "name": "TerraGroup security armory key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/f8/TerraGroup_security_armory_key_icon.png/revision/latest?cb=20230814013036"
+   },
+   "xrayroomkey": {
+    "name": "X-ray room key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/be/X-ray_key_icon.png/revision/latest?cb=20230814013027"
+   },
+   "zmeisky3apartmentkey": {
+    "name": "Zmeisky 3 apartment key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/80/Zmeisky_3_apartment_key_icon.png/revision/latest?cb=20251223154734"
+   },
+   "zmeisky3apartment8key": {
+    "name": "Zmeisky 3 apartment 8 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/f2/Zmeevsky_3_apartment_8_key_icon.png/revision/latest?cb=20221229225605"
+   },
+   "zmeisky5apartment20key": {
+    "name": "Zmeisky 5 apartment 20 key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/94/Zmeevsky_5_apartment_20_key_icon.png/revision/latest?cb=20221229225630"
+   },
+   "cardinalapartmentcomplexparking": {
+    "name": "Cardinal Apartment Complex Parking",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/31/Cardinal_parking.png/revision/latest/scale-to-width-down/240?cb=20230811183939"
+   },
+   "collapsedcrane": {
+    "name": "Collapsed Crane",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/9b/CollapsedCraneExtraction.png/revision/latest/scale-to-width-down/240?cb=20230104012801"
+   },
+   "courtyard": {
+    "name": "Courtyard",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/1e/CourtyardExtraction.png/revision/latest/scale-to-width-down/240?cb=20230110033416"
+   },
+   "crashsite": {
+    "name": "Crash Site",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/38/StreetsCrashSiteExtract.png/revision/latest/scale-to-width-down/240?cb=20230811184535"
+   },
+   "damagedhouse": {
+    "name": "Damaged House",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/e3/DamagedHouseExtraction.png/revision/latest/scale-to-width-down/240?cb=20230104011327"
+   },
+   "entrancetocatacombs": {
+    "name": "Entrance to Catacombs",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/ee/EntranceToCatacombsExtraction.png/revision/latest/scale-to-width-down/240?cb=20230104015913"
+   },
+   "expocheckpoint": {
+    "name": "Expo Checkpoint",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/a1/Expo_exfil.png/revision/latest/scale-to-width-down/240?cb=20230811191326"
+   },
+   "klimovshoppingmallexfil": {
+    "name": "Klimov Shopping Mall Exfil",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/df/Klimov_trading_exfil.png/revision/latest/scale-to-width-down/240?cb=20230811193347"
+   },
+   "klimovstreetflare": {
+    "name": "Klimov Street (Flare)",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/1a/KlimovStreetExtraction.png/revision/latest/scale-to-width-down/240?cb=20251004210542"
+   },
+   "nearkamchatskayaarch": {
+    "name": "Near Kamchatskaya Arch",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/a8/Near_arch_exfil.png/revision/latest/scale-to-width-down/240?cb=20230811194004"
+   },
+   "pinewoodbasementcoop": {
+    "name": "Pinewood Basement (Co-Op)",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/92/StreetsPinewoodBasementExtract.png/revision/latest/scale-to-width-down/240?cb=20230811200852"
+   },
+   "primorskyavetaxivex": {
+    "name": "Primorsky Ave Taxi V-Ex",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/2f/PrimorskyAveTaxiV-ExExtraction.png/revision/latest/scale-to-width-down/240?cb=20230104022525"
+   },
+   "sewermanhole": {
+    "name": "Sewer Manhole",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/14/SewerExtraction.png/revision/latest/scale-to-width-down/240?cb=20230104013925"
+   },
+   "sewerriver": {
+    "name": "Sewer River",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/e3/SewerRiverExtraction.png/revision/latest/scale-to-width-down/240?cb=20230104010819"
+   },
+   "smugglersbasement": {
+    "name": "Smugglers' Basement",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/7d/BasementDescentExtraction.png/revision/latest/scale-to-width-down/240?cb=20230104013738"
+   },
+   "stylobatebuildingelevator": {
+    "name": "Stylobate Building Elevator",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/dc/StreetsStylobateElevatorExtract.png/revision/latest/scale-to-width-down/240?cb=20230811191043"
+   },
+   "ventilationshaft": {
+    "name": "Ventilation Shaft",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/89/VentilationShaftExtraction.png/revision/latest/scale-to-width-down/240?cb=20230104014257"
+   },
+   "transittogroundzero": {
+    "name": "Transit to Ground Zero",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/8c/StreetsOfTarkovTransitToGroundZero.png/revision/latest/scale-to-width-down/240?cb=20240927074500"
+   },
+   "transittointerchange": {
+    "name": "Transit to Interchange",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/f8/StreetsTransitToInterchange.png/revision/latest/scale-to-width-down/240?cb=20240824233949"
+   },
+   "transittothelab": {
+    "name": "Transit to The Lab",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/42/StreetsTransitToLabsDownstairs.png/revision/latest/scale-to-width-down/240?cb=20240824233942"
+   }
+  },
+  "factory": {
+   "factoryemergencyexitkey": {
+    "name": "Factory emergency exit key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/23/Factory_key_icon.png/revision/latest?cb=20230115110139"
+   },
+   "terragroupstorageroomkeycard": {
+    "name": "TerraGroup storage room keycard",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/fd/TerraGroup_storage_room_keycard_icon.png/revision/latest?cb=20250328182141"
+   },
+   "camerabunkerdoor": {
+    "name": "Camera Bunker Door",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/31/Fac_Camera_Bunker_Door.png/revision/latest/scale-to-width-down/240?cb=20240820174351"
+   },
+   "cellars": {
+    "name": "Cellars",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/f4/Fac_Cellars.png/revision/latest/scale-to-width-down/240?cb=20240820172855"
+   },
+   "courtyardgate": {
+    "name": "Courtyard Gate",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/86/Factory_Courtyard_Gate.png/revision/latest/scale-to-width-down/240?cb=20240820181816"
+   },
+   "gate0": {
+    "name": "Gate 0",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/31/Fac_Gate_0.png/revision/latest/scale-to-width-down/240?cb=20240820172558"
+   },
+   "gate3": {
+    "name": "Gate 3",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/fd/Fac_Gate_3.png/revision/latest/scale-to-width-down/240?cb=20240820172737"
+   },
+   "medtentgate": {
+    "name": "Med Tent Gate",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/e4/Med_tent_gates.png/revision/latest/scale-to-width-down/240?cb=20240820173749"
+   },
+   "officewindow": {
+    "name": "Office Window",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/29/Fac_Office_Window.png/revision/latest/scale-to-width-down/240?cb=20240820174036"
+   },
+   "smugglerspassage": {
+    "name": "Smugglers' Passage",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/76/Smuggler%27s_Passage.png/revision/latest/scale-to-width-down/240?cb=20241227215412"
+   },
+   "transittocustoms": {
+    "name": "Transit to Customs",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/0b/FactoryTransitToCustoms.png/revision/latest/scale-to-width-down/240?cb=20240927080543"
+   },
+   "transittothelab": {
+    "name": "Transit to The Lab",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/31/FactoryTransitToTheLab.png/revision/latest/scale-to-width-down/240?cb=20240927081031"
+   },
+   "transittowoods": {
+    "name": "Transit to Woods",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/86/Factory_Courtyard_Gate.png/revision/latest/scale-to-width-down/240?cb=20240820181816"
+   }
+  },
+  "the-lab": {
+   "keycardwithabluemarking": {
+    "name": "Keycard with a blue marking",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/85/DuctTapeKeycard_Icon.png/revision/latest?cb=20211220202508"
+   },
+   "terragrouplabsarsenalstorageroomkey": {
+    "name": "TerraGroup Labs arsenal storage room key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/2a/Lab_key_Arsenal_storage_room_icon.png/revision/latest?cb=20220707212242"
+   },
+   "terragrouplabskeycardblack": {
+    "name": "TerraGroup Labs keycard (Black)",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/a9/LkEA_Icon.png/revision/latest?cb=20240821003649"
+   },
+   "terragrouplabskeycardblue": {
+    "name": "TerraGroup Labs keycard (Blue)",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/ee/Lab._key._The_quarantine_zone_icon.png/revision/latest?cb=20240821003652"
+   },
+   "terragrouplabskeycardgreen": {
+    "name": "TerraGroup Labs keycard (Green)",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/4f/Lab_Key_Block2.png/revision/latest?cb=20240821003658"
+   },
+   "terragrouplabskeycardred": {
+    "name": "TerraGroup Labs keycard (Red)",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/f3/Lab._key._Security_arsenal.png/revision/latest?cb=20240821003704"
+   },
+   "terragrouplabskeycardviolet": {
+    "name": "TerraGroup Labs keycard (Violet)",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/a6/Lab._key._Security_post_icon.png/revision/latest?cb=20240821003716"
+   },
+   "terragrouplabskeycardyellow": {
+    "name": "TerraGroup Labs keycard (Yellow)",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/eb/Lab._key._Alarm_system_control_panel_icon.png/revision/latest?cb=20240821003724"
+   },
+   "terragrouplabsmanagersofficeroomkey": {
+    "name": "TerraGroup Labs manager's office room key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/07/Lab._key._Manager_office_icon.png/revision/latest?cb=20220707212201"
+   },
+   "terragrouplabsresidentialunitkeycard": {
+    "name": "TerraGroup Labs residential unit keycard",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/60/TerraGroup_Labs_residential_unit_keycard_icon.png/revision/latest?cb=20250328182001"
+   },
+   "terragrouplabsweapontestingareakey": {
+    "name": "TerraGroup Labs weapon testing area key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/fc/Lab._key._Testing_area_%28weap.%29_Icon.png/revision/latest?cb=20220707212134"
+   },
+   "cargoelevator": {
+    "name": "Cargo Elevator",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/77/LabsCargoElevatorExtract.png/revision/latest/scale-to-width-down/240?cb=20230327113822"
+   },
+   "hangargate": {
+    "name": "Hangar Gate",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/c6/LabsHangarGateExtract.png/revision/latest/scale-to-width-down/240?cb=20221204161528"
+   },
+   "mainelevator": {
+    "name": "Main Elevator",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/83/LabsMainElevatorExtract.png/revision/latest/scale-to-width-down/240?cb=20230327122108"
+   },
+   "medicalblockelevator": {
+    "name": "Medical Block Elevator",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/22/LabsElevatorOfTheMedicaBlockExtract.png/revision/latest/scale-to-width-down/240?cb=20230327120811"
+   },
+   "parkinggate": {
+    "name": "Parking Gate",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/e4/LabsParkingGateExtract.png/revision/latest/scale-to-width-down/240?cb=20221204154457"
+   },
+   "sewageconduit": {
+    "name": "Sewage Conduit",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/ff/LabsSewageConduitExtract.png/revision/latest/scale-to-width-down/240?cb=20221204152257"
+   },
+   "ventilationshaft": {
+    "name": "Ventilation Shaft",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/8d/LabsVentilationShaftExtract.png/revision/latest/scale-to-width-down/240?cb=20221204160754"
+   },
+   "transittostreetsoftarkov": {
+    "name": "Transit to Streets of Tarkov",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/90/TheLabTranistToStreetsOfTarkov.png/revision/latest/scale-to-width-down/240?cb=20240822204510"
+   }
+  },
+  "ground-zero": {
+   "terragroupscienceofficekey": {
+    "name": "TerraGroup science office key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/9a/TerraGroup_science_office_key_icon.png/revision/latest?cb=20240101025342"
+   },
+   "undergroundparkingutilityroomkey": {
+    "name": "Underground parking utility room key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/a6/Underground_Parking_Utility_Room_Key_Icon.png/revision/latest?cb=20240101025405"
+   },
+   "unitycreditbankcashregisterkey": {
+    "name": "Unity Credit Bank cash register key",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/57/United_Credit_Bank_Cash_Register_Key_Icon.png/revision/latest?cb=20240101025435"
+   },
+   "emercomcheckpoint": {
+    "name": "Emercom Checkpoint",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/ef/Emercom_Checkpoint.png/revision/latest/scale-to-width-down/240?cb=20250708203936"
+   },
+   "miraaveflare": {
+    "name": "Mira Ave (Flare)",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/fc/Mira_Prospect.png/revision/latest/scale-to-width-down/240?cb=20250708204057"
+   },
+   "nakatanibasementstairs": {
+    "name": "Nakatani Basement Stairs",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/3a/Nakatani_Basement_Stairs.png/revision/latest/scale-to-width-down/240?cb=20250708204544"
+   },
+   "policecordonvex": {
+    "name": "Police Cordon V-Ex",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/fd/Police_Checkpoint.png/revision/latest/scale-to-width-down/240?cb=20250708200828"
+   },
+   "scavcheckpointcoop": {
+    "name": "Scav Checkpoint (Co-op)",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/24/Scav_Checkpoint.png/revision/latest/scale-to-width-down/240?cb=20250708205348"
+   },
+   "tartowerssalesoffice": {
+    "name": "Tartowers Sales Office",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/8b/Tartowers_Sales_Office.png/revision/latest/scale-to-width-down/240?cb=20241227222006"
+   },
+   "transittostreetsoftarkov": {
+    "name": "Transit to Streets of Tarkov",
+    "img": "https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/51/Ground_Zero_to_Street_of_Tarkov.png/revision/latest/scale-to-width-down/240?cb=20250708205955"
+   }
+  }
+ }
+}
