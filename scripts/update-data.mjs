@@ -1,4 +1,4 @@
-// Pulls the current quest list from api.tarkov.dev using the site's own query code (index.html -> RR_LIVE.pull()),
+// Pulls the current quest list from json.tarkov.dev (falling back to api.tarkov.dev) using the site's own query code (index.html -> RR_LIVE.pull()),
 // and writes data/quests.json. Retries, because the API is flaky. Exits non-zero (and writes nothing) if it never works.
 import { chromium } from 'playwright';
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
