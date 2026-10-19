@@ -75,6 +75,18 @@ export function parseQuest(title, wt, traderIds) {
   };
 }
 
+/* ---------- quests the wiki has renamed ----------
+   When the game renames a quest (e.g. "Getting Acquainted" -> "To the Light - Getting Acquainted") the game data keeps the old name and its
+   map positions, while the wiki only knows the new one. Those are the SAME quest, so they must not show up as a wiki-only quest without locations.
+   A wiki title counts as a rename of a site quest when (1) an old wiki title that redirects to it is a site quest, or
+   (2) it is "<series> - <name>" and "<name>" is a site quest. */
+export function renameOf(title, redirects, have) {
+  for (const r of redirects || []) if (have.has(clean(r))) return r;
+  const m = /^(.+?)\s+-\s+(.{6,})$/.exec(title);
+  if (m && /\s/.test(m[2].trim()) && have.has(clean(m[2]))) return m[2].trim();
+  return '';
+}
+
 /* ---------- the site's own quests ---------- */
 function siteInfo() {
   const names = new Set(), traderIds = {};
@@ -117,7 +129,21 @@ async function main() {
   }
   if (titles.length < 300) throw new Error(`only ${titles.length} wiki quests came back`);
   const have = new Set([...names].map(clean));
-  const todo = titles.filter(t => t !== 'Quests' && t !== 'Action test' && !have.has(clean(t)));
+  let todo = titles.filter(t => t !== 'Quests' && t !== 'Action test' && !have.has(clean(t)));
+  /* which of these are really renamed site quests? ask the wiki which old titles redirect to them */
+  const renamed = {};
+  const reds = {};
+  for (let i = 0; i < todo.length; i += 40) {
+    const batch = todo.slice(i, i + 40);
+    try {
+      const j = await api({ action: 'query', prop: 'redirects', rdlimit: 'max', rdnamespace: '0', formatversion: '2', titles: batch.join('|') });
+      for (const pg of j.query?.pages || []) reds[pg.title] = (pg.redirects || []).map(r => r.title);
+    } catch (e) { console.log('redirect lookup skipped: ' + e.message); }
+  }
+  for (const t of todo) { const old = renameOf(t, reds[t], have); if (old) renamed[clean(old)] = t.replace(/\s*\(quest\)\s*$/i, ''); }
+  const renamedTitles = new Set(Object.values(renamed).map(clean));
+  todo = todo.filter(t => !renamedTitles.has(clean(t)));
+  if (Object.keys(renamed).length) console.log(`${Object.keys(renamed).length} wiki quests are renamed site quests (their map positions are kept):`, renamed);
   const out = [];
   for (let i = 0; i < todo.length; i += 40) {
     const batch = todo.slice(i, i + 40);
@@ -131,10 +157,10 @@ async function main() {
   out.sort((a, b) => a.name.localeCompare(b.name));
   const counts = {}; out.forEach(q => counts[q.wikiKind] = (counts[q.wikiKind] || 0) + 1);
   console.log(`Wiki has ${titles.length} quests; ${out.length} are not on the site:`, counts);
-  const next = JSON.stringify(out);
-  if (existsSync(OUT)) { try { if (JSON.stringify(JSON.parse(readFileSync(OUT, 'utf8')).tasks) === next) { console.log('No change.'); return; } } catch {} }
+  const next = JSON.stringify({ tasks: out, renamed });
+  if (existsSync(OUT)) { try { const o = JSON.parse(readFileSync(OUT, 'utf8')); if (JSON.stringify({ tasks: o.tasks, renamed: o.renamed || {} }) === next) { console.log('No change.'); return; } } catch {} }
   mkdirSync('data', { recursive: true });
-  writeFileSync(OUT, JSON.stringify({ t: Date.now(), n: out.length, tasks: out }) + '\n');
+  writeFileSync(OUT, JSON.stringify({ t: Date.now(), n: out.length, renamed, tasks: out }) + '\n');
   console.log(`Wrote ${OUT}`);
 }
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) main().catch(e => { console.error('Could not build wiki quests: ' + e.message); process.exit(1); });
