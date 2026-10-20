@@ -1,0 +1,32 @@
+# Copy this file to .github/workflows/companion-release.yml in the Tarkov-Waypoint repo.
+# Builds the Windows installer and publishes it as a GitHub release (the app updates itself from there).
+name: Build companion app
+on:
+  workflow_dispatch:
+  push:
+    tags: ['companion-v*']
+permissions:
+  contents: write
+jobs:
+  win:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      # finds the app folder wherever it was uploaded (the one whose package.json is named tarkov-waypoint-app)
+      - name: Find the app folder
+        shell: bash
+        run: |
+          DIR=$(grep -rlE --include=package.json --exclude-dir=node_modules --exclude-dir=.git '"name": *"(tarkov-waypoint-app|raid-route-companion)"' . | head -n1 | xargs -r dirname)
+          if [ -z "$DIR" ]; then echo "Could not find the companion app folder (package.json named tarkov-waypoint-app). Repo contents:"; ls -R . | head -60; exit 1; fi
+          echo "App folder: $DIR"
+          echo "APPDIR=$DIR" >> "$GITHUB_ENV"
+      - run: npm install --no-audit --no-fund
+        working-directory: ${{ env.APPDIR }}
+      - run: npm test
+        working-directory: ${{ env.APPDIR }}
+      - run: npx electron-builder --win --publish always
+        working-directory: ${{ env.APPDIR }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
