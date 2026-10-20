@@ -41,8 +41,7 @@ async function openDb(env){
       env.TW_DB.prepare('CREATE TABLE IF NOT EXISTS friends (lo TEXT NOT NULL, hi TEXT NOT NULL, by TEXT NOT NULL, state TEXT NOT NULL, mlo INTEGER NOT NULL DEFAULT 0, mhi INTEGER NOT NULL DEFAULT 0, at INTEGER, PRIMARY KEY (lo, hi))'),
       env.TW_DB.prepare('CREATE INDEX IF NOT EXISTS friends_hi ON friends (hi)'),
       env.TW_DB.prepare('CREATE TABLE IF NOT EXISTS pos (uid TEXT NOT NULL, at INTEGER NOT NULL, map TEXT, x REAL, z REAL, fx REAL, fz REAL, face INTEGER)'),
-      env.TW_DB.prepare('CREATE INDEX IF NOT EXISTS pos_uid ON pos (uid, at)'),
-      env.TW_DB.prepare('CREATE TABLE IF NOT EXISTS mypos (uid TEXT PRIMARY KEY, at INTEGER NOT NULL, map TEXT, x REAL, z REAL, fx REAL, fz REAL, face INTEGER)')
+      env.TW_DB.prepare('CREATE INDEX IF NOT EXISTS pos_uid ON pos (uid, at)')
     ]);
     schemaReady = true;
   }
@@ -84,23 +83,10 @@ async function friendsApi(path, method, req, env, u){
       'AND q.at = (SELECT MAX(at) FROM pos WHERE uid = p.id AND at <= ?2 - p.delay * 60000) AND q.at > ?2 - ?3').bind(u.id, now, POS_SHOW).all()).results || [];
     return json({ now, pins: rows.map(r => ({ id: r.id, name: r.name, avatar: r.avatar || '', map: r.map, x: r.x, z: r.z, fx: r.fx, fz: r.fz, face: !!r.face, at: r.at })) });
   }
-  /* your OWN latest position, for your other devices (a phone shows what your PC last read). Only you can read it; one row, replaced each time. */
-  if(path === 'pos/me' && method === 'GET'){
-    const r = await d.prepare('SELECT map, x, z, fx, fz, face, at FROM mypos WHERE uid = ?1').bind(u.id).first();
-    return json({ now, pos: r ? { map: r.map, x: r.x, z: r.z, fx: r.fx, fz: r.fz, face: !!r.face, at: r.at } : null });
-  }
   if(method !== 'POST') return json({ error: 'not-found' }, 404);
   let b = {}; try{ const t = await req.text(); if(t.length > 2000) return json({ error: 'too-big' }, 413); b = t ? JSON.parse(t) : {}; }catch(e){ return json({ error: 'bad-json' }, 400); }
   const other = typeof b.id === 'string' ? b.id.slice(0, 80) : '';
 
-  if(path === 'pos/me'){
-    const m = String(b.map || '');
-    if(!/^[a-z0-9-]{2,30}$/.test(m) || ![b.x, b.z, b.fx, b.fz].every(num)) return json({ error: 'bad-data' }, 400);
-    const last = await d.prepare('SELECT at FROM mypos WHERE uid = ?1').bind(u.id).first();
-    if(last && now - last.at < POS_GAP) return json({ ok: true, sent: false, why: 'too-soon' });
-    await d.prepare('INSERT OR REPLACE INTO mypos (uid, at, map, x, z, fx, fz, face) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8)').bind(u.id, now, m, b.x, b.z, b.fx, b.fz, b.face ? 1 : 0).run();
-    return json({ ok: true, sent: true });
-  }
   if(path === 'pos'){
     const m = String(b.map || '');
     if(!/^[a-z0-9-]{2,30}$/.test(m) || ![b.x, b.z, b.fx, b.fz].every(num)) return json({ error: 'bad-data' }, 400);
@@ -165,7 +151,7 @@ async function friendsApi(path, method, req, env, u){
 }
 async function wipeFriends(env, id){
   const d = await openDb(env).catch(() => null); if(!d) return;
-  await d.batch([d.prepare('DELETE FROM mypos WHERE uid = ?1').bind(id), d.prepare('DELETE FROM pos WHERE uid = ?1').bind(id), d.prepare('DELETE FROM friends WHERE lo = ?1 OR hi = ?1').bind(id), d.prepare('DELETE FROM people WHERE id = ?1').bind(id)]);
+  await d.batch([d.prepare('DELETE FROM pos WHERE uid = ?1').bind(id), d.prepare('DELETE FROM friends WHERE lo = ?1 OR hi = ?1').bind(id), d.prepare('DELETE FROM people WHERE id = ?1').bind(id)]);
 }
 const publicUser = u => ({ id: u.id, name: u.name, avatar: u.avatar || '' });
 
@@ -208,7 +194,7 @@ export async function onRequest(ctx){
       return u ? json({ user: publicUser(u) }) : json({ user: null }, 401);
     }
     /* everything below needs a session and our header */
-    if(['logout', 'sync', 'account', 'pos', 'pos/me'].includes(path) || path.startsWith('friends/')){
+    if(['logout', 'sync', 'account', 'pos'].includes(path) || path.startsWith('friends/')){
       if(method !== 'GET' && !sameSite(req)) return json({ error: 'bad-origin' }, 403);
       const u = await sessionOf(req, env);
       if(path === 'logout' && method === 'POST'){
@@ -216,7 +202,7 @@ export async function onRequest(ctx){
         return json({ ok: true }, 200, { 'set-cookie': setCookie(COOKIE, '', 0) });
       }
       if(!u) return json({ error: 'signed-out' }, 401);
-      if(path === 'pos' || path === 'pos/me' || path.startsWith('friends/')) return friendsApi(path, method, req, env, u);
+      if(path === 'pos' || path.startsWith('friends/')) return friendsApi(path, method, req, env, u);
       const key = 'd:' + u.id;
       if(path === 'sync' && method === 'GET'){
         const raw = await env.TW_KV.get(key); if(!raw) return json({ data: null, at: 0 });
