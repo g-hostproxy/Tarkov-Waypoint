@@ -101,6 +101,8 @@ export async function onRequest(ctx){
     }
     return json({ error: 'not-found' }, 404);
   }catch(e){
+    /* Cloudflare's free KV plan stops reads/writes for the rest of the day once its daily limit is used up */
+    if(/limit|429|too many|quota/i.test(String(e && e.message))) return json({ error: 'busy' }, 429);
     return json({ error: 'server-error' }, 500);
   }
 }
