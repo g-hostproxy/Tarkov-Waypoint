@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Raid Route Companion</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'">
+<style>
+:root{--bg:#101614;--panel:#18211e;--line:#2a3833;--text:#e8efe9;--mute:#98a8a0;--accent:#ffb23e;--ok:#5fb36a;--bad:#e0a24a}
+*{box-sizing:border-box}body{margin:0;padding:18px;background:var(--bg);color:var(--text);font:14px/1.45 system-ui,Segoe UI,sans-serif}
+h1{margin:0 0 2px;font-size:19px}.sub{color:var(--mute);font-size:12.5px;margin-bottom:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:10px}
+.row{display:flex;align-items:center;gap:10px}.row>.g{flex:1;min-width:0}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--bad);flex:none}.dot.ok{background:var(--ok)}
+b{font-weight:650}small,.mute{color:var(--mute);font-size:12.5px}code{font-size:12px;word-break:break-all;color:var(--text)}
+button{font:inherit;color:var(--text);background:#22302b;border:1px solid var(--line);border-radius:8px;padding:6px 12px;cursor:pointer}button:hover{border-color:var(--accent)}
+.code{font-size:34px;letter-spacing:.18em;font-weight:800;color:var(--accent);text-align:center;margin:6px 0 2px;font-variant-numeric:tabular-nums}
+.pill{display:inline-block;padding:2px 9px;border-radius:99px;background:#22302b;font-size:12px}
+.upd{border-color:var(--accent)}label.sw{display:flex;gap:8px;align-items:center;cursor:pointer}
+</style></head><body>
+<h1>Raid Route Companion</h1><div class="sub">Alpha · follows your game logs and screenshot names. It never touches the game.</div>
+<div id="upd" class="card upd" hidden></div>
+<div class="card" id="linkCard"></div>
+<div class="card" id="gameCard"></div>
+<div class="card" id="shotCard"></div>
+<div class="card" id="liveCard"></div>
+<div class="card"><label class="sw"><input type="checkbox" id="startup"> Start with Windows (runs quietly in the tray)</label></div>
+<script src="app.js"></script></body></html>
