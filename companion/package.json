@@ -1,0 +1,49 @@
+{
+  "name": "tarkov-waypoint-app",
+  "productName": "Tarkov Waypoint",
+  "version": "0.2.2",
+  "description": "Windows companion for Tarkov Waypoint: follows your Escape from Tarkov logs and screenshot names. It never touches the game.",
+  "main": "src/main.js",
+  "author": "Tarkov Waypoint",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "test": "node test/parse.test.js && node test/core.test.js",
+    "dist": "electron-builder --win --publish never",
+    "release": "electron-builder --win --publish always"
+  },
+  "dependencies": {
+    "electron-updater": "^6.3.9"
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "app.tarkovwaypoint.desktop",
+    "productName": "Tarkov Waypoint",
+    "files": [
+      "src/**",
+      "ui/**",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.png"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "runAfterFinish": true
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "g-hostproxy",
+        "repo": "Tarkov-Waypoint",
+        "releaseType": "release"
+      }
+    ]
+  }
+}
