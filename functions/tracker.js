@@ -10,7 +10,7 @@ export async function onRequest({ request }) {
   if (!/^Bearer [\w.~+\/=-]{8,200}$/.test(auth)) return new Response(JSON.stringify({ error: 'Missing token' }), { status: 401, headers: { 'content-type': 'application/json' } });
   for (const url of URLS) {
     let r;
-    try { r = await fetch(url, { headers: { authorization: auth, accept: 'application/json', 'user-agent': 'RaidRoute/1.0 (progress sync)' } }); }
+    try { r = await fetch(url, { headers: { authorization: auth, accept: 'application/json', 'user-agent': 'TarkovWaypoint/1.0 (progress sync)' } }); }
     catch (e) { continue; }
     if (r.status === 401 || r.status === 403 || r.ok) {
       return new Response(r.body, { status: r.status, headers: { 'content-type': r.headers.get('content-type') || 'application/json', 'cache-control': 'no-store' } });
