@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Tarkov Waypoint</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'">
+<style>
+:root{--bg:#0b1210;--bg2:#101a17;--panel:#14201c;--line:#24342e;--text:#e8efe9;--mute:#8fa399;--accent:#ffb23e;--ok:#5fd08a;--bad:#e8a24a}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--text);font:14px/1.45 "Segoe UI",system-ui,sans-serif;background:radial-gradient(900px 400px at 100% -10%,#1d3a2e55,transparent 60%),var(--bg);padding:20px 18px 28px;user-select:none}
+header{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.logo{width:40px;height:40px;border-radius:12px;background:linear-gradient(145deg,#ffc46a,#e8942a);display:grid;place-items:center;box-shadow:0 6px 18px #e8942a40}
+.logo svg{width:22px;height:22px;stroke:#1a1208;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+h1{margin:0;font-size:18px;letter-spacing:.2px}.sub{color:var(--mute);font-size:12px}
+.tag{margin-left:auto;font-size:10.5px;letter-spacing:.08em;padding:3px 8px;border-radius:99px;border:1px solid var(--line);color:var(--mute)}
+.open{width:100%;padding:13px 16px;margin-bottom:14px;border:0;border-radius:14px;background:linear-gradient(180deg,#ffbf55,#f0a030);color:#1a1208;font:700 15px inherit;font-family:inherit;cursor:pointer;box-shadow:0 8px 22px #f0a03035;transition:transform .12s}
+.open:hover{transform:translateY(-1px)}
+.hero{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:12px;background:linear-gradient(160deg,#17261f,#101a17)}
+.hero small{color:var(--mute);font-size:11px;letter-spacing:.09em;text-transform:uppercase}
+.hero h2{margin:3px 0 10px;font-size:22px}
+.hero.raid{border-color:#5fd08a66}.hero.loading{border-color:#ffb23e77}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{padding:4px 10px;border-radius:99px;background:#1c2c26;border:1px solid var(--line);font-size:12px;color:#cfdcd5}
+.chip b{color:var(--text)}
+.sec{margin:16px 2px 8px;color:var(--mute);font-size:11px;letter-spacing:.09em;text-transform:uppercase}
+.card{display:flex;align-items:center;gap:12px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:8px}
+.card .g{flex:1;min-width:0}.card b{font-weight:600}
+.ic{width:34px;height:34px;border-radius:10px;flex:none;display:grid;place-items:center;background:#1c2c26}
+.ic svg{width:18px;height:18px;stroke:var(--mute);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ic.ok{background:#1b3a2a}.ic.ok svg{stroke:var(--ok)}.ic.warn{background:#3a2b17}.ic.warn svg{stroke:var(--bad)}
+code{display:block;font:11.5px Consolas,monospace;color:var(--mute);word-break:break-all;margin-top:1px}
+small.m{color:var(--mute);font-size:12px}
+button.sm{font:inherit;color:var(--text);background:#1d2d27;border:1px solid var(--line);border-radius:9px;padding:6px 12px;cursor:pointer}
+button.sm:hover{border-color:var(--accent)}
+.upd{border-color:var(--accent);background:#2a2214}
+.code{font-size:30px;letter-spacing:.2em;font-weight:800;color:var(--accent);margin-top:2px;font-variant-numeric:tabular-nums}
+label.sw{display:flex;align-items:center;gap:12px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:8px;cursor:pointer}
+label.sw span{flex:1}label.sw small{display:block;color:var(--mute);font-size:12px}
+input[type=checkbox]{appearance:none;width:38px;height:22px;border-radius:99px;background:#26352f;position:relative;cursor:pointer;flex:none;transition:.15s}
+input[type=checkbox]::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#9bb0a6;transition:.15s}
+input[type=checkbox]:checked{background:var(--accent)}input[type=checkbox]:checked::after{left:19px;background:#1a1208}
+details{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+summary{cursor:pointer;font-weight:600}details div{margin-top:8px;color:var(--mute);font-size:12.5px;line-height:1.6}details b{color:var(--text)}
+.foot{margin-top:14px;text-align:center;color:#5f7168;font-size:11.5px}
+</style></head><body>
+<header><div class="logo"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.2A7 7 0 0 1 19 9.8C19 14.8 12 21 12 21z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+<div><h1>Tarkov Waypoint</h1><div class="sub">Companion · follows your game</div></div><span class="tag" id="ver">ALPHA</span></header>
+<div id="upd" class="card upd" hidden></div>
+<button class="open" id="open">Open Tarkov Waypoint</button>
+<div class="hero" id="hero"></div>
+<div class="sec">Connections</div>
+<div id="linkCard"></div><div id="gameCard"></div><div id="shotCard"></div>
+<div class="sec">From your game log</div>
+<label class="sw"><span>Sync quests from game logs<small>Ticks quests when you start, finish or fail them. Unofficial.</small></span><input type="checkbox" id="pAuto"></label>
+<label class="sw"><span>Switch maps for me<small>Changes to the map you load into</small></span><input type="checkbox" id="pFollow"></label>
+<div class="sec">Settings</div>
+<label class="sw"><span>Start with Windows<small>Runs quietly in the tray</small></span><input type="checkbox" id="startup"></label>
+<label class="sw"><span>Keep running when the window is closed<small>Needed so quests keep ticking while you play</small></span><input type="checkbox" id="tray"></label>
+<details><summary>What this app does and accesses</summary><div>
+<b>It only reads:</b> the text log files the game writes in its Logs folder, the file names in your Screenshots folder (pictures are never opened), and where Tarkov is installed.<br>
+<b>It never:</b> touches the game's memory or process, injects anything, sends key presses or clicks, changes any game file, or uploads your data. The Tarkov Waypoint window inside this app talks to it on this PC only. It checks GitHub for updates.<br>
+<b>Unofficial:</b> not affiliated with or endorsed by Battlestate Games. Rules can change. Use at your own risk.</div></details>
+<div class="foot" id="foot"></div>
+<script src="app.js"></script></body></html>
