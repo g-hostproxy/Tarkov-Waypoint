@@ -38,10 +38,6 @@ jobs:
       - name: Build extract photos
         continue-on-error: true
         run: node scripts/build-extract-photos.mjs
-      # Armor, helmets, backpacks, stims, guns and attachments with current flea prices, for the Meta gear tool (data/gear.json).
-      - name: Build gear data
-        continue-on-error: true
-        run: node scripts/build-gear.mjs
       - name: Commit if changed
         run: |
           if [ -n "$(git status --porcelain data)" ]; then
