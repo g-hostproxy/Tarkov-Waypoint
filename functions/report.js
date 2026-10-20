@@ -6,7 +6,9 @@
      - the user-agent is never forwarded (the page sends only a browser family if the visitor ticks "include technical details")
    Settings (Cloudflare Pages > your project > Settings > Variables and Secrets):
      GITHUB_TOKEN  (Secret)  fine-grained token: ONLY the bug repo, permission "Issues: Read and write"
-     BUG_REPO      (Text)    owner/repo of the private repo, for example  g-hostproxy/tarkov-bug-reports  */
+     BUG_REPO      (Text)    owner/repo of the private repo, for example  g-hostproxy/tarkov-bug-reports
+   Fix notices: each report gets a random secret that only the sender's browser keeps (the issue holds just its hash). functions/report-status.js
+   lets that browser ask "is my report closed yet?". Close the issue to say it is fixed; a comment starting with  /public  is shown to the sender. */
 
 const CATS = {
   pins:   'Wrong or missing pin',
@@ -92,7 +94,9 @@ export async function onRequestPost({ request, env }) {
 
   const first = msg.split('\n')[0].replace(/@/g, '').slice(0, 70);
   const title = '[' + CATS[cat] + '] ' + first;
-  const body = '**' + CATS[cat] + '**\n\n' + fence(msg) + details + '\n\n_Sent anonymously from the site. No contact details were collected._';
+  /* a secret only the sender's browser keeps; the issue stores just its hash, so only that browser can ask about this report later */
+  const key = [...crypto.getRandomValues(new Uint8Array(24))].map(x => x.toString(16).padStart(2, '0')).join('');
+  const body = '**' + CATS[cat] + '**\n\n' + fence(msg) + details + '\n\n_Sent anonymously from the site. No contact details were collected._\n\n<!-- rr-key:' + await sha256('rr-report|' + key) + ' -->';
 
   let res;
   try {
@@ -109,7 +113,8 @@ export async function onRequestPost({ request, env }) {
     });
   } catch (e) { return json(502, { ok: false }); }
   if (!res.ok) { console.error('bug report: GitHub answered', res.status); return json(502, { ok: false }); }
-  return json(200, { ok: true });
+  let id = 0; try { id = +(await res.json()).number || 0; } catch (e) {}
+  return json(200, id ? { ok: true, id, key } : { ok: true });
 }
 
 /* anything that is not a POST */
