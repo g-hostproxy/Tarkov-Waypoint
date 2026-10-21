@@ -38,6 +38,10 @@ jobs:
       - name: Build extract photos
         continue-on-error: true
         run: node scripts/build-extract-photos.mjs
+      # When each exit is open and what it needs, from each map's wiki table (the Extract details list in the legend). Refreshes weekly.
+      - name: Build extract info
+        continue-on-error: true
+        run: node scripts/build-extract-info.mjs
       - name: Commit if changed
         run: |
           if [ -n "$(git status --porcelain data)" ]; then
