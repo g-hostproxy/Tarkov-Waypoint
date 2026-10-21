@@ -1,0 +1,1356 @@
+{
+ "v": 1,
+ "updated": "2026-10-21T05:55:30.091Z",
+ "source": "https://escapefromtarkov.fandom.com/wiki/",
+ "maps": {
+  "customs": {
+   "administrationgate": {
+    "name": "Administration Gate",
+    "faction": "Scav",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "boilerroombasement": {
+    "name": "Boiler Room Basement (Co-op)",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Scav + PMC",
+    "notes": "; In the basement of the boiler building with the 2 chimneys in the construction area.",
+    "items": [
+     "Scav"
+    ]
+   },
+   "crossroads": {
+    "name": "Crossroads",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "dormsvex": {
+    "name": "Dorms V-Ex",
+    "faction": "PMC",
+    "always": "Not always",
+    "single": "Yes",
+    "req": "per player Maximum of 4 players",
+    "notes": "The fee amount is influenced by your Scav karma .",
+    "items": [
+     "Roubles"
+    ]
+   },
+   "gatenearmedblock": {
+    "name": "Gate Near Medblock",
+    "faction": "Scav",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "oldgasstation": {
+    "name": "Old Gas Station",
+    "faction": "All",
+    "always": "Not always",
+    "single": "",
+    "req": "Green flares = Open for PMCs",
+    "notes": "In the basement.",
+    "items": []
+   },
+   "railroadpassage": {
+    "name": "Railroad Passage (Flare)",
+    "faction": "PMC",
+    "always": "Always",
+    "single": "",
+    "req": "Shoot a green flare into the sky while inside the signal flare area. If the flare doesn't reach a certain height, the extraction won't open.; Flares:; Handheld RSP-30 green flare; Signal pistol fired 26x75mm green flare; Only one person amongst a lobby-made group needs to shoot a flare to open the extraction for all members of the group.",
+    "notes": "Upon entering the signal flare area, a notification will pop up in the bottom right corner of the screen:; If the flare was fired correctly, a new notification pops up:;;; Signal flare area and extract zone map;",
+    "items": [
+     "RSP-30 reactive signal cartridge (Green)",
+     "26x75mm flare cartridge (Green)"
+    ]
+   },
+   "railroadtoport": {
+    "name": "Railroad to Port",
+    "faction": "Scav",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "railroadtoreserve": {
+    "name": "Railroad to Reserve",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "railroadtotarkov": {
+    "name": "Railroad to Tarkov",
+    "faction": "Scav",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "reservecheckpoint": {
+    "name": "Reserve Checkpoint",
+    "faction": "Scav",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "smugglersboat": {
+    "name": "Smugglers' Boat",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Note with code word Voron",
+    "notes": "",
+    "items": [
+     "Note with code word Voron"
+    ]
+   },
+   "smugglersbunker": {
+    "name": "Smugglers' Bunker (ZB-1012)",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Note with code word Voron",
+    "notes": "",
+    "items": [
+     "Note with code word Voron"
+    ]
+   },
+   "trailerpark": {
+    "name": "Trailer Park",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "In the trees.",
+    "items": []
+   },
+   "zb1011": {
+    "name": "ZB-1011",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "zb1013": {
+    "name": "ZB-1013",
+    "faction": "PMC",
+    "always": "Always",
+    "single": "",
+    "req": "; Activate lever in warehouse #4 at the crane yard.; +;; Used to open the door to the extraction",
+    "notes": "; In the basement of the Scav base.",
+    "items": [
+     "ZB-1013 key"
+    ]
+   },
+   "transittofactory": {
+    "name": "Transit to Factory",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Only available 1 min after raid start",
+    "notes": "Next to the Old Gas Station extraction",
+    "items": []
+   },
+   "transittointerchange": {
+    "name": "Transit to Interchange",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Only available 1 min after raid start",
+    "notes": "Next to the Trailer Park extraction, inside the bus",
+    "items": []
+   },
+   "transittoreserve": {
+    "name": "Transit to Reserve",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Only available 1 min after raid start",
+    "notes": "",
+    "items": []
+   },
+   "transittoshoreline": {
+    "name": "Transit to Shoreline",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Only available 1 min after raid start",
+    "notes": "",
+    "items": []
+   }
+  },
+  "woods": {
+   "boat": {
+    "name": "Boat",
+    "faction": "Scav",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "bridgevex": {
+    "name": "Bridge V-Ex",
+    "faction": "PMC",
+    "always": "Not always",
+    "single": "Yes",
+    "req": "per player Maximum of 4 players",
+    "notes": "The fee amount is influenced by your Scav karma . There are border snipers beyond the vehicle.",
+    "items": [
+     "Roubles"
+    ]
+   },
+   "deadmansplace": {
+    "name": "Dead Man's Place",
+    "faction": "Scav",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "easternrocks": {
+    "name": "Eastern Rocks",
+    "faction": "Scav",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "friendshipbridge": {
+    "name": "Friendship Bridge (Co-Op)",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Scav + PMC",
+    "notes": "On the right side.",
+    "items": [
+     "Scav"
+    ]
+   },
+   "mountainstash": {
+    "name": "Mountain Stash",
+    "faction": "Scav",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "northernunroadblock": {
+    "name": "Northern UN Roadblock",
+    "faction": "PMC",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "There are border snipers beyond the gate.",
+    "items": []
+   },
+   "oldrailwaydepot": {
+    "name": "Old Railway Depot",
+    "faction": "Scav",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "outskirts": {
+    "name": "Outskirts",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "powerlinepassage": {
+    "name": "Power Line Passage (Flare)",
+    "faction": "PMC",
+    "always": "Always",
+    "single": "",
+    "req": "Shoot a green flare into the sky while inside the signal flare area. If the flare doesn't reach a certain height, the extraction won't open.; Flares:; Handheld RSP-30 green flare; Signal pistol fired 26x75mm green flare; Only one person amongst a lobby-made group needs to shoot a flare to open the extraction for all members of the group.",
+    "notes": "Upon entering the signal flare area, a notification will pop up in the bottom right corner of the screen:; If the flare was fired correctly, a new notification pops up:;;; Signal flare area and extract zone map;",
+    "items": [
+     "RSP-30 reactive signal cartridge (Green)",
+     "26x75mm flare cartridge (Green)"
+    ]
+   },
+   "railwaybridgetotarkov": {
+    "name": "Railway Bridge to Tarkov",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Minefield map (Woods)",
+    "notes": "",
+    "items": [
+     "Minefield map (Woods)"
+    ]
+   },
+   "ruafgate": {
+    "name": "RUAF Gate",
+    "faction": "PMC",
+    "always": "Not always",
+    "single": "",
+    "req": "Green flare = Open",
+    "notes": "",
+    "items": []
+   },
+   "ruafroadblock": {
+    "name": "RUAF Roadblock",
+    "faction": "Scav",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "scavbunker": {
+    "name": "Scav Bunker",
+    "faction": "Scav",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "scavhouse": {
+    "name": "Scav House",
+    "faction": "Scav",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "unroadblock": {
+    "name": "UN Roadblock",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "There are border snipers beyond the shipping containers.",
+    "items": []
+   },
+   "zb014": {
+    "name": "ZB-014",
+    "faction": "PMC",
+    "always": "Not always",
+    "single": "",
+    "req": "Green flares = Open",
+    "notes": "",
+    "items": [
+     "ZB-014 key"
+    ]
+   },
+   "zb016": {
+    "name": "ZB-016",
+    "faction": "PMC",
+    "always": "Not always",
+    "single": "",
+    "req": "Green flares = Open",
+    "notes": "",
+    "items": []
+   },
+   "transittocustoms": {
+    "name": "Transit to Customs",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Only available 1 min after raid start",
+    "notes": "",
+    "items": []
+   },
+   "transittofactory": {
+    "name": "Transit to Factory",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Only available 1 min after raid start",
+    "notes": "",
+    "items": []
+   },
+   "transittolighthouse": {
+    "name": "Transit to Lighthouse",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Only available 1 min after raid start",
+    "notes": "",
+    "items": []
+   },
+   "transittoreserve": {
+    "name": "Transit to Reserve",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Only available 1 min after raid start",
+    "notes": "",
+    "items": []
+   }
+  },
+  "shoreline": {
+   "adminbasement": {
+    "name": "Admin Basement",
+    "faction": "Scav",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "climberstrail": {
+    "name": "Climber's Trail",
+    "faction": "PMC",
+    "always": "Always",
+    "single": "",
+    "req": "Red Rebel ice pick; Paracord; No armor vest equipped",
+    "notes": "",
+    "items": [
+     "Red Rebel ice pick",
+     "Paracord",
+     "Armor vest"
+    ]
+   },
+   "eastwinggymentrance": {
+    "name": "East Wing Gym Entrance",
+    "faction": "Scav",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "lighthouse": {
+    "name": "Lighthouse",
+    "faction": "Scav",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "mountainbunker": {
+    "name": "Mountain Bunker",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Note with code word Heartbeat",
+    "notes": "",
+    "items": [
+     "Note with code word Heartbeat"
+    ]
+   },
+   "pathtolighthouse": {
+    "name": "Path to Lighthouse",
+    "faction": "PMC",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "pierboat": {
+    "name": "Pier Boat",
+    "faction": "PMC",
+    "always": "Not always",
+    "single": "",
+    "req": "Green flare = Open",
+    "notes": "",
+    "items": []
+   },
+   "railwaybridge": {
+    "name": "Railway Bridge",
+    "faction": "PMC",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "roadtocustoms": {
+    "name": "Road to Customs",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "roadtonorthvex": {
+    "name": "Road to North V-Ex",
+    "faction": "PMC",
+    "always": "Always",
+    "single": "Yes",
+    "req": "per player Maximum of 5 players",
+    "notes": "The fee amount is influenced by your Scav karma . There are border snipers beyond the vehicle.",
+    "items": [
+     "Roubles"
+    ]
+   },
+   "ruinedroad": {
+    "name": "Ruined Road",
+    "faction": "Scav",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "smugglerspath": {
+    "name": "Smugglers' Path (Co-op)",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Scav + PMC",
+    "notes": "",
+    "items": [
+     "Scav"
+    ]
+   },
+   "tunnel": {
+    "name": "Tunnel",
+    "faction": "PMC",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "transittoicebreaker": {
+    "name": "Transit to Icebreaker",
+    "faction": "PMC",
+    "always": "Always",
+    "single": "",
+    "req": "Only available 1 min after raid start; per player Maximum of 3 players",
+    "notes": "At the pier; Has to be unlocked through the story chapter Boreas",
+    "items": [
+     "Sudak-Tudak marine repair kit"
+    ]
+   },
+   "transittolabyrinth": {
+    "name": "Transit to Labyrinth",
+    "faction": "PMC",
+    "always": "Always",
+    "single": "",
+    "req": "Only available 1 min after raid start; per player",
+    "notes": "; In the basement of the health resort west wing; Knossos LLC facility key required",
+    "items": [
+     "Labrys access keycard"
+    ]
+   },
+   "transittolighthouse": {
+    "name": "Transit to Lighthouse",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Only available 1 min after raid start",
+    "notes": "In front of the Path to Lighthouse extraction",
+    "items": []
+   },
+   "transittoterminal": {
+    "name": "Transit to Terminal",
+    "faction": "PMC",
+    "always": "Always",
+    "single": "",
+    "req": "Only available 1 min after raid start in the time period of 21:00-6:00; +; or;; or;; or;; per player",
+    "notes": "Requires presenting the access item at the port garrison intercom to not get shot;",
+    "items": [
+     "Reprogrammed RFID keycard with Mr. Kerman's hash codes",
+     "Secure container Alpha-1 with TerraGroup evidence",
+     "RFID keycard with unknown name",
+     "Reprogrammed RFID keycard with Prapor's hash codes",
+     "Prapor's letter for the port checkpoint"
+    ]
+   }
+  },
+  "interchange": {
+   "emercomcheckpoint": {
+    "name": "Emercom Checkpoint",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "pathtoriver": {
+    "name": "Path to River (Flare)",
+    "faction": "PMC",
+    "always": "Always",
+    "single": "",
+    "req": "Shoot a green flare into the sky while inside the signal flare area. If the flare doesn't reach a certain height, the extraction won't open.; Flares:; Handheld RSP-30 green flare; Signal pistol fired 26x75mm green flare; Only one person amongst a lobby-made group needs to shoot a flare to open the extraction for all members of the group.",
+    "notes": "Upon entering the signal flare area, a notification will pop up in the bottom right corner of the screen:; If the flare was fired correctly, a new notification pops up:;;; Signal flare area and extract zone map;",
+    "items": [
+     "RSP-30 reactive signal cartridge (Green)",
+     "26x75mm flare cartridge (Green)"
+    ]
+   },
+   "powerstationvex": {
+    "name": "Power Station V-Ex",
+    "faction": "PMC",
+    "always": "Not always",
+    "single": "Yes",
+    "req": "per player Maximum of 4 players",
+    "notes": "The fee amount is influenced by your Scav karma . There are border snipers beyond the vehicle.",
+    "items": [
+     "Roubles"
+    ]
+   },
+   "railwayexfil": {
+    "name": "Railway Exfil",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "saferoomexfil": {
+    "name": "Saferoom Exfil",
+    "faction": "PMC",
+    "always": "Always",
+    "single": "Yes",
+    "req": "1.Turn on power at the power station; 2.Flush urinal in the \"Burger Spot\" restaurant; 3.Swipe Object #11SR keycard at revealed keycard panel; 4.Lock the extraction door from inside with the button next to it",
+    "notes": "A lever to open the Object-14 container can be found inside the extraction.",
+    "items": [
+     "Object 11SR keycard"
+    ]
+   },
+   "scavcamp": {
+    "name": "Scav Camp (Co-Op)",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Scav + PMC",
+    "notes": "",
+    "items": [
+     "Scav"
+    ]
+   },
+   "smugglerstunnel": {
+    "name": "Smugglers' Tunnel",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Interchange underground utility plan",
+    "notes": "",
+    "items": [
+     "Interchange underground utility plan"
+    ]
+   },
+   "transittocustoms": {
+    "name": "Transit to Customs",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Only available 1 min after raid start",
+    "notes": "At the southern end of the highway",
+    "items": []
+   },
+   "transittostreetsoftarkov": {
+    "name": "Transit to Streets of Tarkov",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Only available 1 min after raid start",
+    "notes": "At the northern end of the highway",
+    "items": []
+   }
+  },
+  "reserve": {
+   "armoredtrain": {
+    "name": "Armored Train",
+    "faction": "All",
+    "always": "Not always",
+    "single": "Yes",
+    "req": "",
+    "notes": "Arrives between 16 and 12 minutes left in the raid.; Honks twice on arrival.; Stays for 7 min.; Honks once 1 min before departure.; Honks twice on closing doors.; https://escapefromtarkov.fandom.com/wiki/File:ExtractionTrainHorn.wav; Scav Raiders may spawn at the train yard around the time of arrival.",
+    "items": []
+   },
+   "bunkerhermeticdoor": {
+    "name": "Bunker Hermetic Door",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "; Activate the lever in the shack west of the white pawn barracks.",
+    "notes": "The activation lasts for 4 minutes and a siren wails for the duration.; https://escapefromtarkov.fandom.com/wiki/File:ReserveHermeticSiren.wav; Activating the lever has a chance to make some Scav Raiders spawn at the train yard.;",
+    "items": []
+   },
+   "checkpointfence": {
+    "name": "Checkpoint Fence",
+    "faction": "Scav",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "cliffdescent": {
+    "name": "Cliff Descent",
+    "faction": "PMC",
+    "always": "Always",
+    "single": "",
+    "req": "Red Rebel ice pick; Paracord; No armor vest equipped",
+    "notes": "",
+    "items": [
+     "Red Rebel ice pick",
+     "Paracord",
+     "Armor vest"
+    ]
+   },
+   "d2": {
+    "name": "D-2",
+    "faction": "PMC",
+    "always": "Always",
+    "single": "",
+    "req": "; 1.Turn on power with a lever in the; underground bunker system; 2.Press the button on the wall next to the sliding door",
+    "notes": "Activating the lever has the chance to make some Scav Raiders spawn in the command part of the bunker.",
+    "items": []
+   },
+   "depothermeticdoor": {
+    "name": "Depot Hermetic Door",
+    "faction": "Scav",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "exittowoods": {
+    "name": "Exit to Woods",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Minefield map (Reserve)",
+    "notes": "",
+    "items": [
+     "Minefield map (Reserve)"
+    ]
+   },
+   "heatingpipe": {
+    "name": "Heating Pipe",
+    "faction": "Scav",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "holeinthewallbythemountains": {
+    "name": "Hole in the Wall by the Mountains",
+    "faction": "Scav",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "scavlands": {
+    "name": "Scav Lands (Co-Op)",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Scav + PMC",
+    "notes": "",
+    "items": [
+     "Scav"
+    ]
+   },
+   "sewermanhole": {
+    "name": "Sewer Manhole",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "No backpack equipped",
+    "notes": "",
+    "items": [
+     "Backpacks"
+    ]
+   },
+   "transittocustoms": {
+    "name": "Transit to Customs",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Only available 1 min after raid start",
+    "notes": "North of the black bishop barracks, where the train track ends",
+    "items": []
+   },
+   "transittolighthouse": {
+    "name": "Transit to Lighthouse",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Only available 1 min after raid start",
+    "notes": "; At the map border southwest of the train yard",
+    "items": []
+   },
+   "transittowoods": {
+    "name": "Transit to Woods",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Only available 1 min after raid start",
+    "notes": "; At the map border northwest of the train yard",
+    "items": []
+   }
+  },
+  "lighthouse": {
+   "armoredtrain": {
+    "name": "Armored Train",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "Arrives between 20 and 15 minutes left in the raid.; Honks twice on arrival.; Stays for 7 min.; Honks once 1 min before departure.; Honks twice on closing doors.; https://escapefromtarkov.fandom.com/wiki/File:ExtractionTrainHorn.wav",
+    "items": []
+   },
+   "hideoutunderthelandingstage": {
+    "name": "Hideout Under the Landing Stage",
+    "faction": "Scav",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "industrialzonegates": {
+    "name": "Industrial Zone Gates",
+    "faction": "Scav",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "mountainpass": {
+    "name": "Mountain Pass",
+    "faction": "PMC",
+    "always": "Always",
+    "single": "",
+    "req": "Red Rebel ice pick; Paracord; No armor vest equipped",
+    "notes": "",
+    "items": [
+     "Red Rebel ice pick",
+     "Paracord",
+     "Armor vest"
+    ]
+   },
+   "northerncheckpoint": {
+    "name": "Northern Checkpoint",
+    "faction": "PMC",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "passagebythelake": {
+    "name": "Passage by the Lake",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Minefield map (Lighthouse)",
+    "notes": "; Item handover location",
+    "items": [
+     "Minefield map (Lighthouse)"
+    ]
+   },
+   "pathtoshoreline": {
+    "name": "Path to Shoreline",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "roadtomilitarybasevex": {
+    "name": "Road to Military Base V-Ex",
+    "faction": "PMC",
+    "always": "Not always",
+    "single": "Yes",
+    "req": "per player Maximum of 5 players",
+    "notes": "The fee amount is influenced by your Scav karma . There are border snipers beyond the vehicle.",
+    "items": [
+     "Roubles"
+    ]
+   },
+   "scavhideoutatthegrotto": {
+    "name": "Scav Hideout at the Grotto",
+    "faction": "Scav",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "sidetunnel": {
+    "name": "Side Tunnel (Co-Op)",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Scav + PMC",
+    "notes": "; The extraction zone is inside a room to the left after entering the tunnel.",
+    "items": [
+     "Scav"
+    ]
+   },
+   "southernroad": {
+    "name": "Southern Road",
+    "faction": "PMC",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "southernroadlandslide": {
+    "name": "Southern Road Landslide",
+    "faction": "Scav",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "transittoicebreaker": {
+    "name": "Transit to Icebreaker",
+    "faction": "PMC",
+    "always": "Always",
+    "single": "",
+    "req": "Only available 1 min after raid start; per player Maximum of 3 players",
+    "notes": "At the pier next to the seaside houses; Has to be unlocked through the story chapter Boreas",
+    "items": [
+     "Sudak-Tudak marine repair kit"
+    ]
+   },
+   "transittoreserve": {
+    "name": "Transit to Reserve",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Only available 1 min after raid start",
+    "notes": "On the road leading to the Road to Military Base V-Ex extraction",
+    "items": []
+   },
+   "transittoshoreline": {
+    "name": "Transit to Shoreline",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Only available 1 min after raid start",
+    "notes": "Next to the Path to Shoreline extraction",
+    "items": []
+   },
+   "transittowoods": {
+    "name": "Transit to Woods",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Only available 1 min after raid start",
+    "notes": "On the road leading to the Road to Northern Checkpoint extraction",
+    "items": []
+   }
+  },
+  "streets-of-tarkov": {
+   "cardinalapartmentcomplexparking": {
+    "name": "Cardinal Apartment Complex Parking",
+    "faction": "Scav",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "collapsedcrane": {
+    "name": "Collapsed Crane",
+    "faction": "PMC",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "courtyard": {
+    "name": "Courtyard",
+    "faction": "PMC",
+    "always": "Not always",
+    "single": "",
+    "req": "Green flare = Open",
+    "notes": "",
+    "items": []
+   },
+   "crashsite": {
+    "name": "Crash Site",
+    "faction": "PMC",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "damagedhouse": {
+    "name": "Damaged House",
+    "faction": "PMC",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "entrancetocatacombs": {
+    "name": "Entrance to Catacombs",
+    "faction": "Scav",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "expocheckpoint": {
+    "name": "Expo Checkpoint",
+    "faction": "PMC",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "klimovshoppingmallexfil": {
+    "name": "Klimov Shopping Mall Exfil",
+    "faction": "Scav",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "; On the 1st floor of the eastern staircase in the Klimov shopping mall.",
+    "items": []
+   },
+   "klimovstreet": {
+    "name": "Klimov Street (Flare)",
+    "faction": "PMC",
+    "always": "Always",
+    "single": "",
+    "req": "Shoot a green flare into the sky while inside the signal flare area. If the flare doesn't reach a certain height, the extraction won't open.; Flares:; Handheld RSP-30 green flare; Signal pistol fired 26x75mm green flare; Only one person amongst a lobby-made group needs to shoot a flare to open the extraction for all members of the group.",
+    "notes": "Upon entering the signal flare area, a notification will pop up in the bottom right corner of the screen:; If the flare was fired correctly, a new notification pops up:;;; Signal flare area and extract zone map;",
+    "items": [
+     "RSP-30 reactive signal cartridge (Green)",
+     "26x75mm flare cartridge (Green)"
+    ]
+   },
+   "nearkamchatskayaarch": {
+    "name": "Near Kamchatskaya Arch",
+    "faction": "Scav",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "; In the courtyard of the museum building.",
+    "items": []
+   },
+   "pinewoodbasement": {
+    "name": "Pinewood Basement (Co-Op)",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Scav + PMC",
+    "notes": "; It the northeastern staircase of the Pinewood hotel.",
+    "items": [
+     "Scav"
+    ]
+   },
+   "primorskyavetaxivex": {
+    "name": "Primorsky Ave Taxi V-Ex",
+    "faction": "PMC",
+    "always": "Not always",
+    "single": "Yes",
+    "req": "per player Maximum of 4 players",
+    "notes": "The fee amount is influenced by your Scav karma . There are border snipers beyond the vehicle.",
+    "items": [
+     "Roubles"
+    ]
+   },
+   "sewermanhole": {
+    "name": "Sewer Manhole",
+    "faction": "Scav",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "sewerriver": {
+    "name": "Sewer River",
+    "faction": "PMC",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "smugglersbasement": {
+    "name": "Smugglers' Basement",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Note with code word Onyx",
+    "notes": "",
+    "items": [
+     "Note with code word Onyx"
+    ]
+   },
+   "stylobatebuildingelevator": {
+    "name": "Stylobate Building Elevator",
+    "faction": "PMC",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "; Behind the bar on the 3rd floor of the Beluga restaurant.",
+    "items": []
+   },
+   "ventilationshaft": {
+    "name": "Ventilation Shaft",
+    "faction": "Scav",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "transittogroundzero": {
+    "name": "Transit to Ground Zero",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Only available 1 min after raid start",
+    "notes": "Next to the ministry of the interior academy",
+    "items": []
+   },
+   "transittointerchange": {
+    "name": "Transit to Interchange",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Only available 1 min after raid start",
+    "notes": "Southwest of the Concordia apartment complex",
+    "items": []
+   },
+   "transittothelab": {
+    "name": "Transit to The Lab",
+    "faction": "PMC",
+    "always": "Always",
+    "single": "",
+    "req": "Only available 1 min after raid start; per player",
+    "notes": "; Underground entrance in front of the Klimova 16A building with the Cosmonaut painting",
+    "items": [
+     "TerraGroup Labs access keycard"
+    ]
+   }
+  },
+  "factory": {
+   "camerabunkerdoor": {
+    "name": "Camera Bunker Door",
+    "faction": "Scav",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "cellars": {
+    "name": "Cellars",
+    "faction": "PMC",
+    "always": "Always",
+    "single": "",
+    "req": "; Used to open the door to the extraction",
+    "notes": "",
+    "items": [
+     "Factory emergency exit key"
+    ]
+   },
+   "courtyardgate": {
+    "name": "Courtyard Gate",
+    "faction": "PMC",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "; Can also be accessed from the 2nd floor locker room.",
+    "items": []
+   },
+   "gate0": {
+    "name": "Gate 0",
+    "faction": "PMC",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "gate3": {
+    "name": "Gate 3",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "medtentgate": {
+    "name": "Med Tent Gate",
+    "faction": "PMC",
+    "always": "Always",
+    "single": "",
+    "req": "; Used to open the door to the extraction",
+    "notes": "",
+    "items": [
+     "Factory emergency exit key"
+    ]
+   },
+   "officewindow": {
+    "name": "Office Window",
+    "faction": "Scav",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "smugglerspassage": {
+    "name": "Smugglers' Passage",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Note with code word Ark",
+    "notes": "",
+    "items": [
+     "Note with code word Ark"
+    ]
+   },
+   "transittocustoms": {
+    "name": "Transit to Customs",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Only available 1 min after raid start",
+    "notes": "Med Tent Gate extraction side outdoor area",
+    "items": []
+   },
+   "transittothelab": {
+    "name": "Transit to The Lab",
+    "faction": "PMC",
+    "always": "Always",
+    "single": "",
+    "req": "Only available 1 min after raid start; per player",
+    "notes": "; In the sewer tunnel connected to the flooded area",
+    "items": [
+     "TerraGroup Labs access keycard"
+    ]
+   },
+   "transittowoods": {
+    "name": "Transit to Woods",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Only available 1 min after raid start",
+    "notes": "At the Courtyard Gate extraction",
+    "items": []
+   }
+  },
+  "the-lab": {},
+  "ground-zero": {
+   "emercomcheckpoint": {
+    "name": "Emercom Checkpoint",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "",
+    "items": []
+   },
+   "miraave": {
+    "name": "Mira Ave (Flare)",
+    "faction": "PMC",
+    "always": "Always",
+    "single": "",
+    "req": "Shoot a green flare into the sky while inside the signal flare area. If the flare doesn't reach a certain height, the extraction won't open.; Flares:; Handheld RSP-30 green flare; Signal pistol fired 26x75mm green flare;; The Scav body leaned against the yellow bus at the extraction spawns one flare every raid.; Only one person amongst a lobby-made group needs to shoot a flare to open the extraction for all members of the group.",
+    "notes": "Upon entering the signal flare area, a notification will pop up in the bottom right corner of the screen:; If the flare was fired correctly, a new notification pops up:;;; Signal flare area and extract zone map;",
+    "items": [
+     "RSP-30 reactive signal cartridge (Green)",
+     "26x75mm flare cartridge (Green)",
+     "Scav body"
+    ]
+   },
+   "nakatanibasementstairs": {
+    "name": "Nakatani Basement Stairs",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "",
+    "notes": "; In the basement of the Nakatani building.",
+    "items": []
+   },
+   "policecordonvex": {
+    "name": "Police Cordon V-Ex",
+    "faction": "PMC",
+    "always": "Always",
+    "single": "Yes",
+    "req": "per player Maximum of 4 players",
+    "notes": "The fee amount is influenced by your Scav karma . There are border snipers beyond the vehicle.",
+    "items": [
+     "Roubles"
+    ]
+   },
+   "scavcheckpoint": {
+    "name": "Scav Checkpoint (Co-op)",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Scav + PMC",
+    "notes": "",
+    "items": [
+     "Scav"
+    ]
+   },
+   "tartowerssalesoffice": {
+    "name": "Tartowers Sales Office",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Note with code word Adaptation",
+    "notes": "",
+    "items": [
+     "Note with code word Adaptation"
+    ]
+   },
+   "transittostreetsoftarkov": {
+    "name": "Transit to Streets of Tarkov",
+    "faction": "All",
+    "always": "Always",
+    "single": "",
+    "req": "Only available 1 min after raid start",
+    "notes": "Next to the Mira Ave extraction",
+    "items": []
+   }
+  }
+ }
+}
