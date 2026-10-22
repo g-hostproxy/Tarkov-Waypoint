@@ -30,6 +30,12 @@ jobs:
       - name: Fetch quest data (tarkov.dev)
         continue-on-error: true
         run: node scripts/update-data.mjs
+      # The same for PvE (separate quest list, written to data/quests-pve.json). Allowed to fail; the site then reads tarkov.dev directly.
+      - name: Fetch PvE quest data (tarkov.dev)
+        continue-on-error: true
+        env:
+          GAME_MODE: pve
+        run: node scripts/update-data.mjs
       # Quests the wiki has and the game data does not (Arena, Event, Seasonal, Removed and newer quests), tagged by type.
       - name: Build wiki quests
         continue-on-error: true
