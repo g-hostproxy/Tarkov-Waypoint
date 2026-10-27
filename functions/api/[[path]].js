@@ -30,7 +30,7 @@ function sameSite(req){
   const o = req.headers.get('origin'); return !o || o === new URL(req.url).origin;
 }
 /* ---------- Friends: needs the D1 database (KV is far too small for live positions: ~1,000 writes a day) ---------- */
-const CODE_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789', MAX_FRIENDS = 30, MAX_PENDING = 20, POS_KEEP = 60 * 60000, POS_SHOW = 3 * 60 * 60000, POS_GAP = 5000, ROUTE_MAX = 60000, ROUTE_GAP = 3000, ROUTE_KEEP = 24 * 3600000;
+const CODE_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789', MAX_FRIENDS = 30, MAX_PENDING = 20, POS_KEEP = 60 * 60000, POS_SHOW = 3 * 60 * 60000, POS_GAP = 5000, ROUTE_MAX = 60000, ROUTE_GAP = 3000, ROUTE_KEEP = 24 * 3600000, PIC_MAX = 400 * 1024, PIC_COUNT = 40, PIC_TOTAL = 8 * 1024 * 1024, PIC_GAP = 700;
 let schemaReady = false;
 const newCode = () => { const b = crypto.getRandomValues(new Uint8Array(8)); const c = [...b].map(x => CODE_CHARS[x % 32]).join(''); return c.slice(0, 4) + '-' + c.slice(4); };
 async function openDb(env){
@@ -42,7 +42,9 @@ async function openDb(env){
       env.TW_DB.prepare('CREATE INDEX IF NOT EXISTS friends_hi ON friends (hi)'),
       env.TW_DB.prepare('CREATE TABLE IF NOT EXISTS pos (uid TEXT NOT NULL, at INTEGER NOT NULL, map TEXT, x REAL, z REAL, fx REAL, fz REAL, face INTEGER)'),
       env.TW_DB.prepare('CREATE INDEX IF NOT EXISTS pos_uid ON pos (uid, at)'),
-      env.TW_DB.prepare('CREATE TABLE IF NOT EXISTS shares (uid TEXT PRIMARY KEY, at INTEGER NOT NULL, data TEXT NOT NULL)')
+      env.TW_DB.prepare('CREATE TABLE IF NOT EXISTS shares (uid TEXT PRIMARY KEY, at INTEGER NOT NULL, data TEXT NOT NULL)'),
+      env.TW_DB.prepare('CREATE TABLE IF NOT EXISTS pics (id TEXT PRIMARY KEY, uid TEXT NOT NULL, at INTEGER NOT NULL, mime TEXT NOT NULL, size INTEGER NOT NULL, b64 TEXT NOT NULL)'),
+      env.TW_DB.prepare('CREATE INDEX IF NOT EXISTS pics_uid ON pics (uid)')
     ]);
     schemaReady = true;
   }
@@ -105,6 +107,46 @@ async function friendsApi(path, method, req, env, u){
     if(st && now - st.at < ROUTE_GAP) return json({ ok: true, sent: false, why: 'too-soon' });
     await d.prepare('INSERT INTO shares (uid, at, data) VALUES (?1, ?2, ?3) ON CONFLICT(uid) DO UPDATE SET at = ?2, data = ?3').bind(u.id, now, b.data).run();
     return json({ ok: true, sent: true, at: now });
+  }
+  /* ---- pictures on custom route pins: shrunk in the browser, kept here as base64 text (D1 hands blobs back as slow number lists) ---- */
+  if(path === 'pics/get' && method === 'GET'){
+    const id = String(new URL(req.url).searchParams.get('id') || ''); if(!/^[0-9a-f]{20}$/.test(id)) return json({ error: 'not-found' }, 404);
+    const row = await d.prepare('SELECT uid, mime, b64 FROM pics WHERE id = ?1').bind(id).first(); if(!row) return json({ error: 'not-found' }, 404);
+    if(row.uid !== u.id){
+      /* only accepted friends, and not someone the owner chose to hide from */
+      const f = await d.prepare("SELECT 1 AS ok FROM friends WHERE ((lo = ?1 AND hi = ?2 AND mlo = 0) OR (lo = ?2 AND hi = ?1 AND mhi = 0)) AND state = 'ok'").bind(row.uid, u.id).first();
+      if(!f) return json({ error: 'not-found' }, 404);
+    }
+    const bin = atob(row.b64), bytes = new Uint8Array(bin.length); for(let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    return new Response(bytes, { status: 200, headers: { 'content-type': row.mime, 'cache-control': 'private, max-age=604800, immutable', 'x-content-type-options': 'nosniff', 'content-security-policy': "default-src 'none'; sandbox" } });
+  }
+  if(path === 'pics/put' && method === 'POST'){
+    let t = ''; try{ t = await req.text(); }catch(e){}
+    if(t.length > PIC_MAX * 1.4 + 400) return json({ error: 'too-big' }, 413);
+    let b; try{ b = JSON.parse(t); }catch(e){ return json({ error: 'bad-json' }, 400); }
+    const data = b && typeof b.data === 'string' ? b.data : ''; if(!data || !/^[A-Za-z0-9+/]+={0,2}$/.test(data)) return json({ error: 'bad-data' }, 400);
+    const size = Math.floor(data.length * 3 / 4) - (data.endsWith('==') ? 2 : data.endsWith('=') ? 1 : 0);
+    if(size > PIC_MAX) return json({ error: 'too-big' }, 413);
+    const head = atob(data.slice(0, 24)), mime = head.startsWith('\xFF\xD8\xFF') ? 'image/jpeg' : (head.startsWith('RIFF') && head.slice(8, 12) === 'WEBP') ? 'image/webp' : head.startsWith('\x89PNG') ? 'image/png' : '';
+    if(!mime) return json({ error: 'bad-type' }, 415);
+    await ensurePerson(d, u);
+    const st = await d.prepare('SELECT COUNT(*) AS n, COALESCE(SUM(size), 0) AS bytes, MAX(at) AS last FROM pics WHERE uid = ?1').bind(u.id).first();
+    if(st.last && now - st.last < PIC_GAP) return json({ error: 'too-soon' }, 429);
+    if(st.n >= PIC_COUNT) return json({ error: 'full', count: st.n, bytes: st.bytes }, 409);
+    if(st.bytes + size > PIC_TOTAL) return json({ error: 'full', count: st.n, bytes: st.bytes }, 409);
+    const id = rand(10);
+    await d.prepare('INSERT INTO pics (id, uid, at, mime, size, b64) VALUES (?1, ?2, ?3, ?4, ?5, ?6)').bind(id, u.id, now, mime, size, data).run();
+    return json({ ok: true, id, count: st.n + 1, bytes: st.bytes + size, max: PIC_COUNT });
+  }
+  if(path === 'pics/del' && method === 'POST'){
+    let b = {}; try{ const t = await req.text(); if(t.length > 2000) return json({ error: 'too-big' }, 413); b = t ? JSON.parse(t) : {}; }catch(e){ return json({ error: 'bad-json' }, 400); }
+    const ids = (Array.isArray(b.ids) ? b.ids : [b.id]).filter(x => typeof x === 'string' && /^[0-9a-f]{20}$/.test(x)).slice(0, 50);
+    for(const id of ids) await d.prepare('DELETE FROM pics WHERE id = ?1 AND uid = ?2').bind(id, u.id).run();
+    return json({ ok: true });
+  }
+  if(path === 'pics/mine' && method === 'GET'){
+    const st = await d.prepare('SELECT COUNT(*) AS n, COALESCE(SUM(size), 0) AS bytes FROM pics WHERE uid = ?1').bind(u.id).first();
+    return json({ count: st.n, bytes: st.bytes, max: PIC_COUNT, maxBytes: PIC_TOTAL });
   }
   if(path === 'routes/off' && method === 'POST'){
     await d.prepare('DELETE FROM shares WHERE uid = ?1').bind(u.id).run();      /* switching route sharing off deletes your snapshot now */
@@ -178,7 +220,7 @@ async function friendsApi(path, method, req, env, u){
 }
 async function wipeFriends(env, id){
   const d = await openDb(env).catch(() => null); if(!d) return;
-  await d.batch([d.prepare('DELETE FROM pos WHERE uid = ?1').bind(id), d.prepare('DELETE FROM shares WHERE uid = ?1').bind(id), d.prepare('DELETE FROM friends WHERE lo = ?1 OR hi = ?1').bind(id), d.prepare('DELETE FROM people WHERE id = ?1').bind(id)]);
+  await d.batch([d.prepare('DELETE FROM pos WHERE uid = ?1').bind(id), d.prepare('DELETE FROM shares WHERE uid = ?1').bind(id), d.prepare('DELETE FROM pics WHERE uid = ?1').bind(id), d.prepare('DELETE FROM friends WHERE lo = ?1 OR hi = ?1').bind(id), d.prepare('DELETE FROM people WHERE id = ?1').bind(id)]);
 }
 const publicUser = u => ({ id: u.id, name: u.name, avatar: u.avatar || '' });
 
@@ -221,7 +263,7 @@ export async function onRequest(ctx){
       return u ? json({ user: publicUser(u) }) : json({ user: null }, 401);
     }
     /* everything below needs a session and our header */
-    if(['logout', 'sync', 'account', 'pos', 'routes/put', 'routes/off'].includes(path) || path.startsWith('friends/')){
+    if(['logout', 'sync', 'account', 'pos', 'routes/put', 'routes/off'].includes(path) || path.startsWith('friends/') || path.startsWith('pics/')){
       if(method !== 'GET' && !sameSite(req)) return json({ error: 'bad-origin' }, 403);
       const u = await sessionOf(req, env);
       if(path === 'logout' && method === 'POST'){
@@ -229,7 +271,7 @@ export async function onRequest(ctx){
         return json({ ok: true }, 200, { 'set-cookie': setCookie(COOKIE, '', 0) });
       }
       if(!u) return json({ error: 'signed-out' }, 401);
-      if(path === 'pos' || path.startsWith('routes/') || path.startsWith('friends/')) return friendsApi(path, method, req, env, u);
+      if(path === 'pos' || path.startsWith('routes/') || path.startsWith('friends/') || path.startsWith('pics/')) return friendsApi(path, method, req, env, u);
       const key = 'd:' + u.id;
       if(path === 'sync' && method === 'GET'){
         const raw = await env.TW_KV.get(key); if(!raw) return json({ data: null, at: 0 });
