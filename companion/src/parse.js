@@ -60,7 +60,7 @@ function parseNotifications(text){
     const ts = lineTime(nm[1]);
     if(nm[2] === 'UserConfirmed'){
       const map = mapFromLocation(j.location);
-      if(map) out.push({ type:'loading', map, mode:j.mode || '', raidMode:j.raidMode || '', ip:j.ip || '', port:+j.port || 0, ts, msg:j.eventId || null });
+      if(map) out.push({ type:'loading', src:'notif', map, mode:j.mode || '', raidMode:j.raidMode || '', ip:j.ip || '', port:+j.port || 0, ts, msg:j.eventId || null });
     } else out.push({ type:'end', ts, msg:j.eventId || null });
   }
   /* split into messages so each quest line pairs with its own timestamp */
