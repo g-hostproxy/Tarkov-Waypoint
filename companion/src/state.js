@@ -36,7 +36,8 @@ class GameState {
       phase:this.phase, estimated:this.estimated, map:this.map, mode:this.mode, server:this.ip ? { ip:this.ip, port:this.port } : null,
       loadingAt:this.loadingAt, startAt:this.startAt, endAt:this.endAt,
       raidMinutes:mins, remainingMs:t0 && mins && this.phase === 'raid' ? Math.max(0, mins * 60000 - (now - t0)) : null,
-      earnedToday:this.earned[this.dayKey(now)] || 0
+      earnedToday:this.earned[this.dayKey(now)] || 0,
+      dbg:this.dbg || null
     };
   }
 }
