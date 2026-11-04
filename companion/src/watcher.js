@@ -25,7 +25,7 @@ async function detectGameDir(){
 /* the date-stamped name of the newest session folder in a game folder, e.g. "2026.11.04_13-29-16" ('' when there are none) */
 function latestSession(gameDir){
   const all = sessions(path.join(gameDir, 'Logs')); if(!all.length) return '';
-  return all[all.length - 1].replace(/^log_/i, '');
+  return sessionKey(all[all.length - 1]);
 }
 function bestDir(dirs){
   let best = '', bestKey = '';
@@ -35,8 +35,13 @@ function bestDir(dirs){
 function defaultShotsDir(){ return path.join(os.homedir(), 'Documents', 'Escape from Tarkov', 'Screenshots'); }
 
 /* session folders look like log_2025.10.17_14-22-33_0.14.9.0.12345 ; the newest sorts last */
+/* The game does not zero-pad the time ("log_2026.11.04_9-46-31" is earlier than "log_2026.11.04_13-29-16"), so a plain text sort puts the morning folder last. Sort by the real date and time instead. */
+function sessionKey(name){
+  const m = /^log_(\d{4})\.(\d{1,2})\.(\d{1,2})_(\d{1,2})-(\d{1,2})-(\d{1,2})/i.exec(name);
+  return m ? m.slice(1, 7).map((v, i) => String(+v).padStart(i === 0 ? 4 : 2, '0')).join('') : '0';
+}
 function sessions(logsDir){
-  try{ return fs.readdirSync(logsDir).filter(n => /^log_/i.test(n) && exists(path.join(logsDir, n))).sort(); }catch(e){ return []; }
+  try{ return fs.readdirSync(logsDir).filter(n => /^log_/i.test(n) && exists(path.join(logsDir, n))).sort((a, b) => { const x = sessionKey(a), y = sessionKey(b); return x < y ? -1 : x > y ? 1 : (a < b ? -1 : a > b ? 1 : 0); }); }catch(e){ return []; }
 }
 /* the game names them like "2026.10.19_19-45-10_1.2.5.0.48146 push-notifications_000.log" and starts a new _001 file when one gets big */
 const KINDS = { app:/application.*\.log$/i, notif:/push-notifications.*\.log$/i, notif2:/(^|[ _])notifications.*\.log$/i };
