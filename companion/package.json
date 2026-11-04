@@ -1,7 +1,7 @@
 {
   "name": "tarkov-waypoint-app",
   "productName": "Tarkov Waypoint",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "Windows companion for Tarkov Waypoint: follows your Escape from Tarkov logs and screenshot names. It never touches the game.",
   "main": "src/main.js",
   "author": "Tarkov Waypoint",
