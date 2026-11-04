@@ -68,7 +68,7 @@ class Core {
     if(gd && exists(path.join(gd, 'Logs'))){
       this.logs = new LogWatcher({
         logsDir:path.join(gd, 'Logs'),
-        onApp:(e, startup) => this.state.apply(e),
+        onApp:(e, startup) => { try{ this.state.dbg = { session:this.logs ? this.logs.session : '', type:e.type, map:e.map || '', ts:e.ts || 0, dir:this.config.get('gameDir') || '' }; }catch(x){} this.state.apply(e); },
         onQuest:(e, startup) => { if(startup) return; this.lastQuest = e; this.bridge.broadcast({ t:'quest', id:e.id, status:e.status, ts:e.ts, live:true }); this.changed(); },
         onEarned:(e, startup) => this.state.apply(e)
       });
