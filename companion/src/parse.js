@@ -3,7 +3,7 @@
    The game's log wording changes between patches, so every pattern here is deliberately forgiving and unknown lines are ignored. */
 
 const MAP_ALIASES = [
-  [/factory/i, 'factory'], [/bigmap|customs/i, 'customs'], [/woods/i, 'woods'], [/shoreline/i, 'shoreline'],
+  [/factory/i, 'factory'], [/bigmap|customs/i, 'customs'], [/shopping_?mall|interchange/i, 'interchange'], [/(^|[^a-z])city([^a-z]|$)|tarkovstreets|streets/i, 'streets-of-tarkov'], [/woods/i, 'woods'], [/shoreline/i, 'shoreline'],
   [/rezerv|reserve/i, 'reserve'], [/lighthouse/i, 'lighthouse'], [/interchange/i, 'interchange'],
   [/tarkovstreets|streets/i, 'streets-of-tarkov'], [/sandbox|groundzero|ground_zero/i, 'ground-zero'],
   [/laboratory|\blabs?\b|the_lab/i, 'the-lab'], [/labyrinth/i, 'the-labyrinth'], [/icebreaker/i, 'icebreaker'], [/terminal/i, 'terminal']
@@ -39,6 +39,9 @@ function parseApplication(text, now){
     }
     if((m = /scene preset path:\s*maps\/([\w-]+?)(?:_preset)?\.bundle/i.exec(line))){
       const map = mapFromLocation(m[1]); if(map) out.push({ type:'scene', map, ts }); continue;
+    }
+    if((m = /\[Transit\][^\n]*Locations:\s*([\w-]+)(?:\s*->\s*([\w-]+))?/i.exec(line))){
+      const map = mapFromLocation(m[2] || m[1]); if(map) out.push({ type:'mapnote', map, ts }); continue;      /* the game says which location this raid is on (a second, independent hint) */
     }
     if(/\b(GameStarted|Game started|raid started|StartedRaid)\b/i.test(line)){ out.push({ type:'start', ts }); continue; }
     if(/UserMatchOver|Network game exit|GameEnded|raid ended|EndedRaid|Matching exit/i.test(line)){ out.push({ type:'end', ts }); continue; }
