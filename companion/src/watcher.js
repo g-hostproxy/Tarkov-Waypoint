@@ -18,7 +18,19 @@ async function detectGameDir(){
   }
   const roots = process.platform === 'win32' ? ['C', 'D', 'E', 'F', 'G'].map(d => d + ':\\') : [os.homedir() + '/'];
   for(const r of roots) for(const rel of ['Battlestate Games\\EFT', 'Battlestate Games\\Escape from Tarkov', 'Games\\Battlestate Games\\EFT', 'Games\\EFT', 'EFT', 'Escape from Tarkov', 'Program Files\\Battlestate Games\\EFT', 'Program Files (x86)\\Battlestate Games\\EFT']) found.push(path.join(r, rel));
-  return found.find(d => exists(path.join(d, 'Logs'))) || '';
+  /* more than one install can leave a Logs folder behind (an old copy, a moved game). Pick the one the game wrote to most recently, not just the first one found. */
+  const withLogs = found.filter((d, i) => d && found.indexOf(d) === i && exists(path.join(d, 'Logs')));
+  return bestDir(withLogs);
+}
+/* the date-stamped name of the newest session folder in a game folder, e.g. "2026.11.04_13-29-16" ('' when there are none) */
+function latestSession(gameDir){
+  const all = sessions(path.join(gameDir, 'Logs')); if(!all.length) return '';
+  return all[all.length - 1].replace(/^log_/i, '');
+}
+function bestDir(dirs){
+  let best = '', bestKey = '';
+  for(const d of dirs){ const k = latestSession(d); if(!best || k > bestKey){ best = d; bestKey = k; } }
+  return best;
 }
 function defaultShotsDir(){ return path.join(os.homedir(), 'Documents', 'Escape from Tarkov', 'Screenshots'); }
 
@@ -90,4 +102,4 @@ class ShotWatcher {
   }
   exists(){ return exists(this.dir); }
 }
-module.exports = { detectGameDir, defaultShotsDir, LogWatcher, ShotWatcher, sessions, fileIn, filesIn, exists };
+module.exports = { detectGameDir, latestSession, bestDir, defaultShotsDir, LogWatcher, ShotWatcher, sessions, fileIn, filesIn, exists };
