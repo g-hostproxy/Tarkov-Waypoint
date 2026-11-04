@@ -21,6 +21,10 @@ class GameState {
       /* a scene preset is only loaded when a raid is loading. Newer game versions have no "profileStatus" line, and "raid over" arrives in another log, so a second raid on the same map must start a fresh loading here too */
       if(this.phase === 'idle' || this.phase === 'ended' || !this.loadingAt || (ev.ts || 0) > Math.max(this.loadingAt, this.startAt || 0)){ this.phase = 'loading'; this.loadingAt = ev.ts; this.startAt = 0; this.endAt = 0; }
       this.map = ev.map; }
+    else if(ev.type === 'mapnote'){
+      /* only matters when it disagrees with what we have (or we have nothing): then it counts as a fresh raid loading on that map */
+      if(this.phase === 'idle' || this.phase === 'ended' || !this.map || ev.map !== this.map){ this.apply({ type:'scene', map:ev.map, ts:ev.ts }); return; }
+    }
     else if(ev.type === 'start'){ if(this.map){ this.phase = 'raid'; this.startAt = ev.ts; this.estimated = false; } }
     else if(ev.type === 'end'){ if(this.phase !== 'idle' && !(ev.ts && this.loadingAt && ev.ts < this.loadingAt)){ this.phase = 'ended'; this.endAt = ev.ts; } }
     else if(ev.type === 'earned'){ const k = this.dayKey(ev.ts); this.earned[k] = (this.earned[k] || 0) + ev.roubles; }
