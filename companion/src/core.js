@@ -3,7 +3,7 @@
 const path = require('path');
 const { GameState } = require('./state');
 const { Bridge } = require('./bridge');
-const { detectGameDir, defaultShotsDir, LogWatcher, ShotWatcher, exists } = require('./watcher');
+const { detectGameDir, latestSession, defaultShotsDir, LogWatcher, ShotWatcher, exists } = require('./watcher');
 
 class Core {
   constructor(opts){
@@ -54,7 +54,10 @@ class Core {
     this.changed();
   }
   async start(){
-    if(!this.config.get('gameDir')){ const d = await detectGameDir(); if(d) this.config.set('gameDir', d); }
+    /* on every start: if the game has been writing logs somewhere newer than the folder we saved earlier (an old install, a moved game), follow the newer one */
+    { const cur = this.config.get('gameDir'), d = await detectGameDir();
+      if(!cur){ if(d) this.config.set('gameDir', d); }
+      else if(d && d !== cur && (!exists(path.join(cur, 'Logs')) || latestSession(d) > latestSession(cur))) this.config.set('gameDir', d); }
     if(!this.config.get('shotsDir')) this.config.set('shotsDir', defaultShotsDir());
     await this.bridge.start();
     this.watch();
