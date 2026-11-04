@@ -13,9 +13,12 @@ class GameState {
       /* the same raid is announced in two log files; when the app starts mid-raid the older notice can arrive after the raid-start line, so ignore it */
       if(this.startAt && ev.ts && ev.ts <= this.startAt && ev.map === this.map && this.phase === 'raid') return;
       Object.assign(this, { estimated:false, phase:'loading', map:ev.map, mode:ev.mode, ip:ev.ip, port:ev.port, loadingAt:ev.ts, startAt:0, endAt:0 }); }
-    else if(ev.type === 'scene'){ if(this.phase === 'idle' || this.phase === 'ended'){ this.phase = 'loading'; this.loadingAt = ev.ts; this.startAt = 0; this.endAt = 0; } this.map = ev.map; }
+    else if(ev.type === 'scene'){
+      /* a scene preset is only loaded when a raid is loading. Newer game versions have no "profileStatus" line, and "raid over" arrives in another log, so a second raid on the same map must start a fresh loading here too */
+      if(this.phase === 'idle' || this.phase === 'ended' || !this.loadingAt || (ev.ts || 0) > Math.max(this.loadingAt, this.startAt || 0)){ this.phase = 'loading'; this.loadingAt = ev.ts; this.startAt = 0; this.endAt = 0; }
+      this.map = ev.map; }
     else if(ev.type === 'start'){ if(this.map){ this.phase = 'raid'; this.startAt = ev.ts; this.estimated = false; } }
-    else if(ev.type === 'end'){ if(this.phase !== 'idle'){ this.phase = 'ended'; this.endAt = ev.ts; } }
+    else if(ev.type === 'end'){ if(this.phase !== 'idle' && !(ev.ts && this.loadingAt && ev.ts < this.loadingAt)){ this.phase = 'ended'; this.endAt = ev.ts; } }
     else if(ev.type === 'earned'){ const k = this.dayKey(ev.ts); this.earned[k] = (this.earned[k] || 0) + ev.roubles; }
     this.emit();
   }
