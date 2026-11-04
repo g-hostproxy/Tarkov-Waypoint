@@ -4,16 +4,20 @@ const { RAID_MINUTES } = require('./parse');
 
 class GameState {
   constructor(){ this.reset(); this.earned = {}; this.listeners = []; }
-  reset(){ Object.assign(this, { estimated:false, phase:'idle', map:null, mode:'', ip:'', port:0, loadingAt:0, startAt:0, endAt:0 }); }
+  reset(){ this.sceneSeen = false; Object.assign(this, { estimated:false, phase:'idle', map:null, mode:'', ip:'', port:0, loadingAt:0, startAt:0, endAt:0 }); }
   onChange(fn){ this.listeners.push(fn); }
   emit(){ this.listeners.forEach(f => { try{ f(this.snapshot()); }catch(e){} }); }
   dayKey(ts){ const d = new Date(ts || Date.now()); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
   apply(ev){
     if(ev.type === 'loading'){
+      /* the same raid can be announced by several log files, and old messages are re-read when the app starts. Never let an older or second-hand message move us back to another map. */
+      if(ev.ts && this.loadingAt && ev.ts < this.loadingAt) return;
+      if(ev.src === 'notif' && this.sceneSeen) return;
       /* the same raid is announced in two log files; when the app starts mid-raid the older notice can arrive after the raid-start line, so ignore it */
       if(this.startAt && ev.ts && ev.ts <= this.startAt && ev.map === this.map && this.phase === 'raid') return;
       Object.assign(this, { estimated:false, phase:'loading', map:ev.map, mode:ev.mode, ip:ev.ip, port:ev.port, loadingAt:ev.ts, startAt:0, endAt:0 }); }
     else if(ev.type === 'scene'){
+      this.sceneSeen = true;
       /* a scene preset is only loaded when a raid is loading. Newer game versions have no "profileStatus" line, and "raid over" arrives in another log, so a second raid on the same map must start a fresh loading here too */
       if(this.phase === 'idle' || this.phase === 'ended' || !this.loadingAt || (ev.ts || 0) > Math.max(this.loadingAt, this.startAt || 0)){ this.phase = 'loading'; this.loadingAt = ev.ts; this.startAt = 0; this.endAt = 0; }
       this.map = ev.map; }
