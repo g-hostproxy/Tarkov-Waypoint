@@ -11123,7 +11123,9 @@ Get a sound, notification and banner when your crafts finish, so the generator i
     return !(t && t.objs) || !t.objs.some(o => o.desc !== desc && !o.optional && Object.keys(o.pts || {}).some(k => (o.pts[k] || []).length) && objScore(o.desc, g) >= mine);
   };
   /* every photo group clearly belongs to ANOTHER pinned objective of the quest (the flash drive photos on the "Visit the building" pin) */
-  const claimedByOther = (groups, desc, t) => !!(desc && t && t.objs && groups.length && groups.every(g => { const mine = objScore(desc, g);
+  /* quests whose wiki photos are ONE shared set for all their spots (Scope the Clearing: the same 3 camera photos for every pin) */
+  const PHOTO_SHARED = new Set(['wiki-scope-the-clearing']);
+  const claimedByOther = (groups, desc, t) => !!(desc && t && t.objs && !PHOTO_SHARED.has(t.id) && groups.length && groups.every(g => { const mine = objScore(desc, g);
     return t.objs.some(o => o.desc !== desc && !o.optional && Object.keys(o.pts || {}).some(k => (o.pts[k] || []).length) && objScore(o.desc, g) > mine && objScore(o.desc, g) >= 1); }));
   function confidentGroups(groups, wantArr, t, desc){
     if(!groups.length) return [];
@@ -16940,7 +16942,7 @@ document.addEventListener('click', e => {
 const CHANGELOG = [
   { d:'2026-11-06', items:[
       ['fix','Reserve: quest, key and exit pins now sit on the right buildings'],
-      ['better','Scope the Clearing and Ease the Move now have their pins on Lighthouse'],
+      ['better','Scope the Clearing and Ease the Move now have their pins on Lighthouse, and all 3 Scope the Clearing pins show the wiki photos'],
       ['better','Lighthouse: A Familiar Face, Preserve a Valuable Piece and Cut Down to the Root now show as anywhere on the map'],
     ]},
   { d:'2026-11-04', items:[
