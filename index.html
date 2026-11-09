@@ -3197,6 +3197,17 @@ function normalizeTasks(raw, mapsRaw){
         if(z.outline && z.outline.length > 2) (polys[m] = polys[m] || []).push(z.outline);
       });
       (o.possibleLocations || []).forEach(pl => (pl.positions || []).forEach(p => add(canon(pl.map && pl.map.normalizedName), p)));
+      /* a quest item the wording puts on ONE named map ("... on Factory"): spots the feed also lists on other maps are dropped (Vitamins had a stray Shoreline spot) */
+      if(o.type === 'findQuestItem' && o.description){
+        const mm = /\bon (Factory|Customs|Woods|Shoreline|Interchange|Reserve|Lighthouse|Streets of Tarkov|Ground Zero)\b/i.exec(o.description);
+        if(mm){
+          const want = { 'factory':['factory', 'night-factory'], 'customs':['customs'], 'woods':['woods'], 'shoreline':['shoreline'], 'interchange':['interchange'], 'reserve':['reserve'], 'lighthouse':['lighthouse'], 'streets of tarkov':['streets-of-tarkov'], 'ground zero':['ground-zero', 'ground-zero-21'] }[mm[1].toLowerCase()];
+          if(want && Object.keys(pts).some(k => want.includes(k))){
+            Object.keys(pts).forEach(k => { if(!want.includes(k)){ delete pts[k]; delete polys[k]; } });
+            o = Object.assign({}, o, { maps:(o.maps || []).filter(m => want.includes(canon(m.normalizedName))) });
+          }
+        }
+      }
       const maps = new Set((o.maps || []).map(m => canon(m.normalizedName)).filter(Boolean));
       Object.keys(pts).forEach(k => maps.add(k));
       /* kill quests aimed at a named boss: put the spots where that boss can spawn on the maps the quest names */
@@ -16993,6 +17004,7 @@ document.addEventListener('click', e => {
 
 const CHANGELOG = [
   { d:'2026-11-08', items:[
+      ['fix','Vitamins no longer shows a stray pin on Shoreline, and now has its chemical container pin on Factory.'],
       ['new','Tools: "More Tarkov apps" links to my other free Tarkov tools'],
       ['new','High Contrast theme (Settings > Theme): black frame, slate-blue map and lime accents like Tarkov Pilot, so it is easier to find where you are'],
       ['new','"Minimal map" in the Legend: hides quest areas, caches, PMC spawns and boss spawns. Turn it off and your Legend choices come back'],
@@ -17386,6 +17398,7 @@ const CHANGELOG = [
   const bodyEl = dock.querySelector('.ad-b'), runEl = dock.querySelector('.ad-run');
   const SECS = [
     { id:'noloc', title:'Quests with no location data', mk:true },
+    { id:'claude', title:'Quests from Claude', cl:true },
     { id:'quest', title:'Quest pin positions', els:['#qpEditBar'], none:'Quest pin tools are not available.' },
     { id:'docs', title:'Document pins', els:['#docEditBar'], none:'No documents on this map.' },
     { id:'exits', title:'Exit pins', els:['#exEditBar'], none:'No exits to edit on this map.' },
@@ -17423,6 +17436,22 @@ const CHANGELOG = [
     else if(a === 'sec'){ const sc = SECS.find(x => x.el === b.closest('.ad-s')); fold(sc, !sc.el.classList.contains('open')); }
   });
   function apply(){ dock.classList.toggle('folded', !!ui.folded); dock.querySelector('[data-ad=fold]').textContent = ui.folded ? 'Admin tools' : '–'; }
+
+  /* ---------- section: quests Claude could not place with certainty ---------- */
+  const CLAUDE_QUESTS = [
+    { name:'Vitamins', obj:'Locate and obtain the chemical container on Factory', note:'Chemical container is in the Factory lab (middle floor, east side near the Courtyard Gate). The pin there is a best guess: drag it or place a new one, then Copy quest data.' }
+  ];
+  const clSec = SECS.find(x => x.id === 'claude');
+  clSec.sb.innerHTML = '<div class="nl-sum muted">Quests Claude could not place exactly. Open one, place its pin, then use Copy quest data and send it back.</div>' +
+    CLAUDE_QUESTS.map((q, i) => '<div class="nl-q open"><div class="nl-qh"><span class="nl-qn">' + E(q.name) + '</span></div><div class="muted" style="padding:2px 4px 6px">' + E(q.obj) + '<br>' + E(q.note) + '</div><div class="nl-qa"><button type="button" class="primary" data-cl="' + i + '">Open in the placer</button></div></div>').join('');
+  clSec.el.querySelector('[data-ad=count]').textContent = CLAUDE_QUESTS.length;
+  clSec.sb.addEventListener('click', e => {
+    const b = e.target.closest('[data-cl]'); if(!b) return; const q = CLAUDE_QUESTS[+b.dataset.cl]; if(!q) return;
+    const t = (S.tasks || []).find(x => x.name === q.name); if(!t){ toast(q.name + ' is not loaded yet'); return; }
+    const noSec = SECS.find(x => x.id === 'noloc'); sel = t.id;
+    const sq = no.sb.querySelector('[data-n=q]'); if(sq) sq.value = q.name;
+    fold(noSec, true); drawNo(); try{ noSec.el.scrollIntoView({ block:'nearest' }); }catch(x){}
+  });
 
   /* ---------- section: quests with no location data ---------- */
   const no = SECS[0];
