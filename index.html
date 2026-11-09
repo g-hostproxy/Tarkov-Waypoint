@@ -17001,6 +17001,7 @@ document.addEventListener('click', e => {
 
 const CHANGELOG = [
   { d:'2026-11-08', items:[
+      ['fix','Events: Halloween 2026 now shows as running until its real end. Events with no end date on the wiki are no longer called over; they move to "End date not confirmed"'],
       ['new','Tools: Promo codes lists codes players report as working (like tarkovhalloween), with the date each was first reported, a Mark redeemed button so you do not reuse one, and optional pop-up alerts for new codes. Updated automatically'],
       ['better','Friends: sharing your location is now on by default and always live (the delay option is gone)'],
       ['fix','Vitamins no longer shows a stray pin on Shoreline, and now has its chemical container pin on Factory.'],
@@ -17980,7 +17981,9 @@ const CHANGELOG = [
   const DAY = 864e5;
   const live = () => list.filter(x => x.start <= now() && (x.end === null ? (!x.soft || now() - x.start < SOFT) : x.end > now()));
   const soon = () => list.filter(x => x.start > now() && x.start - now() < 30 * DAY).sort((a, b) => a.start - b.start);
-  const past = () => list.filter(x => x.start <= now() && !live().includes(x) && (x.end !== null ? now() - x.end < 14 * DAY : now() - x.start < 35 * DAY)).sort((a, b) => (b.end || b.start) - (a.end || a.start));
+  const past = () => list.filter(x => x.start <= now() && !live().includes(x) && x.end !== null && now() - x.end < 14 * DAY).sort((a, b) => b.end - a.end);
+  /* the wiki gave a start date but never an end date, and our 10-day guess has run out: we cannot know, so say so instead of calling it over */
+  const unsure = () => list.filter(x => x.start <= now() && x.end === null && !live().includes(x) && now() - x.start < 35 * DAY).sort((a, b) => b.start - a.start);
   function span(ms){ const m = Math.max(1, Math.round(ms / 6e4)), d = Math.floor(m / 1440), h = Math.floor(m % 1440 / 60), n = m % 60; return d >= 2 ? d + ' days' : d ? '1 day ' + h + 'h' : h ? h + 'h ' + n + 'm' : n + 'm'; }
   const fmt = t => new Date(t).toLocaleString([], { month:'short', day:'numeric', hour:'numeric', minute:'2-digit' });
 
@@ -17997,16 +18000,17 @@ const CHANGELOG = [
     if(!pop.hidden) draw();
   }
   function card(x, state){
-    const k = KINDS[x.kind], when = state === 'live' ? (x.end === null ? (x.soft ? 'Started ' + span(now() - x.start) + ' ago · end date not listed' : 'Running now') : 'Ends in ' + span(x.end - now()) + ' · ' + fmt(x.end)) : state === 'soon' ? 'Starts in ' + span(x.start - now()) + ' · ' + fmt(x.start) : (x.end === null ? 'Started ' + fmt(x.start) + ' · may be over' : 'Ended ' + fmt(x.end));
+    const k = KINDS[x.kind], when = state === 'live' ? (x.end === null ? (x.soft ? 'Started ' + span(now() - x.start) + ' ago · end date not listed' : 'Running now') : 'Ends in ' + span(x.end - now()) + ' · ' + fmt(x.end)) : state === 'soon' ? 'Starts in ' + span(x.start - now()) + ' · ' + fmt(x.start) : (x.end === null ? 'Started ' + fmt(x.start) + ' · end date not listed, may still be running' : 'Ended ' + fmt(x.end));
     return '<div class="ev-c ' + state + '" style="--k:' + k[1] + '"><div class="ev-t"><span class="ev-k">' + E(k[0]) + '</span><b>' + E(x.title) + '</b></div>' + (x.text ? '<p>' + E(x.text) + '</p>' : '') + '<div class="ev-w">' + E(when) + (x.url ? ' · <a href="' + E(x.url) + '" target="_blank" rel="noopener">Details ↗</a>' : '') + '</div></div>';
   }
   function draw(){
-    const a = live(), s = soon(), p = past();
+    const a = live(), s = soon(), p = past(), u = unsure();
     pop.innerHTML = '<div class="ev-h"><span>Tarkov events</span><small>your local time</small></div>' +
       (a.length ? '<div class="ev-s">Happening now</div>' + a.map(x => card(x, 'live')).join('') : '<div class="ev-none">' + (loaded ? 'Nothing is running right now.' : 'Loading…') + '</div>') +
       (s.length ? '<div class="ev-s">Coming up</div>' + s.map(x => card(x, 'soon')).join('') : '') +
+      (u.length ? '<div class="ev-s">End date not confirmed</div>' + u.map(x => card(x, 'past')).join('') : '') +
       (p.length ? '<div class="ev-s">Recently ended</div>' + p.map(x => card(x, 'past')).join('') : '') +
-      '<div class="ev-f">Read from the Tarkov wiki about once an hour. When it doesn\'t list an end date, the event stays lit for 10 days after it starts. Twitch drops are not on the wiki.</div>';
+      '<div class="ev-f">Read from the Tarkov wiki about once an hour. When it doesn\'t list an end date, the event stays lit for 10 days after it starts, then moves to "End date not confirmed" instead of being called over. Twitch drops are not on the wiki.</div>';
   }
   function place(){ const r = btn.getBoundingClientRect(); pop.style.top = (r.bottom + 8) + 'px'; pop.style.right = Math.max(8, innerWidth - r.right - 4) + 'px'; }
   const set = on => { pop.hidden = !on; btn.setAttribute('aria-expanded', String(on)); if(on){ draw(); place(); } };
