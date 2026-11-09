@@ -17001,7 +17001,7 @@ document.addEventListener('click', e => {
 
 const CHANGELOG = [
   { d:'2026-11-08', items:[
-      ['new','Tools: Promo codes lists codes players report as working (like tarkovhalloween), with the date each was first reported, and a Mark redeemed button so you do not reuse one. Updated automatically'],
+      ['new','Tools: Promo codes lists codes players report as working (like tarkovhalloween), with the date each was first reported, a Mark redeemed button so you do not reuse one, and optional pop-up alerts for new codes. Updated automatically'],
       ['better','Friends: sharing your location is now on by default and always live (the delay option is gone)'],
       ['fix','Vitamins no longer shows a stray pin on Shoreline, and now has its chemical container pin on Factory.'],
       ['new','Tools: "More Tarkov apps" links to my other free Tarkov tools'],
@@ -17370,6 +17370,10 @@ const CHANGELOG = [
   const UK = 'rr_promo_used';
   const used = () => { try{ const v = JSON.parse(localStorage.getItem(UK) || '{}'); return v && typeof v === 'object' && !Array.isArray(v) ? v : {}; }catch(e){ return {}; } };
   const setUsed = o => { try{ localStorage.setItem(UK, JSON.stringify(o)); }catch(e){} };
+  const NK = 'rr_promo_notify', SK = 'rr_promo_seen';
+  const notifyOn = () => { try{ return localStorage.getItem(NK) === '1'; }catch(e){ return false; } };
+  const seen = () => { try{ const v = JSON.parse(localStorage.getItem(SK) || '[]'); return new Set(Array.isArray(v) ? v : []); }catch(e){ return new Set(); } };
+  const saveSeen = set => { try{ localStorage.setItem(SK, JSON.stringify([...set].slice(-300))); }catch(e){} };
   const days = d => Math.max(0, Math.floor((Date.now() - Date.parse(d + 'T12:00:00Z')) / 864e5));
   const ago = d => { const n = days(d); return n === 0 ? 'today' : n === 1 ? 'yesterday' : n + ' days ago'; };
   const status = c => { const seen = days(c.lastSeen), first = days(c.firstSeen); return seen > 30 ? ['old', 'Maybe expired'] : first <= 3 ? ['new', 'New'] : ['ok', 'Reported working']; };
@@ -17380,6 +17384,7 @@ const CHANGELOG = [
   function paint(){
     const b = dlg.querySelector('.td-b'); const list = db && Array.isArray(db.codes) ? db.codes : [];
     let h = '<p class="pc-intro">Codes players and sites report as working. <b>Nobody can test a code except by redeeming it</b>, so treat these as reports, not guarantees. Redeem on <a href="' + REDEEM + '" target="_blank" rel="noopener">Battlestate’s site</a> while signed in.</p>';
+    h += '<label class="pc-notify"><input type="checkbox" id="pcNotify"' + (notifyOn() ? ' checked' : '') + '><span><b>Tell me about new codes</b><small>A pop-up appears when you open the site and a new code has been reported. Close it and you will not see it again for those codes.</small></span></label>';
     const U = used(), open = list.filter(c => !U[c.code]), done = list.filter(c => U[c.code]);
     const row = (c, isUsed) => {
       const st = status(c), one = (c.sources || []).length < 2 && !(c.sources || []).some(x => x.name === 'Added by hand');
@@ -17403,6 +17408,16 @@ const CHANGELOG = [
       dlg.innerHTML = '<div class="td-h"><h2>Promo codes</h2><button class="td-x" type="button" aria-label="Close">×</button></div><div class="td-b" style="overflow:auto;padding:6px 18px 16px"></div>';
       document.body.appendChild(dlg);
       dlg.querySelector('.td-x').addEventListener('click', () => dlg.close());
+      dlg.addEventListener('change', async e => {
+        if(e.target.id !== 'pcNotify') return;
+        try{ localStorage.setItem(NK, e.target.checked ? '1' : '0'); }catch(x){}
+        if(e.target.checked){
+          /* they are looking at the list right now, so everything on it counts as seen; only codes reported after this pop up */
+          if(!db) await load();
+          const S = seen(); ((db && db.codes) || []).forEach(c => S.add(c.code)); saveSeen(S);
+          window.rrToast && window.rrToast('You will be told about new promo codes', false);
+        }
+      });
       dlg.addEventListener('click', async e => {
         if(e.target === dlg){ dlg.close(); return; }
         const mk = e.target.closest('.pc-use, .pc-undo');
@@ -17414,13 +17429,54 @@ const CHANGELOG = [
     dlg.querySelector('.td-b').innerHTML = '<div class="pc-none">Loading…</div>';
     dlg.showModal(); await load(); paint();
   }
+
+  /* ---- the "new code" pop-up ---- */
+  let pop = null;
+  function closePop(){
+    if(!pop) return;
+    const S = seen(); (pop._codes || []).forEach(c => S.add(c)); saveSeen(S);     /* closing it (any way) means these codes never pop up again */
+    pop.classList.remove('in'); const el = pop; pop = null; setTimeout(() => el.remove(), 250);
+  }
+  function showPop(codes){
+    if(pop) closePop();
+    const el = document.createElement('div'); el.id = 'promoPop'; el.setAttribute('role', 'alertdialog'); el.setAttribute('aria-label', 'New promo code'); el._codes = codes.map(c => c.code);
+    el.innerHTML = '<button type="button" class="pp-x" aria-label="Close">×</button><div class="pp-k">🎁 New promo code' + (codes.length > 1 ? 's' : '') + '</div>' +
+      codes.slice(0, 4).map(c => '<div class="pp-row"><code>' + esc(c.code) + '</code><button type="button" class="pp-copy" data-c="' + esc(c.code) + '">Copy</button></div><div class="pp-s">First reported ' + esc(c.firstSeen) + ' (' + ago(c.firstSeen) + ')' + (c.note ? ' · ' + esc(c.note) : '') + '</div>').join('') +
+      (codes.length > 4 ? '<div class="pp-s">and ' + (codes.length - 4) + ' more in the list</div>' : '') +
+      '<div class="pp-a"><button type="button" class="pp-open primary">Open the list</button><a href="' + REDEEM + '" target="_blank" rel="noopener">Redeem on the site</a></div><div class="pp-f">Reported by players, not tested.</div>';
+    document.body.appendChild(el); pop = el;
+    requestAnimationFrame(() => el.classList.add('in'));
+    el.addEventListener('click', async e => {
+      if(e.target.closest('.pp-x')){ closePop(); return; }
+      const c = e.target.closest('.pp-copy');
+      if(c){ try{ await navigator.clipboard.writeText(c.dataset.c); c.textContent = 'Copied'; }catch(x){ c.textContent = 'Select it'; } return; }
+      if(e.target.closest('.pp-open')){ closePop(); open(); }
+    });
+    el.addEventListener('keydown', e => { if(e.key === 'Escape') closePop(); });
+  }
+  async function check(){
+    if(!notifyOn() || pop || (dlg && dlg.open)) return;
+    await load(); if(err || !db) return;
+    const S = seen(), U = used();
+    const fresh = (db.codes || []).filter(c => !S.has(c.code) && !U[c.code] && status(c)[0] !== 'old');
+    if(fresh.length) showPop(fresh);
+  }
+  setTimeout(check, 6000);
+  setInterval(check, 30 * 60 * 1000);                        /* and again while the site stays open */
   window.RRPromo = { open };
   const st = document.createElement('style');
   st.textContent = '#promoDlg .pc-intro{margin:4px 0 12px;font-size:13.5px;color:var(--mute);line-height:1.45}#promoDlg .pc-intro a{color:var(--accent)}#promoDlg .pc-none{padding:18px 4px;color:var(--mute)}' +
     '#promoDlg .pc-row{border:1px solid var(--line,#ffffff22);border-radius:10px;padding:10px 12px;margin:0 0 8px}#promoDlg .pc-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}' +
     '#promoDlg .pc-code{font:700 17px/1.2 ui-monospace,Consolas,monospace;letter-spacing:.04em;user-select:all}#promoDlg .pc-st{font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:99px;border:1px solid currentColor}' +
     '#promoDlg .pc-new .pc-st{color:#7fcf9a}#promoDlg .pc-ok .pc-st{color:var(--accent)}#promoDlg .pc-old{opacity:.6}#promoDlg .pc-old .pc-st{color:var(--mute)}' +
-    '#promoDlg .pc-btns{margin-left:auto;display:flex;gap:6px}#promoDlg .pc-btns button{cursor:pointer}#promoDlg .pc-h{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute);margin:14px 0 8px}#promoDlg .pc-used{opacity:.55}#promoDlg .pc-used .pc-code{text-decoration:line-through}#promoDlg .pc-used .pc-st{color:var(--mute)}#promoDlg .pc-sub{font-size:12.5px;color:var(--mute);margin-top:4px}#promoDlg .pc-src{font-size:12px;margin-top:3px}#promoDlg .pc-src a{color:var(--accent)}#promoDlg .pc-fine{font-size:12px;color:var(--mute);margin:10px 0 0}';
+    '#promoDlg .pc-btns{margin-left:auto;display:flex;gap:6px}#promoDlg .pc-btns button{cursor:pointer}#promoDlg .pc-h{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute);margin:14px 0 8px}#promoDlg .pc-used{opacity:.55}#promoDlg .pc-used .pc-code{text-decoration:line-through}#promoDlg .pc-used .pc-st{color:var(--mute)}#promoDlg .pc-sub{font-size:12.5px;color:var(--mute);margin-top:4px}#promoDlg .pc-src{font-size:12px;margin-top:3px}#promoDlg .pc-src a{color:var(--accent)}#promoDlg .pc-fine{font-size:12px;color:var(--mute);margin:10px 0 0}' +
+    '#promoDlg .pc-notify{display:flex;gap:10px;align-items:flex-start;margin:0 0 6px;padding:10px 12px;border:1px solid var(--line,#ffffff22);border-radius:10px;cursor:pointer}#promoDlg .pc-notify input{margin-top:3px}#promoDlg .pc-notify small{display:block;color:var(--mute);font-size:12.5px;margin-top:2px;line-height:1.4}' +
+    '#promoPop{position:fixed;right:18px;bottom:18px;z-index:99999;width:min(340px,calc(100vw - 36px));box-sizing:border-box;padding:16px 16px 12px;border-radius:14px;background:var(--panel,#161c1a);color:var(--text,#e8e6df);border:1px solid var(--accent);box-shadow:0 14px 40px #000a,0 0 0 1px #0006,0 0 28px color-mix(in srgb,var(--accent) 30%,transparent);transform:translateY(24px) scale(.97);opacity:0;transition:transform .25s ease,opacity .25s ease}' +
+    '#promoPop.in{transform:none;opacity:1}#promoPop .pp-x{position:absolute;top:6px;right:8px;background:none;border:0;color:var(--mute);font-size:22px;line-height:1;cursor:pointer;padding:2px 6px}' +
+    '#promoPop .pp-k{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 24px 8px 0}' +
+    '#promoPop .pp-row{display:flex;align-items:center;gap:10px;margin-top:4px}#promoPop .pp-row code{font:800 20px/1.2 ui-monospace,Consolas,monospace;letter-spacing:.05em;user-select:all;word-break:break-all}#promoPop .pp-row button{margin-left:auto;cursor:pointer}' +
+    '#promoPop .pp-s{font-size:12.5px;color:var(--mute);margin:2px 0 6px}#promoPop .pp-a{display:flex;align-items:center;gap:14px;margin-top:10px}#promoPop .pp-a a{color:var(--accent);font-size:13px}#promoPop .pp-open{cursor:pointer}#promoPop .pp-f{font-size:11.5px;color:var(--mute);margin-top:8px}' +
+    '@media (prefers-reduced-motion:reduce){#promoPop{transition:none}}';
   document.head.appendChild(st);
 })();
 
