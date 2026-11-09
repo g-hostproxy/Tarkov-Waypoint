@@ -7796,7 +7796,6 @@ button.quiet.qdone:hover{border-color:var(--ok);color:var(--ok)}
   /* ---- legend UI ---- */
   $('#viewtools').insertAdjacentHTML('afterbegin',
     '<details class="pill" id="legend" open><summary>Legend</summary><div class="lgb">' +
-    '<label class="lgr" id="lgMinRow" title="Hides quest areas, caches, PMC spawns and boss spawns and their areas, so only the route, pins and exits are left. Your other Legend choices are kept and come back when you turn this off."><input type="checkbox" data-minimal="1"><span class="sw"><i class="mn2">\u25a2</i></span>Minimal map</label>' +
     '<label class="lgr"><input type="checkbox" data-l="extracts"><span class="sw"><i class="d pmc"></i><i class="d scav"></i><i class="d transit"></i></span>Extracts<button type="button" class="lgtog" data-lgt="ex" title="Show or hide the list" aria-label="Show or hide the list"></button></label>' +
     '<div id="lgEx">' +
     '<label class="lgr"><input type="checkbox" data-l="showPmcEx"><span class="sw"><i class="d pmc"></i></span>PMC exits<span class="cnt" id="lgPmcCnt"></span></label>' +
@@ -7831,7 +7830,7 @@ button.quiet.qdone:hover{border-color:var(--ok);color:var(--ok)}
         if(LH_GONE.some(g => Math.abs(g[0] - b.x) < 3 && Math.abs(g[1] - b.y) < 3 && Math.abs(g[2] - b.width) < 3 && Math.abs(g[3] - b.height) < 3)){ p.dataset.gone = '1'; p.style.display = 'none'; } }catch(e){} });
       if(mn){ const has = !!(c && c.querySelector('svg .danger, svg .danger_small')); mn.checked = want; const row = mn.closest('label'); if(row) row.style.display = has ? '' : 'none'; }
       if(c) c.classList.toggle('no-mines', !want); }
-    { const mm = lg.querySelector('[data-minimal]'); if(mm) mm.checked = !!S.opts.minimal; }
+    { const mm = document.querySelector('[data-minimal]'); if(mm) mm.checked = !!S.opts.minimal; }
     lg.classList.toggle('lg-min', !!S.opts.minimal);
     lg.querySelector('[data-l="showSpawns"]').checked = on('showSpawns');
     /* the Boss spawns checkbox is synced below, once the boss list is built */
@@ -7863,7 +7862,6 @@ button.quiet.qdone:hover{border-color:var(--ok);color:var(--ok)}
   $('#legend').addEventListener('change', e => {
     const t = e.target; if(!t || t.type !== 'checkbox') return;
     if(t.dataset.boss){ if(t.checked) delete hidden()[t.dataset.boss]; else hidden()[t.dataset.boss] = true; }
-    else if(t.dataset.minimal){ S.opts.minimal = t.checked; }
     else if(t.dataset.mn){ S.opts.mines = S.opts.mines || {}; S.opts.mines[S.curMap] = t.checked; }
     else if(t.dataset.l === 'extracts'){ S.opts.extracts = t.checked; const o = $('#optExt'); if(o) o.checked = t.checked; }
     else if(t.dataset.l){ S.opts[t.dataset.l] = t.checked; }
@@ -9330,6 +9328,13 @@ $('#alReset').addEventListener('click', () => { delete S.align[S.curMap]; LS.set
     S.map.fitBounds(S.mapBounds, { animate:true, duration:.5 });
   });
   panel.appendChild(cen);
+  /* "Minimal map": sits with the Quest route / Key route switches. Hides quest areas, caches, PMC and boss spawns without changing the Legend choices. */
+  { const mm = document.createElement('label'); mm.style.marginTop = '4px'; mm.id = 'lgMinRow';
+    mm.title = 'Hides quest areas, caches, PMC spawns and boss spawns and their areas, so only the route, pins and exits are left. Your Legend choices are kept and come back when you turn this off.';
+    mm.innerHTML = '<input type="checkbox" data-minimal="1"> Minimal map';
+    const cb = mm.querySelector('input'); cb.checked = !!S.opts.minimal;
+    cb.addEventListener('change', () => { S.opts.minimal = cb.checked; saveOpts(); if(S.map) drawOverlay(); });
+    if(routePill) routePill.appendChild(mm); else panel.appendChild(mm); }
   [routePill, lg, al].forEach(n => { if(n) panel.appendChild(n); });
   [...vt.children].forEach(c => { if(c !== bar && c !== panel && c !== fit) panel.appendChild(c); });
   vt.appendChild(bar); vt.appendChild(panel);
