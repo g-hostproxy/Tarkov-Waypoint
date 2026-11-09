@@ -1893,6 +1893,38 @@ div.pr small{display:block;color:var(--mute);font-size:12px;margin-top:1px}
 :root[data-theme="tarkov"] .lbl{text-transform:uppercase;letter-spacing:.08em}
 :root[data-theme="tarkov"] button.primary{font-weight:700;letter-spacing:.04em}
 
+/* ---- High Contrast: matched to Tarkov Pilot. Black frame, slate-blue ground with darker woods, pale-blue water, mint buildings, lime accents. Re-colours the map art itself so where you are stands out. ---- */
+:root[data-theme="high-contrast"],.tp[data-t="high-contrast"]{
+  --bg:#000; --panel:#0a0d12; --panel2:#11151c; --line:#283040; --text:#e4eedb; --mute:#8d99a8;
+  --accent:#9bd639; --ink:#0c1402; --ok:#9bd639; --bad:#ff6b57;
+  --deep:#000; --deep-rgb:0 0 0; --popup:#07090d; --line2:#4a566a; --hover:#1a202a;
+  --accent-rgb:155 214 57; --accent-soft:#151f09; --accent-line:#587a1d; --accent-text:#b8e660;
+  --alt:#6fc3f5; --alt-rgb:111 195 245; --alt-text:#a9dcfa;
+  --sb-track:#05070a; --sb-thumb:#3a4658; --map-filter:none;
+}
+:root[data-theme="high-contrast"] .route-line{stroke-width:4.5}
+:root[data-theme="high-contrast"] #map .leaflet-popup-content-wrapper{border:1px solid var(--line2)}
+:root[data-theme="high-contrast"] #map{background:#000}
+:root[data-theme="high-contrast"] #map .leaflet-image-layer .land{fill:#3a4457}
+:root[data-theme="high-contrast"] #map .leaflet-image-layer .trees{fill:#262e3d}
+:root[data-theme="high-contrast"] #map .leaflet-image-layer .water{fill:#b3d9f5}
+:root[data-theme="high-contrast"] #map .leaflet-image-layer .rock{fill:#58647a}
+:root[data-theme="high-contrast"] #map .leaflet-image-layer .cement{fill:#6b7990}
+:root[data-theme="high-contrast"] #map .leaflet-image-layer .tarmac{fill:#56627a}
+:root[data-theme="high-contrast"] #map .leaflet-image-layer .gravel{fill:#4a556a}
+:root[data-theme="high-contrast"] #map .leaflet-image-layer .wood{fill:#46526a}
+:root[data-theme="high-contrast"] #map .leaflet-image-layer .floor{fill:#7d8ba2}
+:root[data-theme="high-contrast"] #map .leaflet-image-layer .locked{fill:#5f8f86}
+:root[data-theme="high-contrast"] #map .leaflet-image-layer .building{fill:#9adcc0}
+:root[data-theme="high-contrast"] #map .leaflet-image-layer .map_border{stroke:#6fb4e0;stroke-width:3}
+:root[data-theme="high-contrast"] #map .leaflet-image-layer .fence{stroke:#a9bdd2}
+:root[data-theme="high-contrast"] #map .leaflet-image-layer .road_tarmac{stroke:#8e9bb1}
+:root[data-theme="high-contrast"] #map .leaflet-image-layer .road_gravel{stroke:#6d7a92}
+:root[data-theme="high-contrast"] #map .leaflet-image-layer .railroad{stroke:#d09a6a}
+:root[data-theme="high-contrast"] #map .leaflet-image-layer .powerline{stroke:#d9c75e}
+:root[data-theme="high-contrast"] #map .leaflet-image-layer .danger{fill-opacity:.1;stroke-opacity:.55}
+:root[data-theme="high-contrast"] header{background-image:linear-gradient(180deg,#0d1015,#000);border-bottom:1px solid var(--line2)}
+
 /* Settings > "Glowing effects" switched off: kills every glow above */
 :root[data-fx="off"]{
   --glow-xs:0 0 0 0 transparent; --glow-sm:0 0 0 0 transparent; --glow-md:0 0 0 0 transparent;
@@ -9850,6 +9882,7 @@ $('#alReset').addEventListener('click', () => { delete S.align[S.curMap]; LS.set
   /* Add a theme: add its CSS block in the THEMES section of the stylesheet, then list it here. */
   const THEMES = [
     { id:'default',      name:'Default',          desc:'The original Tarkov Waypoint look.' },
+    { id:'high-contrast', name:'High Contrast',   desc:'Black frame, slate-blue ground, pale water and lime accents, like Tarkov Pilot. Easiest to find where you are.' },
     { id:'dark',         name:'Dark',             desc:'Graphite panels and a darkened map, with bright route lines for contrast.' },
     { id:'tarkov',       name:'Escape from Tarkov', desc:'Near-black panels, grey frames and khaki highlights, like the game\u2019s own menus.' },
     { id:'orange',       name:'Orange Glow',      desc:'Ember orange on warm black, with glowing edges.' },
@@ -16940,6 +16973,9 @@ document.addEventListener('click', e => {
 })();
 
 const CHANGELOG = [
+  { d:'2026-11-08', items:[
+      ['new','High Contrast theme (Settings > Theme): black frame, slate-blue map and lime accents like Tarkov Pilot, so it is easier to find where you are'],
+    ]},
   { d:'2026-11-06', items:[
       ['fix','Reserve: quest, key and exit pins now sit on the right buildings'],
       ['better','Scope the Clearing and Ease the Move now have their pins on Lighthouse, and all 3 Scope the Clearing pins show the wiki photos'],
