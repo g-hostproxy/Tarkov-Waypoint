@@ -48,6 +48,10 @@ jobs:
       - name: Build extract info
         continue-on-error: true
         run: node scripts/build-extract-info.mjs
+      # Promo codes people report as working (wiki, Reddit, roundup pages). Each source may fail; refreshes every 3 hours.
+      - name: Build promo codes
+        continue-on-error: true
+        run: node scripts/build-promocodes.mjs
       - name: Commit if changed
         run: |
           if [ -n "$(git status --porcelain data)" ]; then

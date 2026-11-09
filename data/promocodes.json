@@ -1,0 +1,11 @@
+{
+ "updated": "",
+ "note": "Codes are reported by players and sites, not tested. Add a code by hand under \"manual\" ({ \"code\":\"X\", \"date\":\"YYYY-MM-DD\", \"note\":\"...\" }); put a wrong one under \"dismissed\".",
+ "manual": [
+  { "code": "TARKOVHALLOWEEN", "date": "2026-11-09", "note": "Halloween event code (added by hand)" }
+ ],
+ "dismissed": [],
+ "codes": [
+  { "code": "TARKOVHALLOWEEN", "firstSeen": "2026-11-09", "lastSeen": "2026-11-09", "note": "Halloween event code (added by hand)", "sources": [ { "name": "Added by hand", "url": "", "date": "2026-11-09" } ] }
+ ]
+}
