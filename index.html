@@ -6695,8 +6695,8 @@ function afterKeysChange(){
     { id:'fr-add', since:'2026-10-27', need:'#acctBtn', target:'#acctBtn', side:'below', icon:'<circle cx="9" cy="8" r="3.500"/><path d="M2 20c0-3.500 3-6 7-6s7 2.500 7 6"/><path d="M19 8v6M16 11h6"/>',
       title:'Step 2: add your friends', text:'Open this menu, then <b>Friends, Open</b>. Copy <b>your friend code</b> and send it to a friend, or type their code or Discord username into the box and press <b>Add</b>. They get a request and press <b>Accept</b>. Both of you need to be signed in.' },
     { id:'fr-share', since:'2026-10-27', need:'#acctBtn', target:'#acctBtn', side:'below', icon:'<circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="9"/>',
-      title:'Step 3: share your location', text:'In Friends, switch on <b>Share my location</b>. Then every screenshot you read in <b>Where am I?</b> puts your pin on your friends\u2019 maps, and theirs on yours. Streaming? Pick a <b>delay</b> so nobody can use your live spot against you, or press <b>Hide me</b> on one friend. Sharing is off until you turn it on.',
-      chips:['Your pin on their map', 'Quest and key routes too', 'Delay up to 10 min', 'Hide from anyone'] }
+      title:'Step 3: share your location', text:'In Friends, check that <b>Share my location</b> is on (it is by default). Then every screenshot you read in <b>Where am I?</b> puts your pin on your friends\u2019 maps, and theirs on yours. Sharing is on by default, and you can press <b>Hide me</b> on any one friend or switch it off any time.',
+      chips:['Your pin on their map', 'Quest and key routes too', 'Hide from anyone'] }
   ];
 
   const hasData0 = () => { try{
@@ -16381,7 +16381,7 @@ document.addEventListener('click', e => {
   const COLORS = ['#38bdf8', '#4ade80', '#f472b6', '#a78bfa', '#2dd4bf', '#fb7185', '#e5e7eb'];
   const colorOf = id => { let h = 0; for(let i = 0; i < id.length; i++) h = (h * 31 + id.charCodeAt(i)) >>> 0; return COLORS[h % COLORS.length]; };
   const MAP_NAME = k => { try{ return (typeof MAP_LABEL !== 'undefined' && MAP_LABEL[k]) || String(k).replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()); }catch(e){ return k; } };
-  let ok = false, uid = '', info = { code:'', share:false, delay:0, uname:'' }, friends = [], pins = [], dlg = null, msg = '', layer = null, sig = '', timer = 0, listAt = 0, lastSent = '', toasted = false, loading = false;
+  let ok = false, uid = '', info = { code:'', share:true, delay:0, uname:'' }, friends = [], pins = [], dlg = null, msg = '', layer = null, sig = '', timer = 0, listAt = 0, lastSent = '', toasted = false, loading = false;
 
   async function api(path, body){
     const o = { credentials:'same-origin', headers:{ 'x-tw':'1' } };
@@ -16463,15 +16463,13 @@ document.addEventListener('click', e => {
     const c = document.getElementById('optFriends'); c.checked = showPins();
     c.addEventListener('change', () => { S.opts.showFriends = c.checked; saveOpts(); drawPins(); });
   }
-  const DELAYS = [[0, 'Live (as soon as you read a screenshot)'], [2, '2 minutes behind'], [5, '5 minutes behind'], [10, '10 minutes behind']];
-
+  
   /* ---- the dialog ---- */
   function person(f, extra){ return '<div class="fr-row"><img alt="" src="' + esc2(f.avatar || '') + '" width="32" height="32" onerror="this.style.visibility=\'hidden\'"><div class="fr-nm"><b>' + esc2(f.name) + '</b>' + (extra ? '<small>' + extra + '</small>' : '') + '</div>'; }
   function paint(){
     if(!dlg) return; const b = dlg.querySelector('.td-b'); if(!b) return;
     const inn = incoming(), out = friends.filter(f => f.state === 'out'), acc = accepted();
-    let h = '<label class="optrow fr-sw"><span class="ot">Share my location<small>When you read a screenshot in Where am I?, friends you have accepted see your pin on their map. Nothing is sent otherwise. Off until you switch it on.</small></span><input type="checkbox" class="sw" id="frShare" role="switch"' + (info.share ? ' checked' : '') + '></label>';
-    if(info.share) h += '<div class="fr-delay"><span>Show my position</span><div class="fr-seg" role="radiogroup" aria-label="How far behind your position is shown">' + DELAYS.map(d => '<button type="button" role="radio" aria-checked="' + (+info.delay === d[0]) + '" class="' + (+info.delay === d[0] ? 'on' : '') + '" data-dl="' + d[0] + '" title="' + esc2(d[1]) + '">' + (d[0] ? d[0] + ' min' : 'Live') + '</button>').join('') + '</div></div><p class="fr-fine">Live shows your pin as soon as you read a screenshot. A delay is a good idea if you stream, so nobody can use your live position against you.</p>';
+    let h = '<label class="optrow fr-sw"><span class="ot">Share my location<small>When you read a screenshot in Where am I?, friends you have accepted see your pin on their map. Nothing is sent otherwise. On by default; switch it off any time.</small></span><input type="checkbox" class="sw" id="frShare" role="switch"' + (info.share ? ' checked' : '') + '></label>';
     h += '<label class="optrow fr-sw"><span class="ot">Share my routes<small>Friends you have accepted see your quest route, key route and custom routes on their map, each friend in a colour of their own. On by default; switch it off any time.</small></span><input type="checkbox" class="sw" data-rsm="1" role="switch"' + (RS.on ? ' checked' : '') + '></label>';
     if(RS.on) h += '<div class="fr-rsc">' + [['q', 'Quest route'], ['k', 'Key route'], ['c', 'Custom routes']].map(([c, n]) => '<label><input type="checkbox" data-rs="' + c + '"' + (RS[c] ? ' checked' : '') + '>' + n + '</label>').join('') + '</div>';
     h += '<div class="fr-box"><div><small>Your friend code</small><b class="fr-code">' + esc2(info.code) + '</b>' + (info.uname ? '<small>or your Discord username: <b>' + esc2(info.uname) + '</b></small>' : '') + '</div><button type="button" data-f="copy">Copy</button></div>';
@@ -16502,8 +16500,6 @@ document.addEventListener('click', e => {
     dlg.querySelector('.td-x').addEventListener('click', () => dlg.close());
     dlg.addEventListener('click', e => { if(e.target === dlg) dlg.close(); });
     dlg.addEventListener('click', async e => {
-      const dl = e.target.closest('[data-dl]');
-      if(dl){ const r = await api('friends/settings', { share:info.share, delay:+dl.dataset.dl }); if(r.status === 200){ info.share = r.json.share; info.delay = r.json.delay; } else toast('Could not save that. Try again.'); paint(); return; }
       const b = e.target.closest('[data-f]'); if(!b || b.tagName === 'FORM') return; const a = b.dataset.f;
       if(a === 'close') dlg.close();
       else if(a === 'copy'){ try{ await navigator.clipboard.writeText(info.code); toast('Friend code copied'); }catch(x){ toast('Select the code and copy it'); } }
@@ -16523,8 +16519,8 @@ document.addEventListener('click', e => {
     });
     dlg.addEventListener('change', async e => {
       if(e.target.id !== 'frShare' && e.target.id !== 'frDelay') return;
-      const share = dlg.querySelector('#frShare').checked, d = dlg.querySelector('#frDelay'), delay = d ? +d.value : info.delay;
-      const r = await api('friends/settings', { share, delay });
+      const share = dlg.querySelector('#frShare').checked, delay = 0;
+      const r = await api('friends/settings', { share, delay:0 });
       if(r.status === 200){ info.share = r.json.share; info.delay = r.json.delay; if(info.share && window.RRGps && window.RRGps.hasShot) { /* the next screenshot you read is shared */ } }
       else toast('Could not save that. Try again.');
       paint();
@@ -17004,6 +17000,7 @@ document.addEventListener('click', e => {
 
 const CHANGELOG = [
   { d:'2026-11-08', items:[
+      ['better','Friends: sharing your location is now on by default and always live (the delay option is gone)'],
       ['fix','Vitamins no longer shows a stray pin on Shoreline, and now has its chemical container pin on Factory.'],
       ['new','Tools: "More Tarkov apps" links to my other free Tarkov tools'],
       ['new','High Contrast theme (Settings > Theme): black frame, slate-blue map and lime accents like Tarkov Pilot, so it is easier to find where you are'],

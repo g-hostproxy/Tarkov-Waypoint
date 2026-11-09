@@ -37,7 +37,7 @@ async function openDb(env){
   if(!env.TW_DB) return null;
   if(!schemaReady){
     await env.TW_DB.batch([
-      env.TW_DB.prepare('CREATE TABLE IF NOT EXISTS people (id TEXT PRIMARY KEY, code TEXT UNIQUE NOT NULL, uname TEXT, name TEXT, avatar TEXT, share INTEGER NOT NULL DEFAULT 0, delay INTEGER NOT NULL DEFAULT 0, seen INTEGER)'),
+      env.TW_DB.prepare('CREATE TABLE IF NOT EXISTS people (id TEXT PRIMARY KEY, code TEXT UNIQUE NOT NULL, uname TEXT, name TEXT, avatar TEXT, share INTEGER NOT NULL DEFAULT 1, delay INTEGER NOT NULL DEFAULT 0, seen INTEGER)'),
       env.TW_DB.prepare('CREATE TABLE IF NOT EXISTS friends (lo TEXT NOT NULL, hi TEXT NOT NULL, by TEXT NOT NULL, state TEXT NOT NULL, mlo INTEGER NOT NULL DEFAULT 0, mhi INTEGER NOT NULL DEFAULT 0, at INTEGER, PRIMARY KEY (lo, hi))'),
       env.TW_DB.prepare('CREATE INDEX IF NOT EXISTS friends_hi ON friends (hi)'),
       env.TW_DB.prepare('CREATE TABLE IF NOT EXISTS pos (uid TEXT NOT NULL, at INTEGER NOT NULL, map TEXT, x REAL, z REAL, fx REAL, fz REAL, face INTEGER)'),
@@ -57,7 +57,7 @@ async function ensurePerson(d, u){
   if(!p){
     for(let i = 0; i < 5; i++){
       const code = newCode();
-      try{ await d.prepare('INSERT INTO people (id, code, uname, name, avatar, share, delay, seen) VALUES (?1, ?2, ?3, ?4, ?5, 0, 0, ?6)').bind(u.id, code, uname, u.name, u.avatar || '', Date.now()).run(); break; }
+      try{ await d.prepare('INSERT INTO people (id, code, uname, name, avatar, share, delay, seen) VALUES (?1, ?2, ?3, ?4, ?5, 1, 0, ?6)').bind(u.id, code, uname, u.name, u.avatar || '', Date.now()).run(); break; }
       catch(e){ if(i === 4) throw e; }
     }
     p = await d.prepare('SELECT id, code, uname, name, avatar, share, delay FROM people WHERE id = ?1').bind(u.id).first();
@@ -83,7 +83,7 @@ async function friendsApi(path, method, req, env, u){
       'SELECT p.id, p.name, p.avatar, q.map, q.x, q.z, q.fx, q.fz, q.face, q.at FROM friends f ' +
       'JOIN people p ON p.id = (CASE WHEN f.lo = ?1 THEN f.hi ELSE f.lo END) JOIN pos q ON q.uid = p.id ' +
       "WHERE (f.lo = ?1 OR f.hi = ?1) AND f.state = 'ok' AND p.share = 1 AND (CASE WHEN f.lo = ?1 THEN f.mhi ELSE f.mlo END) = 0 " +
-      'AND q.at = (SELECT MAX(at) FROM pos WHERE uid = p.id AND at <= ?2 - p.delay * 60000) AND q.at > ?2 - ?3').bind(u.id, now, POS_SHOW).all()).results || [];
+      'AND q.at = (SELECT MAX(at) FROM pos WHERE uid = p.id AND at <= ?2 - 0) AND q.at > ?2 - ?3').bind(u.id, now, POS_SHOW).all()).results || [];
     return json({ now, pins: rows.map(r => ({ id: r.id, name: r.name, avatar: r.avatar || '', map: r.map, x: r.x, z: r.z, fx: r.fx, fz: r.fz, face: !!r.face, at: r.at })) });
   }
   if(path === 'friends/routes' && method === 'GET'){
@@ -171,7 +171,7 @@ async function friendsApi(path, method, req, env, u){
   }
   const me = await ensurePerson(d, u);
   if(path === 'friends/settings'){
-    const share = b.share ? 1 : 0, delay = [0, 2, 5, 10].includes(+b.delay) ? +b.delay : 0;
+    const share = b.share ? 1 : 0, delay = 0;      /* live only: no delay option */
     await d.prepare('UPDATE people SET share = ?2, delay = ?3 WHERE id = ?1').bind(u.id, share, delay).run();
     if(!share) await d.prepare('DELETE FROM pos WHERE uid = ?1').bind(u.id).run();     /* switching sharing off wipes your last positions */
     return json({ ok: true, share: !!share, delay });
