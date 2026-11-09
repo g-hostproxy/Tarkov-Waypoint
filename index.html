@@ -1906,9 +1906,9 @@ div.pr small{display:block;color:var(--mute);font-size:12px;margin-top:1px}
 :root[data-theme="high-contrast"] #map .leaflet-popup-content-wrapper{border:1px solid var(--line2)}
 :root[data-theme="high-contrast"] #map{background:#000}
 :root[data-theme="high-contrast"] #map .leaflet-image-layer .land{fill:#3a4457}
-:root[data-theme="high-contrast"] #map .leaflet-image-layer .trees{fill:#262e3d}
+:root[data-theme="high-contrast"] #map .leaflet-image-layer .trees{fill:#1f2735}
 :root[data-theme="high-contrast"] #map .leaflet-image-layer .water{fill:#b3d9f5}
-:root[data-theme="high-contrast"] #map .leaflet-image-layer .rock{fill:#58647a}
+:root[data-theme="high-contrast"] #map .leaflet-image-layer .rock{fill:#242c3a}
 :root[data-theme="high-contrast"] #map .leaflet-image-layer .cement{fill:#6b7990}
 :root[data-theme="high-contrast"] #map .leaflet-image-layer .tarmac{fill:#56627a}
 :root[data-theme="high-contrast"] #map .leaflet-image-layer .gravel{fill:#4a556a}
@@ -1923,6 +1923,10 @@ div.pr small{display:block;color:var(--mute);font-size:12px;margin-top:1px}
 :root[data-theme="high-contrast"] #map .leaflet-image-layer .railroad{stroke:#d09a6a}
 :root[data-theme="high-contrast"] #map .leaflet-image-layer .powerline{stroke:#d9c75e}
 :root[data-theme="high-contrast"] #map .leaflet-image-layer .danger{fill-opacity:.1;stroke-opacity:.55}
+:root[data-theme="high-contrast"] .extlbl .xl{background:rgba(0,0,0,.35);border-left:0;border-radius:2px;padding:0 5px;color:#9bd639;font:700 15px/1.15 var(--f-body);letter-spacing:.01em;text-shadow:0 0 2px #000,0 0 5px #000,0 1px 3px #000;left:22px}
+:root[data-theme="high-contrast"] .extlbl.scav .xl{color:#8fd0f5}
+:root[data-theme="high-contrast"] .extlbl.shared .xl{color:#c4e65a}
+:root[data-theme="high-contrast"] .extlbl.transit .xl{color:#cdb0f7}
 :root[data-theme="high-contrast"] header{background-image:linear-gradient(180deg,#0d1015,#000);border-bottom:1px solid var(--line2)}
 
 /* Settings > "Glowing effects" switched off: kills every glow above */
@@ -2289,6 +2293,8 @@ input[type="checkbox"],input[type="radio"]{accent-color:var(--accent)}
 .pop .exreq span{opacity:.7;margin-right:2px}
 .pop .exreq em{font-style:normal;background:var(--panel2);border:1px solid var(--accent);border-radius:10px;padding:1px 8px}
 /* collapsible legend groups */
+#legend .mn2{font-style:normal;font-size:15px;line-height:1;opacity:.9}
+#legend.lg-min [data-l="showSpawns"],#legend.lg-min [data-ball],#legend.lg-min [data-boss]{opacity:.45;pointer-events:none}
 #legend .lgtog{flex:none;width:22px;height:22px;margin-left:auto;padding:0;display:grid;place-items:center;background:none;border:0;border-radius:4px;color:var(--mute);cursor:pointer}
 #legend .cnt + .lgtog{margin-left:2px}
 #legend .lgtog::before{content:"";width:6px;height:6px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translate(-1px,-1px);transition:transform .15s}
@@ -4151,7 +4157,7 @@ function drawOverlay(){
   if(S.browse) closeBrowse(false);
   S.spotReg = {};
   const a = S.an.A[k]; S.layer.clearLayers(); S.stopMarkers = [];
-  a.groups.forEach(g => (g.o.polys[k] || []).forEach(poly =>
+  if(!S.opts.minimal) a.groups.forEach(g => (g.o.polys[k] || []).forEach(poly =>
     L.polygon(poly.map(p => [p.z, p.x]), { color:qColor(g.t), weight:1.5, opacity:.85, fillOpacity:.12, interactive:false }).addTo(S.layer)));
   if(S.opts.extracts) extractsFor(k).forEach(e =>
     L.marker([e.p.z, e.p.x], { icon:L.divIcon({ className:'ext '+e.faction, html:'<span></span>', iconSize:[16,16] }), zIndexOffset:-500 })
@@ -7580,7 +7586,9 @@ button.quiet.qdone:hover{border-color:var(--ok);color:var(--ok)}
 
   const pct = c => c == null ? '' : Math.round(c * 100) + '%';
   const hidden = () => S.opts.hideBoss || (S.opts.hideBoss = {});
-  const on = key => S.opts[key] !== false;
+  /* "Minimal map" (Legend) hides these without touching what the player had switched on, so turning it off brings them straight back */
+  const MIN_OFF = new Set(['showSpawns', 'showBosses']);
+  const on = key => S.opts[key] !== false && !(S.opts.minimal && MIN_OFF.has(key));
 
   /* ---- PMC spawn icon + grouping ---- */
   const PMC_ICON = '<svg viewBox="0 0 26 26" aria-hidden="true"><circle cx="13" cy="13" r="11.500" fill="#1d6f73" stroke="#0b1210" stroke-width="1.500"/><circle cx="13" cy="13" r="9.500" fill="none" stroke="#7fd6d8" stroke-opacity=".5"/>' +
@@ -7788,6 +7796,7 @@ button.quiet.qdone:hover{border-color:var(--ok);color:var(--ok)}
   /* ---- legend UI ---- */
   $('#viewtools').insertAdjacentHTML('afterbegin',
     '<details class="pill" id="legend" open><summary>Legend</summary><div class="lgb">' +
+    '<label class="lgr" id="lgMinRow" title="Hides quest areas, caches, PMC spawns and boss spawns and their areas, so only the route, pins and exits are left. Your other Legend choices are kept and come back when you turn this off."><input type="checkbox" data-minimal="1"><span class="sw"><i class="mn2">\u25a2</i></span>Minimal map</label>' +
     '<label class="lgr"><input type="checkbox" data-l="extracts"><span class="sw"><i class="d pmc"></i><i class="d scav"></i><i class="d transit"></i></span>Extracts<button type="button" class="lgtog" data-lgt="ex" title="Show or hide the list" aria-label="Show or hide the list"></button></label>' +
     '<div id="lgEx">' +
     '<label class="lgr"><input type="checkbox" data-l="showPmcEx"><span class="sw"><i class="d pmc"></i></span>PMC exits<span class="cnt" id="lgPmcCnt"></span></label>' +
@@ -7822,6 +7831,8 @@ button.quiet.qdone:hover{border-color:var(--ok);color:var(--ok)}
         if(LH_GONE.some(g => Math.abs(g[0] - b.x) < 3 && Math.abs(g[1] - b.y) < 3 && Math.abs(g[2] - b.width) < 3 && Math.abs(g[3] - b.height) < 3)){ p.dataset.gone = '1'; p.style.display = 'none'; } }catch(e){} });
       if(mn){ const has = !!(c && c.querySelector('svg .danger, svg .danger_small')); mn.checked = want; const row = mn.closest('label'); if(row) row.style.display = has ? '' : 'none'; }
       if(c) c.classList.toggle('no-mines', !want); }
+    { const mm = lg.querySelector('[data-minimal]'); if(mm) mm.checked = !!S.opts.minimal; }
+    lg.classList.toggle('lg-min', !!S.opts.minimal);
     lg.querySelector('[data-l="showSpawns"]').checked = on('showSpawns');
     /* the Boss spawns checkbox is synced below, once the boss list is built */
     $('#lgSpawnCnt').textContent = spawnAreas(k).length || '';
@@ -7845,12 +7856,14 @@ button.quiet.qdone:hover{border-color:var(--ok);color:var(--ok)}
         '<small>' + esc([...r.zones].join(', ')) + (r.variants.size ? ' \u00b7 ' + esc([...r.variants].join(', ')) : '') + (none ? ' \u00b7 no map position' : '') + '</small></div>';
     }).join('');
     { const sel = [...g.values()].filter(r => r.pos), m = lg.querySelector('[data-ball]');
-      if(m){ const vis = sel.filter(r => !hidden()[r.mob]).length; m.checked = vis > 0; m.indeterminate = vis > 0 && vis < sel.length; m.disabled = !sel.length; } }
+      if(m && S.opts.minimal){ m.checked = false; m.indeterminate = false; }
+      else if(m){ const vis = sel.filter(r => !hidden()[r.mob]).length; m.checked = vis > 0; m.indeterminate = vis > 0 && vis < sel.length; m.disabled = !sel.length; } }
     if(fm){ const el = lg.querySelector('[data-boss="' + CSS.escape(fm) + '"]'); if(el) el.focus(); }
   }
   $('#legend').addEventListener('change', e => {
     const t = e.target; if(!t || t.type !== 'checkbox') return;
     if(t.dataset.boss){ if(t.checked) delete hidden()[t.dataset.boss]; else hidden()[t.dataset.boss] = true; }
+    else if(t.dataset.minimal){ S.opts.minimal = t.checked; }
     else if(t.dataset.mn){ S.opts.mines = S.opts.mines || {}; S.opts.mines[S.curMap] = t.checked; }
     else if(t.dataset.l === 'extracts'){ S.opts.extracts = t.checked; const o = $('#optExt'); if(o) o.checked = t.checked; }
     else if(t.dataset.l){ S.opts[t.dataset.l] = t.checked; }
@@ -16975,6 +16988,7 @@ document.addEventListener('click', e => {
 const CHANGELOG = [
   { d:'2026-11-08', items:[
       ['new','High Contrast theme (Settings > Theme): black frame, slate-blue map and lime accents like Tarkov Pilot, so it is easier to find where you are'],
+      ['new','"Minimal map" in the Legend: hides quest areas, caches, PMC spawns and boss spawns. Turn it off and your Legend choices come back'],
     ]},
   { d:'2026-11-06', items:[
       ['fix','Reserve: quest, key and exit pins now sit on the right buildings'],
@@ -18863,10 +18877,10 @@ const PVP_HOTSPOTS = [
   function setCount(txt, muted){ const e = cnt(); if(!e) return; e.textContent = txt; e.classList.toggle('muted', !!muted); }
   let drawn = 0;
   async function paintCaches(){
-    const my = ++drawn, k = S.curMap, cb = lg.querySelector('[data-l="showCache"]'); if(cb) cb.checked = S.opts.showCache === true;
+    const my = ++drawn, k = S.curMap, cb = lg.querySelector('[data-l="showCache"]'); if(cb){ cb.checked = S.opts.showCache === true && !S.opts.minimal; cb.disabled = !!S.opts.minimal; }
     if(!k){ setCount(''); return; }
-    if(S.opts.showCache !== true){ setCount(D && D[k] ? String(D[k].length) : ''); return; }
-    if(!D){ setCount('loading…', true); const r = await load(); if(!r){ setCount('unavailable', true); const e = cnt(); if(e) e.title = errs.slice(-2).join('\n'); return; } if(my !== drawn || k !== S.curMap || S.opts.showCache !== true || !S.map || !S.layer) return; }
+    if(S.opts.showCache !== true || S.opts.minimal){ setCount(D && D[k] ? String(D[k].length) : ''); return; }
+    if(!D){ setCount('loading…', true); const r = await load(); if(!r){ setCount('unavailable', true); const e = cnt(); if(e) e.title = errs.slice(-2).join('\n'); return; } if(my !== drawn || k !== S.curMap || S.opts.showCache !== true || S.opts.minimal || !S.map || !S.layer) return; }
     if(!S.map || !S.layer) return;
     const list = (D && D[k]) || []; setCount(list.length ? String(list.length) : 'none', !list.length);
     list.forEach(c => {
