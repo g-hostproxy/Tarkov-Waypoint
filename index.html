@@ -5623,8 +5623,14 @@ function afterKeysChange(){
       (buy.length ? '<div class="hp-grp"><b>' + (fir.length ? 'Any source' : 'Buy or find') + '</b><span>flea, traders or raid, in any condition</span></div>' + buy.map(one).join('') : '') + '</div>';
   }
   const lvChip = (a, l, have) => '<span class="hp-lvn' + (l.level <= have ? ' done' : '') + '">' + l.level + '</span>';
+  /* a redraw (prices or crafts finishing loading) that lands between pressing and releasing a button replaces it, and the click is lost: that was the "click twice" bug. Hold the redraw until the finger or mouse is up. */
+  let hPress = false, hRedo = false;
+  const hRel = () => { if(!hPress) return; hPress = false; if(hRedo) setTimeout(() => { if(hRedo && !hPress){ hRedo = false; hDraw(); } }, 60); };
+  H.b.addEventListener('pointerdown', () => { hPress = true; });
+  ['pointerup', 'pointercancel', 'pointerleave'].forEach(t => H.b.addEventListener(t, hRel));
   function hDraw(){
     if(!hData) return;
+    if(hPress){ hRedo = true; return; }
     const top = H.b.scrollTop;
     const q = H.f.querySelector('#hpQ').value.trim().toLowerCase(), hideDone = H.f.querySelector('#hpHide').checked, lv = hLv();
     const nx = hNeeds('next'), al = hNeeds('all');
@@ -17001,6 +17007,7 @@ document.addEventListener('click', e => {
 
 const CHANGELOG = [
   { d:'2026-11-08', items:[
+      ['fix','Hideout planner: tapping a level now works the first time (a background refresh could swallow the tap)'],
       ['fix','Events: Halloween 2026 now shows as running until its real end. Events with no end date on the wiki are no longer called over; they move to "End date not confirmed"'],
       ['new','Tools: Promo codes lists codes players report as working (like tarkovhalloween), with the date each was first reported, a Mark redeemed button so you do not reuse one, and optional pop-up alerts for new codes. Updated automatically'],
       ['better','Friends: sharing your location is now on by default and always live (the delay option is gone)'],
