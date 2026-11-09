@@ -6244,6 +6244,7 @@ function afterKeysChange(){
     ['Friends', 'Add friends, see their pins and share yours (sign in with Discord)', '<circle cx="9" cy="8" r="3.500"/><path d="M2 20c0-3.500 3-6 7-6s7 2.500 7 6"/><circle cx="17.500" cy="9" r="2.500"/><path d="M17 14c3 0 5 2 5 5"/>', () => { const A = window.RRAccount, F = window.rrFriends; if(A && A._me && !A._me()){ A.open('main'); return; } if(F) F.open(); else if(A) A.open('main'); }],
     ['Take the tour', 'A quick look at what the site can do', '<circle cx="12" cy="12" r="9"/><path d="M10 8.500l5 3.500-5 3.500z"/>', () => { window.RRTour && window.RRTour.start(); }],
     ['Desktop app', 'Follow your game live: quests tick themselves', '<path d="M6 11h4M8 9v4"/><circle cx="15" cy="12" r=".8"/><circle cx="17.5" cy="10" r=".8"/><path d="M17.32 5H6.68a4 4 0 0 0-3.98 3.59C2.35 11.3 2 14.3 2 16a3 3 0 0 0 5.2 2L8.5 16.5a2 2 0 0 1 1.5-.5h4a2 2 0 0 1 1.5.5L16.8 18a3 3 0 0 0 5.2-2c0-1.7-.35-4.7-.7-7.41A4 4 0 0 0 17.32 5z"/>', () => { window.RRPlay && window.RRPlay.open(); }],
+    ['More Tarkov apps', 'My other free Tarkov tools, all in one place', '<rect x="3" y="3" width="7" height="7" rx="1.500"/><rect x="14" y="3" width="7" height="7" rx="1.500"/><rect x="3" y="14" width="7" height="7" rx="1.500"/><rect x="14" y="14" width="7" height="7" rx="1.500"/>', () => { window.open('https://tarkovapps.pages.dev/', '_blank', 'noopener'); }],
     ['Generator timer', 'Get a sound, notification and banner when your crafts finish, so the generator is not left running', '<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>', () => { window.RRGen && window.RRGen.open(); }],
     ['TarkovTracker sync', 'Auto-complete quests from TarkovMonitor', '<path d="M21 12a9 9 0 0 1-15.500 6.200L3 16"/><path d="M3 12a9 9 0 0 1 15.500-6.200L21 8"/><path d="M21 3v5h-5M3 21v-5h5"/>', () => { window.RRTT && window.RRTT.open(); }]
   ];
@@ -6252,7 +6253,7 @@ function afterKeysChange(){
     const btn = document.createElement('button'); btn.id = 'toolsBtn'; btn.type = 'button'; btn.setAttribute('aria-haspopup', 'true'); btn.setAttribute('aria-expanded', 'false'); btn.setAttribute('aria-controls', 'toolsPop');
     btn.innerHTML = 'Tools ' + svg('<path d="M6 9l6 6 6-6"/>');
     /* a wide launcher panel: tools grouped in columns, a search box, and its own scrolling when the window is short */
-    const CATS = [['Gear &amp; prices', ['Flea prices', 'Gun builder', 'Meta ammo', 'Meta gear']], ['Hideout &amp; character', ['My PMC', 'Hideout planner', 'Craft profit', 'Barter profit', 'Generator timer', 'Skill leveling']], ['Progress &amp; sync', ['My keys', 'Prestige tracker', 'Kappa progress', 'Custom routes', 'TarkovTracker sync']], ['Get started', ['Desktop app', 'Friends', 'Take the tour', 'Share route']]];
+    const CATS = [['Gear &amp; prices', ['Flea prices', 'Gun builder', 'Meta ammo', 'Meta gear']], ['Hideout &amp; character', ['My PMC', 'Hideout planner', 'Craft profit', 'Barter profit', 'Generator timer', 'Skill leveling']], ['Progress &amp; sync', ['My keys', 'Prestige tracker', 'Kappa progress', 'Custom routes', 'TarkovTracker sync']], ['Get started', ['Desktop app', 'Friends', 'Take the tour', 'Share route', 'More Tarkov apps']]];
     const row = (x, i) => '<button type="button" role="menuitem" class="tp-card" data-i="' + i + '" data-n="' + (x[0] + ' ' + x[1]).toLowerCase().replace(/"/g, '') + '"><span class="np-i">' + svg(x[2]) + '</span><span class="np-t"><b>' + x[0] + '</b><small>' + x[1] + '</small></span></button>';
     const pop = document.createElement('div'); pop.id = 'toolsPop'; pop.className = 'mega'; pop.setAttribute('role', 'menu'); pop.setAttribute('aria-label', 'Tools'); pop.hidden = true;
     pop.innerHTML = '<div class="tp-top"><span class="tp-ttl">Tools</span><input type="search" id="toolsFind" placeholder="Find a tool…" autocomplete="off" spellcheck="false" aria-label="Find a tool"></div>' +
@@ -16992,6 +16993,7 @@ document.addEventListener('click', e => {
 
 const CHANGELOG = [
   { d:'2026-11-08', items:[
+      ['new','Tools: "More Tarkov apps" links to my other free Tarkov tools'],
       ['new','High Contrast theme (Settings > Theme): black frame, slate-blue map and lime accents like Tarkov Pilot, so it is easier to find where you are'],
       ['new','"Minimal map" in the Legend: hides quest areas, caches, PMC spawns and boss spawns. Turn it off and your Legend choices come back'],
     ]},
