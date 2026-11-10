@@ -3116,7 +3116,8 @@ async function runQuery(q, vars){
    Counts come from (1) KILL_COUNTS below (confirmed by hand) and (2) a one-time tarkov.dev fetch cached in localStorage. */
 const KILL_COUNTS = {
   '66aa61663aa37705c5024278': 5,   /* Know Your Place! - Streets of Tarkov */
-  '66aa61663aa37705c502427e': 5    /* Know Your Place! - Interchange */
+  '66aa61663aa37705c502427e': 5,   /* Know Your Place! - Interchange */
+  '6193dabd5f6468204470571f': 7    /* Long Road (Skier): the feed says 4, the game asks for 7 (player report, Nov 2026) */
 };
 const KC_TTL = 7*864e5;
 function withKillCount(desc, n){
@@ -17007,6 +17008,7 @@ document.addEventListener('click', e => {
 
 const CHANGELOG = [
   { d:'2026-11-08', items:[
+      ['fix','Long Road now asks for 7 kills, matching the game (it said 4)'],
       ['fix','Hideout planner: tapping a level now works the first time (a background refresh could swallow the tap)'],
       ['fix','Events: Halloween 2026 now shows as running until its real end. Events with no end date on the wiki are no longer called over; they move to "End date not confirmed"'],
       ['new','Tools: Promo codes lists codes players report as working (like tarkovhalloween), with the date each was first reported, a Mark redeemed button so you do not reuse one, and optional pop-up alerts for new codes. Updated automatically'],
