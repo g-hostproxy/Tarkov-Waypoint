@@ -9270,8 +9270,10 @@ img.ii{object-fit:contain;background:#2a2d28;border:1px solid #0007;border-radiu
     if(!im.dataset.px){ im.dataset.px = '1'; im.removeAttribute('referrerpolicy'); im.src = 'https://wsrv.nl/?w=450&url=' + encodeURIComponent(im.src.split('?')[0].replace(/\/scale-to-width-down\/\d+$/, '')); return; }
     if(im.classList.contains('kp-door')) im.remove(); else if(im.parentNode) im.parentNode.remove();
   };
+  /* the wiki's image server tells browsers to keep a picture for a year, and an earlier version of this page was handed its grey placeholder; a harmless extra parameter makes the browser ask again */
+  const fresh = u => u + (String(u).indexOf('?') < 0 ? '?' : '&') + 'nr=1';
   function lockHTML(l){
-    const own = doorPhoto(l), wp = own ? [] : wikiPhotos(l);
+    const own = doorPhoto(l), wp = (own ? [] : wikiPhotos(l)).map(x => Object.assign({}, x, { u:fresh(x.u) }));
     const kind = l.type === 'trunk' ? 'Trunk / container' : 'Door';
     const main = own ? { u:own, c:'' } : wp[0];
     return '<div class="kp-l">' +
