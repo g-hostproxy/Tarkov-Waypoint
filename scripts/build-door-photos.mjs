@@ -8,7 +8,6 @@ import { pathToFileURL } from 'node:url';
 const BASE = process.env.WIKI_BASE || 'https://escapefromtarkov.fandom.com';
 const UA = { 'User-Agent': 'TarkovWaypoint-door-photos/1.0 (personal fan project; contact via GitHub repo)' };
 const OUT = 'data/door-photos.json';
-const API = ['https://api.tarkov.dev/graphql'];
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const text = h => String(h).replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&#0?39;|&apos;/g, "'").replace(/&quot;/g, '"').replace(/\s+/g, ' ').replace(/\s+([.,;:!?])/g, '$1').trim();
 const attr = (tag, n) => { const m = new RegExp('\\b' + n + '\\s*=\\s*"([^"]*)"', 'i').exec(tag); return m ? m[1] : ''; };
@@ -23,19 +22,24 @@ export function lockSection(id) {
 /* the photos of every Lock Location section, in page order, each with its caption. k = what the photo is of, so the door can come first. */
 export function parseKeyPage(html) {
   const h = String(html).replace(/<svg[\s\S]*?<\/svg>/g, '').replace(/<span class="mw-editsection[\s\S]*?<\/span><\/span>/g, '');
-  const parts = h.split(/<h[23][\s>]/i).slice(1); const photos = [], seen = new Set();
-  for (const p of parts) {
-    const id = (/id="([^"]+)"/.exec(p) || [])[1] || '';
-    if (!lockSection(id)) continue;
-    for (const im of p.matchAll(/<img\b[^>]*>/gi)) {
+  /* cut the page at every h2 / h3; a sub-heading ("The Lab", "Streets of Tarkov") under a Lock Location heading belongs to it */
+  const marks = [...h.matchAll(/<h([23])[\s>]/gi)].map(m => ({ lvl:+m[1], at:m.index }));
+  const photos = [], seen = new Set(); let inLock = false;
+  marks.forEach((m, n) => {
+    const part = h.slice(m.at, n + 1 < marks.length ? marks[n + 1].at : h.length);
+    const id = (/id="([^"]+)"/.exec(part) || [])[1] || '';
+    if (m.lvl === 2) inLock = lockSection(id);
+    else if (!inLock && !lockSection(id)) return;
+    if (m.lvl === 2 && !inLock) return;
+    for (const im of part.matchAll(/<img\b[^>]*>/gi)) {
       const tag = im[0]; const name = attr(tag, 'data-image-name'); if (!name || seen.has(name)) continue;
       const u = goodUrl(attr(tag, 'data-src') || attr(tag, 'src')); if (!u) continue;
       seen.add(name); const c = text(attr(tag, 'alt') || name.replace(/\.[a-z]+$/i, '').replace(/[_-]+/g, ' '));
-      const k = /\b(map|marked on)\b/i.test(c) ? 'map' : /\bdoor\b/i.test(c) ? 'door' : /\b(stair|staircase|entrance|building|exterior|road|path|way|corridor|hall|hallway|room|apartment|lock|container|trunk)\b/i.test(c) ? 'path' : 'path';
-      photos.push({ u, c: c.slice(0, 120), k });
+      const k = /\b(map|marked on)\b/i.test(c) ? 'map' : /\bdoor\b/i.test(c) ? 'door' : 'path';
+      photos.push({ u, c:c.slice(0, 120), k });
     }
-  }
-  return photos.slice(0, 10);
+  });
+  return photos.slice(0, 12);
 }
 
 async function wikiPage(title) {
@@ -44,22 +48,21 @@ async function wikiPage(title) {
   const j = await res.json(); if (!j.parse) throw new Error('no page');
   return typeof j.parse.text === 'string' ? j.parse.text : (j.parse.text && j.parse.text['*']) || '';
 }
-async function keyList() {
-  const q = '{ maps { locks { key { id name } } } }';
-  for (const u of API) {
-    try {
-      const r = await fetch(u, { method:'POST', headers:{ 'Content-Type':'application/json', ...UA }, body: JSON.stringify({ query:q }), signal: AbortSignal.timeout(60000) });
-      const j = await r.json(); if (!(j.data && j.data.maps)) continue;
-      const m = new Map(); j.data.maps.forEach(mp => (mp.locks || []).forEach(l => { if (l.key && l.key.id) m.set(l.key.id, l.key.name); })); if (m.size) return m;
-    } catch (e) { /* next */ }
+/* every key that opens something: the ones in the site's bundled map data, plus the hand-placed ones. Needs no network, so a flaky tarkov.dev cannot stop it. */
+export function keyList(html) {
+  const m = new Map(); const a = html.indexOf('const EMBEDDED_QUEST_DATA = ');
+  if (a >= 0) {
+    const from = a + 'const EMBEDDED_QUEST_DATA = '.length, e = html.indexOf('\n', from);
+    try { (JSON.parse(html.slice(from, e).replace(/;\s*$/, '')).maps || []).forEach(mp => (mp.locks || []).forEach(l => { if (l.keyId && l.key && l.key !== l.keyId) m.set(l.keyId, l.key); })); } catch (x) { console.log('could not read the bundled map data: ' + x.message); }
   }
-  throw new Error('tarkov.dev is not answering');
+  for (const x of html.matchAll(/keyId:\s*'([0-9a-f]{24})',\s*key:\s*"([^"]+)"/g)) m.set(x[1], x[2]);
+  return m;
 }
 
 async function main() {
   let prev = {}; try { prev = JSON.parse(readFileSync(OUT, 'utf8')); } catch (e) {}
   if (!process.env.FORCE && prev.v === 2 && existsSync(OUT) && Date.now() - statSync(OUT).mtimeMs < 7 * 864e5) { console.log('Door photos are less than a week old; skipping.'); return; }
-  const names = await keyList(); console.log(names.size + ' keys open a door or container somewhere.');
+  const names = keyList(readFileSync('index.html', 'utf8')); console.log(names.size + ' keys open a door or container somewhere.');
   const keys = {}; let ok = 0, none = 0, bad = 0; const noPhotos = [];
   for (const [id, name] of names) {
     try {
