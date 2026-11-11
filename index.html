@@ -9224,7 +9224,14 @@ img.ii{object-fit:contain;background:#2a2d28;border:1px solid #0007;border-radiu
 .kpop .kp-key small{display:block;opacity:.75;font-size:11px;margin-top:1px}
 .kpop .kp-lab{font-size:10px;letter-spacing:.05em;text-transform:uppercase;opacity:.65;margin-bottom:2px}
 .kpop .kp-links{margin-top:4px;display:flex;gap:10px;flex-wrap:wrap}
+.kpop .kp-door{cursor:zoom-in}
 .kpop .kp-cap{font-size:11px;opacity:.75;margin:-2px 0 5px}
+#kPhotoBox{position:fixed;inset:0;z-index:100000;background:#000c;display:flex;align-items:center;justify-content:center;padding:14px;box-sizing:border-box}
+#kPhotoBox .kb-in{position:relative;max-width:min(1100px,100%);max-height:100%;display:flex;flex-direction:column;align-items:center;gap:8px;color:#eee}
+#kPhotoBox img{max-width:100%;max-height:calc(100vh - 150px);border-radius:8px;box-shadow:0 10px 40px #000;background:#222;object-fit:contain}
+#kPhotoBox .kb-t{font-weight:700;font-size:15px;padding-right:34px;align-self:flex-start}#kPhotoBox .kb-c{font-size:13px;opacity:.85;text-align:center}#kPhotoBox .kb-f{font-size:11px;opacity:.55}
+#kPhotoBox .kb-x{position:absolute;top:-4px;right:-2px;background:none;border:0;color:#fff;font-size:30px;line-height:1;cursor:pointer;padding:0 6px}
+#kPhotoBox .kb-n{display:flex;gap:14px;align-items:center}#kPhotoBox .kb-n button{cursor:pointer;padding:6px 14px;border-radius:8px;border:1px solid #fff5;background:#fff1;color:#fff}#kPhotoBox .kb-n span{font-size:12px;opacity:.7;min-width:44px;text-align:center}
 .kpop .kp-th{display:flex;gap:4px;margin:0 0 6px;overflow-x:auto;padding-bottom:2px}.kpop .kp-t{flex:0 0 auto;width:46px;height:34px;padding:0;border:2px solid transparent;border-radius:4px;overflow:hidden;background:#2a2d28;cursor:pointer}.kpop .kp-t.on{border-color:var(--accent)}.kpop .kp-t img{width:100%;height:100%;object-fit:cover;display:block}
 .kwiki{color:var(--accent);font-size:12px;text-decoration:none;white-space:nowrap}
 .kwiki:hover{text-decoration:underline}
@@ -9270,6 +9277,30 @@ img.ii{object-fit:contain;background:#2a2d28;border:1px solid #0007;border-radiu
     if(!im.dataset.px){ im.dataset.px = '1'; im.removeAttribute('referrerpolicy'); im.src = 'https://wsrv.nl/?w=450&url=' + encodeURIComponent(im.src.split('?')[0].replace(/\/scale-to-width-down\/\d+$/, '')); return; }
     if(im.classList.contains('kp-door')) im.remove(); else if(im.parentNode) im.parentNode.remove();
   };
+  /* click the door photo: a big view with the key's other photos one tap away (arrows, swipe-free: Prev / Next, Esc or a click outside closes) */
+  let kv = null;
+  const bigU = u => String(u).replace(/scale-to-width-down\/\d+/, 'scale-to-width-down/1400');
+  function openPhotoBox(list, idx, title){
+    if(!list || !list.length) return;
+    if(kv) kv.remove();
+    let i = Math.max(0, Math.min(idx || 0, list.length - 1));
+    const el = kv = document.createElement('div'); el.id = 'kPhotoBox'; el.setAttribute('role', 'dialog'); el.setAttribute('aria-label', 'Door photo');
+    el.innerHTML = '<div class="kb-in"><button type="button" class="kb-x" aria-label="Close">×</button><div class="kb-t">' + esc(title || '') + '</div><img alt="" referrerpolicy="no-referrer"><div class="kb-c"></div>' +
+      (list.length > 1 ? '<div class="kb-n"><button type="button" data-d="-1">‹ Prev</button><span></span><button type="button" data-d="1">Next ›</button></div>' : '') + '<div class="kb-f">Photo: Escape from Tarkov Wiki</div></div>';
+    document.body.appendChild(el);
+    const im = el.querySelector('img'), cp = el.querySelector('.kb-c'), sp = el.querySelector('.kb-n span');
+    const show = () => { const x = list[i]; im.src = bigU(x.u); cp.textContent = x.c || ''; if(sp) sp.textContent = (i + 1) + ' / ' + list.length; };
+    const close = () => { document.removeEventListener('keydown', key, true); if(kv === el) kv = null; el.remove(); };
+    const step = d => { i = (i + d + list.length) % list.length; show(); };
+    const key = e => { if(e.key === 'Escape'){ e.stopPropagation(); close(); } else if(list.length > 1 && e.key === 'ArrowLeft') step(-1); else if(list.length > 1 && e.key === 'ArrowRight') step(1); };
+    document.addEventListener('keydown', key, true);
+    im.addEventListener('error', () => { if(!im.dataset.px){ im.dataset.px = '1'; im.removeAttribute('referrerpolicy'); im.src = list[i].u; } });
+    el.addEventListener('click', e => {
+      const b = e.target.closest('[data-d]'); if(b){ step(+b.dataset.d); return; }
+      if(e.target.closest('.kb-x') || e.target === el || e.target.classList.contains('kb-in')) close();
+    });
+    show();
+  }
   /* the wiki's image server tells browsers to keep a picture for a year, and an earlier version of this page was handed its grey placeholder; a harmless extra parameter makes the browser ask again */
   const fresh = u => u + (String(u).indexOf('?') < 0 ? '?' : '&') + 'nr=1';
   function lockHTML(l){
@@ -9296,6 +9327,10 @@ img.ii{object-fit:contain;background:#2a2d28;border:1px solid #0007;border-radiu
         const mk = S.keyMarkers[i]; if(!mk) return;
         const el = document.createElement('div'); el.className = 'pop kpop';
         el.addEventListener('click', e => {
+          const big = e.target.closest('.kp-door');
+          if(big){ const box0 = big.closest('.kp-l'), ths = [...box0.querySelectorAll('.kp-t')], cur = box0.querySelector('.kp-t.on');
+            const list = ths.length ? ths.map(x => ({ u:x.dataset.u, c:x.dataset.c })) : [{ u:big.getAttribute('src'), c:(box0.querySelector('.kp-cap') || {}).textContent || '' }];
+            openPhotoBox(list, ths.length ? Math.max(0, ths.indexOf(cur)) : 0, (box0.querySelector('.kp-key b') || {}).textContent || ''); return; }
           const t = e.target.closest('.kp-t'); if(!t) return; const box = t.closest('.kp-l'), im = box.querySelector('.kp-door'), cp = box.querySelector('.kp-cap');
           if(im) im.src = t.dataset.u; if(cp) cp.textContent = t.dataset.c || '';
           box.querySelectorAll('.kp-t').forEach(x => x.classList.toggle('on', x === t));
@@ -17036,6 +17071,7 @@ document.addEventListener('click', e => {
 
 const CHANGELOG = [
   { d:'2026-11-08', items:[
+      ['new','Key stops: tap the door photo to see it big, with Prev / Next through the key\'s other photos'],
       ['new','Key stops now show every Lock Location photo from the wiki for that key (the door, stairs, building and map), tap a thumbnail to switch'],
       ['fix','Long Road now asks for 7 kills, matching the game (it said 4)'],
       ['fix','Hideout planner: tapping a level now works the first time (a background refresh could swallow the tap)'],
