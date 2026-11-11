@@ -9265,13 +9265,18 @@ img.ii{object-fit:contain;background:#2a2d28;border:1px solid #0007;border-radiu
     const rank = x => x.k === 'door' ? 0 : x.k === 'path' ? 1 : 2;
     return di.p.map((x, n) => [x, n]).sort((a, b) => rank(a[0]) - rank(b[0]) || a[1] - b[1]).map(a => a[0]);
   }
+  /* the wiki's image server shows a grey placeholder to pages that send a referrer, so these images send none (like the other wiki pictures here); if one still fails, try a proxy once, then drop it */
+  window.__dpErr = im => {
+    if(!im.dataset.px){ im.dataset.px = '1'; im.removeAttribute('referrerpolicy'); im.src = 'https://wsrv.nl/?w=450&url=' + encodeURIComponent(im.src.split('?')[0].replace(/\/scale-to-width-down\/\d+$/, '')); return; }
+    if(im.classList.contains('kp-door')) im.remove(); else if(im.parentNode) im.parentNode.remove();
+  };
   function lockHTML(l){
     const own = doorPhoto(l), wp = own ? [] : wikiPhotos(l);
     const kind = l.type === 'trunk' ? 'Trunk / container' : 'Door';
     const main = own ? { u:own, c:'' } : wp[0];
     return '<div class="kp-l">' +
-      (main ? '<img class="kp-door" src="' + esc(main.u) + '" alt="' + esc(kind) + ' opened by ' + esc(l.key) + '" loading="lazy" onerror="this.remove()">' + '<div class="kp-cap">' + esc(main.c || '') + '</div>' : '') +
-      (wp.length > 1 ? '<div class="kp-th">' + wp.map((x, n) => '<button type="button" class="kp-t' + (n ? '' : ' on') + '" data-u="' + esc(x.u) + '" data-c="' + esc(x.c) + '" title="' + esc(x.c) + '"><img src="' + esc(x.u) + '" alt="' + esc(x.c) + '" loading="lazy" onerror="this.parentNode.remove()"></button>').join('') + '</div>' : '') +
+      (main ? '<img class="kp-door" src="' + esc(main.u) + '" alt="' + esc(kind) + ' opened by ' + esc(l.key) + '" loading="lazy" referrerpolicy="no-referrer" onerror="window.__dpErr(this)">' + '<div class="kp-cap">' + esc(main.c || '') + '</div>' : '') +
+      (wp.length > 1 ? '<div class="kp-th">' + wp.map((x, n) => '<button type="button" class="kp-t' + (n ? '' : ' on') + '" data-u="' + esc(x.u) + '" data-c="' + esc(x.c) + '" title="' + esc(x.c) + '"><img src="' + esc(x.u) + '" alt="' + esc(x.c) + '" loading="lazy" referrerpolicy="no-referrer" onerror="window.__dpErr(this)"></button>').join('') + '</div>' : '') +
       '<div class="kp-lab">' + kind + (l.power ? ' · needs power' : '') + ' — key to use</div>' +
       '<div class="kp-key">' + itemImg(l.keyId, 44) + '<div><b>' + esc(l.key) + '</b>' +
         '<small>Opens this ' + kind.toLowerCase() + '</small></div></div>' +
