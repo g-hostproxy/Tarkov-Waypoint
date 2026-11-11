@@ -9218,12 +9218,16 @@ img.ii{object-fit:contain;background:#2a2d28;border:1px solid #0007;border-radiu
 .kpop .kp-h{font-weight:600;margin-bottom:4px}
 .kpop .kp-l{margin:6px 0 0;padding-top:6px;border-top:1px solid #0002}
 .kpop .kp-l:first-of-type{border-top:0;padding-top:0}
-.kpop .kp-door{display:block;width:100%;max-height:150px;object-fit:cover;border-radius:4px;border:1px solid #0004;margin:0 0 5px;background:#2a2d28}
+.kpop .kp-door{display:block;width:100%;max-height:120px;object-fit:cover;border-radius:4px;border:1px solid #0004;margin:0 0 5px;background:#2a2d28}
 .kpop .kp-key{display:flex;gap:8px;align-items:center}
 .kpop .kp-key b{display:block;color:#1c6f78;font-weight:600;line-height:1.2}
 .kpop .kp-key small{display:block;opacity:.75;font-size:11px;margin-top:1px}
 .kpop .kp-lab{font-size:10px;letter-spacing:.05em;text-transform:uppercase;opacity:.65;margin-bottom:2px}
 .kpop .kp-links{margin-top:4px;display:flex;gap:10px;flex-wrap:wrap}
+.kpop .kp-cap{font-size:11px;opacity:.75;margin:-2px 0 5px}
+.kpop .kp-fl{margin-top:5px;font-size:12.5px}.kpop .kp-fl b{display:inline;color:inherit}.kpop .kp-fl i{opacity:.7;font-style:normal;font-size:11px}
+.kpop .kp-said{margin-top:4px;font-size:11.5px;line-height:1.35;opacity:.85}.kpop .kp-said span{opacity:.6;font-size:10px;text-transform:uppercase;letter-spacing:.04em}
+.ksteps .kfl{display:inline-block;margin-left:6px;font-size:11px;padding:0 6px;border-radius:99px;border:1px solid currentColor;opacity:.8;white-space:nowrap}
 .kwiki{color:var(--accent);font-size:12px;text-decoration:none;white-space:nowrap}
 .kwiki:hover{text-decoration:underline}
 .ksteps .kwiki{margin-left:6px}
@@ -9251,16 +9255,63 @@ img.ii{object-fit:contain;background:#2a2d28;border:1px solid #0007;border-radiu
   const wikiA = name => '<a class="kwiki" href="' + esc(wikiUrl(name)) + '" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Open the wiki page for ' + esc(name) + '">Wiki \u2197</a>';
   const doorPhoto = l => l.photo || (S.doorPhotos && S.doorPhotos[l.id]) || '';
 
+  /* ---- floor + door photo from the wiki (data/door-photos.json, kept current by the GitHub Action) ---- */
+  S.doorInfo = null;
+  if(typeof fetch === 'function' && location.protocol !== 'file:'){
+    fetch('data/door-photos.json?h=' + Math.floor(Date.now() / 36e5), { cache:'no-cache' }).then(r => r.ok ? r.json() : null)
+      .then(j => { if(j && j.keys){ S.doorInfo = j; try{ if(S.map && S.curMap) drawKeys(); }catch(e){} } }).catch(() => {});
+  }
+  const ORDW = { ground:'ground', first:'1st', second:'2nd', third:'3rd', fourth:'4th', fifth:'5th', sixth:'6th' };
+  const canonFl = s => {
+    const t = String(s || '').toLowerCase().replace(/_/g, ' ');
+    if(/\b(basement|underground|cellar|tunnels?|bunkers?|garage|technical)\b/.test(t)) return 'underground';
+    const m = /\b(ground|first|second|third|fourth|fifth|sixth|1st|2nd|3rd|4th|5th|6th)\s+(?:floor|level)\b/.exec(t);
+    if(!m) return ''; const o = ORDW[m[1]] || m[1]; return (o === 'ground' || o === '1st') ? 'ground floor' : o + ' floor';
+  };
+  /* the map's own floor height bands. Only for maps the weekly check found to agree with the wiki (floorTrust), and never where a floor only covers part of the map. */
+  const layersOf = mk => {
+    try{
+      const m = (EMBEDDED_CAL_RAW || []).find(x => x.normalizedName === mk), ls = m && m.maps && m.maps[0] && m.maps[0].layers;
+      if(!ls || !ls.length || ls.some(l => (l.extents || []).some(e => e.bounds))) return null;
+      return ls.map(l => ({ f: canonFl(l.name), ext: (l.extents || []).map(e => e.height) })).filter(l => l.f);
+    }catch(e){ return null; }
+  };
+  const floorByHeight = (ls, y) => { let best = null, bw = Infinity; ls.forEach(l => l.ext.forEach(r => { if(y >= r[0] && y < r[1] && r[1] - r[0] < bw){ best = l.f; bw = r[1] - r[0]; } })); return best || 'ground floor'; };
+  const cap1 = t => t ? t.charAt(0).toUpperCase() + t.slice(1) : '';
+  /* { floor, est } for a lock: hand-placed floor first, then the wiki's own words, then (only on trusted maps) the height */
+  function lockFloor(l){
+    if(l.fl) return { floor:cap1(String(l.fl).replace(/_/g, ' ').toLowerCase()), est:false };
+    const di = S.doorInfo && S.doorInfo.keys && S.doorInfo.keys[l.keyId];
+    if(di && di.fls && di.fls.length === 1) return { floor:cap1(di.fls[0]), est:false };
+    if(S.doorInfo && S.doorInfo.floorTrust && S.doorInfo.floorTrust[S.curMap] && l.p && l.p.y != null){
+      const ls = layersOf(S.curMap); if(ls) return { floor:cap1(floorByHeight(ls, l.p.y)), est:true };
+    }
+    return null;
+  }
+  /* the wiki's door photo for this lock, when it is clear which one (one door on this map, or only one door photo) */
+  function wikiDoor(l){
+    const di = S.doorInfo && S.doorInfo.keys && S.doorInfo.keys[l.keyId]; if(!di || !di.p) return null;
+    const doors = di.p.filter(x => x.k === 'door'); if(!doors.length) return null;
+    const here = ((S.locks && S.locks[S.curMap]) || []).filter(x => x.keyId === l.keyId).length;
+    return (doors.length === 1 || here <= 1) ? doors[0] : null;
+  }
+
   function lockHTML(l){
-    const ph = doorPhoto(l);
+    const own = doorPhoto(l), wd = own ? null : wikiDoor(l), ph = own || (wd && wd.u) || '';
     const kind = l.type === 'trunk' ? 'Trunk / container' : 'Door';
+    const fl = lockFloor(l), di = S.doorInfo && S.doorInfo.keys && S.doorInfo.keys[l.keyId];
+    const more = di && di.p ? di.p.filter(x => x.k !== 'map' && x !== wd).length : 0;
+    const said = di && di.t ? (di.t.length > 190 ? di.t.slice(0, 187).replace(/\s+\S*$/, '') + '…' : di.t) : '';
     return '<div class="kp-l">' +
       (ph ? '<img class="kp-door" src="' + esc(ph) + '" alt="' + esc(kind) + ' opened by ' + esc(l.key) + '" loading="lazy" onerror="this.remove()">' : '') +
-      '<div class="kp-lab">' + kind + (l.power ? ' \u00b7 needs power' : '') + ' \u2014 key to use</div>' +
+      (wd && wd.c ? '<div class="kp-cap">' + esc(wd.c) + '</div>' : '') +
+      '<div class="kp-lab">' + kind + (l.power ? ' · needs power' : '') + ' — key to use</div>' +
       '<div class="kp-key">' + itemImg(l.keyId, 44) + '<div><b>' + esc(l.key) + '</b>' +
         '<small>Opens this ' + kind.toLowerCase() + '</small></div></div>' +
+      (fl ? '<div class="kp-fl" title="' + (fl.est ? 'Worked out from the door’s height on this map, so it can be a floor off.' : 'From the key’s wiki page.') + '"><b>Floor:</b> ' + esc(fl.floor) + (fl.est ? ' <i>(estimated)</i>' : '') + '</div>' : '') +
+      (said ? '<div class="kp-said">“' + esc(said) + '” <span>Wiki</span></div>' : '') +
       '<div class="kp-links">' + wikiA(l.key) +
-        (ph ? '' : '<a class="kwiki" href="' + esc(wikiUrl(l.key) + '#Location') + '" target="_blank" rel="noopener" title="No door photo stored. The wiki key page shows where its doors are.">Door photos on the wiki \u2197</a>') +
+        (ph && !more ? '' : '<a class="kwiki" href="' + esc(wikiUrl(l.key) + '#Lock_Location') + '" target="_blank" rel="noopener" title="' + (ph ? 'More photos of the way to this door' : 'No door photo stored. The wiki key page shows where its doors are.') + '">' + (ph ? 'More photos (' + more + ')' : 'Door photos on the wiki') + ' ↗</a>') +
       '</div></div>';
   }
 
@@ -9287,6 +9338,7 @@ img.ii{object-fit:contain;background:#2a2d28;border:1px solid #0007;border-radiu
       li.querySelectorAll('.it').forEach((el, j) => {
         const it = s.items[j]; if(!it || el.querySelector('.kwiki')) return;
         el.insertAdjacentHTML('afterbegin', itemImg(it.g.lock.keyId, 24));
+        { const f = lockFloor(it.g.lock); if(f) el.insertAdjacentHTML('beforeend', '<span class="kfl" title="' + (f.est ? 'Estimated from height' : 'From the wiki') + '">' + esc(f.floor) + (f.est ? ' ~' : '') + '</span>'); }
         el.insertAdjacentHTML('beforeend', wikiA(it.g.lock.key));
       });
     });
@@ -17008,6 +17060,7 @@ document.addEventListener('click', e => {
 
 const CHANGELOG = [
   { d:'2026-11-08', items:[
+      ['new','Key stops now say which floor the door is on and show the wiki\'s photo of the door, when the wiki has one'],
       ['fix','Long Road now asks for 7 kills, matching the game (it said 4)'],
       ['fix','Hideout planner: tapping a level now works the first time (a background refresh could swallow the tap)'],
       ['fix','Events: Halloween 2026 now shows as running until its real end. Events with no end date on the wiki are no longer called over; they move to "End date not confirmed"'],

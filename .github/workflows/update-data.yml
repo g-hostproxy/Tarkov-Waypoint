@@ -48,6 +48,10 @@ jobs:
       - name: Build extract info
         continue-on-error: true
         run: node scripts/build-extract-info.mjs
+      # Floor and door photo for each key stop, from each key's wiki page (and a check of the height-based floor guess). Refreshes weekly.
+      - name: Build door photos
+        continue-on-error: true
+        run: node scripts/build-door-photos.mjs
       # Promo codes people report as working (wiki, Reddit, roundup pages). Each source may fail; refreshes every 3 hours.
       - name: Build promo codes
         continue-on-error: true
