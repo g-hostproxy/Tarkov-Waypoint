@@ -1,5 +1,5 @@
 // Builds data/door-photos.json: for every key that opens a door or container on a map, the photos on its wiki page's
-// "Lock Location" section (the door, the stairs, the building, the spot on the map).
+// "Lock Location" section (the door, the stairs, the building, the spot on the map), and the floor if that section says one.
 // The key pop-up shows them. Only the wiki's own image addresses are stored; no images are copied.
 // Refreshes at most once a week (set FORCE=1 to run now).
 import { readFileSync, writeFileSync, existsSync, mkdirSync, statSync } from 'node:fs';
@@ -19,18 +19,30 @@ export function lockSection(id) {
   if (/^(key_?locations?|keys?_?found|where_to_find|behind|loot|trivia|notes?|gallery|description|references?|see_also)/.test(t)) return false;
   return /lock|door|location|where_to_use|usage/.test(t);
 }
+/* floors the wiki's Lock Location text names ("on the third floor", "2nd floor", "basement"). Only the wiki's own words; nothing is guessed. */
+const FLOOR_RE = /\b(ground|first|second|third|fourth|fifth|sixth|seventh|top|upper|1st|2nd|3rd|4th|5th|6th|7th)[\s-]+(?:floor|level)\b|\b(basement|underground|cellar|attic)\b/gi;
+const FKEY = { ground:'g', first:'g', '1st':'g', second:'2', '2nd':'2', third:'3', '3rd':'3', fourth:'4', '4th':'4', fifth:'5', '5th':'5', sixth:'6', '6th':'6', seventh:'7', '7th':'7', top:'top', upper:'upper', basement:'b', underground:'b', cellar:'b', attic:'a' };
+export function floorsIn(t) {
+  const out = [], seen = new Set();
+  for (const m of String(t || '').matchAll(FLOOR_RE)) {
+    const w = (m[1] || m[2]).toLowerCase(), k = FKEY[w]; if (!k || seen.has(k)) continue; seen.add(k);
+    out.push(m[1] ? w + ' floor' : w);
+  }
+  return out;
+}
 /* the photos of every Lock Location section, in page order, each with its caption. k = what the photo is of, so the door can come first. */
 export function parseKeyPage(html) {
   const h = String(html).replace(/<svg[\s\S]*?<\/svg>/g, '').replace(/<span class="mw-editsection[\s\S]*?<\/span><\/span>/g, '');
   /* cut the page at every h2 / h3; a sub-heading ("The Lab", "Streets of Tarkov") under a Lock Location heading belongs to it */
   const marks = [...h.matchAll(/<h([23])[\s>]/gi)].map(m => ({ lvl:+m[1], at:m.index }));
-  const photos = [], seen = new Set(); let inLock = false;
+  const photos = [], seen = new Set(); let inLock = false, words = '';
   marks.forEach((m, n) => {
     const part = h.slice(m.at, n + 1 < marks.length ? marks[n + 1].at : h.length);
     const id = (/id="([^"]+)"/.exec(part) || [])[1] || '';
     if (m.lvl === 2) inLock = lockSection(id);
     else if (!inLock && !lockSection(id)) return;
     if (m.lvl === 2 && !inLock) return;
+    words += ' ' + text(part.replace(/^<h[23][\s\S]*?<\/h[23]>/i, ' ').replace(/<img\b[^>]*>/gi, ' '));
     for (const im of part.matchAll(/<img\b[^>]*>/gi)) {
       const tag = im[0]; const name = attr(tag, 'data-image-name'); if (!name || seen.has(name)) continue;
       const u = goodUrl(attr(tag, 'data-src') || attr(tag, 'src')); if (!u) continue;
@@ -39,7 +51,9 @@ export function parseKeyPage(html) {
       photos.push({ u, c:c.slice(0, 120), k });
     }
   });
-  return photos.slice(0, 12);
+  const fl = floorsIn(words);
+  const sentence = fl.length ? (words.split(/(?<=[.!?])\s+/).find(x => floorsIn(x).length) || '').trim().slice(0, 220) : '';
+  return { p:photos.slice(0, 12), fl, ft:sentence };
 }
 
 async function wikiPage(title) {
@@ -61,21 +75,21 @@ export function keyList(html) {
 
 async function main() {
   let prev = {}; try { prev = JSON.parse(readFileSync(OUT, 'utf8')); } catch (e) {}
-  if (!process.env.FORCE && prev.v === 2 && existsSync(OUT) && Date.now() - statSync(OUT).mtimeMs < 7 * 864e5) { console.log('Door photos are less than a week old; skipping.'); return; }
+  if (!process.env.FORCE && prev.v === 3 && existsSync(OUT) && Date.now() - statSync(OUT).mtimeMs < 7 * 864e5) { console.log('Door photos are less than a week old; skipping.'); return; }
   const names = keyList(readFileSync('index.html', 'utf8')); console.log(names.size + ' keys open a door or container somewhere.');
   const keys = {}; let ok = 0, none = 0, bad = 0; const noPhotos = [];
   for (const [id, name] of names) {
     try {
-      const photos = parseKeyPage(await wikiPage(String(name).replace(/ /g, '_')));
-      if (photos.length) { keys[id] = { n:name, p:photos }; ok++; } else { none++; noPhotos.push(name); if (prev.keys && prev.keys[id]) keys[id] = prev.keys[id]; }
+      const info = parseKeyPage(await wikiPage(String(name).replace(/ /g, '_')));
+      if (info.p.length || info.fl.length) { keys[id] = { n:name, p:info.p, ...(info.fl.length ? { fl:info.fl, ft:info.ft } : {}) }; ok++; } else { none++; noPhotos.push(name); if (prev.keys && prev.keys[id]) keys[id] = prev.keys[id]; }
     } catch (err) { bad++; if (prev.keys && prev.keys[id]) keys[id] = prev.keys[id]; }
     await sleep(250);
   }
-  console.log(`${ok} keys have Lock Location photos; ${none} pages have none; ${bad} could not be read.`);
+  console.log(`${ok} keys have Lock Location photos or a floor; ${none} pages have none; ${bad} could not be read.`);
   if (noPhotos.length) console.log('No photos found for: ' + noPhotos.join(', '));
   if (!ok) { console.log('No photos found; leaving the existing file alone.'); return; }
   mkdirSync('data', { recursive: true });
-  writeFileSync(OUT, JSON.stringify({ v:2, updated:new Date().toISOString(), source:BASE + '/wiki/', keys }));
+  writeFileSync(OUT, JSON.stringify({ v:3, updated:new Date().toISOString(), source:BASE + '/wiki/', keys }));
   console.log('Wrote ' + OUT + ' with ' + Object.keys(keys).length + ' keys.');
 }
 if (import.meta.url === pathToFileURL(process.argv[1]).href) main().catch(e => { console.error(e); process.exit(1); });
