@@ -122,7 +122,7 @@ async function main() {
   mkdirSync('data', { recursive: true });
   let db = { items:[], dismissed:[] };
   if (existsSync(OUT)) { try { db = Object.assign(db, JSON.parse(readFileSync(OUT, 'utf8'))); } catch (e) {} }
-  if (!process.env.FORCE && existsSync(OUT) && Date.now() - statSync(OUT).mtimeMs < 2 * 3600e3) { console.log('Refreshed less than 2 hours ago; skipping (FORCE=1 to run now).'); return; }
+  if (!process.env.FORCE && db.updated && Date.now() - Date.parse(db.updated) < 2 * 3600e3) { console.log('Refreshed less than 2 hours ago; skipping (FORCE=1 to run now).'); return; }
   const hits = []; let ok = 0, posts = [];
   for (const s of X_SOURCES) {
     try {

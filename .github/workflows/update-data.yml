@@ -55,10 +55,14 @@ jobs:
       # Promo codes people report as working (wiki, Reddit, roundup pages). Each source may fail; refreshes every 3 hours.
       - name: Build promo codes
         continue-on-error: true
+        env:
+          FORCE: ${{ github.event_name == 'workflow_dispatch' && '1' || '' }}   # a manual run always refreshes; the hourly one respects the throttle
         run: node scripts/build-promocodes.mjs
       # News about Twitch drops (headlines + links; feeds the opt-in drop alert). Refreshes every 2 hours.
       - name: Build Twitch drop news
         continue-on-error: true
+        env:
+          FORCE: ${{ github.event_name == 'workflow_dispatch' && '1' || '' }}   # a manual run always refreshes; the hourly one respects the throttle
         run: node scripts/build-twitchdrops.mjs
       - name: Commit if changed
         run: |

@@ -75,7 +75,7 @@ export function keyList(html) {
 
 async function main() {
   let prev = {}; try { prev = JSON.parse(readFileSync(OUT, 'utf8')); } catch (e) {}
-  if (!process.env.FORCE && prev.v === 3 && existsSync(OUT) && Date.now() - statSync(OUT).mtimeMs < 7 * 864e5) { console.log('Door photos are less than a week old; skipping.'); return; }
+  if (!process.env.FORCE && prev.v === 3 && prev.updated && Date.now() - Date.parse(prev.updated) < 7 * 864e5) { console.log('Door photos are less than a week old; skipping.'); return; }
   const names = keyList(readFileSync('index.html', 'utf8')); console.log(names.size + ' keys open a door or container somewhere.');
   const keys = {}; let ok = 0, none = 0, bad = 0; const noPhotos = [];
   for (const [id, name] of names) {

@@ -98,7 +98,7 @@ async function main() {
   mkdirSync('data', { recursive: true });
   let db = { codes:[], manual:[], dismissed:[] };
   if (existsSync(OUT)) { try{ db = Object.assign(db, JSON.parse(readFileSync(OUT, 'utf8'))); }catch(e){} }
-  if (!process.env.FORCE && existsSync(OUT) && Date.now() - statSync(OUT).mtimeMs < 3 * 3600e3) { console.log('Refreshed less than 3 hours ago; skipping (FORCE=1 to run now).'); return; }
+  if (!process.env.FORCE && db.updated && Date.now() - Date.parse(db.updated) < 3 * 3600e3) { console.log('Refreshed less than 3 hours ago; skipping (FORCE=1 to run now).'); return; }
   const hits = []; let okCount = 0;
   for (const s of SOURCES) {
     try{ const f = await readSource(s); okCount++; console.log(`${s.name}: ${f.length} code(s)${f.length ? ' ' + [...new Set(f.map(x => x.code))].join(', ') : ''}`); f.forEach(x => hits.push({ ...x, name:s.name })); }
