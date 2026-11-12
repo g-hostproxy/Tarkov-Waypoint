@@ -17,18 +17,6 @@
      "date": "2026-11-12"
     }
    ]
-  },
-  {
-   "code": "TARKOVLATAM",
-   "firstSeen": "2026-11-12",
-   "lastSeen": "2026-11-12",
-   "sources": [
-    {
-     "name": "Dexerto",
-     "url": "https://dexerto.com/escape-from-tarkov/all-escape-from-tarkov-promo-codes-and-discounts-1752105",
-     "date": "2026-11-12"
-    }
-   ]
   }
  ],
  "manual": [
@@ -39,6 +27,6 @@
   }
  ],
  "dismissed": [],
- "updated": "2026-11-12T21:00:36.084Z",
+ "updated": "2026-11-12T21:07:56.830Z",
  "note": "Codes are reported by players and sites, not tested. Add a code by hand under \"manual\" ({ \"code\":\"X\", \"date\":\"YYYY-MM-DD\", \"note\":\"...\" }); put a wrong one under \"dismissed\"."
 }
