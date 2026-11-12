@@ -40,6 +40,24 @@ export function extractCodes(text) {
   return [...out];
 }
 
+/* Roundup pages list working codes and expired codes under different headings. Split the page text by those headings so a code
+   under "Expired codes" is never counted as working. Returns { active, expired } text. */
+export function splitByExpiry(html) {
+  const t = String(html || '').replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<nav[\s\S]*?<\/nav>|<footer[\s\S]*?<\/footer>/gi, ' ')
+    .replace(/<h[1-6][^>]*>/gi, '\n#### ').replace(/<\/h[1-6]>/gi, '\n').replace(/<\/(?:p|div|li|ul|ol|tr|table|section)>|<br\s*\/?>/gi, '\n')
+    .replace(/<[^>]+>/g, ' ').replace(/&nbsp;|&#160;/g, ' ').replace(/&amp;/g, '&');
+  const EXP = /\b(expired|inactive|no longer (?:work|valid|active)|old codes?|ended|past codes?|previous codes?)\b/i;
+  const OK = /\b(active|working|valid|current|latest|new codes?|available)\b/i;
+  let expired = false; const a = [], e = [];
+  for (const raw of t.split('\n')) {
+    const line = raw.trim(); if (!line) continue;
+    const head = line.startsWith('####') || (line.length <= 70 && /codes?\b|:$/.test(line) && !/[.!?]$/.test(line));
+    if (head) { if (EXP.test(line)) expired = true; else if (OK.test(line) || line.startsWith('####')) expired = false; }
+    (expired ? e : a).push(line);
+  }
+  return { active:a.join('\n'), expired:e.join('\n') };
+}
+
 async function get(url, json) {
   const res = await fetch(url, { headers: { ...UA, Accept: json ? 'application/json' : 'text/html' }, signal: AbortSignal.timeout(30000) });
   if (!res.ok) throw new Error('HTTP ' + res.status);
@@ -61,8 +79,9 @@ async function readSource(s) {
     for (const code of extractCodes(j.parse && j.parse.text)) found.push({ code, at:Date.now(), url:s.url });
   } else {
     const h = await get(s.url);
-    const main = h.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<nav[\s\S]*?<\/nav>|<footer[\s\S]*?<\/footer>/gi, ' ');
-    for (const code of extractCodes(main)) found.push({ code, at:Date.now(), url:s.url });
+    const sp = splitByExpiry(h);
+    for (const code of extractCodes(sp.active)) found.push({ code, at:Date.now(), url:s.url });
+    for (const code of extractCodes(sp.expired)) found.push({ code, at:Date.now(), url:s.url, expired:true });
   }
   return found;
 }
@@ -105,7 +124,13 @@ async function main() {
     catch(e){ console.log(`${s.name}: could not read (${String(e.message || e).split('\n')[0]})`); }
   }
   if (!okCount) { console.log('No source could be read; leaving the file alone.'); return; }
-  db.codes = merge(db, hits);
+  /* a code a roundup lists as expired (and no source lists as working) comes off the list, unless you added it by hand */
+  const live = hits.filter(h => !h.expired), dead = new Set(hits.filter(h => h.expired).map(h => h.code));
+  live.forEach(h => dead.delete(h.code));
+  const mine = new Set((db.manual || []).map(m => String(m.code).toUpperCase()));
+  db.codes = merge(db, live).filter(c => !dead.has(c.code) || mine.has(c.code));
+  const gone = [...dead].filter(c => !mine.has(c));
+  if (gone.length) console.log('Listed as expired, so not shown: ' + gone.join(', '));
   db.updated = new Date().toISOString();
   db.note = 'Codes are reported by players and sites, not tested. Add a code by hand under "manual" ({ "code":"X", "date":"YYYY-MM-DD", "note":"..." }); put a wrong one under "dismissed".';
   writeFileSync(OUT, JSON.stringify(db, null, 1) + '\n');
