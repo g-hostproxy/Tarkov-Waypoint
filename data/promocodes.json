@@ -1,11 +1,44 @@
 {
- "updated": "",
- "note": "Codes are reported by players and sites, not tested. Add a code by hand under \"manual\" ({ \"code\":\"X\", \"date\":\"YYYY-MM-DD\", \"note\":\"...\" }); put a wrong one under \"dismissed\".",
+ "codes": [
+  {
+   "code": "TARKOVHALLOWEEN",
+   "firstSeen": "2026-11-09",
+   "lastSeen": "2026-11-12",
+   "note": "Halloween event code (added by hand)",
+   "sources": [
+    {
+     "name": "Added by hand",
+     "url": "",
+     "date": "2026-11-09"
+    },
+    {
+     "name": "Dexerto",
+     "url": "https://dexerto.com/escape-from-tarkov/all-escape-from-tarkov-promo-codes-and-discounts-1752105",
+     "date": "2026-11-12"
+    }
+   ]
+  },
+  {
+   "code": "TARKOVLATAM",
+   "firstSeen": "2026-11-12",
+   "lastSeen": "2026-11-12",
+   "sources": [
+    {
+     "name": "Dexerto",
+     "url": "https://dexerto.com/escape-from-tarkov/all-escape-from-tarkov-promo-codes-and-discounts-1752105",
+     "date": "2026-11-12"
+    }
+   ]
+  }
+ ],
  "manual": [
-  { "code": "TARKOVHALLOWEEN", "date": "2026-11-09", "note": "Halloween event code (added by hand)" }
+  {
+   "code": "TARKOVHALLOWEEN",
+   "date": "2026-11-09",
+   "note": "Halloween event code (added by hand)"
+  }
  ],
  "dismissed": [],
- "codes": [
-  { "code": "TARKOVHALLOWEEN", "firstSeen": "2026-11-09", "lastSeen": "2026-11-09", "note": "Halloween event code (added by hand)", "sources": [ { "name": "Added by hand", "url": "", "date": "2026-11-09" } ] }
- ]
+ "updated": "2026-11-12T20:58:28.703Z",
+ "note": "Codes are reported by players and sites, not tested. Add a code by hand under \"manual\" ({ \"code\":\"X\", \"date\":\"YYYY-MM-DD\", \"note\":\"...\" }); put a wrong one under \"dismissed\"."
 }
