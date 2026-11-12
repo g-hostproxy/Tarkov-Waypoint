@@ -18052,7 +18052,7 @@ const CHANGELOG = [
   const E = x => String(x == null ? '' : x).replace(/[&<>"]/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]));
   const ADMIN = /[?&]editpins\b/.test(location.search), AK = 'rr_events_admin';
   const KINDS = { event:['Event', '#ffb23e'], twitch:['Twitch drops', '#9146ff'], wipe:['Wipe', '#ff5d5d'], sale:['Sale', '#3ecf8e'] };
-  let list = [], manual = [], wiki = [], loaded = false;
+  let list = [], manual = [], wiki = [], camps = [], loaded = false;
   const SOFT = 10 * 864e5;                                   /* wiki events with no stated end stay lit for 10 days after they start */
   const clean = a => (Array.isArray(a) ? a : []).map(x => ({ title:String(x.title || '').slice(0, 90), kind:KINDS[x.kind] ? x.kind : 'event', start:x.start ? new Date(x.start).getTime() : NaN, end:x.end ? new Date(x.end).getTime() : null, soft:x.endKnown === false && !x.end, wiki:x.endKnown !== undefined, text:String(x.text || '').slice(0, 400), url:/^https:\/\//.test(x.url || '') ? x.url : '' }))
     .filter(x => x.title && isFinite(x.start) && (x.end === null || isFinite(x.end)));
@@ -18064,7 +18064,12 @@ const CHANGELOG = [
     if(ADMIN){ try{ const m = JSON.parse(localStorage.getItem(AK) || 'null'); if(Array.isArray(m)) man = m; }catch(e){} }
     manual = clean(man); wiki = clean(wk); merge(); loaded = true; paint();
   }
-  function merge(){ const seen = new Set(manual.map(x => x.title.toLowerCase())); list = manual.concat(wiki.filter(x => !seen.has(x.title.toLowerCase()))); }
+  function merge(){
+    const seen = new Set(manual.map(x => x.title.toLowerCase()));
+    list = manual.concat(wiki.filter(x => !seen.has(x.title.toLowerCase())));
+    /* Twitch drop campaigns read from Battlestate's own posts (data/twitchdrops.json). A drop you listed by hand wins when it overlaps in time */
+    camps.forEach(c => { if(!list.some(x => x.kind === 'twitch' && Math.abs(x.start - c.start) < 2 * 864e5)) list.push(c); });
+  }
   const now = () => Date.now();
   const DAY = 864e5;
   const live = () => list.filter(x => x.start <= now() && (x.end === null ? (!x.soft || now() - x.start < SOFT) : x.end > now()));
@@ -18098,7 +18103,7 @@ const CHANGELOG = [
       (s.length ? '<div class="ev-s">Coming up</div>' + s.map(x => card(x, 'soon')).join('') : '') +
       (u.length ? '<div class="ev-s">End date not confirmed</div>' + u.map(x => card(x, 'past')).join('') : '') +
       (p.length ? '<div class="ev-s">Recently ended</div>' + p.map(x => card(x, 'past')).join('') : '') +
-      '<div class="ev-f">Read from the Tarkov wiki about once an hour. When it doesn\'t list an end date, the event stays lit for 10 days after it starts, then moves to "End date not confirmed" instead of being called over. Twitch drops are not on the wiki: for those, we show news headlines and any drop that is listed by hand.</div>' +
+      '<div class="ev-f">Read from the Tarkov wiki about once an hour. When it doesn\'t list an end date, the event stays lit for 10 days after it starts, then moves to "End date not confirmed" instead of being called over. Twitch drops are not on the wiki: those come from Battlestate\u2019s own posts, plus any drop listed by hand.</div>' +
       '<label class="ev-tn"><input type="checkbox" id="evTn"' + (tOn() ? ' checked' : '') + '><span><b>Alert me about Twitch drops</b><small>A pop-up appears when a Twitch drop is on or newly reported. Close it and it will not show again for that drop.</small></span></label>';
   }
   function place(){ const r = btn.getBoundingClientRect(); pop.style.top = (r.bottom + 8) + 'px'; pop.style.right = Math.max(8, innerWidth - r.right - 4) + 'px'; }
@@ -18117,7 +18122,9 @@ const CHANGELOG = [
   let tNews = [], tPop = null;
   async function tLoad(){
     try{ const r = await fetch('data/twitchdrops.json?v=' + Math.floor(Date.now() / 600000), { cache:'no-cache' }); if(!r.ok) return; const d = await r.json();
-      tNews = (d && Array.isArray(d.items) ? d.items : []).filter(x => x && x.id && x.title && Date.now() - Date.parse(x.date + 'T12:00:00Z') < 7 * 864e5); }catch(e){}
+      tNews = (d && Array.isArray(d.items) ? d.items : []).filter(x => x && x.id && x.title && Date.now() - Date.parse(x.date + 'T12:00:00Z') < 7 * 864e5);
+      camps = clean((d && Array.isArray(d.campaigns) ? d.campaigns : []).map(c => ({ title:c.title, kind:'twitch', start:c.start ? new Date(c.start).toISOString() : null, end:c.end ? new Date(c.end).toISOString() : null, endKnown:true, text:'From Battlestate\u2019s official posts. Link your Twitch and Battlestate accounts first.', url:c.url })));
+      merge(); paint(); }catch(e){}
   }
   const tAlerts = () => live().filter(x => x.kind === 'twitch').map(x => ({ id:'ev:' + x.title.toLowerCase() + '|' + x.start, title:x.title, line:x.end === null ? 'On now' : 'On now · ends in ' + span(x.end - now()), url:x.url, live:true }))
     .concat(tNews.map(x => ({ id:'n:' + x.id, title:x.title, line:(x.source ? x.source + ' · ' : '') + 'reported ' + x.date, url:x.url })));
@@ -18130,7 +18137,7 @@ const CHANGELOG = [
   let tDlg = null;
   function tPaint(){
     const L = live().filter(x => x.kind === 'twitch'), soonL = soon().filter(x => x.kind === 'twitch');
-    let h = '<p class="td2-i">Twitch drops are rewards for watching Tarkov streams. <b>Link your Twitch and Battlestate accounts first</b> or nothing arrives. Dates are not published anywhere we can read, so the headlines below come from news sites: check the dates in the story.</p>' +
+    let h = '<p class="td2-i">Twitch drops are rewards for watching Tarkov streams. <b>Link your Twitch and Battlestate accounts first</b> or nothing arrives. Drops under <b>On now</b> and <b>Coming up</b> come from Battlestate\u2019s own posts (or ones listed by hand), with their real dates. The news headlines below are only a heads-up: check the dates in the story.</p>' +
       '<label class="td2-n"><input type="checkbox" id="tdTn"' + (tOn() ? ' checked' : '') + '><span><b>Alert me about Twitch drops</b><small>A pop-up appears when a drop is on or newly reported. Close it and it will not show again for that drop.</small></span></label>';
     const row = (x, soonRow) => '<div class="td2-r"><b>' + E(x.title) + '</b>' + (x.text ? '<p>' + E(x.text) + '</p>' : '') + '<div>' + E(soonRow ? 'Starts in ' + span(x.start - now()) + ' · ' + fmt(x.start) : x.end === null ? 'On now' : 'Ends in ' + span(x.end - now()) + ' · ' + fmt(x.end)) + (x.url ? ' · <a href="' + E(x.url) + '" target="_blank" rel="noopener">Details ↗</a>' : '') + '</div></div>';
     if(L.length) h += '<h3 class="td2-h">On now</h3>' + L.map(x => row(x, false)).join('');
