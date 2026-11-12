@@ -6262,6 +6262,7 @@ function afterKeysChange(){
     ['Friends', 'Add friends, see their pins and share yours (sign in with Discord)', '<circle cx="9" cy="8" r="3.500"/><path d="M2 20c0-3.500 3-6 7-6s7 2.500 7 6"/><circle cx="17.500" cy="9" r="2.500"/><path d="M17 14c3 0 5 2 5 5"/>', () => { const A = window.RRAccount, F = window.rrFriends; if(A && A._me && !A._me()){ A.open('main'); return; } if(F) F.open(); else if(A) A.open('main'); }],
     ['Take the tour', 'A quick look at what the site can do', '<circle cx="12" cy="12" r="9"/><path d="M10 8.500l5 3.500-5 3.500z"/>', () => { window.RRTour && window.RRTour.start(); }],
     ['Desktop app', 'Follow your game live: quests tick themselves', '<path d="M6 11h4M8 9v4"/><circle cx="15" cy="12" r=".8"/><circle cx="17.5" cy="10" r=".8"/><path d="M17.32 5H6.68a4 4 0 0 0-3.98 3.59C2.35 11.3 2 14.3 2 16a3 3 0 0 0 5.2 2L8.5 16.5a2 2 0 0 1 1.5-.5h4a2 2 0 0 1 1.5.5L16.8 18a3 3 0 0 0 5.2-2c0-1.7-.35-4.7-.7-7.41A4 4 0 0 0 17.32 5z"/>', () => { window.RRPlay && window.RRPlay.open(); }],
+    ['Twitch drops', 'Twitch drops that are on or newly reported, with an optional alert', '<rect x="4" y="4" width="16" height="12" rx="2"/><path d="M8 20h8M12 16v4"/><path d="M10 8v4M14 8v4"/>', () => { window.RRTwitch && window.RRTwitch.open(); }],
     ['Promo codes', 'Codes players report as working, with the date each was first seen', '<rect x="3" y="7" width="18" height="10" rx="2"/><path d="M9 7v10" stroke-dasharray="2 2"/><path d="M13 11h4M13 14h3"/>', () => { window.RRPromo && window.RRPromo.open(); }],
     ['More Tarkov apps', 'My other free Tarkov tools, all in one place', '<rect x="3" y="3" width="7" height="7" rx="1.500"/><rect x="14" y="3" width="7" height="7" rx="1.500"/><rect x="3" y="14" width="7" height="7" rx="1.500"/><rect x="14" y="14" width="7" height="7" rx="1.500"/>', () => { window.open('https://tarkovapps.pages.dev/', '_blank', 'noopener'); }],
     ['Generator timer', 'Get a sound, notification and banner when your crafts finish, so the generator is not left running', '<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>', () => { window.RRGen && window.RRGen.open(); }],
@@ -6272,7 +6273,7 @@ function afterKeysChange(){
     const btn = document.createElement('button'); btn.id = 'toolsBtn'; btn.type = 'button'; btn.setAttribute('aria-haspopup', 'true'); btn.setAttribute('aria-expanded', 'false'); btn.setAttribute('aria-controls', 'toolsPop');
     btn.innerHTML = 'Tools ' + svg('<path d="M6 9l6 6 6-6"/>');
     /* a wide launcher panel: tools grouped in columns, a search box, and its own scrolling when the window is short */
-    const CATS = [['Gear &amp; prices', ['Flea prices', 'Gun builder', 'Meta ammo', 'Meta gear']], ['Hideout &amp; character', ['My PMC', 'Hideout planner', 'Craft profit', 'Barter profit', 'Generator timer', 'Skill leveling']], ['Progress &amp; sync', ['My keys', 'Prestige tracker', 'Kappa progress', 'Custom routes', 'TarkovTracker sync']], ['Get started', ['Desktop app', 'Friends', 'Take the tour', 'Share route', 'Promo codes', 'More Tarkov apps']]];
+    const CATS = [['Gear &amp; prices', ['Flea prices', 'Gun builder', 'Meta ammo', 'Meta gear']], ['Hideout &amp; character', ['My PMC', 'Hideout planner', 'Craft profit', 'Barter profit', 'Generator timer', 'Skill leveling']], ['Progress &amp; sync', ['My keys', 'Prestige tracker', 'Kappa progress', 'Custom routes', 'TarkovTracker sync']], ['Get started', ['Desktop app', 'Friends', 'Take the tour', 'Share route', 'Promo codes', 'Twitch drops', 'More Tarkov apps']]];
     const row = (x, i) => '<button type="button" role="menuitem" class="tp-card" data-i="' + i + '" data-n="' + (x[0] + ' ' + x[1]).toLowerCase().replace(/"/g, '') + '"><span class="np-i">' + svg(x[2]) + '</span><span class="np-t"><b>' + x[0] + '</b><small>' + x[1] + '</small></span></button>';
     const pop = document.createElement('div'); pop.id = 'toolsPop'; pop.className = 'mega'; pop.setAttribute('role', 'menu'); pop.setAttribute('aria-label', 'Tools'); pop.hidden = true;
     pop.innerHTML = '<div class="tp-top"><span class="tp-ttl">Tools</span><input type="search" id="toolsFind" placeholder="Find a tool…" autocomplete="off" spellcheck="false" aria-label="Find a tool"></div>' +
@@ -17083,7 +17084,7 @@ document.addEventListener('click', e => {
 const CHANGELOG = [
   { d:'2026-11-08', items:[
       ['new','Key stops: tap the door photo to see it big, with Prev / Next through the key\'s other photos'],
-      ['new','Twitch drop alerts: turn on "Alert me about Twitch drops" in the events menu or the Promo codes tool and a pop-up appears when a drop is on or newly reported'],
+      ['new','Twitch drop alerts: new Tools > Twitch drops lists drops that are on or newly reported, with an optional alert: a pop-up appears when a drop is on or newly reported'],
       ['new','Key stops show the floor when the key\'s wiki Lock Location section says one (nothing shown when it does not)'],
       ['new','Key stops now show every Lock Location photo from the wiki for that key (the door, stairs, building and map), tap a thumbnail to switch'],
       ['fix','Long Road now asks for 7 kills, matching the game (it said 4)'],
@@ -17473,7 +17474,6 @@ const CHANGELOG = [
     const b = dlg.querySelector('.td-b'); const list = db && Array.isArray(db.codes) ? db.codes : [];
     let h = '<p class="pc-intro">Codes players and sites report as working. <b>Nobody can test a code except by redeeming it</b>, so treat these as reports, not guarantees. Redeem on <a href="' + REDEEM + '" target="_blank" rel="noopener">Battlestate’s site</a> while signed in.</p>';
     h += '<label class="pc-notify"><input type="checkbox" id="pcNotify"' + (notifyOn() ? ' checked' : '') + '><span><b>Tell me about new codes</b><small>A pop-up appears when you open the site and a new code has been reported. Close it and you will not see it again for those codes.</small></span></label>';
-    h += '<label class="pc-tn"><input type="checkbox" id="pcTwitch"' + (window.RRTwitch && window.RRTwitch.on() ? ' checked' : '') + '><span><b>Also tell me about Twitch drops</b><small>Same kind of pop-up when a Twitch drop is on or newly reported. Same switch as in the events menu.</small></span></label>';
     const U = used(), open = list.filter(c => !U[c.code]), done = list.filter(c => U[c.code]);
     const row = (c, isUsed) => {
       const st = status(c), one = (c.sources || []).length < 2 && !(c.sources || []).some(x => x.name === 'Added by hand');
@@ -17498,7 +17498,6 @@ const CHANGELOG = [
       document.body.appendChild(dlg);
       dlg.querySelector('.td-x').addEventListener('click', () => dlg.close());
       dlg.addEventListener('change', async e => {
-        if(e.target.id === 'pcTwitch'){ window.RRTwitch && window.RRTwitch.set(e.target.checked); return; }
         if(e.target.id !== 'pcNotify') return;
         try{ localStorage.setItem(NK, e.target.checked ? '1' : '0'); }catch(x){}
         if(e.target.checked){
@@ -18125,9 +18124,33 @@ const CHANGELOG = [
   async function tSet(on){
     try{ localStorage.setItem(TK, on ? '1' : '0'); }catch(e){}
     if(on){ await tLoad(); const S = tSeen(); tAlerts().forEach(a => S.add(a.id)); tSave(S); window.rrToast && window.rrToast('You will be told about Twitch drops', false); }
-    ['evTn', 'pcTwitch'].forEach(id => { const c = document.getElementById(id); if(c) c.checked = on; });
+    ['evTn', 'tdTn'].forEach(id => { const c = document.getElementById(id); if(c) c.checked = on; });
   }
-  window.RRTwitch = { on:tOn, set:tSet };
+  /* the Tools > Twitch drops window: live drops you listed, then recent news headlines, with the alert switch */
+  let tDlg = null;
+  function tPaint(){
+    const L = live().filter(x => x.kind === 'twitch'), soonL = soon().filter(x => x.kind === 'twitch');
+    let h = '<p class="td2-i">Twitch drops are rewards for watching Tarkov streams. <b>Link your Twitch and Battlestate accounts first</b> or nothing arrives. Dates are not published anywhere we can read, so the headlines below come from news sites: check the dates in the story.</p>' +
+      '<label class="td2-n"><input type="checkbox" id="tdTn"' + (tOn() ? ' checked' : '') + '><span><b>Alert me about Twitch drops</b><small>A pop-up appears when a drop is on or newly reported. Close it and it will not show again for that drop.</small></span></label>';
+    const row = (x, soonRow) => '<div class="td2-r"><b>' + E(x.title) + '</b>' + (x.text ? '<p>' + E(x.text) + '</p>' : '') + '<div>' + E(soonRow ? 'Starts in ' + span(x.start - now()) + ' · ' + fmt(x.start) : x.end === null ? 'On now' : 'Ends in ' + span(x.end - now()) + ' · ' + fmt(x.end)) + (x.url ? ' · <a href="' + E(x.url) + '" target="_blank" rel="noopener">Details ↗</a>' : '') + '</div></div>';
+    if(L.length) h += '<h3 class="td2-h">On now</h3>' + L.map(x => row(x, false)).join('');
+    if(soonL.length) h += '<h3 class="td2-h">Coming up</h3>' + soonL.map(x => row(x, true)).join('');
+    h += '<h3 class="td2-h">Recent news <span class="muted">' + tNews.length + '</span></h3>' + (tNews.length ? tNews.map(x => '<div class="td2-r"><a href="' + E(x.url) + '" target="_blank" rel="noopener">' + E(x.title) + ' ↗</a><div>' + E((x.source ? x.source + ' · ' : '') + 'reported ' + x.date) + '</div></div>').join('') : '<div class="td2-none">No Twitch drop news in the last week.</div>');
+    tDlg.querySelector('.td-b').innerHTML = h;
+  }
+  async function tOpen(){
+    if(!tDlg){
+      tDlg = document.createElement('dialog'); tDlg.id = 'twDlg'; tDlg.className = 'tdlg';
+      tDlg.innerHTML = '<div class="td-h"><h2>Twitch drops</h2><button class="td-x" type="button" aria-label="Close">×</button></div><div class="td-b" style="overflow:auto;padding:6px 18px 16px"></div>';
+      document.body.appendChild(tDlg);
+      tDlg.querySelector('.td-x').addEventListener('click', () => tDlg.close());
+      tDlg.addEventListener('click', e => { if(e.target === tDlg) tDlg.close(); });
+      tDlg.addEventListener('change', e => { if(e.target.id === 'tdTn') tSet(e.target.checked); });
+    }
+    tDlg.querySelector('.td-b').innerHTML = '<div class="td2-none">Loading…</div>';
+    tDlg.showModal(); await Promise.all([load(), tLoad()]); tPaint();
+  }
+  window.RRTwitch = { on:tOn, set:tSet, open:tOpen };
   function tClose(){
     if(!tPop) return;
     const S = tSeen(); (tPop._ids || []).forEach(i => S.add(i)); tSave(S);      /* closing it, any way, means these never pop up again */
@@ -18152,11 +18175,13 @@ const CHANGELOG = [
   }
   setTimeout(tCheck, 7000); setInterval(tCheck, 30 * 60 * 1000);
   const tst = document.createElement('style');
-  tst.textContent = '#evPop .ev-tn,#promoDlg .pc-tn{display:flex;gap:10px;align-items:flex-start;margin:10px 0 2px;padding:10px 12px;border:1px solid var(--line,#ffffff22);border-radius:10px;cursor:pointer;font-size:13px}#evPop .ev-tn input,#promoDlg .pc-tn input{margin-top:3px}#evPop .ev-tn small,#promoDlg .pc-tn small{display:block;color:var(--mute);font-size:12px;line-height:1.4;margin-top:2px}' +
+  tst.textContent = '#evPop .ev-tn{display:flex;gap:10px;align-items:flex-start;margin:10px 0 2px;padding:10px 12px;border:1px solid var(--line,#ffffff22);border-radius:10px;cursor:pointer;font-size:13px}#evPop .ev-tn input{margin-top:3px}#evPop .ev-tn small{display:block;color:var(--mute);font-size:12px;line-height:1.4;margin-top:2px}' +
     '#twPop{position:fixed;right:18px;bottom:18px;z-index:99999;width:min(340px,calc(100vw - 36px));box-sizing:border-box;padding:16px 16px 12px;border-radius:14px;background:var(--panel,#1b1d22);color:var(--text,#eee);border:1px solid #9146ff;box-shadow:0 10px 34px #000a,0 0 0 1px #9146ff44;transform:translateY(16px);opacity:0;transition:transform .25s,opacity .25s}' +
     '#twPop.in{transform:none;opacity:1}#twPop .tw-x{position:absolute;top:6px;right:8px;background:none;border:0;color:var(--mute);font-size:22px;line-height:1;cursor:pointer}' +
     '#twPop .tw-k{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#b48cff;margin:0 24px 8px 0}#twPop .tw-t{font-weight:700;font-size:14.5px;line-height:1.3;margin-top:6px}#twPop .tw-s{font-size:12.5px;color:var(--mute);margin:2px 0 4px}#twPop .tw-s a{color:#b48cff}' +
     '#twPop .tw-a{margin-top:10px}#twPop .tw-f{font-size:11px;color:var(--mute);margin-top:8px;line-height:1.4}@media (prefers-reduced-motion:reduce){#twPop{transition:none}}';
+  tst.textContent += '#twDlg .td2-i{margin:4px 0 12px;font-size:13.5px;color:var(--mute);line-height:1.45}#twDlg .td2-n{display:flex;gap:10px;align-items:flex-start;margin:0 0 6px;padding:10px 12px;border:1px solid var(--line,#ffffff22);border-radius:10px;cursor:pointer;font-size:13px}#twDlg .td2-n input{margin-top:3px}#twDlg .td2-n small{display:block;color:var(--mute);font-size:12px;line-height:1.4;margin-top:2px}' +
+    '#twDlg .td2-h{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute);margin:14px 0 8px}#twDlg .td2-r{border:1px solid var(--line,#ffffff22);border-radius:10px;padding:10px 12px;margin:0 0 8px}#twDlg .td2-r a{color:#b48cff;font-weight:600;text-decoration:none}#twDlg .td2-r p{margin:4px 0 0;font-size:13px;color:var(--mute)}#twDlg .td2-r div{font-size:12px;color:var(--mute);margin-top:3px}#twDlg .td2-none{padding:12px 4px;color:var(--mute)}';
   document.head.appendChild(tst);
   setInterval(paint, 60000); document.addEventListener('visibilitychange', () => { if(!document.hidden) paint(); });
   load();
