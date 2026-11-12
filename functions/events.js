@@ -34,7 +34,7 @@ function endIn(body, start){
   return best === null ? null : best + DAY;
 }
 const slug = t => t.replace(/ /g, '_').replace(/[^\w()\-.,%:']/g, '');
-function kindOf(t){ return /wipe/i.test(t) ? 'wipe' : /discount|sale|shortage|bonus|weekend/i.test(t) ? 'sale' : 'event'; }
+function kindOf(t){ return /twitch/i.test(t) ? 'twitch' : /wipe/i.test(t) ? 'wipe' : /discount|sale|shortage|bonus|weekend/i.test(t) ? 'sale' : 'event'; }
 
 function parse(wikitext, now, sinceDays){
   const out = [], lines = String(wikitext || '').split(/\r?\n/);

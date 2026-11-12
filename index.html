@@ -17083,6 +17083,7 @@ document.addEventListener('click', e => {
 const CHANGELOG = [
   { d:'2026-11-08', items:[
       ['new','Key stops: tap the door photo to see it big, with Prev / Next through the key\'s other photos'],
+      ['new','Twitch drop alerts: turn on "Alert me about Twitch drops" in the events menu or the Promo codes tool and a pop-up appears when a drop is on or newly reported'],
       ['new','Key stops show the floor when the key\'s wiki Lock Location section says one (nothing shown when it does not)'],
       ['new','Key stops now show every Lock Location photo from the wiki for that key (the door, stairs, building and map), tap a thumbnail to switch'],
       ['fix','Long Road now asks for 7 kills, matching the game (it said 4)'],
@@ -17472,6 +17473,7 @@ const CHANGELOG = [
     const b = dlg.querySelector('.td-b'); const list = db && Array.isArray(db.codes) ? db.codes : [];
     let h = '<p class="pc-intro">Codes players and sites report as working. <b>Nobody can test a code except by redeeming it</b>, so treat these as reports, not guarantees. Redeem on <a href="' + REDEEM + '" target="_blank" rel="noopener">Battlestate’s site</a> while signed in.</p>';
     h += '<label class="pc-notify"><input type="checkbox" id="pcNotify"' + (notifyOn() ? ' checked' : '') + '><span><b>Tell me about new codes</b><small>A pop-up appears when you open the site and a new code has been reported. Close it and you will not see it again for those codes.</small></span></label>';
+    h += '<label class="pc-tn"><input type="checkbox" id="pcTwitch"' + (window.RRTwitch && window.RRTwitch.on() ? ' checked' : '') + '><span><b>Also tell me about Twitch drops</b><small>Same kind of pop-up when a Twitch drop is on or newly reported. Same switch as in the events menu.</small></span></label>';
     const U = used(), open = list.filter(c => !U[c.code]), done = list.filter(c => U[c.code]);
     const row = (c, isUsed) => {
       const st = status(c), one = (c.sources || []).length < 2 && !(c.sources || []).some(x => x.name === 'Added by hand');
@@ -17496,6 +17498,7 @@ const CHANGELOG = [
       document.body.appendChild(dlg);
       dlg.querySelector('.td-x').addEventListener('click', () => dlg.close());
       dlg.addEventListener('change', async e => {
+        if(e.target.id === 'pcTwitch'){ window.RRTwitch && window.RRTwitch.set(e.target.checked); return; }
         if(e.target.id !== 'pcNotify') return;
         try{ localStorage.setItem(NK, e.target.checked ? '1' : '0'); }catch(x){}
         if(e.target.checked){
@@ -18096,7 +18099,8 @@ const CHANGELOG = [
       (s.length ? '<div class="ev-s">Coming up</div>' + s.map(x => card(x, 'soon')).join('') : '') +
       (u.length ? '<div class="ev-s">End date not confirmed</div>' + u.map(x => card(x, 'past')).join('') : '') +
       (p.length ? '<div class="ev-s">Recently ended</div>' + p.map(x => card(x, 'past')).join('') : '') +
-      '<div class="ev-f">Read from the Tarkov wiki about once an hour. When it doesn\'t list an end date, the event stays lit for 10 days after it starts, then moves to "End date not confirmed" instead of being called over. Twitch drops are not on the wiki.</div>';
+      '<div class="ev-f">Read from the Tarkov wiki about once an hour. When it doesn\'t list an end date, the event stays lit for 10 days after it starts, then moves to "End date not confirmed" instead of being called over. Twitch drops are not on the wiki: for those, we show news headlines and any drop that is listed by hand.</div>' +
+      '<label class="ev-tn"><input type="checkbox" id="evTn"' + (tOn() ? ' checked' : '') + '><span><b>Alert me about Twitch drops</b><small>A pop-up appears when a Twitch drop is on or newly reported. Close it and it will not show again for that drop.</small></span></label>';
   }
   function place(){ const r = btn.getBoundingClientRect(); pop.style.top = (r.bottom + 8) + 'px'; pop.style.right = Math.max(8, innerWidth - r.right - 4) + 'px'; }
   const set = on => { pop.hidden = !on; btn.setAttribute('aria-expanded', String(on)); if(on){ draw(); place(); } };
@@ -18104,6 +18108,56 @@ const CHANGELOG = [
   document.addEventListener('click', e => { if(!pop.hidden && !pop.contains(e.target) && !btn.contains(e.target)) set(false); });
   document.addEventListener('keydown', e => { if(e.key === 'Escape' && !pop.hidden) set(false); });
   addEventListener('resize', () => { if(!pop.hidden) place(); });
+  pop.addEventListener('change', e => { if(e.target.id === 'evTn') tSet(e.target.checked); });
+
+  /* ---------- Twitch drop alerts (opt in). Sources: drops you list by hand in events.json (kind "twitch") that are live, and news headlines from data/twitchdrops.json ---------- */
+  const TK = 'rr_twitch_notify', TS = 'rr_twitch_seen';
+  function tOn(){ try{ return localStorage.getItem(TK) === '1'; }catch(e){ return false; } }
+  const tSeen = () => { try{ const v = JSON.parse(localStorage.getItem(TS) || '[]'); return new Set(Array.isArray(v) ? v : []); }catch(e){ return new Set(); } };
+  const tSave = set => { try{ localStorage.setItem(TS, JSON.stringify([...set].slice(-200))); }catch(e){} };
+  let tNews = [], tPop = null;
+  async function tLoad(){
+    try{ const r = await fetch('data/twitchdrops.json?v=' + Math.floor(Date.now() / 600000), { cache:'no-cache' }); if(!r.ok) return; const d = await r.json();
+      tNews = (d && Array.isArray(d.items) ? d.items : []).filter(x => x && x.id && x.title && Date.now() - Date.parse(x.date + 'T12:00:00Z') < 7 * 864e5); }catch(e){}
+  }
+  const tAlerts = () => live().filter(x => x.kind === 'twitch').map(x => ({ id:'ev:' + x.title.toLowerCase() + '|' + x.start, title:x.title, line:x.end === null ? 'On now' : 'On now · ends in ' + span(x.end - now()), url:x.url, live:true }))
+    .concat(tNews.map(x => ({ id:'n:' + x.id, title:x.title, line:(x.source ? x.source + ' · ' : '') + 'reported ' + x.date, url:x.url })));
+  async function tSet(on){
+    try{ localStorage.setItem(TK, on ? '1' : '0'); }catch(e){}
+    if(on){ await tLoad(); const S = tSeen(); tAlerts().forEach(a => S.add(a.id)); tSave(S); window.rrToast && window.rrToast('You will be told about Twitch drops', false); }
+    ['evTn', 'pcTwitch'].forEach(id => { const c = document.getElementById(id); if(c) c.checked = on; });
+  }
+  window.RRTwitch = { on:tOn, set:tSet };
+  function tClose(){
+    if(!tPop) return;
+    const S = tSeen(); (tPop._ids || []).forEach(i => S.add(i)); tSave(S);      /* closing it, any way, means these never pop up again */
+    const el = tPop; tPop = null; el.classList.remove('in'); setTimeout(() => el.remove(), 250);
+  }
+  function tShow(a){
+    if(tPop) tClose();
+    const el = document.createElement('div'); el.id = 'twPop'; el.setAttribute('role', 'alertdialog'); el.setAttribute('aria-label', 'Twitch drops'); el._ids = a.map(x => x.id);
+    el.innerHTML = '<button type="button" class="tw-x" aria-label="Close">×</button><div class="tw-k">🎮 Twitch drops' + (a.some(x => x.live) ? ' are on' : ' reported') + '</div>' +
+      a.slice(0, 3).map(x => '<div class="tw-t">' + E(x.title) + '</div><div class="tw-s">' + E(x.line) + (x.url ? ' · <a href="' + E(x.url) + '" target="_blank" rel="noopener">Read more ↗</a>' : '') + '</div>').join('') +
+      (a.length > 3 ? '<div class="tw-s">and ' + (a.length - 3) + ' more in the events menu</div>' : '') +
+      '<div class="tw-a"><button type="button" class="tw-open primary">Open events</button></div><div class="tw-f">Link your Twitch and Battlestate accounts first, or the drops will not arrive. Headlines come from news sites; check the dates in the story.</div>';
+    document.body.appendChild(el); tPop = el; requestAnimationFrame(() => el.classList.add('in'));
+    el.addEventListener('click', e => { if(e.target.closest('.tw-x')){ tClose(); return; } if(e.target.closest('.tw-open')){ tClose(); set(true); } });
+    el.addEventListener('keydown', e => { if(e.key === 'Escape') tClose(); });
+  }
+  async function tCheck(){
+    if(!tOn() || tPop) return;
+    await Promise.all([load(), tLoad()]);
+    const S = tSeen(), fresh = tAlerts().filter(a => !S.has(a.id));
+    if(fresh.length) tShow(fresh);
+  }
+  setTimeout(tCheck, 7000); setInterval(tCheck, 30 * 60 * 1000);
+  const tst = document.createElement('style');
+  tst.textContent = '#evPop .ev-tn,#promoDlg .pc-tn{display:flex;gap:10px;align-items:flex-start;margin:10px 0 2px;padding:10px 12px;border:1px solid var(--line,#ffffff22);border-radius:10px;cursor:pointer;font-size:13px}#evPop .ev-tn input,#promoDlg .pc-tn input{margin-top:3px}#evPop .ev-tn small,#promoDlg .pc-tn small{display:block;color:var(--mute);font-size:12px;line-height:1.4;margin-top:2px}' +
+    '#twPop{position:fixed;right:18px;bottom:18px;z-index:99999;width:min(340px,calc(100vw - 36px));box-sizing:border-box;padding:16px 16px 12px;border-radius:14px;background:var(--panel,#1b1d22);color:var(--text,#eee);border:1px solid #9146ff;box-shadow:0 10px 34px #000a,0 0 0 1px #9146ff44;transform:translateY(16px);opacity:0;transition:transform .25s,opacity .25s}' +
+    '#twPop.in{transform:none;opacity:1}#twPop .tw-x{position:absolute;top:6px;right:8px;background:none;border:0;color:var(--mute);font-size:22px;line-height:1;cursor:pointer}' +
+    '#twPop .tw-k{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#b48cff;margin:0 24px 8px 0}#twPop .tw-t{font-weight:700;font-size:14.5px;line-height:1.3;margin-top:6px}#twPop .tw-s{font-size:12.5px;color:var(--mute);margin:2px 0 4px}#twPop .tw-s a{color:#b48cff}' +
+    '#twPop .tw-a{margin-top:10px}#twPop .tw-f{font-size:11px;color:var(--mute);margin-top:8px;line-height:1.4}@media (prefers-reduced-motion:reduce){#twPop{transition:none}}';
+  document.head.appendChild(tst);
   setInterval(paint, 60000); document.addEventListener('visibilitychange', () => { if(!document.hidden) paint(); });
   load();
 

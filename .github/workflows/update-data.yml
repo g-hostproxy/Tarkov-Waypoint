@@ -56,6 +56,10 @@ jobs:
       - name: Build promo codes
         continue-on-error: true
         run: node scripts/build-promocodes.mjs
+      # News about Twitch drops (headlines + links; feeds the opt-in drop alert). Refreshes every 2 hours.
+      - name: Build Twitch drop news
+        continue-on-error: true
+        run: node scripts/build-twitchdrops.mjs
       - name: Commit if changed
         run: |
           if [ -n "$(git status --porcelain data)" ]; then
