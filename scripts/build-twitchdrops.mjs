@@ -3,7 +3,7 @@
 // and the site alerts people to go read them. Exact campaigns you want shown with a start/end go in events.json with kind "twitch".
 // BSG's own X account (@tarkov) states exact dates ("runs until August 17, 2:00 PM BST", "ends on November 9 at 3:00 PM GMT"), so posts from it
 // are turned into real campaigns with a start and end (db.campaigns). Headlines are the fallback. X may block some servers, so each source is allowed to fail.
-// Sources (each allowed to fail): the @tarkov account, then Google News searches. Items older than 21 days drop off. Runs at most every 2 hours (FORCE=1 to run now).
+// Sources (each allowed to fail): the @tarkov account, then Google News searches. Items older than 21 days drop off. Runs at most every hour (FORCE=1 to run now).
 import { readFileSync, writeFileSync, mkdirSync, statSync, existsSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
 
@@ -17,7 +17,9 @@ const SOURCES = process.env.TWITCH_SOURCES ? JSON.parse(process.env.TWITCH_SOURC
 const X_SOURCES = process.env.TWITCH_X_SOURCES ? JSON.parse(process.env.TWITCH_X_SOURCES) : [
   { name:'@tarkov on X', url:'https://syndication.twitter.com/srv/timeline-profile/screen-name/tarkov' },
   { name:'@tarkov (Nitter)', url:'https://nitter.net/tarkov/rss' },
-  { name:'@tarkov (Nitter 2)', url:'https://nitter.poast.org/tarkov/rss' }
+  { name:'@tarkov (xcancel)', url:'https://xcancel.com/tarkov/rss' },
+  { name:'@tarkov (Nitter 2)', url:'https://nitter.poast.org/tarkov/rss' },
+  { name:'@tarkov (Nitter 3)', url:'https://nitter.privacydev.net/tarkov/rss' }
 ];
 const KEEP_DAYS = 21;
 const MONTHS = ['january','february','march','april','may','june','july','august','september','october','november','december'];
@@ -122,7 +124,7 @@ async function main() {
   mkdirSync('data', { recursive: true });
   let db = { items:[], dismissed:[] };
   if (existsSync(OUT)) { try { db = Object.assign(db, JSON.parse(readFileSync(OUT, 'utf8'))); } catch (e) {} }
-  if (!process.env.FORCE && db.updated && Date.now() - Date.parse(db.updated) < 2 * 3600e3) { console.log('Refreshed less than 2 hours ago; skipping (FORCE=1 to run now).'); return; }
+  if (!process.env.FORCE && db.updated && Date.now() - Date.parse(db.updated) < 1 * 3600e3) { console.log('Refreshed less than 2 hours ago; skipping (FORCE=1 to run now).'); return; }
   const hits = []; let ok = 0, posts = [];
   for (const s of X_SOURCES) {
     try {
