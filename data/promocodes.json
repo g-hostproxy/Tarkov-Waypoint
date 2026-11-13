@@ -3,7 +3,7 @@
   {
    "code": "TARKOVHALLOWEEN",
    "firstSeen": "2026-11-09",
-   "lastSeen": "2026-11-12",
+   "lastSeen": "2026-11-13",
    "note": "Halloween event code (added by hand)",
    "sources": [
     {
@@ -14,7 +14,7 @@
     {
      "name": "Dexerto",
      "url": "https://dexerto.com/escape-from-tarkov/all-escape-from-tarkov-promo-codes-and-discounts-1752105",
-     "date": "2026-11-12"
+     "date": "2026-11-13"
     }
    ]
   }
@@ -27,6 +27,6 @@
   }
  ],
  "dismissed": [],
- "updated": "2026-11-12T21:07:56.830Z",
+ "updated": "2026-11-13T00:19:37.118Z",
  "note": "Codes are reported by players and sites, not tested. Add a code by hand under \"manual\" ({ \"code\":\"X\", \"date\":\"YYYY-MM-DD\", \"note\":\"...\" }); put a wrong one under \"dismissed\"."
 }
