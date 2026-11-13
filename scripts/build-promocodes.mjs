@@ -58,14 +58,14 @@ export function extractListCodes(text) {
    under "Expired codes" is never counted as working. Returns { active, expired } text. */
 export function splitByExpiry(html) {
   const t = String(html || '').replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<nav[\s\S]*?<\/nav>|<footer[\s\S]*?<\/footer>/gi, ' ')
-    .replace(/<h[1-6][^>]*>/gi, '\n#### ').replace(/<\/h[1-6]>/gi, '\n').replace(/<li[^>]*>/gi, '\n• ').replace(/<\/(?:p|div|li|ul|ol|tr|table|section)>|<br\s*\/?>/gi, '\n')
+    .replace(/<h[1-6][^>]*>/gi, '\n#### ').replace(/<\/h[1-6]>/gi, '\n').replace(/<li\b[^>]*>/gi, '\n• ').replace(/<\/(?:p|div|li|ul|ol|tr|table|section)>|<br\s*\/?>/gi, '\n')
     .replace(/<[^>]+>/g, ' ').replace(/&nbsp;|&#160;/g, ' ').replace(/&amp;/g, '&');
   const EXP = /\b(expired|inactive|no longer (?:work|valid|active)|old codes?|ended|past codes?|previous codes?)\b/i;
   const OK = /\b(active|working|valid|current|latest|new codes?|available)\b/i;
   let expired = false; const a = [], e = [];
   for (const raw of t.split('\n')) {
     const line = raw.trim(); if (!line) continue;
-    const head = line.startsWith('####') || (line.length <= 70 && /codes?\b|:$/.test(line) && !/[.!?]$/.test(line));
+    const head = line.startsWith('####') || (line.length <= 70 && /codes?\b|:$/i.test(line) && !/[.!?]$/.test(line));
     if (head) { if (EXP.test(line)) expired = true; else if (OK.test(line) || line.startsWith('####')) expired = false; }
     (expired ? e : a).push(line);
   }
