@@ -13,6 +13,7 @@ const SOURCES = process.env.PROMO_SOURCES ? JSON.parse(process.env.PROMO_SOURCES
   { name:'Reddit r/EscapefromTarkov (new)', kind:'reddit', url:'https://www.reddit.com/r/EscapefromTarkov/new.json?limit=100' },
   { name:'Tarkov wiki', kind:'wiki', url:WIKI + '/wiki/Promo_codes', page:'Promo_codes' },
   { name:'games.gg', kind:'html', url:'https://games.gg/news/escape-from-tarkov-active-promo-codes/' },
+  { name:'Insider Gaming', kind:'html', url:'https://insider-gaming.com/all-escape-from-tarkov-codes-rewards/' },
   { name:'Dexerto', kind:'html', url:'https://dexerto.com/escape-from-tarkov/all-escape-from-tarkov-promo-codes-and-discounts-1752105' }
 ];
 const STOP = new Set(['PROMO','PROMOCODE','PROMOCODES','CODES','REDEEM','ESCAPE','TARKOV','BATTLESTATE','GAMES','DISCOUNT','REWARD','REWARDS','WORKING','ACTIVE','EXPIRED','UPDATED','PLAYERS','ACCOUNT','WEBSITE','OFFICIAL','COUPON','COUPONS','HALLOWEEN','CHRISTMAS','GIVEAWAY','TWITCH','YOUTUBE','DISCORD','REDDIT','STREAMER','STREAMERS','PATCH','WIPE','EVENT','EVENTS','ENTER','CLICK','THESE','THEIR','WHERE','LOGIN','PASSWORD','USERNAME','FREE','GUIDE','LIST','HERE','WITH','FROM','THAT','THIS','HAVE','WILL','YOUR','ABOUT']);
@@ -40,11 +41,24 @@ export function extractCodes(text) {
   return [...out];
 }
 
+/* Roundup pages often just list codes as bullets with no word "code" nearby and no Tarkov-style prefix (EMBRACEPAIN, PLAYYOURWAY).
+   A bullet that is only one ALL-CAPS token, optionally followed by a short note, counts. Only bullets: page furniture is never bulleted capitals. */
+const NOT_CODES = new Set(['ADVERTISEMENT','SUBSCRIBE','COMMENTS','TWITTER','FACEBOOK','REDDIT','YOUTUBE','DISCORD','TWITCH','STEAM','LAUNCHER','SPONSORED','NEWSLETTER','RELATED','READ','MORE','NOTE','TIP','UPDATE']);
+export function extractListCodes(text) {
+  const out = new Set();
+  for (const raw of String(text || '').split('\n')) {
+    const m = /^•\s*[\W_]*([A-Z][A-Z0-9]{5,23})[\W_]*(?:[-–—:(].{0,70})?$/.exec(raw.trim());
+    if (!m || !/[A-Z]{4}/.test(m[1]) || STOP.has(m[1]) || NOT_CODES.has(m[1])) continue;
+    out.add(m[1]);
+  }
+  return [...out];
+}
+
 /* Roundup pages list working codes and expired codes under different headings. Split the page text by those headings so a code
    under "Expired codes" is never counted as working. Returns { active, expired } text. */
 export function splitByExpiry(html) {
   const t = String(html || '').replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<nav[\s\S]*?<\/nav>|<footer[\s\S]*?<\/footer>/gi, ' ')
-    .replace(/<h[1-6][^>]*>/gi, '\n#### ').replace(/<\/h[1-6]>/gi, '\n').replace(/<\/(?:p|div|li|ul|ol|tr|table|section)>|<br\s*\/?>/gi, '\n')
+    .replace(/<h[1-6][^>]*>/gi, '\n#### ').replace(/<\/h[1-6]>/gi, '\n').replace(/<li[^>]*>/gi, '\n• ').replace(/<\/(?:p|div|li|ul|ol|tr|table|section)>|<br\s*\/?>/gi, '\n')
     .replace(/<[^>]+>/g, ' ').replace(/&nbsp;|&#160;/g, ' ').replace(/&amp;/g, '&');
   const EXP = /\b(expired|inactive|no longer (?:work|valid|active)|old codes?|ended|past codes?|previous codes?)\b/i;
   const OK = /\b(active|working|valid|current|latest|new codes?|available)\b/i;
@@ -80,8 +94,8 @@ async function readSource(s) {
   } else {
     const h = await get(s.url);
     const sp = splitByExpiry(h);
-    for (const code of extractCodes(sp.active)) found.push({ code, at:Date.now(), url:s.url });
-    for (const code of extractCodes(sp.expired)) found.push({ code, at:Date.now(), url:s.url, expired:true });
+    for (const code of new Set([...extractCodes(sp.active), ...extractListCodes(sp.active)])) found.push({ code, at:Date.now(), url:s.url });
+    for (const code of new Set([...extractCodes(sp.expired), ...extractListCodes(sp.expired)])) found.push({ code, at:Date.now(), url:s.url, expired:true });
   }
   return found;
 }

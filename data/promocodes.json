@@ -24,6 +24,16 @@
    "code": "TARKOVHALLOWEEN",
    "date": "2026-11-09",
    "note": "Halloween event code (added by hand)"
+  },
+  {
+   "code": "EMBRACEPAIN",
+   "date": "2026-11-06",
+   "note": "PvP and PvP Season. Posted by Nikita Buyanov on X (medical items)"
+  },
+  {
+   "code": "PLAYYOURWAY",
+   "date": "2026-11-06",
+   "note": "PvE. Posted by Nikita Buyanov on X (figurines)"
   }
  ],
  "dismissed": [],
