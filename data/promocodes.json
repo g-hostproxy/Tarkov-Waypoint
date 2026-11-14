@@ -1,6 +1,19 @@
 {
  "codes": [
   {
+   "code": "9GAG",
+   "firstSeen": "2026-11-14",
+   "lastSeen": "2026-11-14",
+   "sources": [
+    {
+     "name": "Added by hand",
+     "url": "",
+     "date": "2026-11-14"
+    }
+   ],
+   "note": "PvE. Released with the Combat Coordination survey; posted on r/EscapefromTarkovPvE (backpack, grenades, medical, HK 416A5)"
+  },
+  {
    "code": "EMBRACEPAIN",
    "firstSeen": "2026-11-06",
    "lastSeen": "2026-11-14",
@@ -95,6 +108,6 @@
   }
  ],
  "dismissed": [],
- "updated": "2026-11-14T21:28:12.304Z",
+ "updated": "2026-11-14T21:51:10.928Z",
  "note": "Codes are reported by players and sites, not tested. Add a code by hand under \"manual\" ({ \"code\":\"X\", \"date\":\"YYYY-MM-DD\", \"note\":\"...\" }); put a wrong one under \"dismissed\"."
 }
