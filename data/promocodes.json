@@ -3,12 +3,12 @@
   {
    "code": "EMBRACEPAIN",
    "firstSeen": "2026-11-06",
-   "lastSeen": "2026-11-13",
+   "lastSeen": "2026-11-14",
    "sources": [
     {
      "name": "Insider Gaming",
      "url": "https://insider-gaming.com/all-escape-from-tarkov-codes-rewards/",
-     "date": "2026-11-13"
+     "date": "2026-11-14"
     },
     {
      "name": "Added by hand",
@@ -21,12 +21,12 @@
   {
    "code": "PLAYYOURWAY",
    "firstSeen": "2026-11-06",
-   "lastSeen": "2026-11-13",
+   "lastSeen": "2026-11-14",
    "sources": [
     {
      "name": "Insider Gaming",
      "url": "https://insider-gaming.com/all-escape-from-tarkov-codes-rewards/",
-     "date": "2026-11-13"
+     "date": "2026-11-14"
     },
     {
      "name": "Added by hand",
@@ -39,7 +39,7 @@
   {
    "code": "TARKOVHALLOWEEN",
    "firstSeen": "2026-11-09",
-   "lastSeen": "2026-11-13",
+   "lastSeen": "2026-11-14",
    "note": "Halloween event code (added by hand)",
    "sources": [
     {
@@ -50,24 +50,24 @@
     {
      "name": "Dexerto",
      "url": "https://dexerto.com/escape-from-tarkov/all-escape-from-tarkov-promo-codes-and-discounts-1752105",
-     "date": "2026-11-13"
+     "date": "2026-11-14"
     },
     {
      "name": "Insider Gaming",
      "url": "https://insider-gaming.com/all-escape-from-tarkov-codes-rewards/",
-     "date": "2026-11-13"
+     "date": "2026-11-14"
     }
    ]
   },
   {
    "code": "UNDEADTARKOV",
    "firstSeen": "2026-11-13",
-   "lastSeen": "2026-11-13",
+   "lastSeen": "2026-11-14",
    "sources": [
     {
      "name": "Insider Gaming",
      "url": "https://insider-gaming.com/all-escape-from-tarkov-codes-rewards/",
-     "date": "2026-11-13"
+     "date": "2026-11-14"
     }
    ]
   }
@@ -90,6 +90,6 @@
   }
  ],
  "dismissed": [],
- "updated": "2026-11-13T22:57:20.911Z",
+ "updated": "2026-11-14T03:12:27.582Z",
  "note": "Codes are reported by players and sites, not tested. Add a code by hand under \"manual\" ({ \"code\":\"X\", \"date\":\"YYYY-MM-DD\", \"note\":\"...\" }); put a wrong one under \"dismissed\"."
 }
