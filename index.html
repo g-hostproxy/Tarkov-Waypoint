@@ -3545,6 +3545,9 @@ async function loadTasks(force){
         if(Object.keys(rn).length) data = Object.assign({}, data, { tasks: data.tasks.map(t => { const nn = rn[cn(t.name)]; return nn && nn !== t.name ? Object.assign({}, t, { name:nn, aka:t.name }) : t; }) });
         const have = new Set(data.tasks.map(t => cn(t.name)));
         const add = (j.tasks || []).filter(q => q && q.id && q.name && !have.has(cn(q.name)));
+        /* the wiki has no item lists, so "plant / place / install / stash a Wi-Fi camera" steps get the camera as an item to bring (one per step: 3 steps = 3 cameras) */
+        const CAM = /\b(plant|place|install|stash|hide|set up|mount)\b[^.]{0,60}\bwi-?fi camera/i;
+        add.forEach(q => { q.objectives = (q.objectives || []).map(o => CAM.test(o.description || '') && !o.req ? Object.assign({}, o, { req:{ bring:[{ names:['WI-FI Camera'], ids:['5b4391a586f7745321235ab2'], count:1, note:'to plant', fir:false }] } }) : o); });
         if(add.length) data = Object.assign({}, data, { tasks: data.tasks.concat(add) });
       }
     }
@@ -17084,6 +17087,7 @@ document.addEventListener('click', e => {
 const CHANGELOG = [
   { d:'2026-11-08', items:[
       ['new','Key stops: tap the door photo to see it big, with Prev / Next through the key\'s other photos'],
+      ['fix','Pre-raid check now tells you to bring the Wi-Fi cameras for wiki-only quests like Scope the Clearing (3) and Make Amends - Security (4)'],
       ['new','Twitch drop alerts: new Tools > Twitch drops lists drops that are on or newly reported, with an optional alert: a pop-up appears when a drop is on or newly reported'],
       ['new','Key stops show the floor when the key\'s wiki Lock Location section says one (nothing shown when it does not)'],
       ['new','Key stops now show every Lock Location photo from the wiki for that key (the door, stairs, building and map), tap a thumbnail to switch'],
