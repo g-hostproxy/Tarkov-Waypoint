@@ -1,27 +1,14 @@
 {
  "codes": [
   {
-   "code": "9GAG",
-   "firstSeen": "2026-11-14",
-   "lastSeen": "2026-11-14",
-   "sources": [
-    {
-     "name": "Added by hand",
-     "url": "",
-     "date": "2026-11-14"
-    }
-   ],
-   "note": "PvE. Released with the Combat Coordination survey; posted on r/EscapefromTarkovPvE (backpack, grenades, medical, HK 416A5)"
-  },
-  {
    "code": "EMBRACEPAIN",
    "firstSeen": "2026-11-06",
-   "lastSeen": "2026-11-14",
+   "lastSeen": "2026-11-15",
    "sources": [
     {
      "name": "Insider Gaming",
      "url": "https://insider-gaming.com/all-escape-from-tarkov-codes-rewards/",
-     "date": "2026-11-14"
+     "date": "2026-11-15"
     },
     {
      "name": "Added by hand",
@@ -34,12 +21,12 @@
   {
    "code": "PLAYYOURWAY",
    "firstSeen": "2026-11-06",
-   "lastSeen": "2026-11-14",
+   "lastSeen": "2026-11-15",
    "sources": [
     {
      "name": "Insider Gaming",
      "url": "https://insider-gaming.com/all-escape-from-tarkov-codes-rewards/",
-     "date": "2026-11-14"
+     "date": "2026-11-15"
     },
     {
      "name": "Added by hand",
@@ -52,7 +39,7 @@
   {
    "code": "TARKOVHALLOWEEN",
    "firstSeen": "2026-11-09",
-   "lastSeen": "2026-11-14",
+   "lastSeen": "2026-11-15",
    "note": "Halloween event code (added by hand)",
    "sources": [
     {
@@ -63,26 +50,39 @@
     {
      "name": "Dexerto",
      "url": "https://dexerto.com/escape-from-tarkov/all-escape-from-tarkov-promo-codes-and-discounts-1752105",
-     "date": "2026-11-14"
+     "date": "2026-11-15"
     },
     {
      "name": "Insider Gaming",
      "url": "https://insider-gaming.com/all-escape-from-tarkov-codes-rewards/",
-     "date": "2026-11-14"
+     "date": "2026-11-15"
     }
    ]
   },
   {
    "code": "UNDEADTARKOV",
    "firstSeen": "2026-11-13",
-   "lastSeen": "2026-11-14",
+   "lastSeen": "2026-11-15",
    "sources": [
     {
      "name": "Insider Gaming",
      "url": "https://insider-gaming.com/all-escape-from-tarkov-codes-rewards/",
-     "date": "2026-11-14"
+     "date": "2026-11-15"
     }
    ]
+  },
+  {
+   "code": "9GAG",
+   "firstSeen": "2026-11-14",
+   "lastSeen": "2026-11-14",
+   "sources": [
+    {
+     "name": "Added by hand",
+     "url": "",
+     "date": "2026-11-14"
+    }
+   ],
+   "note": "PvE. Released with the Combat Coordination survey; posted on r/EscapefromTarkovPvE (backpack, grenades, medical, HK 416A5)"
   }
  ],
  "manual": [
@@ -108,6 +108,6 @@
   }
  ],
  "dismissed": [],
- "updated": "2026-11-14T21:51:10.928Z",
+ "updated": "2026-11-15T01:53:19.915Z",
  "note": "Codes are reported by players and sites, not tested. Add a code by hand under \"manual\" ({ \"code\":\"X\", \"date\":\"YYYY-MM-DD\", \"note\":\"...\" }); put a wrong one under \"dismissed\"."
 }
