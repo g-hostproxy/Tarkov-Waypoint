@@ -83,6 +83,54 @@
     }
    ],
    "note": "PvE. Released with the Combat Coordination survey; posted on r/EscapefromTarkovPvE (backpack, grenades, medical, HK 416A5)"
+  },
+  {
+   "code": "JUST150TARCOIN",
+   "firstSeen": "2026-10-08",
+   "lastSeen": "2026-10-08",
+   "sources": [
+    {
+     "name": "Reddit archive r/EscapefromTarkovPvE",
+     "url": "https://www.reddit.com/r/EscapeFromTarkovPvE/comments/1x0k4wd/promo_code_just150tarcoin_loot/",
+     "date": "2026-10-08"
+    }
+   ]
+  },
+  {
+   "code": "W2TX",
+   "firstSeen": "2026-08-03",
+   "lastSeen": "2026-08-03",
+   "sources": [
+    {
+     "name": "Reddit archive r/EscapefromTarkovPvE",
+     "url": "https://www.reddit.com/r/EscapeFromTarkovPvE/comments/1veqdu4/promo_code_w2tx6nu9ufk189rwm96b_loot/",
+     "date": "2026-08-03"
+    }
+   ]
+  },
+  {
+   "code": "LVL80BOSS",
+   "firstSeen": "2026-07-27",
+   "lastSeen": "2026-07-27",
+   "sources": [
+    {
+     "name": "Reddit archive r/EscapefromTarkovPvE",
+     "url": "https://www.reddit.com/r/EscapeFromTarkovPvE/comments/1v8ahi4/quest_help_new_promo_code_for_anyone_who_need/",
+     "date": "2026-07-27"
+    }
+   ]
+  },
+  {
+   "code": "PAWNSHOP",
+   "firstSeen": "2025-12-27",
+   "lastSeen": "2025-12-27",
+   "sources": [
+    {
+     "name": "Reddit archive r/EscapefromTarkovPvE",
+     "url": "https://www.reddit.com/r/EscapeFromTarkovPvE/comments/1px35u4/loot_new_promo_code_pawnshop/",
+     "date": "2025-12-27"
+    }
+   ]
   }
  ],
  "manual": [
@@ -108,6 +156,6 @@
   }
  ],
  "dismissed": [],
- "updated": "2026-11-15T09:21:14.032Z",
+ "updated": "2026-11-15T17:07:00.823Z",
  "note": "Codes are reported by players and sites, not tested. Add a code by hand under \"manual\" ({ \"code\":\"X\", \"date\":\"YYYY-MM-DD\", \"note\":\"...\" }); put a wrong one under \"dismissed\"."
 }
