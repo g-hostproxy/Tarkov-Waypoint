@@ -38,7 +38,7 @@
   },
   {
    "code": "TARKOVHALLOWEEN",
-   "firstSeen": "2026-11-09",
+   "firstSeen": "2026-11-05",
    "lastSeen": "2026-11-16",
    "note": "Halloween event code (added by hand)",
    "sources": [
@@ -56,20 +56,48 @@
      "name": "Insider Gaming",
      "url": "https://insider-gaming.com/all-escape-from-tarkov-codes-rewards/",
      "date": "2026-11-16"
+    },
+    {
+     "name": "Steam guide: Promo Codes",
+     "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3777016811",
+     "date": "2026-11-05"
     }
    ]
   },
   {
    "code": "UNDEADTARKOV",
-   "firstSeen": "2026-11-13",
+   "firstSeen": "2026-10-30",
    "lastSeen": "2026-11-16",
    "sources": [
     {
      "name": "Insider Gaming",
      "url": "https://insider-gaming.com/all-escape-from-tarkov-codes-rewards/",
      "date": "2026-11-16"
+    },
+    {
+     "name": "Steam guide: Promo Codes",
+     "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3777016811",
+     "date": "2026-10-30"
     }
    ]
+  },
+  {
+   "code": "1YEAROFESCAPING",
+   "firstSeen": "2026-11-15",
+   "lastSeen": "2026-11-15",
+   "sources": [
+    {
+     "name": "Steam guide: Promo Codes",
+     "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3777016811",
+     "date": "2026-11-15"
+    },
+    {
+     "name": "Added by hand",
+     "url": "https://x.com/nikgeneburn/status/2122040690695950581",
+     "date": "2026-11-15"
+    }
+   ],
+   "note": "One-year anniversary code. Posted by Nikita Buyanov on X (free gear)"
   },
   {
    "code": "9GAG",
@@ -79,6 +107,11 @@
     {
      "name": "Added by hand",
      "url": "",
+     "date": "2026-11-14"
+    },
+    {
+     "name": "Steam guide: Promo Codes",
+     "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3777016811",
      "date": "2026-11-14"
     }
    ],
@@ -114,6 +147,6 @@
   }
  ],
  "dismissed": [],
- "updated": "2026-11-16T20:30:09.295Z",
+ "updated": "2026-11-16T20:52:29.012Z",
  "note": "Codes are reported by players and sites, not tested. Add a code by hand under \"manual\" ({ \"code\":\"X\", \"date\":\"YYYY-MM-DD\", \"note\":\"...\" }); put a wrong one under \"dismissed\"."
 }

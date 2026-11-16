@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-16T20:50:00.000Z",
+ "updated": "2026-11-16T20:52:31.010Z",
  "app": 3932890,
  "items": [
   {
@@ -9,7 +9,7 @@
    "ts": 1794841737000,
    "url": "https://store.steampowered.com/news/app/3932890/view/1849458702689904",
    "img": "https://clan.fastly.steamstatic.com/images/45781996/47e0ef2746d449c255a42d82a881a6a3b655631d.jpg",
-   "summary": "Word has it that everyone on the other side of the world is going crazy over palm trees, neon lights, and sunny coastlines right now\u2026",
+   "summary": "Word has it that everyone on the other side of the world is going crazy over palm trees, neon lights, and sunny coastlines right now…",
    "tag": "Twitch drops"
   },
   {
@@ -19,7 +19,7 @@
    "ts": 1794758560000,
    "url": "https://store.steampowered.com/news/app/3932890/view/1849458702686626",
    "img": "https://clan.fastly.steamstatic.com/images/45781996/f0afac08674d933ccfe906b729df5c6222555cf7.jpg",
-   "summary": "November 15 marks exactly one year since Escape from Tarkov release! To celebrate this occasion, a 15% discount is active on The Unheard Steam Edition!",
+   "summary": "November 15 marks exactly one year since Escape from Tarkov release! To celebrate this occasion, a 15% discount is active on The Unheard Steam Edition! Gamma secure…",
    "tag": "Sale"
   },
   {
@@ -29,7 +29,7 @@
    "ts": 1794590773000,
    "url": "https://store.steampowered.com/news/app/3932890/view/1849192144188322",
    "img": "",
-   "summary": "The release anniversary of Escape from Tarkov is approaching! To celebrate, a unique Standard Edition & PvE Zone bundle is now available on Steam\u2026",
+   "summary": "The release anniversary of Escape from Tarkov is approaching! To celebrate, a unique Standard Edition & PvE Zone bundle is now available on Steam…",
    "tag": "Sale"
   },
   {
@@ -39,7 +39,7 @@
    "ts": 1794568023000,
    "url": "https://store.steampowered.com/news/app/3932890/view/1849192144186795",
    "img": "",
-   "summary": "A new in-game survey is now available, focused on the EXFIL Brothers Program\u2026",
+   "summary": "A new in-game survey is now available, focused on the EXFIL Brothers Program…",
    "tag": "Survey"
   },
   {
@@ -49,7 +49,7 @@
    "ts": 1793292990000,
    "url": "https://store.steampowered.com/news/app/3932890/view/1847920302235601",
    "img": "https://clan.fastly.steamstatic.com/images/45781996/5ac4a005e547c84346d34462e729761d5dd369d4.jpg",
-   "summary": "New Halloween in-game event; Switched the in-game weather season to fall\u2026",
+   "summary": "New Halloween in-game event; · Switched the in-game weather season to fall…",
    "tag": "Patch notes"
   },
   {
@@ -59,8 +59,68 @@
    "ts": 1792149668000,
    "url": "https://store.steampowered.com/news/app/3932890/view/1846651706681057",
    "img": "",
-   "summary": "A new in-game survey is now available, focused on the Leagues system\u2026",
+   "summary": "A new in-game survey is now available, focused on the Leagues system…",
    "tag": "Survey"
+  },
+  {
+   "id": "1846018067930803",
+   "title": "Watch EXFIL Brothers and get Twitch Drops!",
+   "date": "2026-10-08",
+   "ts": 1791480207000,
+   "url": "https://store.steampowered.com/news/app/3932890/view/1846018067930803",
+   "img": "https://clan.fastly.steamstatic.com/images/45781996/7b90cf66b55f9bf751f2f071b641dfa703ba424e.jpg",
+   "summary": "What is it like to set foot in Tarkov for the first time with an experienced veteran by your side? From October 9 to 14, starting at 8:00 AM BST / 3:00 AM EDT , watch…",
+   "tag": "Twitch drops"
+  },
+  {
+   "id": "1845383656396722",
+   "title": "Patch 1.2.0.0",
+   "date": "2026-10-06",
+   "ts": 1791298665000,
+   "url": "https://store.steampowered.com/news/app/3932890/view/1845383656396722",
+   "img": "https://clan.fastly.steamstatic.com/images/45781996/6c18c28398075e061650e519806aa1f6e5e95505.jpg",
+   "summary": "EXFIL Brothers Program Added the EXFIL Brothers Program to the game…",
+   "tag": "Patch notes"
+  },
+  {
+   "id": "1845383656382993",
+   "title": "Steam Autumn Sale discounts!",
+   "date": "2026-10-01",
+   "ts": 1790874601000,
+   "url": "https://store.steampowered.com/news/app/3932890/view/1845383656382993",
+   "img": "",
+   "summary": "The Autumn Sale has begun! This is a great opportunity to get Escape from Tarkov at a special price or upgrade your current edition! The following discounts are…",
+   "tag": "Sale"
+  },
+  {
+   "id": "1843481262704542",
+   "title": "Leagues are live!",
+   "date": "2026-09-15",
+   "ts": 1789477724000,
+   "url": "https://store.steampowered.com/news/app/3932890/view/1843481262704542",
+   "img": "https://clan.fastly.steamstatic.com/images/45781996/958609d08655ba93dda014e4e6e61e7b54c50f07.jpg",
+   "summary": "League System Added a new competitive system – Leagues, available only for Seasonal characters…",
+   "tag": "Event"
+  },
+  {
+   "id": "1843481262695602",
+   "title": "New in-game survey",
+   "date": "2026-09-11",
+   "ts": 1789139475000,
+   "url": "https://store.steampowered.com/news/app/3932890/view/1843481262695602",
+   "img": "https://clan.fastly.steamstatic.com/images/45781996/18a95189670f9b41c690164965070a874db23c70.png",
+   "summary": "A new in-game survey is now available, focused on the Seasons system…",
+   "tag": "Survey"
+  },
+  {
+   "id": "1842846814455578",
+   "title": "Patch 1.1.5.0",
+   "date": "2026-09-08",
+   "ts": 1788872664000,
+   "url": "https://store.steampowered.com/news/app/3932890/view/1842846814455578",
+   "img": "https://clan.fastly.steamstatic.com/images/45781996/61d1288be5efc283c08e22680254797a7e0a0155.jpg",
+   "summary": "Lighthouse rework To give players more control over the risks they face while moving through the location and reduce their dependence on random factors, the following…",
+   "tag": "Patch notes"
   }
  ]
 }
