@@ -4,6 +4,7 @@
 // Codes you add by hand under "manual" (and ones you put under "dismissed") are never touched. Runs at most every 3 hours (FORCE=1 to run now).
 import { readFileSync, writeFileSync, mkdirSync, statSync, existsSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
+import { parsePosts, parseSteam } from './build-twitchdrops.mjs';
 
 const OUT = 'data/promocodes.json';
 const UA = { 'User-Agent': 'TarkovWaypoint-promocodes/1.0 (personal fan project; contact via GitHub repo)' };
@@ -16,6 +17,11 @@ const SOURCES = process.env.PROMO_SOURCES ? JSON.parse(process.env.PROMO_SOURCES
   /* Reddit blocks GitHub's servers (HTTP 403). Public archive mirrors of the same posts are tried as a fallback; each may fail */
   { name:'Reddit archive r/EscapefromTarkov', kind:'reddit', url:'https://api.pullpush.io/reddit/search/submission/?subreddit=EscapefromTarkov&q=promo%20code&size=50&sort=desc&sort_type=created_utc' },
   { name:'Reddit archive r/EscapefromTarkovPvE', kind:'reddit', url:'https://api.pullpush.io/reddit/search/submission/?subreddit=EscapefromTarkovPvE&q=promo%20code&size=50&sort=desc&sort_type=created_utc' },
+  /* the fastest, most reliable sources first: Nikita's and the game's own X posts, Battlestate's Steam news, and the community-kept Steam guide of active codes */
+  { name:'Nikita Buyanov on X', kind:'x', url:'https://syndication.twitter.com/srv/timeline-profile/screen-name/nikgeneburn', handle:'nikgeneburn' },
+  { name:'Escape from Tarkov on X', kind:'x', url:'https://syndication.twitter.com/srv/timeline-profile/screen-name/tarkov', handle:'tarkov' },
+  { name:'Steam news', kind:'steam', url:'https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=3932890&count=40&maxlength=0&format=json' },
+  { name:'Steam guide: Promo Codes', kind:'steamguide', url:'https://steamcommunity.com/sharedfiles/filedetails/?id=3777016811' },
   { name:'Insider Gaming', kind:'html', url:'https://insider-gaming.com/all-escape-from-tarkov-codes-rewards/' },
   { name:'Dexerto', kind:'html', url:'https://dexerto.com/escape-from-tarkov/all-escape-from-tarkov-promo-codes-and-discounts-1752105' }
 ];
@@ -40,9 +46,9 @@ export function extractCodes(text) {
     out.add(u);
   };
   /* "promo code: X", "code is X", "use code X", also wrapped in quotes, backticks or bold */
-  for (const m of t.matchAll(/(?:promo\s*-?\s*codes?|codes?|coupon)\s*(?:is|are|:|-|=|–|—)?\s*(["'`*“‘]*)([A-Za-z0-9]{6,24})\1/gi)) add(m[2], !!m[1]);
+  for (const m of t.matchAll(/(?:promo\s*-?\s*codes?|codes?|coupon)\s*(?:is|are|:|-|=|–|—)?\s*(["'`*“‘]*)([A-Za-z0-9]{6,24})\1(?!-[A-Za-z0-9])/gi)) add(m[2], !!m[1]);
   /* "PROMO CODE FOR PVE PLAYERS: 9GAG [loot]" / 'the promo code "9GAG," which...': short codes (4-5 characters) count when the wording says it is a promo code */
-  for (const m of t.matchAll(/promo\s*-?\s*codes?(?:\s+(?:for|to)\b[^:\n"“`]{0,40})?\s*(?::|-|–|—|is|are)?\s*(["'`*“‘]*)([A-Za-z0-9]{4,24})["'`*”’]*/gi)) {
+  for (const m of t.matchAll(/promo\s*-?\s*codes?(?:\s+(?:for|to)\b[^:\n"“`]{0,40})?\s*(?::|-|–|—|is|are)?\s*(["'`*“‘]*)([A-Za-z0-9]{4,24})["'`*”’]*(?!-[A-Za-z0-9])/gi)) {
     const w = m[2]; if (w.length >= 6 || SHORT_OK(w, !!m[1])) add(w, !!m[1], true);
   }
   /* quoted or backticked tokens on their own: `TARKOVHALLOWEEN`, "TARKOVHALLOWEEN" */
@@ -89,6 +95,8 @@ async function get(url, json) {
   return json ? res.json() : res.text();
 }
 
+const MAX_AGE = 30 * 864e5;        /* a code reported more than 30 days ago is not offered as new */
+const fresh = at => Date.now() - at < MAX_AGE;
 /* each reader returns [{ code, at (ms), url }] */
 async function readSource(s) {
   const found = [];
@@ -96,8 +104,25 @@ async function readSource(s) {
     const j = await get(s.url, true);
     for (const c of (j.data && j.data.children) || (Array.isArray(j.data) ? j.data.map(x => ({ data:x })) : [])) {
       const d = c.data || {}; const txt = (d.title || '') + '\n' + (d.selftext || '');
-      if (!/promo|code|redeem/i.test(txt)) continue;
+      if (!/promo|code|redeem/i.test(txt) || !fresh((d.created_utc || 0) * 1000)) continue;
       for (const code of extractCodes(txt)) found.push({ code, at:(d.created_utc || 0) * 1000, url:'https://www.reddit.com' + (d.permalink || '') });
+    }
+  } else if (s.kind === 'x') {
+    for (const p of parsePosts(await get(s.url))) {
+      if (!/promo|code/i.test(p.text) || !fresh(p.at)) continue;
+      for (const code of extractCodes(p.text)) found.push({ code, at:p.at, url:`https://x.com/${s.handle}/status/${p.id}` });
+    }
+  } else if (s.kind === 'steam') {
+    for (const p of parseSteam(await get(s.url, true))) {
+      if (!/promo|code/i.test(p.text) || !fresh(p.at)) continue;
+      for (const code of extractCodes(p.text)) found.push({ code, at:p.at, url:p.url });
+    }
+  } else if (s.kind === 'steamguide') {
+    /* a table of "Promo Code | Found" rows under "Active Codes" */
+    const h = await get(s.url);
+    for (const m of h.matchAll(/<div class="bb_table_td">\s*([A-Za-z0-9]{4,24})\s*<\/div>\s*<div class="bb_table_td">\s*([^<]+?)\s*<\/div>/g)) {
+      const at = Date.parse(m[2].replace(/,\s*(\d{1,2}:\d{2})$/, ' $1') + ' UTC');
+      if (isFinite(at) && fresh(at) && !STOP.has(m[1].toUpperCase())) found.push({ code:m[1].toUpperCase(), at, url:s.url });
     }
   } else if (s.kind === 'wiki') {
     const j = await get(`${WIKI}/api.php?${new URLSearchParams({ action:'parse', page:s.page, prop:'text', format:'json', formatversion:'2', redirects:'1' })}`, true);
@@ -153,7 +178,7 @@ async function main() {
   const live = hits.filter(h => !h.expired), dead = new Set(hits.filter(h => h.expired).map(h => h.code));
   live.forEach(h => dead.delete(h.code));
   const mine = new Set((db.manual || []).map(m => String(m.code).toUpperCase()));
-  db.codes = merge(db, live).filter(c => !dead.has(c.code) || mine.has(c.code));
+  db.codes = merge(db, live).filter(c => (!dead.has(c.code) || mine.has(c.code)) && (mine.has(c.code) || Date.now() - Date.parse(c.lastSeen + 'T12:00:00Z') < MAX_AGE));   /* and a scraped code nobody has mentioned for 30 days is dropped */
   const gone = [...dead].filter(c => !mine.has(c));
   if (gone.length) console.log('Listed as expired, so not shown: ' + gone.join(', '));
   db.updated = new Date().toISOString();

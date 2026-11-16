@@ -83,30 +83,6 @@
     }
    ],
    "note": "PvE. Released with the Combat Coordination survey; posted on r/EscapefromTarkovPvE (backpack, grenades, medical, HK 416A5)"
-  },
-  {
-   "code": "JUST150TARCOIN",
-   "firstSeen": "2026-10-08",
-   "lastSeen": "2026-10-08",
-   "sources": [
-    {
-     "name": "Reddit archive r/EscapefromTarkovPvE",
-     "url": "https://www.reddit.com/r/EscapeFromTarkovPvE/comments/1x0k4wd/promo_code_just150tarcoin_loot/",
-     "date": "2026-10-08"
-    }
-   ]
-  },
-  {
-   "code": "W2TX",
-   "firstSeen": "2026-08-03",
-   "lastSeen": "2026-08-03",
-   "sources": [
-    {
-     "name": "Reddit archive r/EscapefromTarkovPvE",
-     "url": "https://www.reddit.com/r/EscapeFromTarkovPvE/comments/1veqdu4/promo_code_w2tx6nu9ufk189rwm96b_loot/",
-     "date": "2026-08-03"
-    }
-   ]
   }
  ],
  "manual": [
@@ -129,6 +105,12 @@
    "code": "9GAG",
    "date": "2026-11-14",
    "note": "PvE. Released with the Combat Coordination survey; posted on r/EscapefromTarkovPvE (backpack, grenades, medical, HK 416A5)"
+  },
+  {
+   "code": "1YEAROFESCAPING",
+   "date": "2026-11-15",
+   "note": "One-year anniversary code. Posted by Nikita Buyanov on X (free gear)",
+   "url": "https://x.com/nikgeneburn/status/2122040690695950581"
   }
  ],
  "dismissed": [],
