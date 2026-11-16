@@ -3,12 +3,12 @@
   {
    "code": "EMBRACEPAIN",
    "firstSeen": "2026-11-06",
-   "lastSeen": "2026-11-15",
+   "lastSeen": "2026-11-16",
    "sources": [
     {
      "name": "Insider Gaming",
      "url": "https://insider-gaming.com/all-escape-from-tarkov-codes-rewards/",
-     "date": "2026-11-15"
+     "date": "2026-11-16"
     },
     {
      "name": "Added by hand",
@@ -21,12 +21,12 @@
   {
    "code": "PLAYYOURWAY",
    "firstSeen": "2026-11-06",
-   "lastSeen": "2026-11-15",
+   "lastSeen": "2026-11-16",
    "sources": [
     {
      "name": "Insider Gaming",
      "url": "https://insider-gaming.com/all-escape-from-tarkov-codes-rewards/",
-     "date": "2026-11-15"
+     "date": "2026-11-16"
     },
     {
      "name": "Added by hand",
@@ -39,7 +39,7 @@
   {
    "code": "TARKOVHALLOWEEN",
    "firstSeen": "2026-11-09",
-   "lastSeen": "2026-11-15",
+   "lastSeen": "2026-11-16",
    "note": "Halloween event code (added by hand)",
    "sources": [
     {
@@ -50,24 +50,24 @@
     {
      "name": "Dexerto",
      "url": "https://dexerto.com/escape-from-tarkov/all-escape-from-tarkov-promo-codes-and-discounts-1752105",
-     "date": "2026-11-15"
+     "date": "2026-11-16"
     },
     {
      "name": "Insider Gaming",
      "url": "https://insider-gaming.com/all-escape-from-tarkov-codes-rewards/",
-     "date": "2026-11-15"
+     "date": "2026-11-16"
     }
    ]
   },
   {
    "code": "UNDEADTARKOV",
    "firstSeen": "2026-11-13",
-   "lastSeen": "2026-11-15",
+   "lastSeen": "2026-11-16",
    "sources": [
     {
      "name": "Insider Gaming",
      "url": "https://insider-gaming.com/all-escape-from-tarkov-codes-rewards/",
-     "date": "2026-11-15"
+     "date": "2026-11-16"
     }
    ]
   },
@@ -107,30 +107,6 @@
      "date": "2026-08-03"
     }
    ]
-  },
-  {
-   "code": "LVL80BOSS",
-   "firstSeen": "2026-07-27",
-   "lastSeen": "2026-07-27",
-   "sources": [
-    {
-     "name": "Reddit archive r/EscapefromTarkovPvE",
-     "url": "https://www.reddit.com/r/EscapeFromTarkovPvE/comments/1v8ahi4/quest_help_new_promo_code_for_anyone_who_need/",
-     "date": "2026-07-27"
-    }
-   ]
-  },
-  {
-   "code": "PAWNSHOP",
-   "firstSeen": "2025-12-27",
-   "lastSeen": "2025-12-27",
-   "sources": [
-    {
-     "name": "Reddit archive r/EscapefromTarkovPvE",
-     "url": "https://www.reddit.com/r/EscapeFromTarkovPvE/comments/1px35u4/loot_new_promo_code_pawnshop/",
-     "date": "2025-12-27"
-    }
-   ]
   }
  ],
  "manual": [
@@ -156,6 +132,6 @@
   }
  ],
  "dismissed": [],
- "updated": "2026-11-15T21:47:05.837Z",
+ "updated": "2026-11-16T02:02:44.987Z",
  "note": "Codes are reported by players and sites, not tested. Add a code by hand under \"manual\" ({ \"code\":\"X\", \"date\":\"YYYY-MM-DD\", \"note\":\"...\" }); put a wrong one under \"dismissed\"."
 }
