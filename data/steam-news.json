@@ -1,0 +1,66 @@
+{
+ "updated": "2026-11-16T20:50:00.000Z",
+ "app": 3932890,
+ "items": [
+  {
+   "id": "1849458702689904",
+   "title": "Tarkov City Drops Campaign!",
+   "date": "2026-11-16",
+   "ts": 1794841737000,
+   "url": "https://store.steampowered.com/news/app/3932890/view/1849458702689904",
+   "img": "https://clan.fastly.steamstatic.com/images/45781996/47e0ef2746d449c255a42d82a881a6a3b655631d.jpg",
+   "summary": "Word has it that everyone on the other side of the world is going crazy over palm trees, neon lights, and sunny coastlines right now\u2026",
+   "tag": "Twitch drops"
+  },
+  {
+   "id": "1849458702686626",
+   "title": "Anniversary discount!",
+   "date": "2026-11-15",
+   "ts": 1794758560000,
+   "url": "https://store.steampowered.com/news/app/3932890/view/1849458702686626",
+   "img": "https://clan.fastly.steamstatic.com/images/45781996/f0afac08674d933ccfe906b729df5c6222555cf7.jpg",
+   "summary": "November 15 marks exactly one year since Escape from Tarkov release! To celebrate this occasion, a 15% discount is active on The Unheard Steam Edition!",
+   "tag": "Sale"
+  },
+  {
+   "id": "1849192144188322",
+   "title": "Standard Edition & PvE Zone bundle!",
+   "date": "2026-11-13",
+   "ts": 1794590773000,
+   "url": "https://store.steampowered.com/news/app/3932890/view/1849192144188322",
+   "img": "",
+   "summary": "The release anniversary of Escape from Tarkov is approaching! To celebrate, a unique Standard Edition & PvE Zone bundle is now available on Steam\u2026",
+   "tag": "Sale"
+  },
+  {
+   "id": "1849192144186795",
+   "title": "New in-game survey",
+   "date": "2026-11-13",
+   "ts": 1794568023000,
+   "url": "https://store.steampowered.com/news/app/3932890/view/1849192144186795",
+   "img": "",
+   "summary": "A new in-game survey is now available, focused on the EXFIL Brothers Program\u2026",
+   "tag": "Survey"
+  },
+  {
+   "id": "1847920302235601",
+   "title": "Patch 1.3.0.0",
+   "date": "2026-10-29",
+   "ts": 1793292990000,
+   "url": "https://store.steampowered.com/news/app/3932890/view/1847920302235601",
+   "img": "https://clan.fastly.steamstatic.com/images/45781996/5ac4a005e547c84346d34462e729761d5dd369d4.jpg",
+   "summary": "New Halloween in-game event; Switched the in-game weather season to fall\u2026",
+   "tag": "Patch notes"
+  },
+  {
+   "id": "1846651706681057",
+   "title": "New in-game survey",
+   "date": "2026-10-16",
+   "ts": 1792149668000,
+   "url": "https://store.steampowered.com/news/app/3932890/view/1846651706681057",
+   "img": "",
+   "summary": "A new in-game survey is now available, focused on the Leagues system\u2026",
+   "tag": "Survey"
+  }
+ ]
+}

@@ -64,6 +64,12 @@ jobs:
         env:
           FORCE: ${{ github.event_name == 'workflow_dispatch' && '1' || '' }}   # a manual run always refreshes; the hourly one respects the throttle
         run: node scripts/build-twitchdrops.mjs
+      # Battlestate's Steam announcements for the "Tarkov updates" menu (cover image, summary, tag). Refreshes hourly.
+      - name: Build Steam news
+        continue-on-error: true
+        env:
+          FORCE: ${{ github.event_name == 'workflow_dispatch' && '1' || '' }}
+        run: node scripts/build-steam-news.mjs
       - name: Commit if changed
         run: |
           if [ -n "$(git status --porcelain data)" ]; then

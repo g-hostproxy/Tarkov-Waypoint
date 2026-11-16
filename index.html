@@ -2346,7 +2346,7 @@ input[type="checkbox"],input[type="radio"]{accent-color:var(--accent)}
 #newsBtn:hover,#newsBtn[aria-expanded="true"]{border-color:var(--accent);color:var(--accent)}
 #newsBtn svg{width:17px;height:17px}
 .hdr-r{position:relative}
-#newsPop{overscroll-behavior:contain;position:absolute;top:calc(100% + 8px);right:0;z-index:2500;width:min(310px,92vw);padding:8px;background:var(--panel);border:1px solid var(--accent);border-radius:12px;box-shadow:0 12px 34px #000b;display:flex;flex-direction:column;gap:2px}
+#newsPop{max-height:calc(100vh - 84px);overflow-y:auto;overscroll-behavior:contain;position:absolute;top:calc(100% + 8px);right:0;z-index:2500;width:min(310px,92vw);padding:8px;background:var(--panel);border:1px solid var(--accent);border-radius:12px;box-shadow:0 12px 34px #000b;display:flex;flex-direction:column;gap:2px}
 #newsPop[hidden]{display:none}
 #newsPop .np-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:4px 8px 6px}
 #newsPop .np-h span{font:700 16px var(--f-head);letter-spacing:.06em;text-transform:uppercase}
@@ -2365,6 +2365,38 @@ input[type="checkbox"],input[type="radio"]{accent-color:var(--accent)}
 #newsPop a:hover .np-go{color:var(--accent);opacity:1}
 /* What's new */
 #newsBtn{position:relative}
+/* Steam news in the Tarkov updates menu + the news window */
+#newsPop .np-n{display:flex;gap:11px;align-items:center;padding:6px 8px;border-radius:10px}
+#newsPop .np-n .np-th{flex:none;width:68px;height:42px;border-radius:7px;overflow:hidden;background:linear-gradient(135deg,var(--bg),var(--panel2));border:1px solid var(--line);display:grid;place-items:center;color:var(--mute)}
+#newsPop .np-n .np-th img{width:100%;height:100%;object-fit:cover;display:block}
+#newsPop .np-n .np-th svg{width:18px;height:18px;opacity:.7}
+#newsPop .np-n:hover .np-th{border-color:var(--accent)}
+#newsPop .np-n .np-t b{font-size:13px;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+#newsPop .np-n .np-t small{margin-top:3px;font-size:11px;display:flex;gap:6px;align-items:center}
+.stg{display:inline-block;padding:1px 7px;border-radius:99px;font:700 10px var(--f-body);letter-spacing:.05em;text-transform:uppercase;color:var(--tc,var(--mute));background:color-mix(in srgb,var(--tc,var(--mute)) 16%,transparent);border:1px solid color-mix(in srgb,var(--tc,var(--mute)) 40%,transparent)}
+[data-tag="Patch notes"]{--tc:var(--accent)}[data-tag="Twitch drops"]{--tc:#a77bff}[data-tag="Sale"]{--tc:#f5b942}[data-tag="Survey"]{--tc:#4aa8ff}[data-tag="Event"]{--tc:#ff7a59}
+#stDlg{width:min(960px,96vw);max-height:92vh;padding:0;overflow:hidden;flex-direction:column;border-radius:16px}
+#stDlg[open]{display:flex}
+#stDlg .st-h{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:18px 22px 10px}
+#stDlg h2{margin:0}#stDlg .st-h p{margin:3px 0 0;color:var(--mute);font-size:13px}
+#stDlg .st-x{background:none;border:0;font-size:26px;line-height:1;color:var(--mute);cursor:pointer;padding:0 6px}#stDlg .st-x:hover{color:var(--accent)}
+#stDlg .st-b{overflow:auto;min-height:0;flex:1 1 auto;align-content:start;grid-auto-rows:max-content;padding:8px 22px 22px;display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
+.st-c{display:flex;flex-direction:column;background:var(--panel2);border:1px solid var(--line);border-radius:14px;overflow:hidden;color:inherit;text-decoration:none;transition:transform .18s,border-color .18s,box-shadow .18s}
+.st-c:hover,.st-c:focus-visible{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 12px 28px #0008;outline:0}
+.st-im{position:relative;flex:none;aspect-ratio:16/9;overflow:hidden;background:linear-gradient(135deg,#1b2410,var(--bg) 60%,#10161f)}
+.st-im img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}.st-c:hover .st-im img{transform:scale(1.05)}
+.st-im::after{content:"";z-index:2;position:absolute;inset:auto 0 0 0;height:55%;background:linear-gradient(transparent,#000a);pointer-events:none}
+.st-im .st-ph{position:absolute;inset:0;display:grid;place-items:center;color:var(--accent);opacity:.55}.st-im .st-ph svg{width:44px;height:44px}
+.st-im .stg{position:absolute;top:10px;left:10px;z-index:3;backdrop-filter:blur(6px);background:color-mix(in srgb,var(--tc,var(--mute)) 28%,#000a)}
+.st-bd{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.st-d{font-size:11.5px;color:var(--mute);letter-spacing:.03em}
+.st-t{font:700 17px/1.2 var(--f-head);letter-spacing:.01em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.st-s{font-size:13px;line-height:1.45;color:var(--mute);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.st-go{margin-top:auto;padding-top:4px;font-size:12px;color:var(--accent);font-weight:600}
+.st-c.feat{grid-column:1/-1;flex-direction:row}.st-c.feat .st-im{flex:0 0 56%;aspect-ratio:auto;min-height:230px}.st-c.feat .st-t{font-size:24px}.st-c.feat .st-s{-webkit-line-clamp:5;font-size:14px}.st-c.feat .st-bd{padding:18px 20px;justify-content:center}
+@media (max-width:640px){.st-c.feat{flex-direction:column}.st-c.feat .st-im{flex:none;aspect-ratio:16/9;min-height:0}.st-c.feat .st-t{font-size:20px}#stDlg .st-b{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.st-c,.st-im img{transition:none}}
+
 #newsBtn.has-new::after{content:"";position:absolute;top:4px;right:4px;width:8px;height:8px;border-radius:50%;background:var(--accent);border:1.5px solid var(--panel)}
 #newsPop .np-row{display:flex;align-items:center;gap:11px;width:100%;padding:7px 8px;border:0;border-radius:9px;background:none;color:inherit;text-align:left;cursor:pointer;font:inherit}
 #newsPop .np-row:hover,#newsPop .np-row:focus-visible{background:var(--panel2);outline:0}
@@ -2533,7 +2565,7 @@ header{min-height:61px}
       <div id="modeSw" role="group" aria-label="Game mode"><button type="button" data-gm="regular" title="Regular (PvP) quests, progress and flea prices">PvP</button><button type="button" data-gm="pve" title="PvE: its own quests, progress and flea prices. Beta: still being tested">PvE<em>BETA</em></button></div>
       <button id="prepBtn" class="primary" title="Keys, items and gear needed for your selected quests">Pre-raid check</button><!--AMMOBTN--><button id="ammoBtn" title="Best ammo for each caliber: the meta pick, and how every round compares">Meta ammo</button><!--/AMMOBTN--><button id="priceBtn" title="Look up current flea market prices (PvP)">Flea prices</button>
       <button id="newsBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="newsPop" title="Tarkov news and server status" aria-label="Tarkov news and server status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg></button>
-      <div id="newsPop" role="menu" hidden><div class="np-h"><span>Tarkov updates</span></div><div class="np-s">Tarkov Waypoint</div><button type="button" role="menuitem" id="logOpen" class="np-row"><span class="np-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3zM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16z"></path></svg></span><span class="np-t"><b>What's new <i class="np-new" id="logNew" hidden>New</i></b><small>Recent changes to this site</small></span></button><div class="np-s">From Battlestate</div><a role="menuitem" href="https://www.escapefromtarkov.com/news" target="_blank" rel="noopener noreferrer"><span class="np-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h13a2 2 0 0 1 2 2v12H6a2 2 0 0 1-2-2V5z"></path><path d="M19 9h1a1 1 0 0 1 1 1v7a2 2 0 0 1-2 2M8 9h7M8 13h7M8 16h4"></path></svg></span><span class="np-t"><b>Official news</b><small>Patch notes and announcements</small></span><svg class="np-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"></path></svg></a><a role="menuitem" href="https://status.escapefromtarkov.com/" target="_blank" rel="noopener noreferrer"><span class="np-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3-7 4 14 3-7h4"></path></svg></span><span class="np-t"><b>Server status</b><small>Outages and maintenance</small></span><svg class="np-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"></path></svg></a><div class="np-s">Follow on X</div><a role="menuitem" href="https://x.com/tarkov" target="_blank" rel="noopener noreferrer"><span class="np-i"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.8 3h3.1l-6.8 7.7L22 21h-6.2l-4.9-6.3L5.3 21H2.2l7.2-8.3L1.8 3h6.4l4.4 5.8L17.8 3zm-1.1 16.2h1.7L7.2 4.7H5.4l11.3 14.5z"></path></svg></span><span class="np-t"><b>@tarkov</b><small>Escape from Tarkov</small></span><svg class="np-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"></path></svg></a><a role="menuitem" href="https://x.com/bstategames" target="_blank" rel="noopener noreferrer"><span class="np-i"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.8 3h3.1l-6.8 7.7L22 21h-6.2l-4.9-6.3L5.3 21H2.2l7.2-8.3L1.8 3h6.4l4.4 5.8L17.8 3zm-1.1 16.2h1.7L7.2 4.7H5.4l11.3 14.5z"></path></svg></span><span class="np-t"><b>@bstategames</b><small>Battlestate Games</small></span><svg class="np-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"></path></svg></a></div>
+      <div id="newsPop" role="menu" hidden><div class="np-h"><span>Tarkov updates</span></div><div class="np-s">Tarkov Waypoint</div><button type="button" role="menuitem" id="logOpen" class="np-row"><span class="np-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3zM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16z"></path></svg></span><span class="np-t"><b>What's new <i class="np-new" id="logNew" hidden>New</i></b><small>Recent changes to this site</small></span></button><div class="np-s" id="npSteamH" hidden>Latest from Steam <i class="np-new" id="npSteamNew" hidden>New</i></div><div id="npSteam"></div><div class="np-s">From Battlestate</div><a role="menuitem" href="https://www.escapefromtarkov.com/news" target="_blank" rel="noopener noreferrer"><span class="np-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h13a2 2 0 0 1 2 2v12H6a2 2 0 0 1-2-2V5z"></path><path d="M19 9h1a1 1 0 0 1 1 1v7a2 2 0 0 1-2 2M8 9h7M8 13h7M8 16h4"></path></svg></span><span class="np-t"><b>Official news</b><small>Patch notes and announcements</small></span><svg class="np-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"></path></svg></a><a role="menuitem" href="https://status.escapefromtarkov.com/" target="_blank" rel="noopener noreferrer"><span class="np-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3-7 4 14 3-7h4"></path></svg></span><span class="np-t"><b>Server status</b><small>Outages and maintenance</small></span><svg class="np-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"></path></svg></a><div class="np-s">Follow on X</div><a role="menuitem" href="https://x.com/tarkov" target="_blank" rel="noopener noreferrer"><span class="np-i"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.8 3h3.1l-6.8 7.7L22 21h-6.2l-4.9-6.3L5.3 21H2.2l7.2-8.3L1.8 3h6.4l4.4 5.8L17.8 3zm-1.1 16.2h1.7L7.2 4.7H5.4l11.3 14.5z"></path></svg></span><span class="np-t"><b>@tarkov</b><small>Escape from Tarkov</small></span><svg class="np-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"></path></svg></a><a role="menuitem" href="https://x.com/bstategames" target="_blank" rel="noopener noreferrer"><span class="np-i"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.8 3h3.1l-6.8 7.7L22 21h-6.2l-4.9-6.3L5.3 21H2.2l7.2-8.3L1.8 3h6.4l4.4 5.8L17.8 3zm-1.1 16.2h1.7L7.2 4.7H5.4l11.3 14.5z"></path></svg></span><span class="np-t"><b>@bstategames</b><small>Battlestate Games</small></span><svg class="np-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"></path></svg></a></div>
       <button id="bugBtn" type="button" title="Report a problem. Nothing personal is collected" aria-label="Report a bug"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8h8v7a4 4 0 0 1-8 0V8z"></path><path d="M9 8a3 3 0 0 1 6 0M4 12h4M16 12h4M5 6l3 2M19 6l-3 2M5 19l3-2M19 19l-3-2"></path></svg><span>Report a bug</span></button>
       <a id="supportBtn" href="https://buymeacoffee.com/g.hostproxy" target="_blank" rel="noopener" title="Tarkov Waypoint is free. Support it on Buy Me a Coffee" aria-label="Support Tarkov Waypoint on Buy Me a Coffee"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h13v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8z"></path><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"></path><path d="M8 2v2M11 2v2M14 2v2"></path></svg><span>Support</span></a>
     </div>
@@ -15216,6 +15248,52 @@ document.addEventListener('click', e => {
   pop.addEventListener('click', () => set(false));
 })();
 
+
+/* ===== Steam news (Battlestate's announcements, from data/steam-news.json) in the Tarkov updates menu, plus a full news window ===== */
+(function wireSteamNews(){
+  const pop = document.getElementById('newsPop'), box = document.getElementById('npSteam'), head = document.getElementById('npSteamH'), nw = document.getElementById('npSteamNew'); if(!pop || !box) return;
+  const E = t => String(t == null ? '' : t).replace(/[&<>"]/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]));
+  const SEEN = 'rr_steam_seen';
+  const seen = () => { try{ return localStorage.getItem(SEEN); }catch(e){ return null; } };
+  const mark = id => { try{ localStorage.setItem(SEEN, id); }catch(e){} };
+  const day = d => { const t = new Date(d + 'T12:00:00'); return isNaN(t) ? d : t.toLocaleDateString(undefined, { month:'short', day:'numeric', year:t.getFullYear() === new Date().getFullYear() ? undefined : 'numeric' }); };
+  const PH = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h13a2 2 0 0 1 2 2v12H6a2 2 0 0 1-2-2V5z"/><path d="M19 9h1a1 1 0 0 1 1 1v7a2 2 0 0 1-2 2M8 9h7M8 13h7M8 16h4"/></svg>';
+  const pic = (it, ph) => it.img ? '<img src="' + E(it.img) + '" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">' : '';
+  let items = [], dlg = null;
+  function menu(){
+    if(!items.length) return;
+    head.hidden = false; if(nw) nw.hidden = seen() === items[0].id;
+    box.innerHTML = items.slice(0, 3).map(it => '<a role="menuitem" class="np-n" href="' + E(it.url) + '" target="_blank" rel="noopener noreferrer" data-id="' + E(it.id) + '"><span class="np-th">' + (pic(it) || PH) + '</span><span class="np-t"><b>' + E(it.title) + '</b><small><span class="stg" data-tag="' + E(it.tag) + '">' + E(it.tag) + '</span>' + E(day(it.date)) + '</small></span></a>').join('') +
+      '<button type="button" role="menuitem" id="stOpen" class="np-row"><span class="np-i">' + PH + '</span><span class="np-t"><b>All Steam news</b><small>' + items.length + ' recent announcements</small></span></button>';
+  }
+  function card(it, i){
+    return '<a class="st-c' + (i === 0 ? ' feat' : '') + '" href="' + E(it.url) + '" target="_blank" rel="noopener noreferrer"><div class="st-im" data-tag="' + E(it.tag) + '">' + pic(it) + '<span class="st-ph">' + PH + '</span><span class="stg" data-tag="' + E(it.tag) + '">' + E(it.tag) + '</span></div>' +
+      '<div class="st-bd"><div class="st-d">' + E(day(it.date)) + '</div><div class="st-t">' + E(it.title) + '</div>' + (it.summary ? '<div class="st-s">' + E(it.summary) + '</div>' : '') + '<div class="st-go">Read on Steam ↗</div></div></a>';
+  }
+  function open(){
+    if(!dlg){
+      dlg = document.createElement('dialog'); dlg.id = 'stDlg';
+      dlg.innerHTML = '<div class="st-h"><div><h2>Tarkov news</h2><p>Official announcements from Battlestate, straight from the game’s Steam page.</p></div><button class="st-x" type="button" aria-label="Close">×</button></div><div class="st-b"></div>';
+      document.body.appendChild(dlg);
+      dlg.querySelector('.st-x').addEventListener('click', () => dlg.close());
+      dlg.addEventListener('click', e => { if(e.target === dlg) dlg.close(); });
+    }
+    dlg.querySelector('.st-b').innerHTML = items.map(card).join('');
+    dlg.showModal(); if(items[0]){ mark(items[0].id); if(nw) nw.hidden = true; }
+  }
+  pop.addEventListener('click', e => {
+    if(e.target.closest('#stOpen')) open();
+    else if(e.target.closest('.np-n') && items[0]){ mark(items[0].id); if(nw) nw.hidden = true; }
+  });
+  (async () => {
+    try{
+      const r = await fetch('data/steam-news.json?h=' + Math.floor(Date.now() / 36e5), { cache:'no-cache' }); if(!r.ok) return;
+      const j = await r.json(); items = (j && Array.isArray(j.items) ? j.items : []).filter(x => x && x.id && x.title && x.url && /^https:\/\//.test(x.url)).slice(0, 12); menu();
+    }catch(e){}
+  })();
+  window.RRSteamNews = { open };
+})();
+
 /* ===== What's new =====
    HOW TO ADD AN ENTRY: put it at the top of the newest day (or add a new day above it). Types: 'new', 'better', 'fix'.
    Keep each line short and plain, written for players. The "New" dot lights up for anyone who has not opened the list since the last change. */
@@ -17087,6 +17165,7 @@ document.addEventListener('click', e => {
 const CHANGELOG = [
   { d:'2026-11-08', items:[
       ['new','Key stops: tap the door photo to see it big, with Prev / Next through the key\'s other photos'],
+      ['new','Tarkov updates menu: the latest Battlestate announcements from Steam, with pictures, plus an All Steam news window'],
       ['fix','Pre-raid check now tells you to bring the Wi-Fi cameras for wiki-only quests like Scope the Clearing (3) and Make Amends - Security (4)'],
       ['new','Twitch drop alerts: new Tools > Twitch drops lists drops that are on or newly reported, with an optional alert: a pop-up appears when a drop is on or newly reported'],
       ['new','Key stops show the floor when the key\'s wiki Lock Location section says one (nothing shown when it does not)'],
