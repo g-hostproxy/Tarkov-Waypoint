@@ -50,6 +50,17 @@ async function main() {
   const r = await fetch(API, { headers:{ 'User-Agent':'TarkovWaypoint-steamnews/1.0 (personal fan project)' }, signal:AbortSignal.timeout(25000) });
   if (!r.ok) { console.log('Steam news: HTTP ' + r.status + '; leaving the file alone.'); return; }
   const items = buildItems((await r.json()).appnews.newsitems);
+  // Posts without a picture in their body (e.g. store bundles) still have a cover on their Steam page: its og:image.
+  const prev = (() => { try { return JSON.parse(readFileSync(OUT, 'utf8')).items || []; } catch { return []; } })();
+  for (const it of items) {
+    if (it.img) continue;
+    const old = prev.find(p => p.id === it.id && p.img); if (old) { it.img = old.img; continue; }
+    try {
+      const h = await (await fetch(it.url, { headers:{ 'User-Agent':'Mozilla/5.0 TarkovWaypoint-steamnews/1.0' }, signal:AbortSignal.timeout(20000) })).text();
+      const m = h.match(/<meta[^>]+property=["']og:image["'][^>]+content=["'](https:\/\/[^"']+)["']/i);
+      if (m) it.img = m[1].replace(/&amp;/g, '&').replace(/\?t=\d+$/, '');
+    } catch (e) { console.log('og:image failed for', it.id, String(e).slice(0, 80)); }
+  }
   if (!items.length) { console.log('Steam news: no official posts found; leaving the file alone.'); return; }
   writeFileSync(OUT, JSON.stringify({ updated:new Date().toISOString(), app:APP, items }, null, 1) + '\n');
   console.log(`Wrote ${items.length} post(s); newest: ${items[0].title} (${items[0].date}).`);
