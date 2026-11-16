@@ -9,7 +9,15 @@
   }
  ],
  "dismissed": [],
- "updated": "2026-11-16T20:27:33.052Z",
+ "updated": "2026-11-16T20:30:10.434Z",
  "note": "News headlines about Tarkov Twitch drops; dates are the day each was published, not the drop dates. Put a wrong one's id under \"dismissed\".",
- "campaigns": []
+ "campaigns": [
+  {
+   "title": "Tarkov City Drops Campaign",
+   "start": 1794841737000,
+   "end": 1795446000000,
+   "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1849458702689904",
+   "source": "Battlestate on Steam"
+  }
+ ]
 }
