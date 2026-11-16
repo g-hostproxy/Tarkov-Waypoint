@@ -21,6 +21,14 @@ const X_SOURCES = process.env.TWITCH_X_SOURCES ? JSON.parse(process.env.TWITCH_X
   { name:'@tarkov (Nitter 2)', url:'https://nitter.poast.org/tarkov/rss' },
   { name:'@tarkov (Nitter 3)', url:'https://nitter.privacydev.net/tarkov/rss' }
 ];
+/* Battlestate posts every campaign in the game's Steam news ("Tarkov City Drops Campaign!": "The campaign will run until November 23 at 3:00 PM GMT"),
+   and Steam's news API works from GitHub's servers. This is the main source; X and the news headlines are extras. */
+const STEAM_URL = 'https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=3932890&count=40&maxlength=0&format=json';
+export function parseSteam(j) {
+  const items = (j && j.appnews && j.appnews.newsitems) || [];
+  return items.map(n => ({ id:String(n.gid || ''), text:String(n.title || '') + '\n' + String(n.contents || '').replace(/\[\/?[a-z0-9*]+(?:=[^\]]*)?\]/gi, ' ').replace(/<[^>]+>/g, ' '),
+    at:(+n.date || 0) * 1000, url:n.url || 'https://store.steampowered.com/news/app/3932890', title:String(n.title || '').replace(/[!.\s]+$/, ''), steam:true })).filter(x => x.at);
+}
 const KEEP_DAYS = 21;
 const MONTHS = ['january','february','march','april','may','june','july','august','september','october','november','december'];
 const TZ = { utc:0, gmt:0, bst:1, cet:1, cest:2, eet:2, eest:3, msk:3, est:-5, edt:-4, cst:-6, cdt:-5, pst:-8, pdt:-7 };
@@ -79,8 +87,8 @@ export function campaigns(posts, db = { campaigns:[] }, now = Date.now()) {
   const by = new Map((db.campaigns || []).map(c => [c.end, c]));
   for (const p of posts) {
     const c = campaignFrom(p.text, p.at); if (!c) continue;
-    const ex = by.get(c.end), url = p.id ? 'https://x.com/tarkov/status/' + p.id : 'https://x.com/tarkov';
-    if (!ex) by.set(c.end, { title:c.title, start:c.start ?? p.at, end:c.end, url, source:'Escape from Tarkov on X' });
+    const ex = by.get(c.end), url = p.id && !p.steam ? 'https://x.com/tarkov/status/' + p.id : 'https://x.com/tarkov';
+    if (!ex) by.set(c.end, { title:p.steam && /drops?|twitch/i.test(p.title || '') ? p.title : c.title, start:c.start ?? p.at, end:c.end, url:p.url || url, source:p.steam ? 'Battlestate on Steam' : 'Escape from Tarkov on X' });
     else { if (c.start !== null && c.start < ex.start) ex.start = c.start; else if (c.start === null && p.at < ex.start) ex.start = p.at; if (c.title.length > ex.title.length) ex.title = c.title; if (p.at < (ex._at || Infinity)) { ex._at = p.at; ex.url = url; } }
   }
   return [...by.values()].map(c => { delete c._at; return c; }).filter(c => now - c.end < 30 * 864e5).sort((a, b) => b.end - a.end).slice(0, 12);
@@ -126,12 +134,18 @@ async function main() {
   if (existsSync(OUT)) { try { db = Object.assign(db, JSON.parse(readFileSync(OUT, 'utf8'))); } catch (e) {} }
   if (!process.env.FORCE && db.updated && Date.now() - Date.parse(db.updated) < 1 * 3600e3) { console.log('Refreshed less than 2 hours ago; skipping (FORCE=1 to run now).'); return; }
   const hits = []; let ok = 0, posts = [];
+  try {
+    const r = await fetch(STEAM_URL, { headers:UA, signal:AbortSignal.timeout(20000) });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const f = parseSteam(await r.json()); posts = posts.concat(f);
+    console.log(`Steam news: ${f.length} post(s), ${f.filter(x => campaignFrom(x.text, x.at)).length} about a Twitch drops campaign`);
+  } catch (e) { console.log(`Steam news: could not read (${String(e.message || e).split('\n')[0]})`); }
   for (const s of X_SOURCES) {
     try {
       const r = await fetch(s.url, { headers:UA, signal:AbortSignal.timeout(20000) });
       if (!r.ok) throw new Error('HTTP ' + r.status);
       const f = parsePosts(await r.text()); if (!f.length) throw new Error('no posts in the response');
-      posts = f; console.log(`${s.name}: ${f.length} post(s), ${f.filter(x => campaignFrom(x.text, x.at)).length} about a Twitch drops campaign`); break;
+      posts = posts.concat(f); console.log(`${s.name}: ${f.length} post(s), ${f.filter(x => campaignFrom(x.text, x.at)).length} about a Twitch drops campaign`); break;
     } catch (e) { console.log(`${s.name}: could not read (${String(e.message || e).split('\n')[0]})`); }
   }
   db.campaigns = campaigns(posts, db);
