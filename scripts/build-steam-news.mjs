@@ -8,6 +8,7 @@ const OUT = 'data/steam-news.json';
 const APP = 3932890;
 const API = `https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=${APP}&count=60&maxlength=0&format=json`;
 const IMG = 'https://clan.fastly.steamstatic.com/images/';
+const KEEP = new Set(['1849192144188322']); // the bundle post's own cover (confirmed on its Steam page)
 const MAX_ITEMS = 12;
 
 export const tagOf = t => /patch|hotfix|update\s*\d/i.test(t) ? 'Patch notes' : /twitch|drops?\b/i.test(t) ? 'Twitch drops' : /survey/i.test(t) ? 'Survey' :
@@ -61,6 +62,9 @@ async function main() {
       if (m) it.img = m[1].replace(/&amp;/g, '&').replace(/\?t=\d+$/, '');
     } catch (e) { console.log('og:image failed for', it.id, String(e).slice(0, 80)); }
   }
+  // Steam falls back to the game's generic store capsule for posts with no cover of their own; an image shared by several posts is that fallback, so don't show it as their picture.
+  const cnt = {}; for (const it of items) if (/store_item_assets/.test(it.img)) cnt[it.img] = (cnt[it.img] || 0) + 1;
+  for (const it of items) if (cnt[it.img] > 1 && !KEEP.has(it.id)) it.img = '';
   if (!items.length) { console.log('Steam news: no official posts found; leaving the file alone.'); return; }
   writeFileSync(OUT, JSON.stringify({ updated:new Date().toISOString(), app:APP, items }, null, 1) + '\n');
   console.log(`Wrote ${items.length} post(s); newest: ${items[0].title} (${items[0].date}).`);
