@@ -73,7 +73,8 @@ export function analyse(task, wt) {
     const numDiff = hasNum(dn) && dn.some(n => !wn.includes(n));
     /* the maps changed when the lists share a map (an edited list); a complete swap with several similar objectives is a pairing guess */
     const mapDiff = wm.length && dm.length && JSON.stringify(dm) !== JSON.stringify(wm) && dm.some(m => wm.includes(m));
-    if (!numDiff && !(mapDiff && true)) return;
+    if (!numDiff && !mapDiff) return;
+    if (/\d{1,2}:\d{2}/.test(o.description) && !/\d{1,2}:\d{2}/.test(line)) return;   // the wiki line drops a time-of-day condition: probably a different objective
     /* several similar objectives (e.g. "Survive and extract from <map>" x3): which wiki line belongs to which is a guess, so leave them */
     if (objs.some((x, i) => i !== b && sim(line, x.description) >= s - 0.02)) return;
     const f = { description: line };
