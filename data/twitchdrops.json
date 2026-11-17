@@ -1,6 +1,13 @@
 {
  "items": [
   {
+   "id": "1s7j58v",
+   "title": "Escape from Tarkov GTA 6-Themed Twitch Drops Add Two New PMC Shirts",
+   "source": "Shane the Gamer",
+   "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1La0ZLenBhSXF2VGlPVkE5UTk0WmRhZ1ZjMllMZk5YcEZlUVl2LTJyS3hQSG5fZWJVbDhQdlBxLW03RzZ4Znp6Ul9aREVGRlVOdHhwd0dCemhqQnZJQlBvUFpQdmRDVW9HT0xfaWlvS2NHQ2V4YXd0dEM2OHp2Zw?oc=5",
+   "date": "2026-11-16"
+  },
+  {
    "id": "1hs9clw",
    "title": "Escape from Tarkov Twitch Drops Go Live for All Game Modes",
    "source": "Happy Gamer",
@@ -9,7 +16,7 @@
   }
  ],
  "dismissed": [],
- "updated": "2026-11-16T21:05:09.881Z",
+ "updated": "2026-11-17T03:50:14.907Z",
  "note": "News headlines about Tarkov Twitch drops; dates are the day each was published, not the drop dates. Put a wrong one's id under \"dismissed\".",
  "campaigns": [
   {
