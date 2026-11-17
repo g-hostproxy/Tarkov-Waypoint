@@ -1,10 +1,24 @@
 {
  "items": [
   {
+   "id": "1k8dqnc",
+   "title": "‘Escape From Tarkov’ Takes On ‘GTA VI’ With Twitch Drops Campaign",
+   "source": "Forbes",
+   "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOOWhESDhsbmtNMUhFcHAtakxtVDZuSW8xdWEyQ3M0cVFreGZPa2JhMUE0dmozS21ZWW9vZjRDYTY5Y3RzUjFadUVtdi02YklSQmFodmxTSUwyNlJEV2xNZnlZT3ZGbW04YmhPWnhwSUpHNld6MS16RXhCSzJORW1xMUdGS1FraTc5UWhaMnNQYnlUQk1KSi1yT0UyaGJLZlRJeWV3eGYwR3g1R3N4QjdOM0tDbw?oc=5",
+   "date": "2026-11-17"
+  },
+  {
    "id": "1ol3le5",
    "title": "Escape from Tarkov Drops GTA 6-Themed Twitch Rewards, but You'll Have to Grind for Them",
    "source": "guided.news",
    "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE5FZ2VpeDBmb0tDVjFDNzB5WC1NbTBkTXQ2QmNmblJ0dEtlOXhHWVA2U0tycWl5RHZRQWpoRTVDU2xSblFjWDVMYTQ5ZG9jdEFZcklsdzNnVU9RaGdrclVlaXhPSFM5dEktZmN4MGYyLWZjUjNQel9GeVkzNTNCdw?oc=5",
+   "date": "2026-11-17"
+  },
+  {
+   "id": "sgty44",
+   "title": "Escape from Tarkov Twitch Drops Hand Out Two Resort Shirts Until November 23",
+   "source": "Happy Gamer",
+   "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOTHhjZ1o2V2FXVTJ6N2JOeXA1Ml9mNFFTWXVfbWYtV1NaaXEtUU1IWWFoT3k2d1pxbWx3dmx0SEFUY3MzMkluR2s4ck9WVjJqRDhyRl9uRjBjNFdZeE5PemliMTM5OGtfV3RKbGhUenMtT1hrRVdJcnVTR19NNWZwdVpn?oc=5",
    "date": "2026-11-17"
   },
   {
@@ -30,7 +44,7 @@
   }
  ],
  "dismissed": [],
- "updated": "2026-11-17T13:21:16.667Z",
+ "updated": "2026-11-17T22:20:00.019Z",
  "note": "News headlines about Tarkov Twitch drops; dates are the day each was published, not the drop dates. Put a wrong one's id under \"dismissed\".",
  "campaigns": [
   {
