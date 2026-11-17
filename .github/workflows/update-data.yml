@@ -40,6 +40,11 @@ jobs:
       - name: Build wiki quests
         continue-on-error: true
         run: node scripts/build-wiki-quests.mjs
+      # Wiki vs quest data: when a quest's numbers or maps changed on the wiki before tarkov.dev caught up, the wiki's values are written
+      # to data/wiki-fixes.json and the site applies them. Runs every hour, after the quest data is fetched.
+      - name: Check quests against the wiki
+        continue-on-error: true
+        run: node scripts/build-wiki-fixes.mjs
       # The wiki's photo of each extraction, shown when you click an extract pin. Refreshes weekly.
       - name: Build extract photos
         continue-on-error: true

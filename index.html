@@ -3584,6 +3584,20 @@ async function loadTasks(force){
       }
     }
   }catch(e){ console.warn('wiki quests skipped', e); }
+  /* quests whose numbers or maps changed on the wiki before the game data caught up (data/wiki-fixes.json, built hourly by the Action): the wiki's values win */
+  try{
+    if(location.protocol !== 'file:'){
+      const r = await fetch('data/wiki-fixes.json?h=' + Math.floor(Date.now() / 36e5), { cache:'no-cache' });
+      const fx = r.ok ? (await r.json()).fixes || {} : {};
+      if(Object.keys(fx).length) data = Object.assign({}, data, { tasks: data.tasks.map(t => {
+        const f = fx[t.id]; if(!f) return t;
+        const o = f.objectives || {};
+        return Object.assign({}, t, f.experience ? { experience:f.experience } : {}, f.minPlayerLevel ? { minPlayerLevel:f.minPlayerLevel } : {},
+          Object.keys(o).length ? { objectives:(t.objectives || []).map(ob => { const x = o[ob.id]; if(!x) return ob;
+            return Object.assign({}, ob, { description:x.description }, x.count ? { count:x.count } : {}, x.maps && x.maps.length ? { maps:x.maps.map(n => ({ normalizedName:n })) } : {}); }) } : {});
+      }) });
+    }
+  }catch(e){ console.warn('wiki fixes skipped', e); }
   /* objectives no data gives a place for, but that do happen at a fixed spot (placed by hand, as game x / y / z): OBJ_PLACES in this file,
      plus whatever was placed in the editor on this device. Runs after the wiki quests are added so they can be pinned too. */
   try{
@@ -17165,6 +17179,7 @@ document.addEventListener('click', e => {
 const CHANGELOG = [
   { d:'2026-11-08', items:[
       ['new','Key stops: tap the door photo to see it big, with Prev / Next through the key\'s other photos'],
+      ['fix','Quests now follow the wiki when it changes before the game data does (Job for a Patriot is now 10 PMCs on Streets, Shoreline or Ground Zero). Checked every hour, for every quest'],
       ['new','Tarkov updates menu: the latest Battlestate announcements from Steam, with pictures, plus an All Steam news window'],
       ['fix','Pre-raid check now tells you to bring the Wi-Fi cameras for wiki-only quests like Scope the Clearing (3) and Make Amends - Security (4)'],
       ['new','Twitch drop alerts: new Tools > Twitch drops lists drops that are on or newly reported, with an optional alert: a pop-up appears when a drop is on or newly reported'],
