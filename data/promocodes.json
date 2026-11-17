@@ -37,6 +37,18 @@
    "note": "PvE. Posted by Nikita Buyanov on X (figurines)"
   },
   {
+   "code": "READ80LV",
+   "firstSeen": "2026-11-17",
+   "lastSeen": "2026-11-17",
+   "sources": [
+    {
+     "name": "Steam guide: Promo Codes",
+     "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3777016811",
+     "date": "2026-11-17"
+    }
+   ]
+  },
+  {
    "code": "TARKOVHALLOWEEN",
    "firstSeen": "2026-11-05",
    "lastSeen": "2026-11-17",
@@ -147,6 +159,6 @@
   }
  ],
  "dismissed": [],
- "updated": "2026-11-17T05:04:21.264Z",
+ "updated": "2026-11-17T13:21:14.661Z",
  "note": "Codes are reported by players and sites, not tested. Add a code by hand under \"manual\" ({ \"code\":\"X\", \"date\":\"YYYY-MM-DD\", \"note\":\"...\" }); put a wrong one under \"dismissed\"."
 }
