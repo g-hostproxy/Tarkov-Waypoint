@@ -32,7 +32,7 @@ export const mapsIn = text => {
 const WORDNUM = { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10 };
 const nums = text => [...String(text).toLowerCase().replace(/\b(one|two|three|four|five|six|seven|eight|nine|ten)\b/g, w => WORDNUM[w]).matchAll(/\b\d[\d,]*(?:\.\d+)?\b/g)].map(m => +m[0].replace(/,/g, '')).sort((a, b) => a - b);
 /* the game data keeps "how many" in a count field and often leaves the number out of the sentence; the wiki puts it in the sentence */
-const uniq1 = a => [...new Set(a)].filter(n => n !== 1);          // a lone "1" is implicit ("Obtain 1 key" = "Obtain the key")
+const uniq1 = a => [...new Set(a)].filter(n => n !== 1).sort((x, y) => x - y);          // a lone "1" is implicit ("Obtain 1 key" = "Obtain the key")
 const devNums = o => uniq1(nums(o.description).concat(o.count > 1 ? [o.count] : []));
 const hasNum = n => n.length > 0;
 const words = text => {
@@ -69,8 +69,11 @@ export function analyse(task, wt) {
     const back = best(objs[b].description, w.lines, x => x);          // the pairing must be mutual
     if (back.b !== li) return;
     const o = objs[b], dn = devNums(o), wn = uniq1(nums(line)), dm = mapsIn(o.description), wm = mapsIn(line);
-    const numDiff = hasNum(wn) && hasNum(dn) && JSON.stringify(dn) !== JSON.stringify(wn),   /* item counts are not in the game data's sentences, so they cannot be compared */ mapDiff = wm.length && JSON.stringify(dm) !== JSON.stringify(wm);
+    const numDiff = hasNum(wn) && hasNum(dn) && JSON.stringify(dn) !== JSON.stringify(wn);   // item counts are not in the game data's sentences, so they cannot be compared
+    const mapDiff = wm.length && dm.length && JSON.stringify(dm) !== JSON.stringify(wm);      // only when the game data's own sentence names maps
     if (!numDiff && !mapDiff) return;
+    /* several similar objectives (e.g. "Survive and extract from <map>" x3): which wiki line belongs to which is a guess, so leave them */
+    if (objs.some((x, i) => i !== b && sim(line, x.description) >= s - 0.02)) return;
     const f = { description: line };
     if (wm.length) f.maps = wm;
     if (o.type === 'shoot' && wn.length && wn[0] !== o.count && /^eliminate\b/i.test(line)) f.count = wn[0];
