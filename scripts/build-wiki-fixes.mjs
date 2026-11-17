@@ -30,7 +30,7 @@ export const mapsIn = text => {
   return [...new Set(MAPNAMES.filter(([n]) => t.includes(' ' + n + ' ')).map(([, k]) => k))].sort();
 };
 const WORDNUM = { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10 };
-const nums = text => [...String(text).toLowerCase().replace(/\b(one|two|three|four|five|six|seven|eight|nine|ten)\b/g, w => WORDNUM[w]).matchAll(/\b\d[\d,]*(?:\.\d+)?\b/g)].map(m => +m[0].replace(/,/g, '')).sort((a, b) => a - b);
+const nums = text => [...String(text).toLowerCase().replace(/\b\d{1,2}:\d{2}(?:\s*-\s*\d{1,2}:\d{2})?/g, ' ').replace(/\b(one|two|three|four|five|six|seven|eight|nine|ten)\b/g, w => WORDNUM[w]).matchAll(/\b\d[\d,]*(?:\.\d+)?\b/g)].map(m => +m[0].replace(/,/g, '')).sort((a, b) => a - b);
 /* the game data keeps "how many" in a count field and often leaves the number out of the sentence; the wiki puts it in the sentence */
 const uniq1 = a => [...new Set(a)].filter(n => n !== 1).sort((x, y) => x - y);          // a lone "1" is implicit ("Obtain 1 key" = "Obtain the key")
 const devNums = o => uniq1(nums(o.description).concat(o.count > 1 ? [o.count] : []));
@@ -69,9 +69,11 @@ export function analyse(task, wt) {
     const back = best(objs[b].description, w.lines, x => x);          // the pairing must be mutual
     if (back.b !== li) return;
     const o = objs[b], dn = devNums(o), wn = uniq1(nums(line)), dm = mapsIn(o.description), wm = mapsIn(line);
-    const numDiff = hasNum(wn) && hasNum(dn) && JSON.stringify(dn) !== JSON.stringify(wn);   // item counts are not in the game data's sentences, so they cannot be compared
-    const mapDiff = wm.length && dm.length && JSON.stringify(dm) !== JSON.stringify(wm);      // only when the game data's own sentence names maps
-    if (!numDiff && !mapDiff) return;
+    /* a number counts as changed when one the game data states is no longer on the wiki line (the wiki line having MORE numbers is just its item counts) */
+    const numDiff = hasNum(dn) && dn.some(n => !wn.includes(n));
+    /* the maps changed when the lists share a map (an edited list); a complete swap with several similar objectives is a pairing guess */
+    const mapDiff = wm.length && dm.length && JSON.stringify(dm) !== JSON.stringify(wm) && dm.some(m => wm.includes(m));
+    if (!numDiff && !(mapDiff && true)) return;
     /* several similar objectives (e.g. "Survive and extract from <map>" x3): which wiki line belongs to which is a guess, so leave them */
     if (objs.some((x, i) => i !== b && sim(line, x.description) >= s - 0.02)) return;
     const f = { description: line };
