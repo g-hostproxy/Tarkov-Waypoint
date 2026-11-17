@@ -59,8 +59,7 @@ export const wikiInfo = wt => {
 /* what differs for one quest: { experience?, minPlayerLevel?, objectives:{ id:{description,maps?,count?} } } or null */
 export function analyse(task, wt) {
   const w = wikiInfo(wt), fix = {}, why = [];
-  if (w.xp && task.experience && w.xp !== task.experience) { fix.experience = w.xp; why.push(`XP ${task.experience} -> ${w.xp}`); }
-  if (w.level && task.minPlayerLevel && w.level !== task.minPlayerLevel) { fix.minPlayerLevel = w.level; why.push(`level ${task.minPlayerLevel} -> ${w.level}`); }
+  /* XP and level come from the game files and are left alone: the wiki is hand-edited and its reward/requirement lines are too loose to override them */
   const objs = (task.objectives || []).filter(o => o.description);
   const best = (txt, list, key) => { let b = -1, s = 0; list.forEach((x, i) => { const v = sim(txt, key(x)); if (v > s) { s = v; b = i; } }); return { b, s }; };
   const fixes = {};
@@ -70,7 +69,7 @@ export function analyse(task, wt) {
     const back = best(objs[b].description, w.lines, x => x);          // the pairing must be mutual
     if (back.b !== li) return;
     const o = objs[b], dn = devNums(o), wn = uniq1(nums(line)), dm = mapsIn(o.description), wm = mapsIn(line);
-    const numDiff = hasNum(wn) && JSON.stringify(dn) !== JSON.stringify(wn), mapDiff = wm.length && JSON.stringify(dm) !== JSON.stringify(wm);
+    const numDiff = hasNum(wn) && hasNum(dn) && JSON.stringify(dn) !== JSON.stringify(wn),   /* item counts are not in the game data's sentences, so they cannot be compared */ mapDiff = wm.length && JSON.stringify(dm) !== JSON.stringify(wm);
     if (!numDiff && !mapDiff) return;
     const f = { description: line };
     if (wm.length) f.maps = wm;
