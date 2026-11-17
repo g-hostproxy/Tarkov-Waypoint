@@ -29,7 +29,12 @@ export const mapsIn = text => {
   const t = ' ' + String(text).toLowerCase().replace(/[^a-z0-9 ]+/g, ' ').replace(/\s+/g, ' ') + ' ';
   return [...new Set(MAPNAMES.filter(([n]) => t.includes(' ' + n + ' ')).map(([, k]) => k))].sort();
 };
-const nums = text => [...String(text).matchAll(/\b\d[\d,]*(?:\.\d+)?\b/g)].map(m => +m[0].replace(/,/g, '')).sort((a, b) => a - b);
+const WORDNUM = { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10 };
+const nums = text => [...String(text).toLowerCase().replace(/\b(one|two|three|four|five|six|seven|eight|nine|ten)\b/g, w => WORDNUM[w]).matchAll(/\b\d[\d,]*(?:\.\d+)?\b/g)].map(m => +m[0].replace(/,/g, '')).sort((a, b) => a - b);
+/* the game data keeps "how many" in a count field and often leaves the number out of the sentence; the wiki puts it in the sentence */
+const uniq1 = a => [...new Set(a)].filter(n => n !== 1);          // a lone "1" is implicit ("Obtain 1 key" = "Obtain the key")
+const devNums = o => uniq1(nums(o.description).concat(o.count > 1 ? [o.count] : []));
+const hasNum = n => n.length > 0;
 const words = text => {
   let t = ' ' + String(text).toLowerCase().replace(/[^a-z0-9 ]+/g, ' ') + ' ';
   for (const [n] of MAPNAMES) t = t.split(' ' + n + ' ').join('  ');
@@ -39,14 +44,15 @@ const sim = (a, b) => { const A = words(a), B = words(b); if (!A.size || !B.size
 
 export const wikiInfo = wt => {
   const lines = section(wt, 'Objectives').split('\n').map(l => /^\s*\*(?!\*)\s*(.*)$/.exec(l)).filter(Boolean).map(m => plain(m[1])).filter(Boolean);
-  const rew = plain(section(wt, 'Rewards').split('\n')[0] || '') + ' ' + plain(section(wt, 'Rewards'));
-  const xp = /\+\s*([\d,]+)\s*EXP/i.exec(rew);
-  let level = null;
+  const rews = [...plain(section(wt, 'Rewards')).matchAll(/\+\s*([\d,]+)\s*EXP/gi)];
+  const xp = rews.length === 1 ? rews[0] : null;        // two EXP lines = unclear which is the quest's: leave it
+  let level = null; const levels = [];
   for (const l of section(wt, 'Requirements').split('\n')) {
     const p = plain(l).replace(/^[*#:\s]+/, '');
     const m = /^(?:you must be |must be )?(?:player )?level\s+(\d+)\b/i.exec(p);
-    if (m && !/loyalty|trader/i.test(p)) { level = +m[1]; break; }
+    if (m && !/loyalty|trader/i.test(p)) { levels.push(+m[1]); }
   }
+  if (levels.length === 1) level = levels[0];
   return { lines, xp: xp ? +xp[1].replace(/,/g, '') : null, level };
 };
 
@@ -63,8 +69,8 @@ export function analyse(task, wt) {
     if (b < 0 || s < 0.5) return;
     const back = best(objs[b].description, w.lines, x => x);          // the pairing must be mutual
     if (back.b !== li) return;
-    const o = objs[b], dn = nums(o.description), wn = nums(line), dm = mapsIn(o.description), wm = mapsIn(line);
-    const numDiff = JSON.stringify(dn) !== JSON.stringify(wn), mapDiff = wm.length && JSON.stringify(dm) !== JSON.stringify(wm);
+    const o = objs[b], dn = devNums(o), wn = uniq1(nums(line)), dm = mapsIn(o.description), wm = mapsIn(line);
+    const numDiff = hasNum(wn) && JSON.stringify(dn) !== JSON.stringify(wn), mapDiff = wm.length && JSON.stringify(dm) !== JSON.stringify(wm);
     if (!numDiff && !mapDiff) return;
     const f = { description: line };
     if (wm.length) f.maps = wm;
