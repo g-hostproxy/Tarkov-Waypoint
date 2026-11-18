@@ -3,12 +3,12 @@
   {
    "code": "EMBRACEPAIN",
    "firstSeen": "2026-11-06",
-   "lastSeen": "2026-11-17",
+   "lastSeen": "2026-11-18",
    "sources": [
     {
      "name": "Insider Gaming",
      "url": "https://insider-gaming.com/all-escape-from-tarkov-codes-rewards/",
-     "date": "2026-11-17"
+     "date": "2026-11-18"
     },
     {
      "name": "Added by hand",
@@ -21,12 +21,12 @@
   {
    "code": "PLAYYOURWAY",
    "firstSeen": "2026-11-06",
-   "lastSeen": "2026-11-17",
+   "lastSeen": "2026-11-18",
    "sources": [
     {
      "name": "Insider Gaming",
      "url": "https://insider-gaming.com/all-escape-from-tarkov-codes-rewards/",
-     "date": "2026-11-17"
+     "date": "2026-11-18"
     },
     {
      "name": "Added by hand",
@@ -37,21 +37,9 @@
    "note": "PvE. Posted by Nikita Buyanov on X (figurines)"
   },
   {
-   "code": "READ80LV",
-   "firstSeen": "2026-11-17",
-   "lastSeen": "2026-11-17",
-   "sources": [
-    {
-     "name": "Steam guide: Promo Codes",
-     "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3777016811",
-     "date": "2026-11-17"
-    }
-   ]
-  },
-  {
    "code": "TARKOVHALLOWEEN",
    "firstSeen": "2026-11-05",
-   "lastSeen": "2026-11-17",
+   "lastSeen": "2026-11-18",
    "note": "Halloween event code (added by hand)",
    "sources": [
     {
@@ -62,12 +50,12 @@
     {
      "name": "Dexerto",
      "url": "https://dexerto.com/escape-from-tarkov/all-escape-from-tarkov-promo-codes-and-discounts-1752105",
-     "date": "2026-11-17"
+     "date": "2026-11-18"
     },
     {
      "name": "Insider Gaming",
      "url": "https://insider-gaming.com/all-escape-from-tarkov-codes-rewards/",
-     "date": "2026-11-17"
+     "date": "2026-11-18"
     },
     {
      "name": "Steam guide: Promo Codes",
@@ -79,17 +67,29 @@
   {
    "code": "UNDEADTARKOV",
    "firstSeen": "2026-10-30",
-   "lastSeen": "2026-11-17",
+   "lastSeen": "2026-11-18",
    "sources": [
     {
      "name": "Insider Gaming",
      "url": "https://insider-gaming.com/all-escape-from-tarkov-codes-rewards/",
-     "date": "2026-11-17"
+     "date": "2026-11-18"
     },
     {
      "name": "Steam guide: Promo Codes",
      "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3777016811",
      "date": "2026-10-30"
+    }
+   ]
+  },
+  {
+   "code": "READ80LV",
+   "firstSeen": "2026-11-17",
+   "lastSeen": "2026-11-17",
+   "sources": [
+    {
+     "name": "Steam guide: Promo Codes",
+     "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3777016811",
+     "date": "2026-11-17"
     }
    ]
   },
@@ -159,6 +159,6 @@
   }
  ],
  "dismissed": [],
- "updated": "2026-11-17T22:19:57.914Z",
+ "updated": "2026-11-18T04:17:13.669Z",
  "note": "Codes are reported by players and sites, not tested. Add a code by hand under \"manual\" ({ \"code\":\"X\", \"date\":\"YYYY-MM-DD\", \"note\":\"...\" }); put a wrong one under \"dismissed\"."
 }
