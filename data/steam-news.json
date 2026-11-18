@@ -1,7 +1,17 @@
 {
- "updated": "2026-11-18T13:07:57.819Z",
+ "updated": "2026-11-18T21:27:34.021Z",
  "app": 3932890,
  "items": [
+  {
+   "id": "1849827110424344",
+   "title": "Developer’s diary: Technical improvements",
+   "date": "2026-11-18",
+   "ts": 1795010453000,
+   "url": "https://store.steampowered.com/news/app/3932890/view/1849827110424344",
+   "img": "https://clan.fastly.steamstatic.com/images/45781996/8547c80ab527940f45b791620373854d3192fbed.jpg",
+   "summary": "In this episode of the \"Diaries\", we would like to talk about the features of update 1.3.5.0, scheduled for release in the second half of November…",
+   "tag": "News"
+  },
   {
    "id": "1849458702689904",
    "title": "Tarkov City Drops Campaign!",
@@ -111,16 +121,6 @@
    "img": "https://clan.fastly.steamstatic.com/images/45781996/18a95189670f9b41c690164965070a874db23c70.png",
    "summary": "A new in-game survey is now available, focused on the Seasons system…",
    "tag": "Survey"
-  },
-  {
-   "id": "1842846814455578",
-   "title": "Patch 1.1.5.0",
-   "date": "2026-09-08",
-   "ts": 1788872664000,
-   "url": "https://store.steampowered.com/news/app/3932890/view/1842846814455578",
-   "img": "https://clan.fastly.steamstatic.com/images/45781996/61d1288be5efc283c08e22680254797a7e0a0155.jpg",
-   "summary": "Lighthouse rework To give players more control over the risks they face while moving through the location and reduce their dependence on random factors, the following…",
-   "tag": "Patch notes"
   }
  ]
 }
