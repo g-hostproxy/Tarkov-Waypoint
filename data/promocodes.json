@@ -3,12 +3,12 @@
   {
    "code": "EMBRACEPAIN",
    "firstSeen": "2026-11-06",
-   "lastSeen": "2026-11-19",
+   "lastSeen": "2026-11-20",
    "sources": [
     {
      "name": "Insider Gaming",
      "url": "https://insider-gaming.com/all-escape-from-tarkov-codes-rewards/",
-     "date": "2026-11-19"
+     "date": "2026-11-20"
     },
     {
      "name": "Added by hand",
@@ -21,12 +21,12 @@
   {
    "code": "PLAYYOURWAY",
    "firstSeen": "2026-11-06",
-   "lastSeen": "2026-11-19",
+   "lastSeen": "2026-11-20",
    "sources": [
     {
      "name": "Insider Gaming",
      "url": "https://insider-gaming.com/all-escape-from-tarkov-codes-rewards/",
-     "date": "2026-11-19"
+     "date": "2026-11-20"
     },
     {
      "name": "Added by hand",
@@ -39,7 +39,7 @@
   {
    "code": "TARKOVHALLOWEEN",
    "firstSeen": "2026-11-05",
-   "lastSeen": "2026-11-19",
+   "lastSeen": "2026-11-20",
    "note": "Halloween event code (added by hand)",
    "sources": [
     {
@@ -50,12 +50,12 @@
     {
      "name": "Dexerto",
      "url": "https://dexerto.com/escape-from-tarkov/all-escape-from-tarkov-promo-codes-and-discounts-1752105",
-     "date": "2026-11-19"
+     "date": "2026-11-20"
     },
     {
      "name": "Insider Gaming",
      "url": "https://insider-gaming.com/all-escape-from-tarkov-codes-rewards/",
-     "date": "2026-11-19"
+     "date": "2026-11-20"
     },
     {
      "name": "Steam guide: Promo Codes",
@@ -67,12 +67,12 @@
   {
    "code": "UNDEADTARKOV",
    "firstSeen": "2026-10-30",
-   "lastSeen": "2026-11-19",
+   "lastSeen": "2026-11-20",
    "sources": [
     {
      "name": "Insider Gaming",
      "url": "https://insider-gaming.com/all-escape-from-tarkov-codes-rewards/",
-     "date": "2026-11-19"
+     "date": "2026-11-20"
     },
     {
      "name": "Steam guide: Promo Codes",
@@ -159,6 +159,6 @@
   }
  ],
  "dismissed": [],
- "updated": "2026-11-19T21:30:06.306Z",
+ "updated": "2026-11-20T03:10:53.923Z",
  "note": "Codes are reported by players and sites, not tested. Add a code by hand under \"manual\" ({ \"code\":\"X\", \"date\":\"YYYY-MM-DD\", \"note\":\"...\" }); put a wrong one under \"dismissed\"."
 }

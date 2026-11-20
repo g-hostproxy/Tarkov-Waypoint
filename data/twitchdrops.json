@@ -1,6 +1,13 @@
 {
  "items": [
   {
+   "id": "l5kr4z",
+   "title": "Tarkov Getaway Twitch Drops End November 23 With Final USEC and BEAR Shirts",
+   "source": "Happy Gamer",
+   "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQVEZ0TkQxUzlzbDZwN3NzOUNCSkR0SHhudm04LVlTTGJjc0piSkdVZld3YnBkaGJmcVJLdERUeG9Dc0QzbXZjVzJIOXN4SXZYWm41Wk1JSXQ4enc2cjdzSWZETWI5NnZHLWxHWmtzS3JsZERuTDVDSVJ1QS02N1k2cA?oc=5",
+   "date": "2026-11-20"
+  },
+  {
    "id": "1k8dqnc",
    "title": "‘Escape From Tarkov’ Takes On ‘GTA VI’ With Twitch Drops Campaign",
    "source": "Forbes",
@@ -44,7 +51,7 @@
   }
  ],
  "dismissed": [],
- "updated": "2026-11-19T21:30:07.398Z",
+ "updated": "2026-11-20T03:10:56.506Z",
  "note": "News headlines about Tarkov Twitch drops; dates are the day each was published, not the drop dates. Put a wrong one's id under \"dismissed\".",
  "campaigns": [
   {
