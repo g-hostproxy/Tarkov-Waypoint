@@ -1,7 +1,17 @@
 {
- "updated": "2026-11-24T06:00:09.876Z",
+ "updated": "2026-11-24T17:39:25.494Z",
  "app": 3932890,
  "items": [
+  {
+   "id": "1849827110445989",
+   "title": "Patch 1.3.5.0",
+   "date": "2026-11-24",
+   "ts": 1795523583000,
+   "url": "https://store.steampowered.com/news/app/3932890/view/1849827110445989",
+   "img": "https://clan.fastly.steamstatic.com/images/45781996/94306d53e4f3fe7e11fc9f15e0992e97e8ce5969.jpg",
+   "summary": "Halloween event The in-game Halloween event has ended. Please note that Scav behavior toward Player Scavs and the penalty for killing them have been reverted to their…",
+   "tag": "Patch notes"
+  },
   {
    "id": "1849827110424344",
    "title": "Developer’s diary: Technical improvements",
@@ -111,16 +121,6 @@
    "img": "https://clan.fastly.steamstatic.com/images/45781996/958609d08655ba93dda014e4e6e61e7b54c50f07.jpg",
    "summary": "League System Added a new competitive system – Leagues, available only for Seasonal characters…",
    "tag": "Event"
-  },
-  {
-   "id": "1843481262695602",
-   "title": "New in-game survey",
-   "date": "2026-09-11",
-   "ts": 1789139475000,
-   "url": "https://store.steampowered.com/news/app/3932890/view/1843481262695602",
-   "img": "https://clan.fastly.steamstatic.com/images/45781996/18a95189670f9b41c690164965070a874db23c70.png",
-   "summary": "A new in-game survey is now available, focused on the Seasons system…",
-   "tag": "Survey"
   }
  ]
 }
