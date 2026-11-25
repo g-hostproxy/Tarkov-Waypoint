@@ -1,7 +1,17 @@
 {
- "updated": "2026-11-25T02:23:39.850Z",
+ "updated": "2026-11-25T12:49:08.689Z",
  "app": 3932890,
  "items": [
+  {
+   "id": "1850460852980892",
+   "title": "2026 Steam Awards nomination!",
+   "date": "2026-11-25",
+   "ts": 1795608081000,
+   "url": "https://store.steampowered.com/news/app/3932890/view/1850460852980892",
+   "img": "https://clan.fastly.steamstatic.com/images/45781996/4c4edd69fad34f288be34e36c77b09564159d965.jpg",
+   "summary": "A full year has passed since the release of Escape from Tarkov and its launch on Steam…",
+   "tag": "News"
+  },
   {
    "id": "1849827110445989",
    "title": "Patch 1.3.5.0",
@@ -111,16 +121,6 @@
    "img": "",
    "summary": "The Autumn Sale has begun! This is a great opportunity to get Escape from Tarkov at a special price or upgrade your current edition! The following discounts are…",
    "tag": "Sale"
-  },
-  {
-   "id": "1843481262704542",
-   "title": "Leagues are live!",
-   "date": "2026-09-15",
-   "ts": 1789477724000,
-   "url": "https://store.steampowered.com/news/app/3932890/view/1843481262704542",
-   "img": "https://clan.fastly.steamstatic.com/images/45781996/958609d08655ba93dda014e4e6e61e7b54c50f07.jpg",
-   "summary": "League System Added a new competitive system – Leagues, available only for Seasonal characters…",
-   "tag": "Event"
   }
  ]
 }
